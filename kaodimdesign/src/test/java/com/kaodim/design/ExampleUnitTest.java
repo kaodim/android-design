@@ -1,4 +1,4 @@
-package com.kaodim.kaodimdesign;
+package com.kaodim.design;
 
 import org.junit.Test;
 

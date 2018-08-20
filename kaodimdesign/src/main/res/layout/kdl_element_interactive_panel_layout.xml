@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/kdl_rect_dotted"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvHint"
+        style="@style/large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:hint="Pick a date"
+        android:textColorHint="@color/blackpearl" />
+
+</RelativeLayout>

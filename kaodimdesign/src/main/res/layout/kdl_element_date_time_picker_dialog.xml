@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/datetimeHost"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/porcelain"
+    android:orientation="horizontal"
+    android:paddingBottom="20dp"
+    android:paddingTop="10dp">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/llWheelLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <com.aigestudio.wheelpicker.WheelPicker
+            android:id="@+id/wpDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            app:wheel_atmospheric="true"
+            app:wheel_curved="false"
+            app:wheel_indicator="true"
+            app:wheel_indicator_color="@color/jasper"
+            app:wheel_indicator_size="2dp"
+            app:wheel_item_align="center"
+            app:wheel_item_text_color="@color/kdl_grey_light"
+            app:wheel_item_text_size="18sp"
+            app:wheel_selected_item_text_color="@color/blackpearl" />
+
+        <com.aigestudio.wheelpicker.WheelPicker
+            android:id="@+id/wpTimePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            app:wheel_atmospheric="true"
+            app:wheel_curved="false"
+            app:wheel_indicator="true"
+            app:wheel_indicator_color="@color/jasper"
+            app:wheel_indicator_size="2dp"
+            app:wheel_item_align="center"
+            app:wheel_item_text_color="@color/kdl_grey_light"
+            app:wheel_item_text_size="18sp"
+            app:wheel_selected_item_text_color="@color/blackpearl" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llWheelLayout"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/tvCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:text="CANCEL"
+            android:textColor="@color/kdl_grey_light"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvApply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:text="DONE"
+            android:textColor="@color/jasper"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

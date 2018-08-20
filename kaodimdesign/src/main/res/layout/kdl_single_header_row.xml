@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/porcelain"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvHeading"
+        style="@style/NormalTextBolded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:padding="18dp"
+        android:text=""
+        android:visibility="visible"
+        android:textColor="@color/firefly"
+        android:scrollbars="none" />
+
+</LinearLayout>

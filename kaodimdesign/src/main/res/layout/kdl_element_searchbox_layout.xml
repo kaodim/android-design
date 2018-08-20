@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/kdl_edittext"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rlSearchBox"
+            android:layout_width="match_parent"
+            android:layout_toLeftOf="@+id/rlNext"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:id="@+id/tvSearchIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_magnifying_glass" />
+
+            <TextView
+                android:id="@+id/tvSearchBoxHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/tvSearchIcon"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Sample text"
+                android:textColor="@color/firefly"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlNext"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/kdl_rect_jasper_half_radius">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_arrow_right" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</merge>

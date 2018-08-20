@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--PRIMARY PALETTE-->
+    <color name="porcelain">#FFFFFF</color>
+    <color name="jasper">#E3193A</color>
+    <color name="firefly">#003158</color>
+
+    <color name="jasper_pressed">#C91634</color>
+
+    <!--SECONDARY PALETTE-->
+    <color name="celestial">#3498DB</color>
+    <color name="lima">#2ECC71</color>
+    <color name="narvik">#EBFFF3</color>
+    <color name="sunglow">#FDB813</color>
+
+    <color name="mystic">#F5F6F8</color>
+    <color name="heather">#DEE1E5</color>
+    <color name="submarine">#A5B5BD</color>
+    <color name="raven">#9FA4A6</color>
+    <color name="flint">#707070</color>
+    <color name="blackpearl">#12232E</color>
+
+    <color name="kdl_grey">#E6E7E8</color>
+    <color name="kdl_grey_dark">#5A5A5A</color>
+    <color name="kdl_grey_light">#C0C0C0</color>
+    <color name="kdl_grey_medium">#969696</color>
+    <color name="kdl_grey_lighter">#FAFAFA</color>
+    <color name="kdl_grey_lighter_2">#F4F4F4</color>
+
+    <color name="black_light">#0F0F0F</color>
+
+</resources>

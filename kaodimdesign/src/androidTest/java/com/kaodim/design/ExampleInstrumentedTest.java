@@ -1,4 +1,4 @@
-package com.kaodim.kaodimdesign;
+package com.kaodim.design;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
