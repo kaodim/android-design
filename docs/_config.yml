@@ -1,9 +1,9 @@
 # username/repository
 id: mistic100/jekyll-bootstrap-doc
 # name of the software
-name: Jekyll Bootstrap Doc
+name: Android Bootstrap Docs
 # current version of the software
-version: 1.2.0
+version: 0.0.2
 # licence of the software
 license: MIT License
 licenseUrl: http://opensource.org/licenses/MIT
@@ -31,14 +31,14 @@ customNavBar: false
 # list of additional links on the right of the top menu
 headerLinks:
   - title: GitHub
-    url: https://github.com/kaodim/kaodim-design-android
+    url: https://github.com/kaodim/android-design
   - title: Design Bible
     url: https://projects.invisionapp.com/d/main#/console/15026328/312447388/preview
 
 # list if additional links on the footer
 footerLinks:
   - title: GitHub
-    url: https://github.com/kaodim/kaodim-design-android
+    url: https://github.com/kaodim/android-design
 
 # header
 header:
@@ -54,7 +54,7 @@ analytics:
 # github buttons
 githubButton:
   user: kaodim
-  repo: kaodim-design-android
+  repo: android-design
 
 # twitter buttons
 twitter:
