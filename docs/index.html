@@ -1,0 +1,234 @@
+---
+layout: default
+title: Home
+description: Kaodim Android Design Bootstrap
+isHome: true
+---
+
+<section class="bs-docs-section">
+  <h1 id="overview" class="page-header">Overview</h1>
+
+  <blockquote>
+    This is the Kaodim android design bootstrap documentation for setting up and maintaining Kaodim shared UI components
+  </blockquote>
+</section>
+
+<section class="bs-docs-section">
+  <h1 id="installation" class="page-header">Installation</h1>
+
+  <h2 id="install">Install Design Library</h2>
+  <p>
+    Follow the <a href="https://help.github.com/articles/using-jekyll-with-pages">GitHub guide</a> to install Jekyll
+    on your computer. The big steps are:
+  </p>
+
+<!-- @formatter:off -->
+{% highlight bash %}
+$ apt-get install ruby ruby-dev
+$ gem install bundler
+$ git clone git://github.com/mistic100/jekyll-bootstrap-doc
+$ bundle install
+$ bundle exec jekyll serve
+{% endhighlight %}
+<!-- @formatter:on -->
+
+</section>
+
+<section class="bs-docs-section">
+  <h1 id="usage" class="page-header">Usage</h1>
+  <h2 id="colors">Color Bible</h2>
+  <h3 id="primary-colors">Primary colors</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 130px;">Name</th>
+          <th>Hex Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jasper</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #ED193A;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#ED193A</td>
+        </tr>
+        <tr>
+          <td>Firefly</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #003158;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#003158</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="secondary-colors">Secondary colors</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 130px;">Name</th>
+          <th>Hex Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lima</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #2ECC71;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#2ECC71</td>
+        </tr>
+        <tr>
+          <td>Narvik</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #EBFFF3;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#EBFFF3</td>
+        </tr>
+        <tr>
+          <td>Celestial</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #3498DB;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#3498DB</td>
+        </tr>
+        <tr>
+          <td>Sunglow</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #FDB813;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#FDB813</td>
+        </tr>
+        <tr>
+          <td>Porcelain</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #FFFFFF;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#FFFFFF</td>
+        </tr>
+        <tr>
+          <td>Mystic</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #F5F6F8;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#F5F6F8</td>
+        </tr>
+        <tr>
+          <td>Heather</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #DEE1E5;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#DEE1E5</td>
+        </tr>
+        <tr>
+          <td>Submarine</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #ADB5BD;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#ADB5BD</td>
+        </tr>
+        <tr>
+          <td>Raven</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #9FA4A6;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#9FA4A6</td>
+        </tr>
+        <tr>
+          <td>Flint</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #707070;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#707070</td>
+        </tr>
+        <tr>
+          <td>Blackpearl</td>
+          <td style="display: flex !important;justify-content: flex-start !important;"><div style="background: #12232E;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#12232E</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="typography">Typography</h2>
+  <p>
+    All typography formats have been declared in the <code>styles.xml</code> file
+  </p>
+
+  <span style="font-size: 22px; font-weight: 800; color: #12232E">Title 1 - 22sp - Roboto Bold</span>
+
+{% highlight xml %}
+<TextView
+  style="@style/title_1"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" />
+{% endhighlight %}
+
+<span style="font-size: 20px; font-weight: 800; color: #12232E">Title 2 - 20sp - Roboto Bold</span>
+
+{% highlight xml %}
+<TextView
+  style="@style/title_2"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" />
+{% endhighlight %}
+
+
+  <h2 id="components">Components</h2>
+  <p>
+    Re-usable Custom Android UI Components that are added to the XML layout and optionally controlled by the code-behind.
+  </p>
+
+  <h3>NumericControl</h3>
+  <p>
+    Commonly used for Numeric and Multi Numeric Questions where a numeric increment and decrement option is given for numeric input selection.
+  </p>
+  <img src="/assets/images/component_numeric_control.png" class="screenshot" />
+{% highlight xml %}
+<com.kaodim.design.components.NumericControl
+    android:id="@+id/numericControl"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:max="15"
+    app:min="0"
+    app:value="2" />
+{% endhighlight %}
+<hr>
+<h3>DateTimePickerDialog</h3>
+  <p>
+    A custom Date and Time selection control with customizable behavior controls for toggling cycle effect, atmospheric effect, etc.
+  </p>
+  <hr>
+  <p class="heading">Date Time Picker Component</p>
+  <p>A picker component will be added to the interface and upon tapping this component, the date time picker dialog will be called.</p>
+  <img src="/assets/images/component_datetimepicker_control.png" class="screenshot small" />
+  <p class="heading">Date Time Picker Dialog</p>
+  <img src="/assets/images/component_datetimepicker.jpg" class="screenshot" />
+{% highlight xml %}
+<com.kaodim.design.components.DateTimePicker
+    android:id="@+id/dateTimePicker"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:atmosphericEffect="true"
+    app:displayDate="true"
+    app:displayTime="true"
+    app:curvedEffect="false"
+    app:cyclicEffect="false"
+    app:pickerHint="Pick a date &amp; time" />
+{% endhighlight %}
+<p class="heading">Initializing DateTimePicker</p>
+It is important to call <code>initialize(activity)</code> before using the DateTimePicker as the calling activity is necessary to call the DateTimePickerDialog.
+<hr>
+{% highlight java %}
+dateTimePicker.initialize(this);
+{% endhighlight %}
+<hr>
+<p class="heading">Setting DateTimeChangedListener</p>
+<p>A callback with the selected date and time is made if a DateTimeChangedListener is set to the DateTimePicker component after initializing</p>
+{% highlight java %}
+dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
+  @Override
+  public void onDateTimeSelected(String selectedDate, String selectedTime) {
+      
+  }
+}
+{% endhighlight %}
+Or if the activity/fragment implements it, set the DateTimeChangedListener like this:
+{% highlight java %}
+dateTimePicker.setDateTimeChangedListener(this);
+{% endhighlight %}
+
+</section>
+<hr>
+<h3>InteractivePanel</h3>
+<p>
+  InteractivePanel allows you to set a custom text and receive onClick callbacks from it. This can be used as a replacement for a selection button.
+</p>
+{% highlight xml %}
+<com.kaodim.design.components.InteractivePanel
+        android:id="@+id/ipButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:panelHint="@string/add_an_alternative_date" />
+{% endhighlight %}
+<p class="heading">Code level</p>
+{% highlight java %}
+InteractivePanel ipAddDateField = holder.itemView.findViewById(R.id.ipAddDateField);
+ipAddDateField.setHint(mContext.getResources().getString(R.string.add_an_alternative_date));
+{% endhighlight %}
+<p class="heading">Set Listeners</p>
+Set a listener using:
+{% highlight java %}
+ipAddDateField.setPanelInteractedListener();
+{% endhighlight %}

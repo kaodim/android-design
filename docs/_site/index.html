@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Jekyll Bootstrap Doc</title>
+
+  
+  <link rel="icon" type="image/png" href="/favicon.png">
+  
+
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    #content {
+      background:#003158;
+      background:linear-gradient(135deg, #003158, #05589a);
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.3.0/bootbox.min.js"></script>
+  <script src="/assets/js/docs.min.js"></script>
+  <script src="/assets/js/script.js"></script>
+</head>
+
+<body>
+  <!-- Main navigation
+  =========================================== -->
+  <header class="navbar navbar-static-top bs-docs-nav" id="top">
+    <div class="container">
+      <div class="navbar-header" role="banner">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/index.html">Jekyll Bootstrap Doc</a>
+      </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+        
+          
+          
+            
+            <li>
+              <a href="/changelog.html">Changelog</a>
+            </li>
+            
+          
+            
+          
+            
+          
+            
+            <li>
+              <a href="/robots.txt"></a>
+            </li>
+            
+          
+            
+            <li>
+              <a href="/sitemap.xml"></a>
+            </li>
+            
+          
+        
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li>
+            <a href="https://github.com/kaodim/kaodim-design-android">GitHub</a>
+          </li>
+          
+          <li>
+            <a href="https://projects.invisionapp.com/d/main#/console/15026328/312447388/preview">Design Bible</a>
+          </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Header
+  =========================================== -->
+  
+  <div class="bs-docs-masthead" id="content">
+    <div class="container">
+      <h1 class="home-title">Jekyll Bootstrap Doc</h1>
+      <p class="lead">Kaodim Android Design Bootstrap</p>
+      <p class="lead">
+        
+        <a data-bootbox="download-popup" data-bootbox-size="large" class="btn btn-outline-inverse btn-lg">Download</a>
+        
+      </p>
+      <p class="version">Currently v1.2.0</p>
+    </div>
+  </div>
+
+  
+  <div id="download-popup" title="Download Jekyll Bootstrap Doc 1.2.0" class="hidden">
+    <div class="row">
+  
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Manual download</div>
+      <div class="panel-body">
+        <p>Compiled and minified files with examples and sources.</p>
+        <a href="https://github.com/mistic100/jekyll-bootstrap-doc/archive/gh-pages.zip" class="btn btn-lg btn-outline">
+          <i class="glyphicon glyphicon-save"></i>
+          Download
+        </a>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Content Delivery Network</div>
+      <div class="panel-body">
+        <p>The package is available on cdnjs.</p>
+        
+        <a href="https://cdnjs.com/libraries/jekyll-bootstrap-doc" class="btn btn-lg btn-outline" style="max-width: 50%">
+          <img src="https://alemangui.github.io/pizzicato/img/cdnjs.svg" class="img-responsive">
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Install with Bower</div>
+      <div class="panel-body">
+        <p>You can also get all necessary files and dependencies with <a href="http://bower.io">Bower</a>.</p>
+        <!-- @formatter:off -->
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install jekyll-bootstrap-doc</code></pre></figure>
+<!-- @formatter:on -->
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Install with npm</div>
+      <div class="panel-body">
+        <p>You can also get all necessary files and dependencies with <a href="https://www.npmjs.com">npm</a>.</p>
+        <!-- @formatter:off -->
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install jekyll-bootstrap-doc</code></pre></figure>
+<!-- @formatter:on -->
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  </div>
+  
+
+  
+
+  <div class="container bs-docs-container">
+    <div class="row">
+      <!-- Content
+      =========================================== -->
+      <div class="col-md-9" role="main">
+        <section class="bs-docs-section">
+  <h1 id="overview" class="page-header">Overview</h1>
+
+  <blockquote>
+    This is the Kaodim android design bootstrap documentation for setting up and maintaining Kaodim shared UI components
+  </blockquote>
+</section>
+
+<section class="bs-docs-section">
+  <h1 id="installation" class="page-header">Installation</h1>
+
+  <h2 id="install">Install Design Library</h2>
+  <p>
+    Follow the <a href="https://help.github.com/articles/using-jekyll-with-pages">GitHub guide</a> to install Jekyll
+    on your computer. The big steps are:
+  </p>
+
+<!-- @formatter:off -->
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>apt-get install ruby ruby-dev
+<span class="nv">$ </span>gem install bundler
+<span class="nv">$ </span>git clone git://github.com/mistic100/jekyll-bootstrap-doc
+<span class="nv">$ </span>bundle install
+<span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve</code></pre></figure>
+<!-- @formatter:on -->
+
+</section>
+
+<section class="bs-docs-section">
+  <h1 id="usage" class="page-header">Usage</h1>
+  <h2 id="colors">Color Bible</h2>
+  <h3 id="primary-colors">Primary colors</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 130px;">Name</th>
+          <th>Hex Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jasper</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #ED193A;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#ED193A</td>
+        </tr>
+        <tr>
+          <td>Firefly</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #003158;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#003158</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="secondary-colors">Secondary colors</h3>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width: 130px;">Name</th>
+          <th>Hex Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lima</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #2ECC71;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#2ECC71</td>
+        </tr>
+        <tr>
+          <td>Narvik</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #EBFFF3;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#EBFFF3</td>
+        </tr>
+        <tr>
+          <td>Celestial</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #3498DB;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#3498DB</td>
+        </tr>
+        <tr>
+          <td>Sunglow</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #FDB813;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#FDB813</td>
+        </tr>
+        <tr>
+          <td>Porcelain</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #FFFFFF;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#FFFFFF</td>
+        </tr>
+        <tr>
+          <td>Mystic</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #F5F6F8;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#F5F6F8</td>
+        </tr>
+        <tr>
+          <td>Heather</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #DEE1E5;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#DEE1E5</td>
+        </tr>
+        <tr>
+          <td>Submarine</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #ADB5BD;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#ADB5BD</td>
+        </tr>
+        <tr>
+          <td>Raven</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #9FA4A6;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#9FA4A6</td>
+        </tr>
+        <tr>
+          <td>Flint</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #707070;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#707070</td>
+        </tr>
+        <tr>
+          <td>Blackpearl</td>
+          <td style="display: flex !important;justify-content: flex-start !important;">
+<div style="background: #12232E;height: 14px;width: 14px;margin-top: 3px;margin-right: 5px;"></div>#12232E</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="typography">Typography</h2>
+  <p>
+    All typography formats have been declared in the <code>styles.xml</code> file
+  </p>
+
+  <span style="font-size: 22px; font-weight: 800; color: #12232E">Title 1 - 22sp - Roboto Bold</span>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+  <span class="na">style=</span><span class="s">"@style/title_1"</span>
+  <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+  <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<span style="font-size: 20px; font-weight: 800; color: #12232E">Title 2 - 20sp - Roboto Bold</span>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;TextView</span>
+  <span class="na">style=</span><span class="s">"@style/title_2"</span>
+  <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+  <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+
+  <h2 id="components">Components</h2>
+  <p>
+    Re-usable Custom Android UI Components that are added to the XML layout and optionally controlled by the code-behind.
+  </p>
+
+  <h3>NumericControl</h3>
+  <p>
+    Commonly used for Numeric and Multi Numeric Questions where a numeric increment and decrement option is given for numeric input selection.
+  </p>
+  <img src="/assets/images/component_numeric_control.png" class="screenshot">
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.NumericControl</span>
+    <span class="na">android:id=</span><span class="s">"@+id/numericControl"</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+    <span class="na">app:max=</span><span class="s">"15"</span>
+    <span class="na">app:min=</span><span class="s">"0"</span>
+    <span class="na">app:value=</span><span class="s">"2"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<hr>
+<h3>DateTimePickerDialog</h3>
+  <p>
+    A custom Date and Time selection control with customizable behavior controls for toggling cycle effect, atmospheric effect, etc.
+  </p>
+  <hr>
+  <p class="heading">Date Time Picker Component</p>
+  <p>A picker component will be added to the interface and upon tapping this component, the date time picker dialog will be called.</p>
+  <img src="/assets/images/component_datetimepicker_control.png" class="screenshot small">
+  <p class="heading">Date Time Picker Dialog</p>
+  <img src="/assets/images/component_datetimepicker.jpg" class="screenshot">
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.DateTimePicker</span>
+    <span class="na">android:id=</span><span class="s">"@+id/dateTimePicker"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+    <span class="na">app:atmosphericEffect=</span><span class="s">"true"</span>
+    <span class="na">app:displayDate=</span><span class="s">"true"</span>
+    <span class="na">app:displayTime=</span><span class="s">"true"</span>
+    <span class="na">app:curvedEffect=</span><span class="s">"false"</span>
+    <span class="na">app:cyclicEffect=</span><span class="s">"false"</span>
+    <span class="na">app:pickerHint=</span><span class="s">"Pick a date &amp;amp; time"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<p class="heading">Initializing DateTimePicker</p>
+It is important to call <code>initialize(activity)</code> before using the DateTimePicker as the calling activity is necessary to call the DateTimePickerDialog.
+<hr>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">dateTimePicker</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">);</span></code></pre></figure>
+<hr>
+<p class="heading">Setting DateTimeChangedListener</p>
+<p>A callback with the selected date and time is made if a DateTimeChangedListener is set to the DateTimePicker component after initializing</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">dateTimePicker</span><span class="o">.</span><span class="na">setDateTimeChangedListener</span><span class="o">(</span><span class="k">new</span> <span class="n">DateTimePicker</span><span class="o">.</span><span class="na">DateTimeChangedListener</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDateTimeSelected</span><span class="o">(</span><span class="n">String</span> <span class="n">selectedDate</span><span class="o">,</span> <span class="n">String</span> <span class="n">selectedTime</span><span class="o">)</span> <span class="o">{</span>
+      
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+Or if the activity/fragment implements it, set the DateTimeChangedListener like this:
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">dateTimePicker</span><span class="o">.</span><span class="na">setDateTimeChangedListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span></code></pre></figure>
+
+</section>
+<hr>
+<h3>InteractivePanel</h3>
+<p>
+  InteractivePanel allows you to set a custom text and receive onClick callbacks from it. This can be used as a replacement for a selection button.
+</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.InteractivePanel</span>
+        <span class="na">android:id=</span><span class="s">"@+id/ipButton"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">app:panelHint=</span><span class="s">"@string/add_an_alternative_date"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<p class="heading">Code level</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">InteractivePanel</span> <span class="n">ipAddDateField</span> <span class="o">=</span> <span class="n">holder</span><span class="o">.</span><span class="na">itemView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ipAddDateField</span><span class="o">);</span>
+<span class="n">ipAddDateField</span><span class="o">.</span><span class="na">setHint</span><span class="o">(</span><span class="n">mContext</span><span class="o">.</span><span class="na">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">add_an_alternative_date</span><span class="o">));</span></code></pre></figure>
+<p class="heading">Set Listeners</p>
+Set a listener using:
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">ipAddDateField</span><span class="o">.</span><span class="na">setPanelInteractedListener</span><span class="o">();</span></code></pre></figure>
+
+      </div>
+
+      <!-- Page navigation
+      =========================================== -->
+      <div class="col-md-3" role="complementary">
+        <div class="bs-docs-sidebar hidden-print">
+          <ul class="nav bs-docs-sidenav">
+          </ul>
+          <a class="back-to-top" href="#top">
+            <i class="glyphicon glyphicon-chevron-up"></i> Back to top
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer
+  =========================================== -->
+  <footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+      <div class="bs-docs-social">
+        <ul class="bs-docs-social-buttons">
+        
+          <li>
+            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=kaodim&amp;repo=kaodim-design-android&amp;type=watch&amp;count=true" width="90" height="20" title="Star on GitHub"></iframe>
+          </li>
+          <li>
+            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=kaodim&amp;repo=kaodim-design-android&amp;type=fork&amp;count=true" width="90" height="20" title="Fork on GitHub"></iframe>
+          </li>
+        
+        
+          <li>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="" data-count="horizontal" data-via="" data-text="Jekyll Bootstrap Doc" data-hashtags="">Tweet</a>
+          </li>
+        
+        
+        
+          <li>
+            <div class="fb-like" data-href="" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+          </li>
+        
+        
+        </ul>
+      </div>
+
+      <p>
+        Licensed under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>,
+        documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+      </p>
+      <p>
+        Documentation template by <a href="http://getbootstrap.com">Bootstrap team</a>,
+        generated with <a href="https://github.com/mistic100/jekyll-bootstrap-doc">Jekyll Bootstrap Doc</a>
+      </p>
+
+      <ul class="bs-docs-footer-links muted">
+        <li>Currently v1.2.0</li>
+      
+        <li>·</li>
+        <li><a href="https://github.com/kaodim/kaodim-design-android">GitHub</a></li>
+      
+      </ul>
+    </div>
+  </footer>
+
+
+  <!-- Async scripts
+  =========================================== -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.0.1/trianglify.min.js"></script>
+  <script>jekyllBootstrapDoc.trianglify('#003158', '#05589a', 'Jekyll Bootstrap Doc');</script>
+  
+
+  
+  <script>
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
+      js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+  </script>
+  
+
+  
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  
+
+  
+
+</body>
+</html>
