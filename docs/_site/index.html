@@ -75,6 +75,12 @@
             </li>
             
           
+            
+            <li>
+              <a href="/assets/css/style.css"></a>
+            </li>
+            
+          
         
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -102,77 +108,13 @@
       <p class="lead">Kaodim Android Design Bootstrap</p>
       <p class="lead">
         
-        <a data-bootbox="download-popup" data-bootbox-size="large" class="btn btn-outline-inverse btn-lg">Download</a>
+        <a href="" class="btn btn-outline-inverse btn-lg">Download</a>
         
       </p>
-      <p class="version">Currently v0.0.2</p>
+      <p class="version" style="color:white">Currently v0.0.2</p>
     </div>
   </div>
 
-  
-  <div id="download-popup" title="Download Android Bootstrap Docs 0.0.2" class="hidden">
-    <div class="row">
-  
-  <div class="col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">Manual download</div>
-      <div class="panel-body">
-        <p>Compiled and minified files with examples and sources.</p>
-        <a href="https://github.com/mistic100/jekyll-bootstrap-doc/archive/gh-pages.zip" class="btn btn-lg btn-outline">
-          <i class="glyphicon glyphicon-save"></i>
-          Download
-        </a>
-      </div>
-    </div>
-  </div>
-  
-
-  
-  <div class="col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">Content Delivery Network</div>
-      <div class="panel-body">
-        <p>The package is available on cdnjs.</p>
-        
-        <a href="https://cdnjs.com/libraries/jekyll-bootstrap-doc" class="btn btn-lg btn-outline" style="max-width: 50%">
-          <img src="https://alemangui.github.io/pizzicato/img/cdnjs.svg" class="img-responsive">
-        </a>
-        
-      </div>
-    </div>
-  </div>
-  
-
-  
-  <div class="col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">Install with Bower</div>
-      <div class="panel-body">
-        <p>You can also get all necessary files and dependencies with <a href="http://bower.io">Bower</a>.</p>
-        <!-- @formatter:off -->
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install jekyll-bootstrap-doc</code></pre></figure>
-<!-- @formatter:on -->
-      </div>
-    </div>
-  </div>
-  
-
-  
-  <div class="col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">Install with npm</div>
-      <div class="panel-body">
-        <p>You can also get all necessary files and dependencies with <a href="https://www.npmjs.com">npm</a>.</p>
-        <!-- @formatter:off -->
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install jekyll-bootstrap-doc</code></pre></figure>
-<!-- @formatter:on -->
-      </div>
-    </div>
-  </div>
-  
-</div>
-
-  </div>
   
 
   
@@ -194,18 +136,9 @@
   <h1 id="installation" class="page-header">Installation</h1>
 
   <h2 id="install">Install Design Library</h2>
-  <p>
-    Follow the <a href="https://help.github.com/articles/using-jekyll-with-pages">GitHub guide</a> to install Jekyll
-    on your computer. The big steps are:
-  </p>
 
-<!-- @formatter:off -->
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>apt-get install ruby ruby-dev
-<span class="nv">$ </span>gem install bundler
-<span class="nv">$ </span>git clone git://github.com/mistic100/jekyll-bootstrap-doc
-<span class="nv">$ </span>bundle install
-<span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve</code></pre></figure>
-<!-- @formatter:on -->
+  <p class="heading">Integrate with Gradle</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">implementation <span class="s1">'com.github.kaodim:android-design:0.0.2'</span></code></pre></figure>
 
 </section>
 

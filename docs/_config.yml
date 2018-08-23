@@ -10,21 +10,6 @@ licenseUrl: http://opensource.org/licenses/MIT
 # extension of the favicon, blank to disable
 favicon: png
 
-# download button
-# if download.popup is true, the download button will open a popup with several download options
-# otherwise it will simply open download.url and other options are ignored
-# if download.popup is true, any option is optional
-# download.cdn.img is optional
-download:
-  popup: true
-  url: https://github.com/mistic100/jekyll-bootstrap-doc/archive/gh-pages.zip
-  bower: jekyll-bootstrap-doc
-  npm: jekyll-bootstrap-doc
-  cdn:
-    url: https://cdnjs.com/libraries/jekyll-bootstrap-doc
-    img: https://alemangui.github.io/pizzicato/img/cdnjs.svg
-    name: cdnjs
-
 # set this to true to replace the generated header navbar by _includes/navbar.html
 customNavBar: false
 
