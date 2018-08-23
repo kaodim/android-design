@@ -111,7 +111,7 @@
         <a href="" class="btn btn-outline-inverse btn-lg">Download</a>
         
       </p>
-      <p class="version" style="color:white">Currently v0.0.2</p>
+      <p class="version">Currently v0.0.2</p>
     </div>
   </div>
 
@@ -288,7 +288,7 @@
   <p>A picker component will be added to the interface and upon tapping this component, the date time picker dialog will be called.</p>
   <img src="assets/images/component_datetimepicker_control.png" class="screenshot small">
   <p class="heading">Date Time Picker Dialog</p>
-  <img src="assets/images/component_datetimepicker.jpg" class="screenshot">
+  <img src="assets/images/component_datetimepicker.jpg" class="screenshot" style="height: 50%; width: 50%;">
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.DateTimePicker</span>
     <span class="na">android:id=</span><span class="s">"@+id/dateTimePicker"</span>
     <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
@@ -322,11 +322,17 @@ Or if the activity/fragment implements it, set the DateTimeChangedListener like 
 <p>
   InteractivePanel allows you to set a custom text and receive onClick callbacks from it. This can be used as a replacement for a selection button.
 </p>
+<p class="heading">Dotted Border</p>
+<img src="assets/images/component_ip_dotted_control.jpg" style="height: 50%; width: 50%;">
+<p class="heading">Line Border</p>
+<img src="assets/images/component_ip_line_control.jpg" style="height: 50%; width: 50%;">
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.InteractivePanel</span>
-        <span class="na">android:id=</span><span class="s">"@+id/ipButton"</span>
+        <span class="na">android:id=</span><span class="s">"@+id/interactivePanel"</span>
         <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
         <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
-        <span class="na">app:panelHint=</span><span class="s">"@string/add_an_alternative_date"</span> <span class="nt">/&gt;</span></code></pre></figure>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span>
+        <span class="na">app:borderType=</span><span class="s">"line"</span>
+        <span class="na">app:panelHint=</span><span class="s">"Custom Button"</span> <span class="nt">/&gt;</span></code></pre></figure>
 <p class="heading">Code level</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">InteractivePanel</span> <span class="n">ipAddDateField</span> <span class="o">=</span> <span class="n">holder</span><span class="o">.</span><span class="na">itemView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ipAddDateField</span><span class="o">);</span>
 <span class="n">ipAddDateField</span><span class="o">.</span><span class="na">setHint</span><span class="o">(</span><span class="n">mContext</span><span class="o">.</span><span class="na">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">add_an_alternative_date</span><span class="o">));</span></code></pre></figure>

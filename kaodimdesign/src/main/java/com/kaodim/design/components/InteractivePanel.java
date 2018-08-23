@@ -16,7 +16,13 @@ public class InteractivePanel extends RelativeLayout {
     RelativeLayout rlParent;
     TextView tvHint;
 
-    String hint = "";
+    private String hint = "";
+    private String borderType = "dotted";
+
+    public interface BORDER_TYPES {
+        String DOTTED = "dotted";
+        String LINE = "line";
+    }
 
     public interface InteractivePanelListener {
         void onPanelInteracted();
@@ -45,6 +51,8 @@ public class InteractivePanel extends RelativeLayout {
 
         DateTimePickerDialog.DateTimePickerOptions options = new DateTimePickerDialog.DateTimePickerOptions();
         hint = typedArray.getString(R.styleable.InteractivePanel_panelHint);
+        borderType = typedArray.getString(R.styleable.InteractivePanel_borderType);
+
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -65,6 +73,16 @@ public class InteractivePanel extends RelativeLayout {
     public void setHint(String hint) {
         this.hint = hint;
         tvHint.setText(hint);
+    }
+
+    public void setBorderType(String borderType) {
+        this.borderType = borderType;
+        if(borderType.equals("dotted")) {
+            rlParent.setBackgroundResource(R.drawable.kdl_rect_dotted);
+        }
+        else {
+            rlParent.setBackgroundResource(R.drawable.kdl_rect_grey_curved);
+        }
     }
 
     public void setPanelInteractedListener(InteractivePanelListener listener) {

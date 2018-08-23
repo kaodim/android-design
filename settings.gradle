@@ -1,1 +1,3 @@
 include ':app', ':kaodimdesign'
+
+project (':kaodimdesign').projectDir = new File('/Users/dinuka/Documents/Work/Android-Design/kaodimdesign')
