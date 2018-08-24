@@ -2,28 +2,28 @@ package com.kaodim.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-//import android.widget.RelativeLayout;
-//
-//import com.kaodim.design.components.DateTimePicker;
-//import com.kaodim.design.components.InteractivePanel;
-//import com.kaodim.design.components.NumericControl;
-//import com.kaodim.design.components.callbacks.NumericControlListener;
+import android.widget.RelativeLayout;
+
+import com.kaodim.design.components.DateTimePicker;
+import com.kaodim.design.components.InteractivePanel;
+import com.kaodim.design.components.NumericControl;
+import com.kaodim.design.components.callbacks.NumericControlListener;
 
 public class MainActivity extends AppCompatActivity {
 
-//    NumericControl numericControl;
-//    RelativeLayout rlDateSelection;
-//    DateTimePicker dateTimePicker;
-//    InteractivePanel interactivePanel;
+    NumericControl numericControl;
+    RelativeLayout rlDateSelection;
+    DateTimePicker dateTimePicker;
+    InteractivePanel interactivePanel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        numericControl = findViewById(R.id.numericControl);
-//        dateTimePicker = findViewById(R.id.dateTimePicker);
-//        interactivePanel = findViewById(R.id.interactivePanel);
+        numericControl = findViewById(R.id.numericControl);
+        dateTimePicker = findViewById(R.id.dateTimePicker);
+        interactivePanel = findViewById(R.id.interactivePanel);
 
         setupNumericControl();
 
@@ -33,33 +33,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupInteractivePanel() {
-//        interactivePanel.setPanelInteractedListener(new InteractivePanel.InteractivePanelListener() {
-//            @Override
-//            public void onPanelInteracted() {
-//
-//            }
-//        });
-//
-//        interactivePanel.setBorderType(InteractivePanel.BORDER_TYPES.LINE);
+        interactivePanel.setPanelInteractedListener(new InteractivePanel.InteractivePanelListener() {
+            @Override
+            public void onPanelInteracted() {
+
+            }
+        });
+
+        interactivePanel.setBorderType(InteractivePanel.BORDER_TYPES.LINE);
     }
 
     private void setupNumericControl() {
-//        numericControl.setListener(new NumericControlListener() {
-//            @Override
-//            public void onNumericAdded(int value) {
-//
-//            }
-//
-//            @Override
-//            public void onNumericRemoved(int value) {
-//
-//            }
-//
-//            @Override
-//            public void onNumericValueChanged(int value) {
-//
-//            }
-//        });
+        numericControl.setListener(new NumericControlListener() {
+            @Override
+            public void onNumericAdded(int value) {
+
+            }
+
+            @Override
+            public void onNumericRemoved(int value) {
+
+            }
+
+            @Override
+            public void onNumericValueChanged(int value) {
+
+            }
+        });
     }
 
     private void setupDateTimePicker() {
