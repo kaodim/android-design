@@ -1,119 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/porcelain"
-    android:orientation="vertical">
-
-    <TextView
-        style="@style/HeaderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Header Text"
-        android:textColor="@color/firefly" />
-
-    <TextView
-        style="@style/NormalText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Normal Text"
-        android:textColor="@color/firefly" />
-
-    <TextView
-        style="@style/SubtitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Subtitle Text"
-        android:textColor="@color/firefly" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:layout_margin="10dp"
-        android:background="@color/kdl_grey_dark" />
-
-    <TextView
-        style="@style/NormalTextBolded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Buttons"
-        android:textColor="@color/firefly" />
+    android:paddingBottom="10dp"
+    android:background="@color/porcelain">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <include
-            layout="@layout/kdl_cta_jasper_button"
-            android:layout_width="100dp"
+        <TextView
+            style="@style/HeaderText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:text="Header Text"
+            android:textColor="@color/firefly" />
 
-        <include
-            layout="@layout/kdl_cta_firefly_button"
-            android:layout_width="100dp"
+        <TextView
+            style="@style/NormalText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Normal Text"
+            android:textColor="@color/firefly" />
+
+        <TextView
+            style="@style/SubtitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Subtitle Text"
+            android:textColor="@color/firefly" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_margin="10dp"
+            android:background="@color/kdl_grey_dark" />
+
+        <TextView
+            style="@style/NormalTextBolded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Buttons"
+            android:textColor="@color/firefly" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                layout="@layout/kdl_cta_jasper_button"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+            <include
+                layout="@layout/kdl_cta_firefly_button"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_margin="10dp"
+            android:background="@color/kdl_grey_dark" />
+
+        <TextView
+            style="@style/NormalTextBolded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Numeric Control"
+            android:textColor="@color/firefly" />
+
+        <com.kaodim.design.components.NumericControl
+            android:id="@+id/numericControl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:max="15"
+            app:min="0"
+            app:value="2" />
+
+        <TextView
+            style="@style/NormalTextBolded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Date/Time Picker"
+            android:textColor="@color/firefly" />
+
+        <com.kaodim.design.components.DateTimePicker
+            android:id="@+id/dateTimePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:pickerHint="Pick a date &amp; time" />
+
+        <TextView
+            style="@style/NormalTextBolded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Interactive Panel"
+            android:textColor="@color/firefly" />
+
+        <com.kaodim.design.components.InteractivePanel
+            android:id="@+id/interactivePanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:borderType="line"
+            app:panelHint="Custom Button" />
+
+        <TextView
+            style="@style/NormalTextBolded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Search box"
+            android:textColor="@color/firefly" />
+
+        <com.kaodim.design.components.SearchBox
+            android:id="@+id/searchBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:nextButton="true"
             android:layout_margin="10dp" />
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.2dp"
-        android:layout_margin="10dp"
-        android:background="@color/kdl_grey_dark" />
-
-    <TextView
-        style="@style/NormalTextBolded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Numeric Control"
-        android:textColor="@color/firefly" />
-
-    <com.kaodim.design.components.NumericControl
-        android:id="@+id/numericControl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:max="15"
-        app:min="0"
-        app:value="2" />
-
-    <TextView
-        style="@style/NormalTextBolded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Date/Time Picker"
-        android:textColor="@color/firefly" />
-
-    <com.kaodim.design.components.DateTimePicker
-        android:id="@+id/dateTimePicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:pickerHint="Pick a date &amp; time" />
-
-    <TextView
-        style="@style/NormalTextBolded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Interactive Panel"
-        android:textColor="@color/firefly" />
-
-    <com.kaodim.design.components.InteractivePanel
-        android:id="@+id/interactivePanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:borderType="line"
-        app:panelHint="Custom Button" />
-
-</LinearLayout>
+</ScrollView>

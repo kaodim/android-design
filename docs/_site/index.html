@@ -308,14 +308,22 @@ It is important to call <code>initialize(activity)</code> before using the DateT
 <p class="heading">Setting DateTimeChangedListener</p>
 <p>A callback with the selected date and time is made if a DateTimeChangedListener is set to the DateTimePicker component after initializing</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">dateTimePicker</span><span class="o">.</span><span class="na">setDateTimeChangedListener</span><span class="o">(</span><span class="k">new</span> <span class="n">DateTimePicker</span><span class="o">.</span><span class="na">DateTimeChangedListener</span><span class="o">()</span> <span class="o">{</span>
-  <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDateTimeSelected</span><span class="o">(</span><span class="n">String</span> <span class="n">selectedDate</span><span class="o">,</span> <span class="n">String</span> <span class="n">selectedTime</span><span class="o">)</span> <span class="o">{</span>
-      
-  <span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDateTimeSelected</span><span class="o">(</span><span class="n">String</span> <span class="n">formatedDate</span><span class="o">,</span> <span class="n">String</span> <span class="n">formatedTime</span><span class="o">,</span> <span class="n">Date</span> <span class="n">selectedDate</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//retrieve selected date and time. The selectedDate Date object contains the time as well</span>
+        <span class="c1">//the formattedDate and formattedTime String values are formatted as 12 August, 2018 and 10:00 AM</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onDateRemoved</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//handle date value removed event</span>
+    <span class="o">}</span>
+<span class="o">});</span></code></pre></figure>
 Or if the activity/fragment implements it, set the DateTimeChangedListener like this:
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">dateTimePicker</span><span class="o">.</span><span class="na">setDateTimeChangedListener</span><span class="o">(</span><span class="k">this</span><span class="o">);</span></code></pre></figure>
-
+<p>Additionally, the start time and end time of the date picker can be set. This will be the range of the time picker.</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">dateTimePicker</span><span class="o">.</span><span class="na">setRangeStartTime</span><span class="o">(</span><span class="s">"2018-01-1T7:30:30.042+08:00"</span><span class="o">);</span>
+<span class="n">dateTimePicker</span><span class="o">.</span><span class="na">setRangeEndTime</span><span class="o">(</span><span class="s">"2018-10-20T22:00:30.042+08:00"</span><span class="o">);</span></code></pre></figure>
 </section>
 <hr>
 <h3>InteractivePanel</h3>
@@ -338,7 +346,39 @@ Or if the activity/fragment implements it, set the DateTimeChangedListener like 
 <span class="n">ipAddDateField</span><span class="o">.</span><span class="na">setHint</span><span class="o">(</span><span class="n">mContext</span><span class="o">.</span><span class="na">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">add_an_alternative_date</span><span class="o">));</span></code></pre></figure>
 <p class="heading">Set Listeners</p>
 Set a listener using:
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">ipAddDateField</span><span class="o">.</span><span class="na">setPanelInteractedListener</span><span class="o">();</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">interactivePanel</span><span class="o">.</span><span class="na">setPanelInteractedListener</span><span class="o">(</span><span class="k">new</span> <span class="n">InteractivePanel</span><span class="o">.</span><span class="na">InteractivePanelListener</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onPanelInteracted</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">//do your click events here</span>
+  <span class="o">}</span>
+<span class="o">});</span></code></pre></figure>
+<hr>
+<h3>SearchBox</h3>
+<p>
+  SearchBox is an extension of an Interactive Panel where the user can tap on the search box button to receive a callback. Additionally, a search box button has a 'next' button implementation which has a callback of its own. The next button can be toggled as enabled and disabled to toggle visibility.
+</p>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.SearchBox</span>
+      <span class="na">android:id=</span><span class="s">"@+id/searchBox"</span>
+      <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+      <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+      <span class="na">app:nextButton=</span><span class="s">"true"</span>
+      <span class="na">android:layout_margin=</span><span class="s">"10dp"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<p class="heading">Callbacks</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java">  <span class="n">searchBox</span><span class="o">.</span><span class="na">setListener</span><span class="o">(</span><span class="k">new</span> <span class="n">SearchBox</span><span class="o">.</span><span class="na">SearchBoxClickListener</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onNextClicked</span><span class="o">()</span> <span class="o">{</span>
+          <span class="c1">//handle next button clicks</span>
+      <span class="o">}</span>
+
+      <span class="nd">@Override</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSearchBoxClicked</span><span class="o">()</span> <span class="o">{</span>
+          <span class="c1">//handle search box clicks</span>
+      <span class="o">}</span>
+  <span class="o">});</span></code></pre></figure>
+<p class="heading">Set Attributes from code level</p>
+<p>Visibility of the next button and the hint can be changed from code level.</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">searchBox</span><span class="o">.</span><span class="na">setHint</span><span class="o">(</span><span class="s">"My Custom Text"</span><span class="o">);</span>
+<span class="n">searchBox</span><span class="o">.</span><span class="na">setDisplayNext</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span></code></pre></figure>
 
       </div>
 

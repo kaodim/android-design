@@ -189,17 +189,27 @@ dateTimePicker.initialize(this);
 <p>A callback with the selected date and time is made if a DateTimeChangedListener is set to the DateTimePicker component after initializing</p>
 {% highlight java %}
 dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
-  @Override
-  public void onDateTimeSelected(String selectedDate, String selectedTime) {
-      
-  }
-}
+    @Override
+    public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
+        //retrieve selected date and time. The selectedDate Date object contains the time as well
+        //the formattedDate and formattedTime String values are formatted as 12 August, 2018 and 10:00 AM
+    }
+
+    @Override
+    public void onDateRemoved() {
+        //handle date value removed event
+    }
+});
 {% endhighlight %}
 Or if the activity/fragment implements it, set the DateTimeChangedListener like this:
 {% highlight java %}
 dateTimePicker.setDateTimeChangedListener(this);
 {% endhighlight %}
-
+<p>Additionally, the start time and end time of the date picker can be set. This will be the range of the time picker.</p>
+{% highlight java %}
+dateTimePicker.setRangeStartTime("2018-01-1T7:30:30.042+08:00");
+dateTimePicker.setRangeEndTime("2018-10-20T22:00:30.042+08:00");
+{% endhighlight %}
 </section>
 <hr>
 <h3>InteractivePanel</h3>
@@ -227,5 +237,43 @@ ipAddDateField.setHint(mContext.getResources().getString(R.string.add_an_alterna
 <p class="heading">Set Listeners</p>
 Set a listener using:
 {% highlight java %}
-ipAddDateField.setPanelInteractedListener();
+interactivePanel.setPanelInteractedListener(new InteractivePanel.InteractivePanelListener() {
+  @Override
+  public void onPanelInteracted() {
+      //do your click events here
+  }
+});
+{% endhighlight %}
+<hr>
+<h3>SearchBox</h3>
+<p>
+  SearchBox is an extension of an Interactive Panel where the user can tap on the search box button to receive a callback. Additionally, a search box button has a 'next' button implementation which has a callback of its own. The next button can be toggled as enabled and disabled to toggle visibility.
+</p>
+{% highlight xml %}
+<com.kaodim.design.components.SearchBox
+      android:id="@+id/searchBox"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:nextButton="true"
+      android:layout_margin="10dp" />
+{% endhighlight %}
+<p class="heading">Callbacks</p>
+{% highlight java %}
+  searchBox.setListener(new SearchBox.SearchBoxClickListener() {
+      @Override
+      public void onNextClicked() {
+          //handle next button clicks
+      }
+
+      @Override
+      public void onSearchBoxClicked() {
+          //handle search box clicks
+      }
+  });
+{% endhighlight %}
+<p class="heading">Set Attributes from code level</p>
+<p>Visibility of the next button and the hint can be changed from code level.</p>
+{% highlight java %}
+searchBox.setHint("My Custom Text");
+searchBox.setDisplayNext(true);
 {% endhighlight %}
