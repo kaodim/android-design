@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_1">1px</dimen>
+    <dimen name="size_2">2px</dimen>
+    <dimen name="size_3">3px</dimen>
+    <dimen name="size_4">4px</dimen>
+    <dimen name="size_5">5px</dimen>
+    <dimen name="size_6">6px</dimen>
+    <dimen name="size_7">7px</dimen>
+    <dimen name="size_8">8px</dimen>
+    <dimen name="size_9">9px</dimen>
+    <dimen name="size_10">10px</dimen>
+    <dimen name="size_11">11px</dimen>
+    <dimen name="size_12">12px</dimen>
+    <dimen name="size_13">13px</dimen>
+    <dimen name="size_14">14px</dimen>
+    <dimen name="size_15">15px</dimen>
+    <dimen name="size_16">16px</dimen>
+    <dimen name="size_17">17px</dimen>
+    <dimen name="size_18">18px</dimen>
+    <dimen name="size_19">19px</dimen>
+    <dimen name="size_20">20px</dimen>
+    <dimen name="size_21">21px</dimen>
+    <dimen name="size_22">22px</dimen>
+    <dimen name="size_23">23px</dimen>
+    <dimen name="size_24">24px</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="request_details_text_size">16sp</dimen>
+
+    <dimen name="request_question_text_size">16sp</dimen>
+
+    <dimen name="quotation_comment_text_size">16sp</dimen>
+
+    <dimen name="quotation_price_text_size">22sp</dimen>
+    <dimen name="requestTitlesTextSize">12sp</dimen>
+    <dimen name="space_request_title_value">5dp</dimen>
+
+    <dimen name="fab_margin">8dp</dimen>
+
+    <dimen name="avatar_size">120dp</dimen>
+</resources>
+<!--<resources>-->
+    <!--&lt;!&ndash; Default screen margins, per the Android Design guidelines. &ndash;&gt;-->
+    <!--<dimen name="activity_horizontal_margin">16dp</dimen>-->
+    <!--<dimen name="activity_vertical_margin">16dp</dimen>-->
+
+    <!--<dimen name="request_details_text_size">16sp</dimen>-->
+
+    <!--<dimen name="request_question_text_size">16sp</dimen>-->
+
+    <!--<dimen name="quotation_comment_text_size">16sp</dimen>-->
+
+    <!--<dimen name="quotation_price_text_size">22sp</dimen>-->
+    <!--<dimen name="requestTitlesTextSize">12sp</dimen>-->
+    <!--<dimen name="space_request_title_value">5dp</dimen>-->
+
+    <!--<dimen name="fab_margin">8dp</dimen>-->
+
+    <!--<dimen name="avatar_size">120dp</dimen>-->
+<!--</resources>-->

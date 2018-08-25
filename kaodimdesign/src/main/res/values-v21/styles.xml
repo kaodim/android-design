@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ActivityNoAB" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlNormal">@color/app_red_70a</item>
+        <item name="colorControlActivated">@color/app_red</item>
+        <item name="colorControlHighlight">@color/app_red_40a</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:textColorPrimary">@color/dark_blue</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <item name="colorPrimary">@color/white</item>
+    <item name="colorPrimaryDark">@color/black</item>
+    <item name="colorAccent">@color/dark_blue</item>
+    <item name="colorControlNormal">@color/app_grey_standard</item>
+    <item name="android:actionBarStyle">@style/MyActionBarNew</item>
+    <item name="android:textColorPrimary">@color/black</item>
+    <item name="android:windowContentOverlay">@drawable/actionbar_shadow</item>
+    </style>
+
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light">-->
+        <!--<item name="colorPrimary">@color/white</item>-->
+        <!--<item name="colorPrimaryDark">@color/black</item>-->
+        <!--<item name="colorAccent">@color/app_red</item>-->
+        <!--<item name="android:windowContentOverlay">@drawable/actionbar_shadow</item>-->
+        <!--<item name="actionBarStyle">@style/MyActionBarNew</item>-->
+        <!--<item name="android:statusBarColor">@color/black</item>-->
+        <!--<item name="android:textColorPrimary">@color/black</item>-->
+        <!--<item name="android:colorAccent">@color/app_red</item>-->
+    <!--</style>-->
+
+    <style name="ThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/app_red</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+</resources>

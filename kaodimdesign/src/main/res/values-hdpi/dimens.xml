@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_1">1.5px</dimen>
+    <dimen name="size_2">3.0px</dimen>
+    <dimen name="size_3">4.5px</dimen>
+    <dimen name="size_4">6.0px</dimen>
+    <dimen name="size_5">7.5px</dimen>
+    <dimen name="size_6">9.0px</dimen>
+    <dimen name="size_7">10.5px</dimen>
+    <dimen name="size_8">12.0px</dimen>
+    <dimen name="size_9">13.5px</dimen>
+    <dimen name="size_10">15.0px</dimen>
+    <dimen name="size_11">16.5px</dimen>
+    <dimen name="size_12">18.0px</dimen>
+    <dimen name="size_13">19.5px</dimen>
+    <dimen name="size_14">21.0px</dimen>
+    <dimen name="size_15">22.5px</dimen>
+    <dimen name="size_16">24.0px</dimen>
+    <dimen name="size_17">25.5px</dimen>
+    <dimen name="size_18">27.0px</dimen>
+    <dimen name="size_19">28.5px</dimen>
+    <dimen name="size_20">30.0px</dimen>
+    <dimen name="size_21">31.5px</dimen>
+    <dimen name="size_22">33.0px</dimen>
+    <dimen name="size_23">34.5px</dimen>
+    <dimen name="size_24">36.0px</dimen>
+    <dimen name="size_25">37.5px</dimen>
+    <dimen name="size_26">39.0px</dimen>
+    <dimen name="size_27">40.5px</dimen>
+    <dimen name="size_28">42.0px</dimen>
+</resources>

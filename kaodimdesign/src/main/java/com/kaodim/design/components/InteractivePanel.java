@@ -32,22 +32,22 @@ public class InteractivePanel extends RelativeLayout {
 
     public InteractivePanel(Context context) {
         super(context);
-        init(context);
+        init(context,null);
     }
 
     public InteractivePanel(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init(context,attrs);
     }
 
     public InteractivePanel(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        init(context,attrs);
     }
 
-    private void init(Context context) {
+    private void init(Context context,AttributeSet attrs) {
         //Retrieve the custom attributes from XML
-        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.SearchBox);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.InteractivePanel);
 
         DateTimePickerDialog.DateTimePickerOptions options = new DateTimePickerDialog.DateTimePickerOptions();
         hint = typedArray.getString(R.styleable.InteractivePanel_panelHint);
@@ -65,8 +65,8 @@ public class InteractivePanel extends RelativeLayout {
         rlParent = findViewById(R.id.rlParent);
         tvHint = findViewById(R.id.tvHint);
 
-        tvHint.setText(hint);
-
+        setHint(hint);
+//        setBorderType(borderType);
         setEvents();
     }
 
@@ -77,7 +77,7 @@ public class InteractivePanel extends RelativeLayout {
 
     public void setBorderType(String borderType) {
         this.borderType = borderType;
-        if(borderType.equals("dotted")) {
+        if(this.borderType.equals("dotted")) {
             rlParent.setBackgroundResource(R.drawable.kdl_rect_dotted);
         }
         else {
