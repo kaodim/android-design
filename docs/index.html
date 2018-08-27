@@ -328,7 +328,7 @@ termsBar.setTermsClickEventsListener(new TermsBar.TermsClickEventsListener() {
     <li>LandingActivity in <b>User app</b></li>
   </ul>
 </p>
-<img src="assets/images/component_mobile_input_mock.jpg" class="screenshot small" />
+<img src="assets/images/component_mobile_input_mock.png" class="screenshot small" />
 {% highlight xml %}
 <com.kaodim.design.components.MobileInputMockLayout
   android:id="@+id/mobileInputMockLayout"
@@ -359,6 +359,36 @@ mobileInputMockLayout.setMobileInputEventListener(new MobileInputMockLayout.Mobi
   @Override
   public void onMobileLayoutClicked() {
     //Handle event where the user taps on the mobile input mock layout
+  }
+});
+{% endhighlight %}
+
+
+
+
+<hr>
+<h3>Custom Facebook Button</h3>
+<p>
+The Custom <code>FacebookButton</code> is an extended <code>RelativeLayout</code> that was styled to match the Kaodim design guidelines. It also allows customized hints for translation support.
+</p>
+<img src="assets/images/component_fb.png" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.FacebookButton
+  android:id="@+id/facebookButton"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginEnd="22dp"
+  android:layout_marginStart="22dp"
+  android:layout_marginTop="20dp"
+  app:fbHint="@string/continue_with_facebook" />
+{% endhighlight %}
+<hr>
+<p class="heading">Callbacks</p>
+{% highlight java %}
+facebookButton.setFacebookButtonClickListener(new FacebookButton.FacebookButtonClickListener() {
+  @Override
+  public void onFacebookButtonClicked() {
+    //Handle event where the user clicks on the FB button
   }
 });
 {% endhighlight %}

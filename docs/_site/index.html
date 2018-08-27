@@ -429,7 +429,7 @@ Set a listener using:
 </li>
   </ul>
 
-<img src="assets/images/component_mobile_input_mock.jpg" class="screenshot small">
+<img src="assets/images/component_mobile_input_mock.png" class="screenshot small">
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.MobileInputMockLayout</span>
   <span class="na">android:id=</span><span class="s">"@+id/mobileInputMockLayout"</span>
   <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
@@ -455,6 +455,32 @@ Set a listener using:
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMobileLayoutClicked</span><span class="o">()</span> <span class="o">{</span>
     <span class="c1">//Handle event where the user taps on the mobile input mock layout</span>
+  <span class="o">}</span>
+<span class="o">});</span></code></pre></figure>
+
+
+
+
+<hr>
+<h3>Custom Facebook Button</h3>
+<p>
+The Custom <code>FacebookButton</code> is an extended <code>RelativeLayout</code> that was styled to match the Kaodim design guidelines. It also allows customized hints for translation support.
+</p>
+<img src="assets/images/component_fb.png" class="screenshot small">
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.FacebookButton</span>
+  <span class="na">android:id=</span><span class="s">"@+id/facebookButton"</span>
+  <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+  <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+  <span class="na">android:layout_marginEnd=</span><span class="s">"22dp"</span>
+  <span class="na">android:layout_marginStart=</span><span class="s">"22dp"</span>
+  <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span>
+  <span class="na">app:fbHint=</span><span class="s">"@string/continue_with_facebook"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<hr>
+<p class="heading">Callbacks</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">facebookButton</span><span class="o">.</span><span class="na">setFacebookButtonClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">FacebookButton</span><span class="o">.</span><span class="na">FacebookButtonClickListener</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFacebookButtonClicked</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">//Handle event where the user clicks on the FB button</span>
   <span class="o">}</span>
 <span class="o">});</span></code></pre></figure>
 
