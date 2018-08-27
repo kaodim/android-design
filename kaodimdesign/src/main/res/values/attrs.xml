@@ -27,4 +27,10 @@
             <enum name="line" value="2" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="TermsBar">
+        <attr name="titleText" format="string" />
+        <attr name="termsText" format="string" />
+        <attr name="privacyText" format="string" />
+    </declare-styleable>
 </resources>
