@@ -66,7 +66,7 @@ public class InteractivePanel extends RelativeLayout {
         tvHint = findViewById(R.id.tvHint);
 
         setHint(hint);
-//        setBorderType(borderType);
+        setBorderType(borderType);
         setEvents();
     }
 
