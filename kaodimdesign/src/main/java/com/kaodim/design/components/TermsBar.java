@@ -46,9 +46,9 @@ public class TermsBar extends RelativeLayout {
     private void init(Context context, AttributeSet attrs) {
         //Retrieve the custom attributes from XML
         TypedArray typedArray = context.obtainStyledAttributes(R.styleable.TermsBar);
-        titleText = typedArray.getString(R.styleable.TermsBar_titleText);
-        termsText = typedArray.getString(R.styleable.TermsBar_termsText);
-        privacyText = typedArray.getString(R.styleable.TermsBar_privacyText);
+        titleText = typedArray.getString(attrs.getAttributeNameResource(R.styleable.TermsBar_titleText));
+        termsText = typedArray.getString(attrs.getAttributeNameResource(R.styleable.TermsBar_termsText));
+        privacyText = typedArray.getString(attrs.getAttributeNameResource(R.styleable.TermsBar_privacyText));
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
