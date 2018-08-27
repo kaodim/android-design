@@ -279,3 +279,86 @@ interactivePanel.setPanelInteractedListener(new InteractivePanel.InteractivePane
 searchBox.setHint("My Custom Text");
 searchBox.setDisplayNext(true);
 {% endhighlight %}
+<hr>
+<h3>TermsBar</h3>
+<p>
+  Terms bar is a component that includes the design for terms and privacy links in the Kaodim app. Callbacks are provided when the user interacts with the links.
+</p>
+<img src="assets/images/component_termsbar.jpg" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.TermsBar
+  android:id="@+id/termsBar"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_alignParentBottom="true"
+  app:privacyText="@string/privacy_policy"
+  app:termsText="@string/terms_and_use"
+  app:titleText="@string/by_using_kaodim_you_agree_to_our" />
+{% endhighlight %}
+<p>
+  Set the <code>privacyText</code>, <code>termsText</code> and <code>titleText</code> to control the text for different translations. Default english text has been added to the component.
+</p>
+<hr>
+<p class="heading">Callbacks</p>
+{% highlight java %}
+termsBar.setTermsClickEventsListener(new TermsBar.TermsClickEventsListener() {
+  @Override
+  public void onTermsClicked() {
+    //Handle event where user taps on the terms link
+  }
+
+  @Override
+  public void onPrivacyClicked() {
+    //Handle event where user taps on the privacy link
+  }
+});
+{% endhighlight %}
+
+
+
+
+
+
+<hr>
+<h3>MobileInputMockLayout</h3>
+<p>
+  MobileInputMockLayout is used to mock a mobile input but for use cases where a transition is necessary to be performed to another layout where an actual mobile input is presented to the user. This is primarily a mock layout that provides a callback for user click events that allows the developer to then perform any click events to other activities. As an example, two use cases that use this layout can be found in:
+  <ul>
+    <li>VendorLandingActivity in <b>Vendor app</b></li>
+    <li>LandingActivity in <b>User app</b></li>
+  </ul>
+</p>
+<img src="assets/images/component_mobile_input_mock.jpg" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.MobileInputMockLayout
+  android:id="@+id/mobileInputMockLayout"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginEnd="22dp"
+  app:mockHint="@string/enter_mobile_number"
+  android:layout_marginStart="22dp"
+  android:layout_marginTop="20dp" />
+{% endhighlight %}
+<hr>
+<p class="heading">Initialization</p>
+<p>
+  This component comes in-built with a country selection dropdown. An initialization from the code-level is necessary to provide the component with a <code>Context</code>. Therefore, in the onCreate of your activity, initialize this component as follows.
+</p>
+{% highlight java %}
+  mobileInputMockLayout.initialize(this);
+{% endhighlight %}
+<hr>
+<p class="heading">Callbacks</p>
+{% highlight java %}
+mobileInputMockLayout.setMobileInputEventListener(new MobileInputMockLayout.MobileInputEventListener() {
+  @Override
+  public void onCountrySelected(CountryCodeRowItem item) {
+    //Handle event where the user selects a country from the dropdown
+  }
+
+  @Override
+  public void onMobileLayoutClicked() {
+    //Handle event where the user taps on the mobile input mock layout
+  }
+});
+{% endhighlight %}

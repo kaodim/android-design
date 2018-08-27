@@ -4,4 +4,8 @@
     <string name="by_using_kaodim_you_agree_to_our">By using Kaodim, you agree to our</string>
     <string name="terms_and_use">Terms of Use</string>
     <string name="privacy_policy">Privacy Policy</string>
+
+    <string name="enter_mobile_number">Enter mobile number</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+
 </resources>

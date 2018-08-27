@@ -381,6 +381,82 @@ Set a listener using:
 <p>Visibility of the next button and the hint can be changed from code level.</p>
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">searchBox</span><span class="o">.</span><span class="na">setHint</span><span class="o">(</span><span class="s">"My Custom Text"</span><span class="o">);</span>
 <span class="n">searchBox</span><span class="o">.</span><span class="na">setDisplayNext</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span></code></pre></figure>
+<hr>
+<h3>TermsBar</h3>
+<p>
+  Terms bar is a component that includes the design for terms and privacy links in the Kaodim app. Callbacks are provided when the user interacts with the links.
+</p>
+<img src="assets/images/component_termsbar.jpg" class="screenshot small">
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.TermsBar</span>
+  <span class="na">android:id=</span><span class="s">"@+id/termsBar"</span>
+  <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+  <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+  <span class="na">android:layout_alignParentBottom=</span><span class="s">"true"</span>
+  <span class="na">app:privacyText=</span><span class="s">"@string/privacy_policy"</span>
+  <span class="na">app:termsText=</span><span class="s">"@string/terms_and_use"</span>
+  <span class="na">app:titleText=</span><span class="s">"@string/by_using_kaodim_you_agree_to_our"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<p>
+  Set the <code>privacyText</code>, <code>termsText</code> and <code>titleText</code> to control the text for different translations. Default english text has been added to the component.
+</p>
+<hr>
+<p class="heading">Callbacks</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">termsBar</span><span class="o">.</span><span class="na">setTermsClickEventsListener</span><span class="o">(</span><span class="k">new</span> <span class="n">TermsBar</span><span class="o">.</span><span class="na">TermsClickEventsListener</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onTermsClicked</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">//Handle event where user taps on the terms link</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onPrivacyClicked</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">//Handle event where user taps on the privacy link</span>
+  <span class="o">}</span>
+<span class="o">});</span></code></pre></figure>
+
+
+
+
+
+
+<hr>
+<h3>MobileInputMockLayout</h3>
+<p>
+  MobileInputMockLayout is used to mock a mobile input but for use cases where a transition is necessary to be performed to another layout where an actual mobile input is presented to the user. This is primarily a mock layout that provides a callback for user click events that allows the developer to then perform any click events to other activities. As an example, two use cases that use this layout can be found in:
+  </p>
+<ul>
+    <li>VendorLandingActivity in <b>Vendor app</b>
+</li>
+    <li>LandingActivity in <b>User app</b>
+</li>
+  </ul>
+
+<img src="assets/images/component_mobile_input_mock.jpg" class="screenshot small">
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;com.kaodim.design.components.MobileInputMockLayout</span>
+  <span class="na">android:id=</span><span class="s">"@+id/mobileInputMockLayout"</span>
+  <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+  <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+  <span class="na">android:layout_marginEnd=</span><span class="s">"22dp"</span>
+  <span class="na">app:mockHint=</span><span class="s">"@string/enter_mobile_number"</span>
+  <span class="na">android:layout_marginStart=</span><span class="s">"22dp"</span>
+  <span class="na">android:layout_marginTop=</span><span class="s">"20dp"</span> <span class="nt">/&gt;</span></code></pre></figure>
+<hr>
+<p class="heading">Initialization</p>
+<p>
+  This component comes in-built with a country selection dropdown. An initialization from the code-level is necessary to provide the component with a <code>Context</code>. Therefore, in the onCreate of your activity, initialize this component as follows.
+</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java">  <span class="n">mobileInputMockLayout</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">);</span></code></pre></figure>
+<hr>
+<p class="heading">Callbacks</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">mobileInputMockLayout</span><span class="o">.</span><span class="na">setMobileInputEventListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MobileInputMockLayout</span><span class="o">.</span><span class="na">MobileInputEventListener</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCountrySelected</span><span class="o">(</span><span class="n">CountryCodeRowItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//Handle event where the user selects a country from the dropdown</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMobileLayoutClicked</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">//Handle event where the user taps on the mobile input mock layout</span>
+  <span class="o">}</span>
+<span class="o">});</span></code></pre></figure>
 
       </div>
 

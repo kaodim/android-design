@@ -38,15 +38,15 @@
                 android:textColor="@color/blackpearl"
                 android:textSize="@dimen/size_14" />
 
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/itvDropdown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:text="{fa-sort-down}"
-                android:textColor="@color/dark_blue"
-                android:textSize="16sp" />
+            <!--<com.joanzapata.iconify.widget.IconTextView-->
+                <!--android:id="@+id/itvDropdown"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:text="{fa-sort-down}"-->
+                <!--android:textColor="@color/dark_blue"-->
+                <!--android:textSize="16sp" />-->
 
         </LinearLayout>
 
@@ -62,6 +62,7 @@
             android:paddingTop="15dp">
 
             <TextView
+                android:id="@+id/tvHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -72,6 +73,21 @@
                 android:textSize="@dimen/size_14" />
 
         </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlParent"
+        android:background="@drawable/transparent_bg_with_border">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvCountryCodeSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/porcelain"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
