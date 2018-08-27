@@ -233,7 +233,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  nokogiri
+  nokogiri (= 1.6.8.1)
 
 BUNDLED WITH
    1.16.3
