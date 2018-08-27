@@ -3,10 +3,12 @@ package com.kaodim.myapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.kaodim.design.components.DateTimePicker;
 import com.kaodim.design.components.InteractivePanel;
 import com.kaodim.design.components.NumericControl;
+import com.kaodim.design.components.PricingBottomBar;
 import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.callbacks.NumericControlListener;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     DateTimePicker dateTimePicker;
     InteractivePanel interactivePanel;
     SearchBox searchBox;
+    PricingBottomBar pricingBottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +32,15 @@ public class MainActivity extends AppCompatActivity {
         dateTimePicker = findViewById(R.id.dateTimePicker);
         interactivePanel = findViewById(R.id.interactivePanel);
         searchBox = findViewById(R.id.searchBox);
+        pricingBottomBar = findViewById(R.id.kdl_pricingBar);
 
         setupNumericControl();
 
         setupDateTimePicker();
 
         setupInteractivePanel();
+
+        setupPricingListener();
     }
 
     private void setupInteractivePanel() {
@@ -96,6 +102,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDateRemoved() {
 
+            }
+        });
+    }
+
+    private void setupPricingListener(){
+        pricingBottomBar.setButtonEnabled(true);
+        pricingBottomBar.setPriceString("RM 100");
+        pricingBottomBar.setButtonText("Pay Now");
+        pricingBottomBar.setPriceTitle("Amount to pay");
+        pricingBottomBar.setButtonOnClickListener(new PricingBottomBar.PricingBottomBarButtonListener() {
+            @Override
+            public void onButtonClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Pricing Bottom Bar Button",Toast.LENGTH_SHORT).show();
             }
         });
     }

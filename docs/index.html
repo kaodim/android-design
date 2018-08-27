@@ -392,3 +392,40 @@ facebookButton.setFacebookButtonClickListener(new FacebookButton.FacebookButtonC
   }
 });
 {% endhighlight %}
+
+<hr>
+<h3>Pricing Bottom Bar</h3>
+<p>
+The  <code>PricingBottomBar</code> is an extended <code>RelativeLayout</code> that was styled to match the Kaodim design guidelines to show price and the action button. It also allows customized label title, pricing text and action button's text.The button implementation  has a callback of its own and the button can be enabled and disabled to toggle visibility.
+</p>
+<img src="assets/images/component_pricingbottombar.png" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.PricingBottomBar
+            android:id="@+id/kdl_pricingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:title="Total Amount"
+            app:btnText="Pay Now"
+            app:pricing="RM 100">
+        </com.kaodim.design.components.PricingBottomBar>
+{% endhighlight %}
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+PricingBottomBar pricingBottomBar = findViewById(R.id.kdl_pricingBar);
+pricingBottomBar.setPriceTitle("Amount to pay");
+pricingBottomBar.setPriceString("RM 100");
+pricingBottomBar.setButtonEnabled(true);
+pricingBottomBar.setButtonText("Pay Now");
+{% endhighlight %}
+<p class="heading">Set Listeners</p>
+Set a listener using:
+{% highlight java %}
+pricingBottomBar.setButtonOnClickListener(new PricingBottomBar.PricingBottomBarButtonListener() {
+            @Override
+            public void onButtonClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Pricing Bottom Bar Button",Toast.LENGTH_SHORT).show();
+            }
+        });
+{% endhighlight %}
+

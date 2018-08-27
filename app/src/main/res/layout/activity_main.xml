@@ -136,6 +136,23 @@
             app:nextButton="true"
             android:layout_margin="10dp" />
 
+        <TextView
+            style="@style/NormalTextBolded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Pricing BottomBar"
+            android:textColor="@color/firefly" />
+
+        <com.kaodim.design.components.PricingBottomBar
+            android:id="@+id/kdl_pricingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:title="Total Amount"
+            app:btnText="Pay Now"
+            app:pricing="RM 100">
+        </com.kaodim.design.components.PricingBottomBar>
+
     </LinearLayout>
 
 </ScrollView>
