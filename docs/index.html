@@ -20,7 +20,7 @@ isHome: true
 
   <p class="heading">Integrate with Gradle</p>
 {% highlight bash %}
-implementation 'com.github.kaodim:android-design:0.0.2'
+implementation 'com.github.kaodim:android-design:1.0.5'
 {% endhighlight %}
 
 </section>
@@ -428,4 +428,23 @@ pricingBottomBar.setButtonOnClickListener(new PricingBottomBar.PricingBottomBarB
             }
         });
 {% endhighlight %}
+
+<hr>
+<h3>ToastBanner Notification</h3>
+<p>
+The  <code>ToastBanner</code> is an extended <code>NotificationBanner</code> singleton that was styled to match the Kaodim design guidelines to show success and error messages. It also allows to customize message text and duration and provide click listener to dismiss the banner. <code>ToastBanner</code> needs a layout view and activity as param to show the banner below the view, ex. toolbar and when activity is running on foreground.
+</p>
+<img src="assets/images/component_toast_success.png" class="screenshot small" />
+<hr>
+<img src="assets/images/component_toast_error.png" class="screenshot small" />
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+ ToastBanner.getInstance().showSuccessAlert(toastMessageBar,
+                this,"This is a very long multi line auto dismiss success message banner",ToastBanner.AUTODISMISS_LENGTH);
+
+ToastBanner.getInstance().showErrorAlert(toastMessageBar,
+                this,"This is a very long multi line non-autodismiss error message banner ",ToastBanner.NO_AUTODISMISS);
+{% endhighlight %}
+
 
