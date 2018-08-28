@@ -45,7 +45,7 @@
                 android:lineSpacingMultiplier="1.20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/size_14"
+                android:textSize="@dimen/size_13"
                 android:textColor="@color/porcelain"
                 android:text="This is an example of very long multi line successful message"/>
 
