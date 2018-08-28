@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sendQuoteLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/lvTopMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:orientation="horizontal"
+        android:layout_gravity="top"
+        android:background="@color/lima">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iconSuccess"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_toast_success"/>
+
+            <TextView
+                android:id="@+id/successLabel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:layout_centerInParent="true"
+                android:layout_toEndOf="@id/iconSuccess"
+                android:layout_toRightOf="@+id/iconSuccess"
+                android:layout_toLeftOf="@+id/rlSuccessCancel"
+                android:layout_toStartOf="@+id/rlSuccessCancel"
+                android:lineSpacingMultiplier="1.20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_12"
+                android:textColor="@color/porcelain"
+                android:text="This is an example of very long multi line successful message"/>
+
+            <RelativeLayout
+                android:id="@+id/rlSuccessCancel"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="7dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                >
+
+                <ImageView
+                    android:id="@+id/tvCancel"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ic_toast_close" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,158 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
+    android:orientation="vertical"
     android:background="@color/porcelain">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/lvTopMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="0.1dp"
         android:orientation="vertical">
+    </LinearLayout>
 
-        <TextView
-            style="@style/HeaderText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Header Text"
-            android:textColor="@color/firefly" />
-
-        <TextView
-            style="@style/NormalText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Normal Text"
-            android:textColor="@color/firefly" />
-
-        <TextView
-            style="@style/SubtitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Subtitle Text"
-            android:textColor="@color/firefly" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.2dp"
-            android:layout_margin="10dp"
-            android:background="@color/kdl_grey_dark" />
-
-        <TextView
-            style="@style/NormalTextBolded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Buttons"
-            android:textColor="@color/firefly" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <include
-                layout="@layout/kdl_cta_jasper_button"
-                android:layout_width="100dp"
+            <TextView
+                style="@style/HeaderText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Header Text"
+                android:textColor="@color/firefly" />
+
+            <TextView
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Normal Text"
+                android:textColor="@color/firefly" />
+
+            <TextView
+                style="@style/SubtitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Subtitle Text"
+                android:textColor="@color/firefly" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_margin="10dp"
+                android:background="@color/kdl_grey_dark" />
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Buttons"
+                android:textColor="@color/firefly" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    layout="@layout/kdl_cta_jasper_button"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+
+                <include
+                    layout="@layout/kdl_cta_firefly_button"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_margin="10dp"
+                android:background="@color/kdl_grey_dark" />
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Numeric Control"
+                android:textColor="@color/firefly" />
+
+            <com.kaodim.design.components.NumericControl
+                android:id="@+id/numericControl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:max="15"
+                app:min="0"
+                app:value="2" />
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Date/Time Picker"
+                android:textColor="@color/firefly" />
+
+            <com.kaodim.design.components.DateTimePicker
+                android:id="@+id/dateTimePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:pickerHint="Pick a date &amp; time" />
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Interactive Panel"
+                android:textColor="@color/firefly" />
+
+            <com.kaodim.design.components.InteractivePanel
+                android:id="@+id/interactivePanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:borderType="line"
+                app:panelHint="Custom Button" />
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Search box"
+                android:textColor="@color/firefly" />
+
+            <com.kaodim.design.components.SearchBox
+                android:id="@+id/searchBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:nextButton="true"
                 android:layout_margin="10dp" />
 
-            <include
-                layout="@layout/kdl_cta_firefly_button"
-                android:layout_width="100dp"
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:text="Pricing BottomBar"
+                android:textColor="@color/firefly" />
+
+            <com.kaodim.design.components.PricingBottomBar
+                android:id="@+id/kdl_pricingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:title="Total Amount"
+                app:btnText="Pay Now"
+                app:pricing="RM 100">
+            </com.kaodim.design.components.PricingBottomBar>
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Sucesss Toast"
+                android:textColor="@color/firefly" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/BtnToastSuccess"
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@color/lima"
+                    android:text="Success"
+                    android:textColor="@color/porcelain"/>
+
+                <Button
+                    android:id="@+id/BtnToastError"
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@color/jasper"
+                    android:text="Error"
+                    android:textColor="@color/porcelain"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.2dp"
-            android:layout_margin="10dp"
-            android:background="@color/kdl_grey_dark" />
+    </ScrollView>
 
-        <TextView
-            style="@style/NormalTextBolded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Numeric Control"
-            android:textColor="@color/firefly" />
 
-        <com.kaodim.design.components.NumericControl
-            android:id="@+id/numericControl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:max="15"
-            app:min="0"
-            app:value="2" />
 
-        <TextView
-            style="@style/NormalTextBolded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Date/Time Picker"
-            android:textColor="@color/firefly" />
 
-        <com.kaodim.design.components.DateTimePicker
-            android:id="@+id/dateTimePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:pickerHint="Pick a date &amp; time" />
-
-        <TextView
-            style="@style/NormalTextBolded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Interactive Panel"
-            android:textColor="@color/firefly" />
-
-        <com.kaodim.design.components.InteractivePanel
-            android:id="@+id/interactivePanel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:borderType="line"
-            app:panelHint="Custom Button" />
-
-        <TextView
-            style="@style/NormalTextBolded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Search box"
-            android:textColor="@color/firefly" />
-
-        <com.kaodim.design.components.SearchBox
-            android:id="@+id/searchBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:nextButton="true"
-            android:layout_margin="10dp" />
-
-        <TextView
-            style="@style/NormalTextBolded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Pricing BottomBar"
-            android:textColor="@color/firefly" />
-
-        <com.kaodim.design.components.PricingBottomBar
-            android:id="@+id/kdl_pricingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:title="Total Amount"
-            app:btnText="Pay Now"
-            app:pricing="RM 100">
-        </com.kaodim.design.components.PricingBottomBar>
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

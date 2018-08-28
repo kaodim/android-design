@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/lvTopMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:orientation="horizontal"
+        android:layout_gravity="top"
+        android:background="@color/jasper">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iconError"
+                android:layout_width="20dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="8dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/ic_toast_fail"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/size_24"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/errorLabel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:layout_toEndOf="@id/iconError"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/iconError"
+                android:layout_toLeftOf="@+id/rlErrorCancel"
+                android:layout_toStartOf="@+id/rlErrorCancel"
+                android:lineSpacingMultiplier="1.20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textSize="@dimen/size_12"
+                android:textColor="@color/porcelain"
+                android:text="This is an example of very long multi line message message"/>
+
+            <RelativeLayout
+                android:id="@+id/rlErrorCancel"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="7dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                >
+
+                <ImageView
+                    android:id="@+id/tvCancel"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ic_toast_close" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
