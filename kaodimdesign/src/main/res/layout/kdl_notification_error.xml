@@ -21,8 +21,8 @@
                 android:id="@+id/iconError"
                 android:layout_width="20dp"
                 android:layout_height="18dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="8dp"
                 android:layout_alignParentTop="true"
@@ -49,13 +49,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="top"
-                android:textSize="@dimen/size_12"
+                android:textSize="@dimen/size_14"
                 android:textColor="@color/porcelain"
                 android:text="This is an example of very long multi line message message"/>
 
             <RelativeLayout
                 android:id="@+id/rlErrorCancel"
-                android:layout_width="25dp"
+                android:layout_width="30dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="7dp"
                 android:layout_alignParentRight="true"
