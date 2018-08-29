@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,25 +23,28 @@ import java.util.ArrayList;
 
 public class MobileInputLayout extends RelativeLayout {
 
-    TextView tvHintTitle, tvHint;
+    TextView tvHintTitle, tvCode;
     RelativeLayout rlParent;
     LinearLayout llCountryCodeSelector;
     RecyclerView rvCountryCodeSelector;
     EditText etInput;
+    ImageView ivFlag;
 
     CountryCodeRVAdapter adapter;
     ArrayList<CountryCodeRowItem> countryCodes = new ArrayList<>();
     boolean isViewingCountries = false;
     String hint = "";
     String hintTitle = "";
+    String countryCode = "";
     Context context;
+    boolean countrySelectedDisplayed = false;
 
     private MobileInputEventListener listener;
 
     public interface MobileInputEventListener {
         void onCountrySelected(CountryCodeRowItem item);
 
-        void onMobileLayoutClicked();
+        void onMobileValueChanged(String countryCode, String value);
     }
 
     public MobileInputLayout(Context context) {
@@ -76,11 +82,12 @@ public class MobileInputLayout extends RelativeLayout {
 
     private void initComponents() {
         tvHintTitle = findViewById(R.id.tvHintTitle);
-        tvHint = findViewById(R.id.tvHint);
         rlParent = findViewById(R.id.rlParent);
         llCountryCodeSelector = findViewById(R.id.llCountryCodeSelector);
         rvCountryCodeSelector = findViewById(R.id.rvCountryCodeSelector);
         etInput = findViewById(R.id.etInput);
+        tvCode = findViewById(R.id.tvCode);
+        ivFlag = findViewById(R.id.ivFlag);
 
         setHintText(hint);
         setHintTitle(hintTitle);
@@ -93,9 +100,9 @@ public class MobileInputLayout extends RelativeLayout {
      *
      * @param context
      */
-    public void initialize(Context context) {
+    public void initialize(Context context, ArrayList<CountryCodeRowItem> countryCodes) {
         this.context = context;
-
+        this.countryCodes = countryCodes;
         setupRecyclerView(context);
     }
 
@@ -107,7 +114,23 @@ public class MobileInputLayout extends RelativeLayout {
         adapter = new CountryCodeRVAdapter(context, countryCodes, new CountryCodeRVAdapter.CountryCodeSelectionListener() {
             @Override
             public void onSelected(CountryCodeRowItem countryItem) {
-                listener.onCountrySelected(countryItem);
+
+                if (countrySelectedDisplayed) {
+                    countrySelectedDisplayed = false;
+                    hideCountrySelector();
+                } else {
+                    countrySelectedDisplayed = true;
+                    displayCountrySelector();
+                }
+
+                tvCode.setText(countryItem.code);
+                ivFlag.setImageResource(countryItem.flagIconResource);
+                countryCode = countryItem.code.replace("(", "").replace(")", "");
+
+                if(listener != null) {
+                    listener.onMobileValueChanged(countryCode, etInput.getText().toString());
+                    listener.onCountrySelected(countryItem);
+                }
             }
         });
         rvCountryCodeSelector.setLayoutManager(new LinearLayoutManager(context));
@@ -115,12 +138,31 @@ public class MobileInputLayout extends RelativeLayout {
         rvCountryCodeSelector.setVisibility(View.GONE);
     }
 
+    private void displayCountrySelector() {
+        rvCountryCodeSelector.setVisibility(View.VISIBLE);
+    }
+
+    private void hideCountrySelector() {
+        rvCountryCodeSelector.setVisibility(View.GONE);
+    }
+
     private void setClickEvents() {
-        rlParent.setOnClickListener(new OnClickListener() {
+
+        etInput.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                if (listener != null)
-                    listener.onMobileLayoutClicked();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(listener != null)
+                    listener.onMobileValueChanged(countryCode, etInput.getText().toString());
             }
         });
 
@@ -140,7 +182,7 @@ public class MobileInputLayout extends RelativeLayout {
 
     public void setHintText(String hint) {
         this.hint = hint;
-        tvHint.setText(hint);
+        etInput.setHint(hint);
     }
 
     public void setHintTitle(String hintTitle) {

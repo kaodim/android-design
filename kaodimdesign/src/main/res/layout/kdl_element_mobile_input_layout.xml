@@ -70,6 +70,8 @@
                 android:id="@+id/etInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_centerVertical="true"
                 android:backgroundTint="@android:color/transparent"
                 android:textSize="@dimen/size_14" />
 
