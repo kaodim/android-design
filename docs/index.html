@@ -448,3 +448,31 @@ ToastBanner.getInstance().showErrorAlert(toastMessageBar,
 {% endhighlight %}
 
 
+<section class="bs-docs-section">
+  <h1 id="resources" class="page-header">Common Resources</h1>
+  <p>These resources are shared drawables and mipmap files found in the <code>/res</code> directory. Contains icons, drawable layouts, shapes, animations and button styles.</p>
+  <hr>
+  <h3>Call-To-Action Button</h3>
+  <p>This button style is already configured with click, touch, enabled and disabled states. Simply paste the following code and control the behavior from code level.</p>
+  <img src="assets/images/component_toast_success.png" class="screenshot small" />
+  <hr>
+  {% highlight xml %}
+  <Button
+    android:id="@+id/btnNext"
+    style="@style/NormalTextBolded"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/button_jasper"
+    android:clickable="true"
+    android:enabled="true"
+    android:focusable="true"
+    android:gravity="center"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:stateListAnimator="@null"
+    android:text="Next"
+    android:textColor="#ffffff" />
+  {% endhighlight %}
+</section>

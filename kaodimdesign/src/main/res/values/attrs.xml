@@ -44,6 +44,11 @@
         <attr name="mockHint" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="MobileInputLayout">
+        <attr name="inputHint" format="string" />
+        <attr name="inputHintTitle" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="FacebookButton">
         <attr name="fbHint" format="string" />
     </declare-styleable>
