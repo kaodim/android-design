@@ -90,6 +90,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:text="Notes Standard"
+                android:textColor="@color/firefly" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+               <com.kaodim.design.components.notes.NotesStandard
+                   android:id="@+id/notesStandardView"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   app:notesText="This is text view"
+                   app:notesType="no_button"
+                   app:showNotesSecondary="true"
+                   app:btnSingleText="Button"
+                   app:btnDoublePrimaryText="Primary"
+                   app:btnDoubleSecondaryText="Secondary"
+                   android:layout_margin="15dp">
+
+               </com.kaodim.design.components.notes.NotesStandard>
+            </LinearLayout>
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Numeric Control"
                 android:textColor="@color/firefly" />
 
@@ -221,6 +249,10 @@
                     android:textColor="@color/porcelain"/>
 
             </LinearLayout>
+
+
+
+
         </LinearLayout>
 
     </ScrollView>

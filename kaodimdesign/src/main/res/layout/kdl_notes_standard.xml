@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/box_bg_notes_standard"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="21dp"
+            android:layout_height="13dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/ic_cash" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/jelly_bean"
+                android:lineSpacingMultiplier="1.30"
+                android:textSize="@dimen/size_12"
+                android:fontFamily="@font/roboto_regular"
+                android:visibility="visible"
+                android:text="This is an example of a notes with very long multi line description "/>
+
+            <TextView
+                android:id="@+id/tvSecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/jelly_bean"
+                android:textSize="@dimen/size_12"
+                android:layout_marginTop="7dp"
+                android:visibility="visible"
+                android:textStyle="italic"
+                android:text="This is secondary text"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/llSinglebutton"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btnSingle"
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:minWidth="180dp"
+                    android:background="@drawable/button_firefly"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:stateListAnimator="@null"
+                    android:text="Button Primary"
+                    android:textSize="@dimen/size_11"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/llDoublebutton"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btnDoublePrimary"
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:minWidth="110dp"
+                    android:background="@drawable/button_firefly"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:stateListAnimator="@null"
+                    android:text="Button Primary"
+                    android:textSize="@dimen/size_11"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/btnDoubleSecondary"
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:minWidth="110dp"
+                    android:layout_marginLeft="12.5dp"
+                    android:background="@drawable/button_firefly"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:stateListAnimator="@null"
+                    android:text="Button Secondary"
+                    android:textSize="@dimen/size_11"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

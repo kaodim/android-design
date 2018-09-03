@@ -4,7 +4,7 @@
     <color name="porcelain">#FFFFFF</color>
     <color name="jasper">#E3193A</color>
     <color name="firefly">#003158</color>
-
+    <color name="firefly_pressed">#002340</color>
     <color name="jasper_pressed">#C91634</color>
 
     <!--SECONDARY PALETTE-->
@@ -30,6 +30,11 @@
     <color name="black_light">#0F0F0F</color>
     <color name="facebook">#3867B7</color>
     <color name="facebook_darker">#31599E</color>
+
+    <color name="twilight_blue">#F8FFFF</color>
+    <color name="aqua_island">#A9D5DE</color>
+    <color name="jelly_bean">#276F86</color>
+
 
     <!--UTILITY PALETTE-->
     <color name="transparent_black">#66000000</color>

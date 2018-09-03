@@ -15,6 +15,7 @@ import com.kaodim.design.components.NumericControl;
 import com.kaodim.design.components.PricingBottomBar;
 import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.callbacks.NumericControlListener;
+import com.kaodim.design.components.notes.NotesStandard;
 import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.toast.ToastBanner;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     PricingBottomBar pricingBottomBar;
     Button toastSuccess, toastError, preLoader;
     LinearLayout toastMessageBar;
+    NotesStandard notesStandard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         toastError = findViewById(R.id.BtnToastError);
         toastMessageBar = findViewById(R.id.lvTopMessage);
         preLoader = findViewById(R.id.BtnPreLoader);
+        notesStandard = findViewById(R.id.notesStandardView);
 
         setupNumericControl();
 
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         setupToastButtonListener();
 
         setupPreLoaderListerner();
+
+        setupNotesStandardListener();
     }
 
     private void setupInteractivePanel() {
@@ -170,6 +175,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+   private void setupNotesStandardListener(){
+        notesStandard.setDescriptionText("This is very long multi line notes description for standard notes");
+        notesStandard.setButtonSingleText("Click Me");
+        notesStandard.setButtonDoublePrimaryText("Primary");
+        notesStandard.setButtonDoubleSecondaryText("Secondary");
+//        notesStandard.setSecondaryDescription("This is secondary description");
+        notesStandard.setEnableButtonSingle(true);
+
+
+        notesStandard.setButtonOnClickListener(new NotesStandard.NotesStandardListener() {
+            @Override
+            public void onButtonSingleClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Single Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoublePrimaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Primary Double Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoubleSecondaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Secondary Double Button",Toast.LENGTH_SHORT).show();
+            }
+        });
+   }
 
     @Override
     public void onBackPressed() {
