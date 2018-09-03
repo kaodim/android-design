@@ -3,12 +3,15 @@ package com.kaodim.design.components;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,7 +19,7 @@ import com.kaodim.design.R;
 
 public class PasswordField extends RelativeLayout {
 
-    private String hintTitle;
+    private String hintTitle = "Password";
     private String showText = "Show";
     private String hideText = "Hide";
     private boolean isVisible = false;
@@ -24,7 +27,8 @@ public class PasswordField extends RelativeLayout {
     private PasswordChangedListener listener;
     private String inputError = "";
 
-    TextInputEditText etPassword;
+    EditText etPassword;
+    TextView tvHintTitle;
     View viewMargin;
     TextView tvVisibilityToggle;
     TextView tvError;
@@ -66,7 +70,8 @@ public class PasswordField extends RelativeLayout {
     }
 
     private void initComponents() {
-        etPassword = findViewById(R.id.etPassword);
+        etPassword = findViewById(R.id.etPasswordInput);
+        tvHintTitle = findViewById(R.id.tvHintTitle);
         viewMargin = findViewById(R.id.viewMargin);
         tvVisibilityToggle = findViewById(R.id.tvVisibilityToggle);
         tvError = findViewById(R.id.tvError);
@@ -76,11 +81,13 @@ public class PasswordField extends RelativeLayout {
         setEvents();
     }
 
-    public void initialize(String showText, String hideText) {
+    public void initialize(String hintTitle, String showText, String hideText) {
+        this.hintTitle = hintTitle;
         this.showText = showText;
         this.hideText = hideText;
         isVisible = false;
         tvVisibilityToggle.setText(showText);
+        setHintTitle(hintTitle);
     }
 
     private void setEvents() {
@@ -110,6 +117,7 @@ public class PasswordField extends RelativeLayout {
             @Override
             public void afterTextChanged(Editable s) {
                 inputValue = etPassword.getText().toString();
+
                 if(listener != null)
                     listener.onPasswordChanged(inputValue);
             }
@@ -126,7 +134,7 @@ public class PasswordField extends RelativeLayout {
                 else {
                     isVisible = true;
                     tvVisibilityToggle.setText(hideText);
-                    etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    etPassword.setInputType(129);
                 }
             }
         });
@@ -138,7 +146,7 @@ public class PasswordField extends RelativeLayout {
 
     public void setHintTitle(String hintTitle) {
         this.hintTitle = hintTitle;
-        etPassword.setHint(hintTitle);
+        tvHintTitle.setText(hintTitle);
     }
 
     public void setText(String inputValue) {
@@ -163,12 +171,12 @@ public class PasswordField extends RelativeLayout {
         if(inputError.length() > 0) {
             tvError.setVisibility(VISIBLE);
             tvError.setText(inputError);
-            etPassword.setHintTextColor(getResources().getColor(R.color.jasper));
+            tvHintTitle.setTextColor(getResources().getColor(R.color.jasper));
         }
         else {
             tvError.setVisibility(INVISIBLE);
             tvError.setText("");
-            etPassword.setHintTextColor(getResources().getColor(R.color.blackpearl));
+            tvHintTitle.setTextColor(getResources().getColor(R.color.kdl_grey_medium));
         }
     }
 }

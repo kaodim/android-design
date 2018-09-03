@@ -2,10 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/rlParent"
-    android:background="@drawable/kdl_fb_btn"
+    android:background="@drawable/button_facebook"
     android:layout_height="wrap_content"
     android:paddingTop="12dp"
     android:paddingBottom="12dp"
+    android:clickable="true"
+    android:focusable="true"
     android:orientation="vertical">
     
     <ImageView

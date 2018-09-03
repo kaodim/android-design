@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/kdl_rect_grey" android:state_enabled="false" />
+    <item android:drawable="@drawable/kdl_fb_btn" android:state_pressed="false" /> <!-- pressed -->
+    <item android:drawable="@drawable/kdl_fb_btn_pressed" android:state_pressed="true" /> <!-- focused -->
+    <item android:drawable="@drawable/kdl_fb_btn" android:state_enabled="true" /> <!-- idle state -->
+</selector>

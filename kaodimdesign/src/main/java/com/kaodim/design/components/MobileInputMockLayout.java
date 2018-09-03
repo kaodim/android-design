@@ -116,18 +116,19 @@ public class MobileInputMockLayout extends RelativeLayout {
             }
         });
 
-        llCountryCodeSelector.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isViewingCountries) {
-                    rvCountryCodeSelector.setVisibility(View.GONE);
-                    isViewingCountries = false;
-                } else {
-                    rvCountryCodeSelector.setVisibility(View.VISIBLE);
-                    isViewingCountries = true;
-                }
-            }
-        });
+        //Not supported anymore in mock input layout
+//        llCountryCodeSelector.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (isViewingCountries) {
+//                    rvCountryCodeSelector.setVisibility(View.GONE);
+//                    isViewingCountries = false;
+//                } else {
+//                    rvCountryCodeSelector.setVisibility(View.VISIBLE);
+//                    isViewingCountries = true;
+//                }
+//            }
+//        });
     }
 
     public void setHintText(String hint) {

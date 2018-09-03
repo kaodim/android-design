@@ -29,5 +29,6 @@
 
     <color name="black_light">#0F0F0F</color>
     <color name="facebook">#3867B7</color>
+    <color name="facebook_darker">#31599E</color>
 
 </resources>
