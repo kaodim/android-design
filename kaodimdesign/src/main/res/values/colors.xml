@@ -31,4 +31,7 @@
     <color name="facebook">#3867B7</color>
     <color name="facebook_darker">#31599E</color>
 
+    <!--UTILITY PALETTE-->
+    <color name="transparent_black">#66000000</color>
+
 </resources>

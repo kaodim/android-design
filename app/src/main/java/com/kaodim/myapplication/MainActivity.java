@@ -15,6 +15,7 @@ import com.kaodim.design.components.NumericControl;
 import com.kaodim.design.components.PricingBottomBar;
 import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.callbacks.NumericControlListener;
+import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.toast.ToastBanner;
 
 import java.util.Date;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     InteractivePanel interactivePanel;
     SearchBox searchBox;
     PricingBottomBar pricingBottomBar;
-    Button toastSuccess, toastError;
+    Button toastSuccess, toastError, preLoader;
     LinearLayout toastMessageBar;
 
     @Override
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         toastSuccess = findViewById(R.id.BtnToastSuccess);
         toastError = findViewById(R.id.BtnToastError);
         toastMessageBar = findViewById(R.id.lvTopMessage);
+        preLoader = findViewById(R.id.BtnPreLoader);
 
         setupNumericControl();
 
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         setupPricingListener();
 
         setupToastButtonListener();
+
+        setupPreLoaderListerner();
     }
 
     private void setupInteractivePanel() {
@@ -155,5 +159,34 @@ public class MainActivity extends AppCompatActivity {
     private void callErrorBanner(){
         ToastBanner.getInstance().showErrorAlert(toastMessageBar,
                 this,"This is a very long multi line non-autodismiss error message banner ",ToastBanner.NO_AUTODISMISS);
+    }
+
+    private void setupPreLoaderListerner(){
+        preLoader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLoadingAnim();
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        hideLoadingAnim();
+    }
+
+
+    //put this in baseActivity
+    public  void showLoadingAnim(){
+//        isLoadingAnim = true;
+        View view = findViewById(android.R.id.content);
+        PreLoaderAnimation.showLoading(view,this);
+    }
+
+    public void hideLoadingAnim(){
+//        isLoadingAnim = false;
+        PreLoaderAnimation.hideLoading();
     }
 }
