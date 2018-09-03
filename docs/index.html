@@ -500,10 +500,37 @@ notesStandard.setButtonOnClickListener(new NotesStandard.NotesStandardListener()
         });
 {% endhighlight %}
 
-<p class="heading">variant</p>
+<p class="heading">Variant</p>
 <img src="assets/images/components_secondary_description.png" class="screenshot small" />
 <img src="assets/images/components_notes_primary.png" class="screenshot small" />
 <img src="assets/images/components_only_text.png" class="screenshot small" />
+
+<hr>
+<h3>Pre-Loader Animation</h3>
+<p>
+The  <code>PreLoaderAnimation</code> is an extended <code>NotificationBanner</code> singleton that was styled to match the Kaodim design guidelines to render loading gif animation. This animation can be called anywhere anytime from your code. For best practice, create methods that invoke and dismiss the loader in base activity and call these methods in respective activities that extend baseactivity. Also, hide the animation when backpressed to avoid memory leakage.
+</p>
+
+<img src="assets/images/pre_laoder.png" class="screenshot small" />
+
+<p class="heading">Code level</p>
+{% highlight java %}
+    public  void showLoadingAnim(){
+        View view = findViewById(android.R.id.content);
+        PreLoaderAnimation.showLoading(view,this);
+    }
+
+    public void hideLoadingAnim(){
+        PreLoaderAnimation.hideLoading();
+    }
+
+
+@Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        hideLoadingAnim();
+    }
+{% endhighlight %}
 
 
 
