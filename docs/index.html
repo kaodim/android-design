@@ -448,6 +448,65 @@ ToastBanner.getInstance().showErrorAlert(toastMessageBar,
 {% endhighlight %}
 
 
+<hr>
+<h3>Notes Standard</h3>
+<p>
+The  <code>NotesStandard</code> is an extended <code>Linearlayout</code> that was styled to match the Kaodim design guidelines to show notes with actionable buttons. It also allows customized primary and secondary descriptions, notes type (single button, double button, only text and etc)and icons.The buttons implementation  has a callback of its own and the button can be enabled and disabled to toggle visibility.
+</p>
+<img src="assets/images/components_notes_double.png" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.notes.NotesStandard
+        android:id="@+id/notesStandardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:notesText="This is text view"
+        app:notesType="no_button"
+        app:showNotesSecondary="true"
+        app:btnSingleText="Button"
+        app:btnDoublePrimaryText="Primary"
+        app:btnDoubleSecondaryText="Secondary"
+        android:layout_margin="15dp">
+</com.kaodim.design.components.notes.NotesStandard>
+{% endhighlight %}
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+NotesStandard notesStandard = findViewById(R.id.notesStandardView);
+        notesStandard.setDescriptionText("This is very long multi line notes description for standard notes");
+        notesStandard.setButtonSingleText("Click Me");
+        notesStandard.setButtonDoublePrimaryText("Primary");
+        notesStandard.setButtonDoubleSecondaryText("Secondary");
+        notesStandard.setSecondaryDescription("This is secondary description");
+        notesStandard.setEnableButtonSingle(true);
+{% endhighlight %}
+<p class="heading">Set Listeners</p>
+Set a listener using:
+{% highlight java %}
+notesStandard.setButtonOnClickListener(new NotesStandard.NotesStandardListener() {
+            @Override
+            public void onButtonSingleClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Single Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoublePrimaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Primary Double Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoubleSecondaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Secondary Double Button",Toast.LENGTH_SHORT).show();
+            }
+        });
+{% endhighlight %}
+
+<p class="heading">variant</p>
+<img src="assets/images/components_secondary_description.png" class="screenshot small" />
+<img src="assets/images/components_notes_primary.png" class="screenshot small" />
+<img src="assets/images/components_only_text.png" class="screenshot small" />
+
+
+
 <section class="bs-docs-section">
   <h1 id="resources" class="page-header">Common Resources</h1>
   <p>These resources are shared drawables and mipmap files found in the <code>/res</code> directory. Contains icons, drawable layouts, shapes, animations and button styles.</p>
