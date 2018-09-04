@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.kaodim.design.R;
 import com.kaodim.design.components.adapters.CountryCodeRVAdapter;
 import com.kaodim.design.components.models.CountryCodeRowItem;
+import com.lamudi.phonefield.PhoneEditText;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,7 @@ public class MobileInputLayout extends RelativeLayout {
     RecyclerView rvCountryCodeSelector;
     EditText etInput;
     ImageView ivFlag;
+    PhoneEditText etValidator;
 
     CountryCodeRVAdapter adapter;
     ArrayList<CountryCodeRowItem> countryCodes = new ArrayList<>();
@@ -38,13 +40,14 @@ public class MobileInputLayout extends RelativeLayout {
     String countryCode = "";
     Context context;
     boolean countrySelectedDisplayed = false;
+    String validationCountry = "";
 
     private MobileInputEventListener listener;
 
     public interface MobileInputEventListener {
         void onCountrySelected(CountryCodeRowItem item);
 
-        void onMobileValueChanged(String countryCode, String value);
+        void onMobileValueChanged(String countryCode, String value, boolean isValidNumber);
     }
 
     public MobileInputLayout(Context context) {
@@ -86,6 +89,7 @@ public class MobileInputLayout extends RelativeLayout {
         llCountryCodeSelector = findViewById(R.id.llCountryCodeSelector);
         rvCountryCodeSelector = findViewById(R.id.rvCountryCodeSelector);
         etInput = findViewById(R.id.etInput);
+        etValidator = findViewById(R.id.etValidator);
         tvCode = findViewById(R.id.tvCode);
         ivFlag = findViewById(R.id.ivFlag);
 
@@ -100,9 +104,10 @@ public class MobileInputLayout extends RelativeLayout {
      *
      * @param context
      */
-    public void initialize(Context context, ArrayList<CountryCodeRowItem> countryCodes) {
+    public void initialize(Context context, ArrayList<CountryCodeRowItem> countryCodes, String validationCountry) {
         this.context = context;
         this.countryCodes = countryCodes;
+        setValidationCountry(validationCountry);
         setupRecyclerView(context);
     }
 
@@ -128,7 +133,7 @@ public class MobileInputLayout extends RelativeLayout {
                 countryCode = countryItem.code.replace("(", "").replace(")", "");
 
                 if(listener != null) {
-                    listener.onMobileValueChanged(countryCode, etInput.getText().toString());
+                    listener.onMobileValueChanged(countryCode, etInput.getText().toString(), checkValidity());
                     listener.onCountrySelected(countryItem);
                 }
             }
@@ -161,8 +166,10 @@ public class MobileInputLayout extends RelativeLayout {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(listener != null)
-                    listener.onMobileValueChanged(countryCode, etInput.getText().toString());
+                etValidator.setPhoneNumber(etInput.getText().toString());
+                if(listener != null) {
+                    listener.onMobileValueChanged(countryCode, etInput.getText().toString(), checkValidity());
+                }
             }
         });
 
@@ -196,6 +203,19 @@ public class MobileInputLayout extends RelativeLayout {
 
     public void setText(String text) {
         etInput.setText(text);
+        etValidator.setPhoneNumber(text);
+        if(listener != null) {
+            listener.onMobileValueChanged(countryCode, text, checkValidity());
+        }
+    }
+
+    public void setValidationCountry(String country) {
+        this.validationCountry = country;
+        etValidator.setDefaultCountry(validationCountry);
+    }
+
+    public boolean checkValidity() {
+        return etValidator.isValid();
     }
 
 }

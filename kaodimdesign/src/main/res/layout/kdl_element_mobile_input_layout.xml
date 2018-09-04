@@ -66,13 +66,19 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
 
+            <com.lamudi.phonefield.PhoneEditText
+                android:id="@+id/etValidator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/etInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:layout_centerVertical="true"
                 android:backgroundTint="@android:color/transparent"
+                android:inputType="number"
                 android:textSize="@dimen/size_14" />
 
         </RelativeLayout>
@@ -83,8 +89,8 @@
         android:id="@+id/viewMargin"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/firefly" />
 
     <RelativeLayout

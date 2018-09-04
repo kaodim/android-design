@@ -364,7 +364,49 @@ mobileInputMockLayout.setMobileInputEventListener(new MobileInputMockLayout.Mobi
 {% endhighlight %}
 
 
+<hr>
+<h3>MobileInputLayout</h3>
+<p>
+  MobileInputLayout provides a validated mobile input text field customized with a coutnry selection drop down. All mobile numbers are validated by any required country's ISO code. It also provides a callback when the number is changed by the user along with the validity of the entered number.
+</p>
+<img src="assets/images/component_mobile_input.png" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.MobileInputLayout
+  android:id="@+id/mobileInputLayout"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content" />
+{% endhighlight %}
+<hr>
+<p class="heading">Initialization</p>
+<p>
+  This component comes in-built with a country selection dropdown. An initialization from the code-level is necessary to provide the component with a <code>Context</code>. Therefore, in the onCreate of your activity, initialize this component as follows.
+</p>
+{% highlight java %}
+//list of country codes
+ArrayList<CountryCodeRowItem> countryCodes = new ArrayList<>();
+String countryISOCode = "MY"; //ISO Alpha-2 Code
+mobileInputLayout.initialize(context, countryCodes, countryISOCode);
+{% endhighlight %}
+<hr>
+<p class="heading">Callbacks</p>
+{% highlight java %}
+mobileInputLayout.setMobileInputEventListener(new MobileInputLayout.MobileInputEventListener() {
+@Override
+public void onCountrySelected(CountryCodeRowItem item) {
+  //handle event when the user selects a country
+}
 
+@Override
+public void onMobileValueChanged(String countryCode, String value, boolean isValidNumber) {
+  //handle event when the user changes their input value
+  //countryCode is the selected country code
+  //value is the value entered by the user
+  //isValidNumber is the mobile number validation for the entered value
+}
+});
+{% endhighlight %}
+
+The validation is done by Google's [https://github.com/googlei18n/libphonenumber](libphonenumber) library. The component is using a wrapper called [https://github.com/lamudi-gmbh/android-phone-field](android-phone-field).
 
 <hr>
 <h3>Custom Facebook Button</h3>
