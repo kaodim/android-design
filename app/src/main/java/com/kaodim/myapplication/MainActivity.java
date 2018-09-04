@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
    }
 
    private void setupNotesInfo(){
-        notesInfo.setNotesType(NotesInfo.TYPE_TEXT_ONLY);
+        notesInfo.setNotesType(NotesInfo.TYPE_WITH_ICON_TITLE);
         notesInfo.setNotesInfoTitleText("This is an example title");
         notesInfo.setNotesInfoDescriptionText("This is very long multi line notes description for notes info component");
 //        notesInfo.setTitleVisibility(View.VISIBLE);
