@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -41,6 +42,8 @@ public class MobileInputLayout extends RelativeLayout {
     Context context;
     boolean countrySelectedDisplayed = false;
     String validationCountry = "";
+
+    String mobileNumber = "";
 
     private MobileInputEventListener listener;
 
@@ -103,12 +106,16 @@ public class MobileInputLayout extends RelativeLayout {
      * Initialize the component. Without initializing, the country will not work.
      *
      * @param context
+     * @param mobileNumber
      */
-    public void initialize(Context context, ArrayList<CountryCodeRowItem> countryCodes, String validationCountry) {
+    public void initialize(Context context, ArrayList<CountryCodeRowItem> countryCodes, String validationCountry, String mobileNumber) {
         this.context = context;
         this.countryCodes = countryCodes;
+        this.mobileNumber = mobileNumber;
+
         setValidationCountry(validationCountry);
         setupRecyclerView(context);
+        setText(mobileNumber);
     }
 
     public void setMobileInputEventListener(MobileInputEventListener listener) {

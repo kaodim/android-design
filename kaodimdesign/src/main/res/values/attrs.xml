@@ -55,6 +55,7 @@
 
     <declare-styleable name="FacebookButton">
         <attr name="fbHint" format="string" />
+        <attr name="fbEnabled" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="PasswordField">

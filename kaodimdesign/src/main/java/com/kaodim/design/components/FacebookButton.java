@@ -15,6 +15,7 @@ public class FacebookButton extends RelativeLayout {
     TextView tvHint;
     RelativeLayout rlParent;
 
+    boolean isEnabled = true;
     String hint = "Continue with Facebook";
 
     private FacebookButtonClickListener listener;
@@ -47,6 +48,7 @@ public class FacebookButton extends RelativeLayout {
         //Retrieve the custom attributes from XML
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FacebookButton);
         hint = typedArray.getString(R.styleable.FacebookButton_fbHint);
+        isEnabled = typedArray.getBoolean(R.styleable.FacebookButton_fbEnabled, true);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -62,6 +64,8 @@ public class FacebookButton extends RelativeLayout {
         setHintText(hint);
 
         setClickEvents();
+
+        setEnabled(isEnabled);
     }
 
     public void setOnClickListener(FacebookButtonClickListener listener) {
@@ -72,8 +76,10 @@ public class FacebookButton extends RelativeLayout {
         rlParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (listener != null)
-                    listener.onFacebookButtonClicked();
+                if(isEnabled) {
+                    if (listener != null)
+                        listener.onFacebookButtonClicked();
+                }
             }
         });
     }
@@ -81,6 +87,16 @@ public class FacebookButton extends RelativeLayout {
     public void setHintText(String hint) {
         this.hint = hint;
         tvHint.setText(hint);
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+        if(enabled) {
+            rlParent.setBackgroundResource(R.drawable.button_facebook);
+        }
+        else {
+            rlParent.setBackgroundResource(R.drawable.button_facebook_disabled);
+        }
     }
 
 }

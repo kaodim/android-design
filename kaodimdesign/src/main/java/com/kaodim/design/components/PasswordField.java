@@ -94,10 +94,9 @@ public class PasswordField extends RelativeLayout {
         etPassword.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus) {
+                if (hasFocus) {
                     viewMargin.setBackgroundResource(R.color.blackpearl);
-                }
-                else {
+                } else {
                     viewMargin.setBackgroundResource(R.color.kdl_grey);
                 }
             }
@@ -118,7 +117,7 @@ public class PasswordField extends RelativeLayout {
             public void afterTextChanged(Editable s) {
                 inputValue = etPassword.getText().toString();
 
-                if(listener != null)
+                if (listener != null)
                     listener.onPasswordChanged(inputValue);
             }
         });
@@ -126,12 +125,11 @@ public class PasswordField extends RelativeLayout {
         tvVisibilityToggle.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isVisible) {
+                if (isVisible) {
                     isVisible = false;
                     tvVisibilityToggle.setText(showText);
                     etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                }
-                else {
+                } else {
                     isVisible = true;
                     tvVisibilityToggle.setText(hideText);
                     etPassword.setInputType(129);
@@ -168,12 +166,11 @@ public class PasswordField extends RelativeLayout {
     }
 
     private void toggleError() {
-        if(inputError.length() > 0) {
+        if (inputError.length() > 0) {
             tvError.setVisibility(VISIBLE);
             tvError.setText(inputError);
             tvHintTitle.setTextColor(getResources().getColor(R.color.jasper));
-        }
-        else {
+        } else {
             tvError.setVisibility(INVISIBLE);
             tvError.setText("");
             tvHintTitle.setTextColor(getResources().getColor(R.color.kdl_grey_medium));
