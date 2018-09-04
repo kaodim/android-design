@@ -23,13 +23,6 @@ public class NotesStandard extends LinearLayout {
     LinearLayout llSingleBtn, llDoubleBtn;
     ImageView ivIcon;
 
-    public interface NOTES_TYPES {
-        String NO_BUTTON = "no_button";
-        String SINGLE_BUTTON = "single_button";
-        String DOUBLE_BUTTON = "double_button";
-        String NO_ICON = "no_icon";
-        String ONLY_PRIMARY_TEXT = "only_primary_text";
-    }
 
     public static final int TYPE_NO_BUTTON = 1;
     public static final int TYPE_SINGLE_BUTTON = 2;

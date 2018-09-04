@@ -90,6 +90,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:text="Notes Info"
+                android:textColor="@color/firefly" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+               <com.kaodim.design.components.notes.NotesInfo
+                   android:id="@+id/notesInfoView"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   app:notesInfoType="with_icon_and_title"
+                   app:notesInfoTitle="This is an example of title"
+                   app:notesInfoText="This is very long multi line description for notes info description">
+
+               </com.kaodim.design.components.notes.NotesInfo>
+            </LinearLayout>
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Notes Standard"
                 android:textColor="@color/firefly" />
 
@@ -112,6 +136,8 @@
 
                </com.kaodim.design.components.notes.NotesStandard>
             </LinearLayout>
+
+
 
             <TextView
                 style="@style/NormalTextBolded"

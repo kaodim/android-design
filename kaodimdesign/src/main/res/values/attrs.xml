@@ -74,4 +74,15 @@
         <attr name="showNotesSecondary" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="NotesInfo">
+        <attr name="notesInfoText" format="string" />
+        <attr name="notesInfoTitle" format="string" />
+        <attr name="notesInfoType" format="string">
+            <enum name="with_icon_and_title" value="1" />
+            <enum name="with_icon" value="2" />
+            <enum name="title_and_text" value="3" />
+            <enum name="text_only" value="4" />
+        </attr>
+    </declare-styleable>
+
 </resources>

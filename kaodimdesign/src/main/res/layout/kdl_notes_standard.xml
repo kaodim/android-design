@@ -97,7 +97,7 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:stateListAnimator="@null"
-                    android:text="Button Primary"
+                    android:text="Primary"
                     android:textSize="@dimen/size_11"
                     android:textColor="#fff" />
 
@@ -116,7 +116,7 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:stateListAnimator="@null"
-                    android:text="Button Secondary"
+                    android:text="Secondary"
                     android:textSize="@dimen/size_11"
                     android:textColor="#fff" />
 

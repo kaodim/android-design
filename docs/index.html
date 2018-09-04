@@ -506,6 +506,39 @@ notesStandard.setButtonOnClickListener(new NotesStandard.NotesStandardListener()
 <img src="assets/images/components_only_text.png" class="screenshot small" />
 
 <hr>
+<h3>Notes Info</h3>
+<p>
+The  <code>Notesinfo</code> is an extended <code>Linearlayout</code> that was styled to match the Kaodim design guidelines to show notes as information. It also allows customized title descriptions and notes type (with icon and title, with icon,title and text only and text only).
+</p>
+<img src="assets/images/component_notes_info.png" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.notes.NotesInfo
+        android:id="@+id/notesInfoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:notesInfoType="with_icon_and_title"
+        app:notesInfoTitle="This is an example of title"
+        app:notesInfoText="This is very long multi line description for notes info description">
+</com.kaodim.design.components.notes.NotesInfo>
+{% endhighlight %}
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+NotesInfo notesInfo = findViewById(R.id.notesInfoView);
+        notesInfo.setNotesType(NotesInfo.TYPE_TEXT_ONLY);
+        notesInfo.setNotesInfoTitleText("This is an example title");
+        notesInfo.setNotesInfoDescriptionText("This is very long multi line notes description for notes info component");
+        notesInfo.setTitleVisibility(View.VISIBLE);         // this will overide notestype behaviour
+        notesInfo.setDescriptionVisibility(View.VISIBLE);   // this will overide notestype behaviour
+        notesInfo.setIconVisibility(View.VISIBLE);          // this will overide notestype behaviour
+{% endhighlight %}
+
+<p class="heading">Variant</p>
+<img src="assets/images/component_info_notes_no_icon.png" class="screenshot small" />
+<img src="assets/images/component_notes_info_text_icon.png" class="screenshot small" />
+<img src="assets/images/component_notes_info_only_text.png" class="screenshot small" />
+
+<hr>
 <h3>Pre-Loader Animation</h3>
 <p>
 The  <code>PreLoaderAnimation</code> is an extended <code>NotificationBanner</code> singleton that was styled to match the Kaodim design guidelines to render loading gif animation. This animation can be called anywhere anytime from your code. For best practice, create methods that invoke and dismiss the loader in base activity and call these methods in respective activities that extend baseactivity. Also, hide the animation when backpressed to avoid memory leakage.
@@ -514,6 +547,8 @@ The  <code>PreLoaderAnimation</code> is an extended <code>NotificationBanner</co
 <img src="assets/images/pre_laoder.png" class="screenshot small" />
 
 <p class="heading">Code level</p>
+
+<p>Add this in base activity</p>
 {% highlight java %}
     public  void showLoadingAnim(){
         View view = findViewById(android.R.id.content);
@@ -524,13 +559,18 @@ The  <code>PreLoaderAnimation</code> is an extended <code>NotificationBanner</co
         PreLoaderAnimation.hideLoading();
     }
 
+{% endhighlight %}
 
+<p>Add this in the respective activity to avoid memory leakage when user back press</p>
+{% highlight java %}
 @Override
     public void onBackPressed() {
         super.onBackPressed();
         hideLoadingAnim();
     }
 {% endhighlight %}
+
+<p>You can call the anim anywhere you want by calling <code>showLoadingAnim()</code> and hide the animation with<code>hideLoadingAnim()</code>. </p>
 
 
 

@@ -15,6 +15,7 @@ import com.kaodim.design.components.NumericControl;
 import com.kaodim.design.components.PricingBottomBar;
 import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.callbacks.NumericControlListener;
+import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
 import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.toast.ToastBanner;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Button toastSuccess, toastError, preLoader;
     LinearLayout toastMessageBar;
     NotesStandard notesStandard;
+    NotesInfo notesInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         toastMessageBar = findViewById(R.id.lvTopMessage);
         preLoader = findViewById(R.id.BtnPreLoader);
         notesStandard = findViewById(R.id.notesStandardView);
+        notesInfo = findViewById(R.id.notesInfoView);
 
         setupNumericControl();
 
@@ -62,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         setupPreLoaderListerner();
 
         setupNotesStandardListener();
+
+        setupNotesInfo();
     }
 
     private void setupInteractivePanel() {
@@ -201,6 +206,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),"You have clicked Notes' Secondary Double Button",Toast.LENGTH_SHORT).show();
             }
         });
+   }
+
+   private void setupNotesInfo(){
+        notesInfo.setNotesType(NotesInfo.TYPE_TEXT_ONLY);
+        notesInfo.setNotesInfoTitleText("This is an example title");
+        notesInfo.setNotesInfoDescriptionText("This is very long multi line notes description for notes info component");
+//        notesInfo.setTitleVisibility(View.VISIBLE);
+//        notesInfo.setDescriptionVisibility(View.VISIBLE);
+//        notesInfo.setIconVisibility(View.VISIBLE);
    }
 
     @Override
