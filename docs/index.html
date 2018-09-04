@@ -369,7 +369,7 @@ mobileInputMockLayout.setMobileInputEventListener(new MobileInputMockLayout.Mobi
 <p>
   MobileInputLayout provides a validated mobile input text field customized with a coutnry selection drop down. All mobile numbers are validated by any required country's ISO code. It also provides a callback when the number is changed by the user along with the validity of the entered number.
 </p>
-<img src="assets/images/component_mobile_input.png" class="screenshot small" />
+<img src="assets/images/component_mobile_input_mock.png" class="screenshot small" />
 {% highlight xml %}
 <com.kaodim.design.components.MobileInputLayout
   android:id="@+id/mobileInputLayout"
@@ -406,9 +406,9 @@ public void onMobileValueChanged(String countryCode, String value, boolean isVal
 });
 {% endhighlight %}
 
-The validation is done by Google's [https://github.com/googlei18n/libphonenumber](libphonenumber) library. The component is using a wrapper called [https://github.com/lamudi-gmbh/android-phone-field](android-phone-field).
+The validation is done by Google's [libphonenumber](https://github.com/googlei18n/libphonenumber) library. The component is using a wrapper called [https://github.com/lamudi-gmbh/android-phone-field](android-phone-field).
 
-For ISO Alpha-2 codes, refer to [https://www.nationsonline.org/oneworld/country_code_list.htm](this guide).
+For ISO Alpha-2 codes, refer to [this guide](https://www.nationsonline.org/oneworld/country_code_list.htm).
 
 <hr>
 <h3>Custom Facebook Button</h3>
