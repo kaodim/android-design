@@ -94,7 +94,16 @@ public class NotesInfo extends LinearLayout {
         tvTitle.setText(title);
     }
 
+    public void setNotesInfoTitleText(CharSequence title){
+        tvTitle.setText(title);
+    }
+
+
     public void setNotesInfoDescriptionText(String description){
+        tvDescription.setText(description);
+    }
+
+    public void setNotesInfoDescriptionText(CharSequence description){
         tvDescription.setText(description);
     }
 

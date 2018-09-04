@@ -156,6 +156,14 @@ public class NotesStandard extends LinearLayout {
         }
     }
 
+    public void setSecondaryVisibility(CharSequence secondaryDescription){
+        if(secondaryDescription == null || secondaryDescription.length() == 0){
+            tvSecondaryDescription.setVisibility(View.GONE);
+        }else{
+            tvSecondaryDescription.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void setTvDescriptionVisibility(int visibility){
         tvDescription.setVisibility(visibility);
     }
@@ -168,10 +176,20 @@ public class NotesStandard extends LinearLayout {
         tvDescription.setText(description);
     }
 
+    public void setDescriptionText(CharSequence description) {
+        tvDescription.setText(description);
+    }
+
     public void setSecondaryDescription(String description){
         tvSecondaryDescription.setText(description);
         setSecondaryVisibility(description);
     }
+
+    public void setSecondaryDescription(CharSequence description){
+        tvSecondaryDescription.setText(description);
+        setSecondaryVisibility(description);
+    }
+
 
     public void setButtonOnClickListener(NotesStandardListener notesStandardListener) {
         this.listener = notesStandardListener;
