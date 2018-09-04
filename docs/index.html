@@ -429,6 +429,40 @@ pricingBottomBar.setButtonOnClickListener(new PricingBottomBar.PricingBottomBarB
         });
 {% endhighlight %}
 
+
+hr>
+<h3>Full Width Bottom Bar</h3>
+<p>
+The  <code>FullWidthBottomBar</code> is an extended <code>LinearLayout</code> that was styled to match the Kaodim design guidelines to show single actionable button. It also allows customized button's text.The button implementation  has a callback of its own and the button can be enabled and disabled to toggle visibility.
+</p>
+<img src="assets/images/FullWidthBottomBar.png" class="screenshot small" />
+{% highlight xml %}
+ <com.kaodim.design.components.bottomBars.FullWidthBottomBar
+        android:id="@+id/kdl_full_width_bottombar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:btnFullWidthText="Proceed">
+</com.kaodim.design.components.bottomBars.FullWidthBottomBar>
+{% endhighlight %}
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+FullWidthBottomBar fullWidthBottomBar = findViewById(R.id.kdl_full_width_bottombar);
+fullWidthBottomBar.setButtonText("Proceed");
+fullWidthBottomBar.setButtonEnabled(true);
+{% endhighlight %}
+<p class="heading">Set Listeners</p>
+Set a listener using:
+{% highlight java %}
+fullWidthBottomBar.setButtonOnClickListener(new FullWidthBottomBar.FullWidthBottomBarButtonListener() {
+            @Override
+            public void onButtonClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Full Width Bottom Bar Button",Toast.LENGTH_SHORT).show();
+            }
+        });
+{% endhighlight %}
+
+
 <hr>
 <h3>ToastBanner Notification</h3>
 <p>

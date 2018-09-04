@@ -1,4 +1,4 @@
-package com.kaodim.design.components;
+package com.kaodim.design.components.bottomBars;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,68 +11,51 @@ import android.widget.TextView;
 
 import com.kaodim.design.R;
 
-public class PricingBottomBar extends LinearLayout {
+public class FullWidthBottomBar extends LinearLayout{
 
     String title,price,btnText;
     TextView tvTitle,tvPrice;
     Button btnNext;
 
-    public interface PricingBottomBarButtonListener {
+    public interface FullWidthBottomBarButtonListener {
         void onButtonClicked();
     }
 
-    PricingBottomBarButtonListener listener;
+    FullWidthBottomBarButtonListener listener;
 
 
-    public PricingBottomBar(Context context) {
+    public FullWidthBottomBar(Context context) {
         super(context);
         init(context,null);
     }
 
-    public PricingBottomBar(Context context, AttributeSet set) {
+    public FullWidthBottomBar(Context context, AttributeSet set) {
         super(context, set);
         init(context,set);
     }
 
-    public PricingBottomBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FullWidthBottomBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context,attrs);
     }
 
     private void init(Context context,AttributeSet atts) {
         //Retrieve the custom attributes from XML
-        TypedArray typedArray = context.obtainStyledAttributes(atts,R.styleable.PricingBottomBar);
-        title = typedArray.getString(R.styleable.PricingBottomBar_title);
-        price = typedArray.getString(R.styleable.PricingBottomBar_pricing);
-        btnText = typedArray.getString(R.styleable.PricingBottomBar_btnText);
+        TypedArray typedArray = context.obtainStyledAttributes(atts, R.styleable.FullWidthBottomBar);
+        btnText = typedArray.getString(R.styleable.FullWidthBottomBar_btnFullWidthText);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.kdl_pricing_bar, this);
+        inflater.inflate(R.layout.full_width_bottom_par, this);
         initComponents();
     }
 
     private void initComponents() {
-        tvPrice = findViewById(R.id.tvTotalAmount);
-        tvTitle = findViewById(R.id.tvTotalTitle);
-        btnNext = findViewById(R.id.btnProceed);
-
-        tvPrice.setText(price);
-        tvTitle.setText(title);
+        btnNext = findViewById(R.id.btnFullBottomBar);
         btnNext.setText(btnText);
 
         setEvents();
-    }
-
-    public void setPriceTitle(String title) {
-        this.title = title;
-        tvTitle.setText(title);
-    }
-
-    public void setPriceString(String priceString) {
-        this.price = priceString;
-        tvPrice.setText(priceString);
     }
 
     public void setButtonText(String btnText) {
@@ -84,8 +67,8 @@ public class PricingBottomBar extends LinearLayout {
         btnNext.setEnabled(enabled);
     }
 
-    public void setButtonOnClickListener(PricingBottomBarButtonListener pricingBottomBarButtonListener) {
-        this.listener = pricingBottomBarButtonListener;
+    public void setButtonOnClickListener(FullWidthBottomBarButtonListener fullWidthBottomBarButtonListener) {
+        this.listener = fullWidthBottomBarButtonListener;
     }
 
     private void setEvents() {

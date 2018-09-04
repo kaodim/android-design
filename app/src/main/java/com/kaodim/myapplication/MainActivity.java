@@ -12,8 +12,9 @@ import android.widget.Toolbar;
 import com.kaodim.design.components.DateTimePicker;
 import com.kaodim.design.components.InteractivePanel;
 import com.kaodim.design.components.NumericControl;
-import com.kaodim.design.components.PricingBottomBar;
 import com.kaodim.design.components.SearchBox;
+import com.kaodim.design.components.bottomBars.FullWidthBottomBar;
+import com.kaodim.design.components.bottomBars.PricingBottomBar;
 import com.kaodim.design.components.callbacks.NumericControlListener;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
@@ -30,8 +31,11 @@ public class MainActivity extends AppCompatActivity {
     InteractivePanel interactivePanel;
     SearchBox searchBox;
     PricingBottomBar pricingBottomBar;
+    FullWidthBottomBar fullWidthBottomBar;
     Button toastSuccess, toastError, preLoader;
     LinearLayout toastMessageBar;
+
+
     NotesStandard notesStandard;
     NotesInfo notesInfo;
 
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         preLoader = findViewById(R.id.BtnPreLoader);
         notesStandard = findViewById(R.id.notesStandardView);
         notesInfo = findViewById(R.id.notesInfoView);
+        fullWidthBottomBar = findViewById(R.id.kdl_full_width_bottombar);
 
         setupNumericControl();
 
@@ -67,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         setupNotesStandardListener();
 
         setupNotesInfo();
+
+        setupFullWidthBottomBar();
     }
 
     private void setupInteractivePanel() {
@@ -215,6 +222,19 @@ public class MainActivity extends AppCompatActivity {
 //        notesInfo.setTitleVisibility(View.VISIBLE);
 //        notesInfo.setDescriptionVisibility(View.VISIBLE);
 //        notesInfo.setIconVisibility(View.VISIBLE);
+   }
+
+   private void setupFullWidthBottomBar(){
+        fullWidthBottomBar.setButtonText("Proceed");
+        fullWidthBottomBar.setButtonEnabled(true);
+
+
+        fullWidthBottomBar.setButtonOnClickListener(new FullWidthBottomBar.FullWidthBottomBarButtonListener() {
+            @Override
+            public void onButtonClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Full Width Bottom Bar Button",Toast.LENGTH_SHORT).show();
+            }
+        });
    }
 
     @Override

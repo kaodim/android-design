@@ -210,14 +210,29 @@
                 android:text="Pricing BottomBar"
                 android:textColor="@color/firefly" />
 
-            <com.kaodim.design.components.PricingBottomBar
+            <com.kaodim.design.components.bottomBars.PricingBottomBar
                 android:id="@+id/kdl_pricingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:title="Total Amount"
                 app:btnText="Pay Now"
                 app:pricing="RM 100">
-            </com.kaodim.design.components.PricingBottomBar>
+            </com.kaodim.design.components.bottomBars.PricingBottomBar>
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Full Width BottomBar"
+                android:textColor="@color/firefly" />
+
+            <com.kaodim.design.components.bottomBars.FullWidthBottomBar
+                android:id="@+id/kdl_full_width_bottombar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:btnFullWidthText="Proceed">
+            </com.kaodim.design.components.bottomBars.FullWidthBottomBar>
 
             <TextView
                 style="@style/NormalTextBolded"

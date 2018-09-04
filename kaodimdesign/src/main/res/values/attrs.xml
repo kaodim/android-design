@@ -40,6 +40,10 @@
         <attr name="pricing" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="FullWidthBottomBar">
+        <attr name="btnFullWidthText" format="string"/>
+    </declare-styleable>
+
     <declare-styleable name="MobileInputMockLayout">
         <attr name="mockHint" format="string" />
     </declare-styleable>
