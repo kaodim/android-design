@@ -32,6 +32,7 @@
                 android:textColor="@color/jelly_bean"
                 android:lineSpacingMultiplier="1.30"
                 android:textSize="@dimen/size_12"
+                android:layout_marginBottom="7dp"
                 android:fontFamily="@font/roboto_regular"
                 android:visibility="visible"
                 android:text="This is an example of a notes with very long multi line description "/>
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/jelly_bean"
                 android:textSize="@dimen/size_12"
-                android:layout_marginTop="7dp"
+
                 android:visibility="visible"
                 android:textStyle="italic"
                 android:text="This is secondary text"/>
