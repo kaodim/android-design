@@ -41,9 +41,10 @@
                 android:id="@+id/tvSecondaryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/jelly_bean"
+                android:textColor="@color/jelly_bean_50"
                 android:textSize="@dimen/size_12"
-
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="7dp"
                 android:visibility="visible"
                 android:textStyle="italic"
                 android:text="This is secondary text"/>
@@ -53,7 +54,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:id="@+id/llSinglebutton"
                 android:visibility="visible">
 
@@ -81,7 +81,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:id="@+id/llDoublebutton"
                 android:visibility="visible">
 

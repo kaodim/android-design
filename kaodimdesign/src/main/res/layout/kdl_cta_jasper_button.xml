@@ -8,6 +8,6 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:textColor="@color/porcelain"
-        android:background="@drawable/kdl_shape_jasper"/>
+        android:background="@drawable/button_jasper"/>
 
 </RelativeLayout>
