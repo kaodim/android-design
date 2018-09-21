@@ -16,6 +16,7 @@ public class FullWidthBottomBar extends LinearLayout{
     String title,price,btnText;
     TextView tvTitle,tvPrice;
     Button btnNext;
+    boolean isButtonDisabled = false;
 
     public interface FullWidthBottomBarButtonListener {
         void onButtonClicked();
@@ -43,6 +44,7 @@ public class FullWidthBottomBar extends LinearLayout{
         //Retrieve the custom attributes from XML
         TypedArray typedArray = context.obtainStyledAttributes(atts, R.styleable.FullWidthBottomBar);
         btnText = typedArray.getString(R.styleable.FullWidthBottomBar_btnFullWidthText);
+        isButtonDisabled = typedArray.getBoolean(R.styleable.FullWidthBottomBar_btnEnabled, true);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -54,6 +56,7 @@ public class FullWidthBottomBar extends LinearLayout{
     private void initComponents() {
         btnNext = findViewById(R.id.btnFullBottomBar);
         btnNext.setText(btnText);
+        btnNext.setEnabled(isButtonDisabled);
 
         setEvents();
     }
@@ -61,6 +64,11 @@ public class FullWidthBottomBar extends LinearLayout{
     public void setButtonText(String btnText) {
         this.btnText = btnText;
         btnNext.setText(btnText);
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.isButtonDisabled = enabled;
+        btnNext.setEnabled(isButtonDisabled);
     }
 
     public void setButtonEnabled(boolean enabled) {

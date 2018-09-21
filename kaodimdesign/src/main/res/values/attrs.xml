@@ -42,6 +42,7 @@
 
     <declare-styleable name="FullWidthBottomBar">
         <attr name="btnFullWidthText" format="string"/>
+        <attr name="btnEnabled" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="MobileInputMockLayout">
