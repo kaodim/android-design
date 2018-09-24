@@ -164,7 +164,7 @@ implementation 'com.github.kaodim:android-design:1.0.5'
   <p>A picker component will be added to the interface and upon tapping this component, the date time picker dialog will be called.</p>
   <img src="https://engineering.kaodim.com/android-design/assets/images/component_datetimepicker.jpg" class="screenshot small" />
   <p class="heading">Date Time Picker Dialog</p>
-  <img src="assets/images/component_datetimepicker.jpg" class="screenshot" style="height: 50%; width: 50%;" />
+  <img src="assets/images/component_datetimepicker.jpg" class="screenshot" />
 {% highlight xml %}
 <com.kaodim.design.components.DateTimePicker
     android:id="@+id/dateTimePicker"
@@ -582,6 +582,61 @@ notesStandard.setButtonOnClickListener(new NotesStandard.NotesStandardListener()
 <img src="assets/images/components_secondary_description.png" class="screenshot small" />
 <img src="assets/images/components_notes_primary.png" class="screenshot small" />
 <img src="assets/images/components_only_text.png" class="screenshot small" />
+
+<hr>
+<h3>Notes Error</h3>
+<p>
+The  <code>NotesError</code> is an extended <code>Linearlayout</code> that was styled to match the Kaodim design guidelines to show error notes with actionable buttons. This component is an exact copy of <code>NotesStandard</code> with different layout colors.
+</p>
+<img src="assets/images/notes_error_double_button.png" class="screenshot small" />
+{% highlight xml %}
+<com.kaodim.design.components.notes.NotesError
+                    android:id="@+id/notesErrorView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:notesErrorText="This is text view"
+                    app:notesErrorType="double_button"
+                    app:showNotesSecondary="true"
+                    app:btnSingleText="Button"
+                    app:btnDoublePrimaryText="Primary"
+                    app:btnDoubleSecondaryText="Secondary"
+                    android:layout_margin="15dp">
+
+                </com.kaodim.design.components.notes.NotesError>
+{% endhighlight %}
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+NotesError notesError.setNotesType(NotesError.TYPE_DOUBLE_BUTTON);
+        notesError.setDescriptionText("This is a very long multi line error notes description for error notes");
+        notesError.setButtonSingleText("Button");
+        notesError.setButtonDoublePrimaryText("Button Primary");
+        notesError.setButtonDoubleSecondaryText("Button Secondary");
+{% endhighlight %}
+<p class="heading">Set Listeners</p>
+Set a listener using:
+{% highlight java %}
+notesError.setButtonOnClickListener(new NotesStandard.NotesStandardListener() {
+            @Override
+            public void onButtonSingleClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Single Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoublePrimaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Primary Double Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoubleSecondaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Secondary Double Button",Toast.LENGTH_SHORT).show();
+            }
+        });
+{% endhighlight %}
+
+<p class="heading">Variant</p>
+<img src="assets/images/notes_error_no_buttons.png" class="screenshot small" />
+<img src="assets/images/notes_error_btn_single.png" class="screenshot small" />
 
 <hr>
 <h3>Notes Info</h3>

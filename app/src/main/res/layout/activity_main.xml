@@ -137,6 +137,34 @@
                </com.kaodim.design.components.notes.NotesStandard>
             </LinearLayout>
 
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Notes Error"
+                android:textColor="@color/firefly" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.kaodim.design.components.notes.NotesError
+                    android:id="@+id/notesErrorView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:notesErrorText="This is text view"
+                    app:notesErrorType="double_button"
+                    app:showNotesSecondary="true"
+                    app:btnSingleText="Button"
+                    app:btnDoublePrimaryText="Primary"
+                    app:btnDoubleSecondaryText="Secondary"
+                    android:layout_margin="15dp">
+
+                </com.kaodim.design.components.notes.NotesError>
+            </LinearLayout>
+
 
 
             <TextView

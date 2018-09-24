@@ -16,6 +16,7 @@ import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.bottomBars.FullWidthBottomBar;
 import com.kaodim.design.components.bottomBars.PricingBottomBar;
 import com.kaodim.design.components.callbacks.NumericControlListener;
+import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
 import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     NotesStandard notesStandard;
+    NotesError notesError;
     NotesInfo notesInfo;
 
     @Override
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         toastMessageBar = findViewById(R.id.lvTopMessage);
         preLoader = findViewById(R.id.BtnPreLoader);
         notesStandard = findViewById(R.id.notesStandardView);
+        notesError = findViewById(R.id.notesErrorView);
         notesInfo = findViewById(R.id.notesInfoView);
         fullWidthBottomBar = findViewById(R.id.kdl_full_width_bottombar);
 
@@ -70,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         setupPreLoaderListerner();
 
         setupNotesStandardListener();
+
+        setupErrorNotesStandardListener();
 
         setupNotesInfo();
 
@@ -216,6 +221,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
    }
+
+    private void setupErrorNotesStandardListener(){
+        notesError.setNotesType(NotesError.TYPE_DOUBLE_BUTTON);
+        notesError.setDescriptionText("This is a very long multi line error notes description for error notes");
+        notesError.setButtonSingleText("Button");
+        notesError.setButtonDoublePrimaryText("Button Primary");
+        notesError.setButtonDoubleSecondaryText("Button Secondary");
+
+        notesError.setButtonOnClickListener(new NotesStandard.NotesStandardListener() {
+            @Override
+            public void onButtonSingleClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Single Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoublePrimaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Primary Double Button",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onButtonDoubleSecondaryClicked() {
+                Toast.makeText(getBaseContext(),"You have clicked Notes' Secondary Double Button",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
    private void setupNotesInfo(){
         notesInfo.setNotesType(NotesInfo.TYPE_WITH_ICON_TITLE);

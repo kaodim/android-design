@@ -80,6 +80,23 @@
         <attr name="showNotesSecondary" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="NotesError">
+        <attr name="notesErrorText" format="string" />
+        <attr name="notesErrorType" format="string">
+            <enum name="no_button" value="1" />
+            <enum name="single_button" value="2" />
+            <enum name="double_button" value="3" />
+            <enum name="no_icon" value="4" />
+            <enum name="only_primary_text" value="5" />
+        </attr>
+        <attr name="notesErrorDrawable" format="integer"/>
+        <attr name="btnErrorSingleText" format="string"/>
+        <attr name="btnErrorDoublePrimaryText" format="string"/>
+        <attr name="btnErrorDoubleSecondaryText" format="string"/>
+        <attr name="notesErrorSecondary" format="string"/>
+        <attr name="showNotesErrorSecondary" format="boolean"/>
+    </declare-styleable>
+
     <declare-styleable name="NotesInfo">
         <attr name="notesInfoText" format="string" />
         <attr name="notesInfoTitle" format="string" />
