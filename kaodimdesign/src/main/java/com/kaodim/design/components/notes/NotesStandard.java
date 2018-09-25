@@ -183,7 +183,11 @@ public class NotesStandard extends LinearLayout {
 
     public void setIconSize(int width, int height){
         LayoutParams layoutParams = new LayoutParams(width,height);
-        layoutParams.setMargins(0,4,15,0);
+        layoutParams.setMargins(0,8,15,0);
+        ivIcon.setLayoutParams(layoutParams);
+    }
+
+    public void setIconSize( LayoutParams layoutParams){
         ivIcon.setLayoutParams(layoutParams);
     }
 
