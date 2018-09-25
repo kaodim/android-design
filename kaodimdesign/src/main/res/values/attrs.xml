@@ -73,6 +73,8 @@
             <enum name="only_primary_text" value="5" />
         </attr>
         <attr name="notesIconDrawable" format="integer"/>
+        <attr name="notesIconWidth" format="dimension"/>
+        <attr name="notesIconHeight" format="dimension"/>
         <attr name="btnSingleText" format="string"/>
         <attr name="btnDoublePrimaryText" format="string"/>
         <attr name="btnDoubleSecondaryText" format="string"/>
@@ -90,6 +92,8 @@
             <enum name="only_primary_text" value="5" />
         </attr>
         <attr name="notesErrorDrawable" format="integer"/>
+        <attr name="notesErrorWidth" format="dimension"/>
+        <attr name="notesErrorHeight" format="dimension"/>
         <attr name="btnErrorSingleText" format="string"/>
         <attr name="btnErrorDoublePrimaryText" format="string"/>
         <attr name="btnErrorDoubleSecondaryText" format="string"/>

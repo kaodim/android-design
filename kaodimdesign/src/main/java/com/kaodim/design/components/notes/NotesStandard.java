@@ -17,10 +17,10 @@ public class NotesStandard extends LinearLayout {
 
     TextView tvDescription, tvSecondaryDescription;
     Button btnSingle, btnDoublePrimary, btnDoubleSecondary;
-    private int notesType;
+    private int notesType,iconWidth,iconHeight,iconResourceId;
     String description,secondaryDescription, btnSingleText, btnDoublePrimaryText,btnDoubleSecondaryText;
     boolean showSecondaryText = false;
-    LinearLayout llSingleBtn, llDoubleBtn;
+    LinearLayout llSingleBtn, llDoubleBtn,llIcon;
     ImageView ivIcon;
 
 
@@ -65,6 +65,9 @@ public class NotesStandard extends LinearLayout {
         btnDoublePrimaryText = typedArray.getString(R.styleable.NotesStandard_btnDoublePrimaryText);
         btnDoubleSecondaryText = typedArray.getString(R.styleable.NotesStandard_btnDoubleSecondaryText);
         showSecondaryText = typedArray.getBoolean(R.styleable.NotesStandard_showNotesSecondary,false);
+        iconWidth = typedArray.getLayoutDimension(R.styleable.NotesStandard_notesIconWidth,21);
+        iconHeight = typedArray.getLayoutDimension(R.styleable.NotesStandard_notesIconHeight,50);
+        iconResourceId = typedArray.getResourceId(R.styleable.NotesStandard_notesIconDrawable,R.drawable.ic_cash);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -82,6 +85,7 @@ public class NotesStandard extends LinearLayout {
         llSingleBtn = findViewById(R.id.llSinglebutton);
         llDoubleBtn = findViewById(R.id.llDoublebutton);
         ivIcon = findViewById(R.id.ivIcon);
+        llIcon = findViewById(R.id.llIcon);
 
         tvDescription.setText(description);
         tvDescription.setVisibility(VISIBLE);
@@ -93,6 +97,8 @@ public class NotesStandard extends LinearLayout {
         setEvents();
         setNotesType(notesType);
         setSecondaryVisibility(secondaryDescription);
+        setIcon(iconResourceId);
+        setIconSize(iconWidth,iconHeight);
     }
 
     public void setNotesType(int type){
@@ -101,6 +107,7 @@ public class NotesStandard extends LinearLayout {
         switch (notesType){
             case TYPE_NO_BUTTON:
                 ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.GONE);
                 llDoubleBtn.setVisibility(View.GONE);
                 setSecondaryVisibility(secondaryDescription);
@@ -108,12 +115,14 @@ public class NotesStandard extends LinearLayout {
                 break;
             case TYPE_SINGLE_BUTTON:
                 ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.VISIBLE);
                 llDoubleBtn.setVisibility(View.GONE);
                 setSecondaryVisibility(secondaryDescription);
                 tvDescription.setVisibility(VISIBLE);
                 break;
             case TYPE_DOUBLE_BUTTON:
+                ivIcon.setVisibility(View.VISIBLE);
                 ivIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.GONE);
                 llDoubleBtn.setVisibility(View.VISIBLE);
@@ -122,6 +131,7 @@ public class NotesStandard extends LinearLayout {
                 break;
             case TYPE_NO_ICON:
                 ivIcon.setVisibility(View.GONE);
+                llIcon.setVisibility(View.GONE);
                 llSingleBtn.setVisibility(View.VISIBLE);
                 llDoubleBtn.setVisibility(View.VISIBLE);
                 setSecondaryVisibility(secondaryDescription);
@@ -129,6 +139,7 @@ public class NotesStandard extends LinearLayout {
                 break;
             case TYPE_ONLY_PRIMARY_TEXT:
                 ivIcon.setVisibility(View.GONE);
+                llIcon.setVisibility(View.GONE);
                 llSingleBtn.setVisibility(View.GONE);
                 llDoubleBtn.setVisibility(View.GONE);
                 setSecondaryVisibility(secondaryDescription);
@@ -137,6 +148,7 @@ public class NotesStandard extends LinearLayout {
 
             default:
                 ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.VISIBLE);
                 llDoubleBtn.setVisibility(View.VISIBLE);
                 setSecondaryVisibility(secondaryDescription);
@@ -162,6 +174,17 @@ public class NotesStandard extends LinearLayout {
         }else{
             tvSecondaryDescription.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setIcon(int resourceID){
+        ivIcon.setVisibility(View.VISIBLE);
+        ivIcon.setImageResource(resourceID);
+    }
+
+    public void setIconSize(int width, int height){
+        LayoutParams layoutParams = new LayoutParams(width,height);
+        layoutParams.setMargins(0,4,15,0);
+        ivIcon.setLayoutParams(layoutParams);
     }
 
     public void setTvDescriptionVisibility(int visibility){
