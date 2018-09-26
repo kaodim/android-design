@@ -3,6 +3,7 @@ package com.kaodim.design.components.notes;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +16,10 @@ import com.kaodim.design.R;
 public class NotesError  extends LinearLayout{
     TextView tvDescription, tvSecondaryDescription;
     Button btnSingle, btnDoublePrimary, btnDoubleSecondary;
-    private int notesType;
+    private int notesType,iconWidth,iconHeight,iconResourceId;
     String description,secondaryDescription, btnSingleText, btnDoublePrimaryText,btnDoubleSecondaryText;
     boolean showSecondaryText = false;
-    LinearLayout llSingleBtn, llDoubleBtn;
+    LinearLayout llSingleBtn, llDoubleBtn,llIcon;
     ImageView ivIcon;
 
 
@@ -63,6 +64,9 @@ public class NotesError  extends LinearLayout{
         btnDoublePrimaryText = typedArray.getString(R.styleable.NotesError_btnErrorDoublePrimaryText);
         btnDoubleSecondaryText = typedArray.getString(R.styleable.NotesError_btnErrorDoubleSecondaryText);
         showSecondaryText = typedArray.getBoolean(R.styleable.NotesError_showNotesErrorSecondary,false);
+        iconWidth = typedArray.getLayoutDimension(R.styleable.NotesError_notesErrorIconWidth,20);
+        iconHeight = typedArray.getLayoutDimension(R.styleable.NotesError_notesErrorIconHeight,20);
+        iconResourceId = typedArray.getResourceId(R.styleable.NotesError_notesErrorIconDrawable,R.drawable.ic_notes_error);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -80,6 +84,7 @@ public class NotesError  extends LinearLayout{
         llSingleBtn = findViewById(R.id.llSinglebutton);
         llDoubleBtn = findViewById(R.id.llDoublebutton);
         ivIcon = findViewById(R.id.ivIcon);
+        llIcon = findViewById(R.id.llIcon);
 
         tvDescription.setText(description);
         tvDescription.setVisibility(VISIBLE);
@@ -91,6 +96,8 @@ public class NotesError  extends LinearLayout{
         setEvents();
         setNotesType(notesType);
         setSecondaryVisibility(secondaryDescription);
+        setIcon(iconResourceId);
+        setIconSize(iconWidth,iconHeight);
     }
 
     public void setNotesType(int type){
@@ -99,6 +106,7 @@ public class NotesError  extends LinearLayout{
         switch (notesType){
             case TYPE_NO_BUTTON:
                 ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.GONE);
                 llDoubleBtn.setVisibility(View.GONE);
                 setSecondaryVisibility(secondaryDescription);
@@ -106,6 +114,7 @@ public class NotesError  extends LinearLayout{
                 break;
             case TYPE_SINGLE_BUTTON:
                 ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.VISIBLE);
                 llDoubleBtn.setVisibility(View.GONE);
                 setSecondaryVisibility(secondaryDescription);
@@ -113,6 +122,7 @@ public class NotesError  extends LinearLayout{
                 break;
             case TYPE_DOUBLE_BUTTON:
                 ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.GONE);
                 llDoubleBtn.setVisibility(View.VISIBLE);
                 setSecondaryVisibility(secondaryDescription);
@@ -120,6 +130,7 @@ public class NotesError  extends LinearLayout{
                 break;
             case TYPE_NO_ICON:
                 ivIcon.setVisibility(View.GONE);
+                llIcon.setVisibility(View.GONE);
                 llSingleBtn.setVisibility(View.VISIBLE);
                 llDoubleBtn.setVisibility(View.VISIBLE);
                 setSecondaryVisibility(secondaryDescription);
@@ -127,6 +138,7 @@ public class NotesError  extends LinearLayout{
                 break;
             case TYPE_ONLY_PRIMARY_TEXT:
                 ivIcon.setVisibility(View.GONE);
+                llIcon.setVisibility(View.GONE);
                 llSingleBtn.setVisibility(View.GONE);
                 llDoubleBtn.setVisibility(View.GONE);
                 setSecondaryVisibility(secondaryDescription);
@@ -135,14 +147,12 @@ public class NotesError  extends LinearLayout{
 
             default:
                 ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.VISIBLE);
                 llDoubleBtn.setVisibility(View.VISIBLE);
                 setSecondaryVisibility(secondaryDescription);
                 tvDescription.setVisibility(VISIBLE);
                 break;
-
-
-
         }
     }
 
@@ -160,6 +170,24 @@ public class NotesError  extends LinearLayout{
         }else{
             tvSecondaryDescription.setVisibility(View.VISIBLE);
         }
+    }
+
+
+    public void setIcon(int resourceID){
+        ivIcon.setVisibility(View.VISIBLE);
+        ivIcon.setImageResource(resourceID);
+    }
+
+    public void setIconSize(int width, int height){
+        int width_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width, getResources().getDisplayMetrics());
+        int height_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, getResources().getDisplayMetrics());
+        LayoutParams layoutParams = new LayoutParams(width_dp,height_dp);
+        layoutParams.setMargins(0,8,15,0);
+        ivIcon.setLayoutParams(layoutParams);
+    }
+
+    public void setIconSize( LayoutParams layoutParams){
+        ivIcon.setLayoutParams(layoutParams);
     }
 
     public void setTvDescriptionVisibility(int visibility){

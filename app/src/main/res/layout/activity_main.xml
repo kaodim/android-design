@@ -104,7 +104,9 @@
                    android:layout_height="match_parent"
                    app:notesInfoType="with_icon_and_title"
                    app:notesInfoTitle="This is an example of title"
-                   app:notesInfoText="This is very long multi line description for notes info description">
+                   app:notesInfoText="This is very long multi line description for notes info description"
+                   app:notesInfoIconHeight="18dp"
+                   app:notesInfoIconWidth="13dp">
 
                </com.kaodim.design.components.notes.NotesInfo>
             </LinearLayout>
@@ -159,10 +161,13 @@
                     android:layout_height="match_parent"
                     app:notesErrorText="This is text view"
                     app:notesErrorType="double_button"
+                    app:notesErrorIconHeight="20dp"
+                    app:notesErrorIconWidth="20dp"
+                    app:notesErrorIconDrawable="@drawable/ic_notes_error"
                     app:showNotesSecondary="true"
-                    app:btnSingleText="Button"
-                    app:btnDoublePrimaryText="Primary"
-                    app:btnDoubleSecondaryText="Secondary"
+                    app:btnErrorSingleText="Button"
+                    app:btnErrorDoublePrimaryText="Primary"
+                    app:btnErrorDoubleSecondaryText="Secondary"
                     android:layout_margin="15dp">
 
                 </com.kaodim.design.components.notes.NotesError>

@@ -2,6 +2,7 @@ package com.kaodim.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -202,6 +203,10 @@ public class MainActivity extends AppCompatActivity {
         notesStandard.setTvDescriptionVisibility(View.VISIBLE);
         notesStandard.setEnableButtonSingle(true);
 
+//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(21,17);
+//        layoutParams.setMargins(0,8,15,0);
+//        notesStandard.setIconSize(layoutParams);
+
 
         notesStandard.setButtonOnClickListener(new NotesStandard.NotesStandardListener() {
             @Override
@@ -228,6 +233,14 @@ public class MainActivity extends AppCompatActivity {
         notesError.setButtonDoublePrimaryText("Button Primary");
         notesError.setButtonDoubleSecondaryText("Button Secondary");
 
+        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width,height);
+        layoutParams.setMargins(0,8,15,0);
+        notesError.setIconSize(layoutParams);
+        notesError.setIcon(R.drawable.ic_notes_error);
+        notesError.setIconSize(20,20);
+
         notesError.setButtonOnClickListener(new NotesStandard.NotesStandardListener() {
             @Override
             public void onButtonSingleClicked() {
@@ -250,6 +263,10 @@ public class MainActivity extends AppCompatActivity {
         notesInfo.setNotesType(NotesInfo.TYPE_WITH_ICON_TITLE);
         notesInfo.setNotesInfoTitleText("This is an example title");
         notesInfo.setNotesInfoDescriptionText("This is very long multi line notes description for notes info component");
+
+//       LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(13,18);
+//       layoutParams.setMargins(0,10,26,0);
+//       notesInfo.setIconSize(layoutParams);
 //        notesInfo.setTitleVisibility(View.VISIBLE);
 //        notesInfo.setDescriptionVisibility(View.VISIBLE);
 //        notesInfo.setIconVisibility(View.VISIBLE);

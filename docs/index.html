@@ -586,6 +586,35 @@ notesStandard.setButtonOnClickListener(new NotesStandard.NotesStandardListener()
 <img src="assets/images/components_notes_primary.png" class="screenshot small" />
 <img src="assets/images/components_only_text.png" class="screenshot small" />
 
+<p>
+To set the icon and size, you can use style attributes in xml or in via code: 
+{% highlight xml %}
+<com.kaodim.design.components.notes.NotesStandard
+        app:notesIconHeight="17dp"
+        app:notesIconWidth="23dp"
+        app:notesIconDrawable="@drawable/ic_cash"
+</com.kaodim.design.components.notes.NotesStandard>
+{% endhighlight %}
+
+{% highlight java %}
+NotesStandard notesStandard = findViewById(R.id.notesStandardView);
+        notesStandard.setIcon(R.drawable.ic_notes_error);
+        notesStandard.setIconSize(20,20);
+{% endhighlight %}
+<hr>
+or with margin control:
+
+{% highlight java %}
+NotesStandard notesStandard = findViewById(R.id.notesStandardView);
+        notesStandard.setIcon(R.drawable.ic_cash);
+        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 21, getResources().getDisplayMetrics());
+        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 17, getResources().getDisplayMetrics());
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width,height);
+        layoutParams.setMargins(0,8,15,0);
+        notesStandard.setIconSize(layoutParams);
+{% endhighlight %}
+
+
 <hr>
 <h3>Notes Error</h3>
 <p>

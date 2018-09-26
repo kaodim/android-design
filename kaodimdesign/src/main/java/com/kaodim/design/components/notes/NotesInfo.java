@@ -3,6 +3,7 @@ package com.kaodim.design.components.notes;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,7 +16,7 @@ public class NotesInfo extends LinearLayout {
 
     TextView tvDescription, tvTitle;
     String description, title;
-    int notesType;
+    int notesType,iconWidth,iconHeight,iconResourceId;
     ImageView ivIcon;
 
     public static final int TYPE_WITH_ICON_TITLE = 1;
@@ -44,6 +45,9 @@ public class NotesInfo extends LinearLayout {
         description = typedArray.getString(R.styleable.NotesInfo_notesInfoText);
         title = typedArray.getString(R.styleable.NotesInfo_notesInfoTitle);
         notesType = typedArray.getInt(R.styleable.NotesInfo_notesInfoType,TYPE_WITH_ICON_TITLE);
+        iconWidth = typedArray.getLayoutDimension(R.styleable.NotesInfo_notesInfoIconWidth,13);
+        iconHeight = typedArray.getLayoutDimension(R.styleable.NotesInfo_notesInfoIconHeight,18);
+        iconResourceId = typedArray.getResourceId(R.styleable.NotesInfo_notesInfoIconDrawable,R.drawable.ic_bulb);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -61,6 +65,8 @@ public class NotesInfo extends LinearLayout {
         tvDescription.setText(description);
         tvTitle.setText(title);
         setNotesType(notesType);
+        setIcon(iconResourceId);
+        setIconSize(iconWidth,iconHeight);
     }
 
     public void setNotesType(int type){
@@ -88,6 +94,23 @@ public class NotesInfo extends LinearLayout {
                 tvTitle.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    public void setIcon(int resourceID){
+        ivIcon.setVisibility(View.VISIBLE);
+        ivIcon.setImageResource(resourceID);
+    }
+
+    public void setIconSize(int width, int height){
+        int width_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width, getResources().getDisplayMetrics());
+        int height_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, getResources().getDisplayMetrics());
+        LayoutParams layoutParams = new LayoutParams(width_dp,height_dp);
+        layoutParams.setMargins(0,10,26,0);
+        ivIcon.setLayoutParams(layoutParams);
+    }
+
+    public void setIconSize( LayoutParams layoutParams){
+        ivIcon.setLayoutParams(layoutParams);
     }
 
     public void setNotesInfoTitleText(String title){

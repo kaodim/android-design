@@ -91,9 +91,9 @@
             <enum name="no_icon" value="4" />
             <enum name="only_primary_text" value="5" />
         </attr>
-        <attr name="notesErrorDrawable" format="integer"/>
-        <attr name="notesErrorWidth" format="dimension"/>
-        <attr name="notesErrorHeight" format="dimension"/>
+        <attr name="notesErrorIconDrawable" format="integer"/>
+        <attr name="notesErrorIconWidth" format="dimension"/>
+        <attr name="notesErrorIconHeight" format="dimension"/>
         <attr name="btnErrorSingleText" format="string"/>
         <attr name="btnErrorDoublePrimaryText" format="string"/>
         <attr name="btnErrorDoubleSecondaryText" format="string"/>
@@ -104,6 +104,9 @@
     <declare-styleable name="NotesInfo">
         <attr name="notesInfoText" format="string" />
         <attr name="notesInfoTitle" format="string" />
+        <attr name="notesInfoIconDrawable" format="integer"/>
+        <attr name="notesInfoIconWidth" format="dimension"/>
+        <attr name="notesInfoIconHeight" format="dimension"/>
         <attr name="notesInfoType" format="string">
             <enum name="with_icon_and_title" value="1" />
             <enum name="with_icon" value="2" />

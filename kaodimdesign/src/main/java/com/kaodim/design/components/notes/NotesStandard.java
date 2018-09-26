@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -123,7 +124,7 @@ public class NotesStandard extends LinearLayout {
                 break;
             case TYPE_DOUBLE_BUTTON:
                 ivIcon.setVisibility(View.VISIBLE);
-                ivIcon.setVisibility(View.VISIBLE);
+                llIcon.setVisibility(View.VISIBLE);
                 llSingleBtn.setVisibility(View.GONE);
                 llDoubleBtn.setVisibility(View.VISIBLE);
                 setSecondaryVisibility(secondaryDescription);
@@ -182,7 +183,9 @@ public class NotesStandard extends LinearLayout {
     }
 
     public void setIconSize(int width, int height){
-        LayoutParams layoutParams = new LayoutParams(width,height);
+        int width_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width, getResources().getDisplayMetrics());
+        int height_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, getResources().getDisplayMetrics());
+        LayoutParams layoutParams = new LayoutParams(width_dp,height_dp);
         layoutParams.setMargins(0,8,15,0);
         ivIcon.setLayoutParams(layoutParams);
     }
