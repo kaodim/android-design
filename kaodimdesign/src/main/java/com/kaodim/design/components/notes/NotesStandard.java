@@ -99,7 +99,7 @@ public class NotesStandard extends LinearLayout {
         setNotesType(notesType);
         setSecondaryVisibility(secondaryDescription);
         setIcon(iconResourceId);
-        setIconSize(iconWidth,iconHeight);
+        setIconXMLSize(iconWidth,iconHeight);
     }
 
     public void setNotesType(int type){
@@ -189,6 +189,13 @@ public class NotesStandard extends LinearLayout {
         layoutParams.setMargins(0,8,15,0);
         ivIcon.setLayoutParams(layoutParams);
     }
+
+    private void setIconXMLSize(int width, int height){
+        LayoutParams layoutParams = new LayoutParams(width,height);
+        layoutParams.setMargins(0,8,15,0);
+        ivIcon.setLayoutParams(layoutParams);
+    }
+
 
     public void setIconSize( LayoutParams layoutParams){
         ivIcon.setLayoutParams(layoutParams);

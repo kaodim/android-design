@@ -132,7 +132,6 @@
                    app:notesType="double_button"
                    app:notesIconHeight="17dp"
                    app:notesIconWidth="23dp"
-                   app:notesIconDrawable="@drawable/ic_cash"
                    app:showNotesSecondary="true"
                    app:btnSingleText="Button"
                    app:btnDoublePrimaryText="Primary"
