@@ -35,7 +35,6 @@ public class MobileInputLayout extends RelativeLayout {
 
     CountryCodeRVAdapter adapter;
     ArrayList<CountryCodeRowItem> countryCodes = new ArrayList<>();
-    boolean isViewingCountries = false;
     String hint = "";
     String hintTitle = "";
     String countryCode = "";
@@ -126,7 +125,6 @@ public class MobileInputLayout extends RelativeLayout {
         adapter = new CountryCodeRVAdapter(context, countryCodes, new CountryCodeRVAdapter.CountryCodeSelectionListener() {
             @Override
             public void onSelected(CountryCodeRowItem countryItem) {
-
                 if (countrySelectedDisplayed) {
                     countrySelectedDisplayed = false;
                     hideCountrySelector();
@@ -183,12 +181,13 @@ public class MobileInputLayout extends RelativeLayout {
         llCountryCodeSelector.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isViewingCountries) {
+                Log.d("SIGNUPBUGS", "countrySelectedDisplayed " + countrySelectedDisplayed);
+                if (countrySelectedDisplayed) {
+                    countrySelectedDisplayed = false;
                     rvCountryCodeSelector.setVisibility(View.GONE);
-                    isViewingCountries = false;
                 } else {
+                    countrySelectedDisplayed = true;
                     rvCountryCodeSelector.setVisibility(View.VISIBLE);
-                    isViewingCountries = true;
                 }
             }
         });

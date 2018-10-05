@@ -128,11 +128,13 @@ public class PasswordField extends RelativeLayout {
                 if (isVisible) {
                     isVisible = false;
                     tvVisibilityToggle.setText(showText);
-                    etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    etPassword.setSelection(etPassword.getText().length());
                 } else {
                     isVisible = true;
                     tvVisibilityToggle.setText(hideText);
-                    etPassword.setInputType(129);
+                    etPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+                    etPassword.setSelection(etPassword.getText().length());
                 }
             }
         });
