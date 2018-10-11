@@ -186,13 +186,13 @@ public class NotesStandard extends LinearLayout {
         int width_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width, getResources().getDisplayMetrics());
         int height_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, getResources().getDisplayMetrics());
         LayoutParams layoutParams = new LayoutParams(width_dp,height_dp);
-        layoutParams.setMargins(0,8,15,0);
+        layoutParams.setMargins(0,8,26,0);
         ivIcon.setLayoutParams(layoutParams);
     }
 
     private void setIconXMLSize(int width, int height){
         LayoutParams layoutParams = new LayoutParams(width,height);
-        layoutParams.setMargins(0,8,15,0);
+        layoutParams.setMargins(0,8,26,0);
         ivIcon.setLayoutParams(layoutParams);
     }
 

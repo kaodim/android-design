@@ -195,13 +195,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
    private void setupNotesStandardListener(){
-        notesStandard.setNotesType(NotesStandard.TYPE_DOUBLE_BUTTON);
+        notesStandard.setNotesType(NotesStandard.TYPE_NO_BUTTON);
+        notesStandard.setTvDescriptionVisibility(View.GONE);
         notesStandard.setDescriptionText("This is very long multi line notes description for standard notes");
         notesStandard.setButtonSingleText("Click Me");
         notesStandard.setButtonDoublePrimaryText("Primary");
         notesStandard.setButtonDoubleSecondaryText("Secondary");
         notesStandard.setTvDescriptionVisibility(View.VISIBLE);
-        notesStandard.setEnableButtonSingle(true);
+//        notesStandard.setEnableButtonSingle(true);
 
 //        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(21,17);
 //        layoutParams.setMargins(0,8,15,0);
