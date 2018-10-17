@@ -181,7 +181,6 @@ public class MobileInputLayout extends RelativeLayout {
         llCountryCodeSelector.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("SIGNUPBUGS", "countrySelectedDisplayed " + countrySelectedDisplayed);
                 if (countrySelectedDisplayed) {
                     countrySelectedDisplayed = false;
                     rvCountryCodeSelector.setVisibility(View.GONE);
