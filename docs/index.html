@@ -737,6 +737,47 @@ The  <code>PreLoaderAnimation</code> is an extended <code>NotificationBanner</co
 
 <p>You can call the anim anywhere you want by calling <code>showLoadingAnim()</code> and hide the animation with<code>hideLoadingAnim()</code>. </p>
 
+hr>
+<h3>Model Dialogs</h3>
+<p>
+The  <code>ModelDialog</code> is an extended <code>NotificationBanner</code> that was styled to match the Kaodim design guidelines to show pop up dialogs with actionable buttons. 
+</p>
+<img src="assets/images/dialog_double_button.png" class="screenshot small" />
+
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+View view = findViewById(android.R.id.content);
+       ModalDialog modalDialog = new ModalDialog(this,view);
+       modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON_NO_ICON);
+       modalDialog.setTextForDoubleButton("This is title text", "This is an example of a very long description",
+               "Primary","Secondary");
+       modalDialog.setIcon(R.drawable.illus_settings);
+    
+       modalDialog.show();
+{% endhighlight %}
+<p class="heading">Set Listeners</p>
+Set a listener using:
+{% highlight java %}
+modalDialog.setButtonOnClickListener(new ModalDialog.ModalDialogListener() {
+           @Override
+           public void onButtonPrimaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+           }
+
+           @Override
+           public void onButtonSecondaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+           }
+       });
+{% endhighlight %}
+
+<p class="heading">Variant</p>
+<img src="assets/images/dialog_single_button.png" class="screenshot small" />
+<img src="assets/images/dialog_double_no_icon.png" class="screenshot small" />
+<img src="assets/images/dialog_single_no_icon.png" class="screenshot small" />
+
+
 
 
 <section class="bs-docs-section">

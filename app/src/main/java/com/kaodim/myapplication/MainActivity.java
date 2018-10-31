@@ -299,9 +299,11 @@ public class MainActivity extends AppCompatActivity {
    private void setupModalDialog(){
        View view = findViewById(android.R.id.content);
        ModalDialog modalDialog = new ModalDialog(this,view);
-       modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON_NO_ICON);
+       modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON);
        modalDialog.setTextForDoubleButton("This is title text", "This is an example of a very long description",
                "Primary","Secondary");
+//       modalDialog.setTextForSingleButton("This is title text", "This is an example of a very long description",
+//               "Primary");
        modalDialog.setIcon(R.drawable.illus_settings);
        modalDialog.setButtonOnClickListener(new ModalDialog.ModalDialogListener() {
            @Override

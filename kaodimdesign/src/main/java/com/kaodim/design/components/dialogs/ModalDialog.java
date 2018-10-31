@@ -18,8 +18,6 @@ public class ModalDialog {
     public static final int TYPE_DOUBLE_BUTTON = 2;
     public static final int TYPE_SINGLE_BUTTON_NO_ICON = 3;
     public static final int TYPE_DOUBLE_BUTTON_NO_ICON = 4;
-    public static final int TYPE_NO_ICON = 5;
-    public static final int TYPE_ALL  = 6;
 
     public interface ModalDialogListener {
         void onButtonPrimaryClicked();
