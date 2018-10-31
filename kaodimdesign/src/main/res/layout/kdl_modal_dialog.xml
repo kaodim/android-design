@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rlOverlayBG"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent_black" />
+
+        <LinearLayout
+            android:id="@+id/llContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/kdl_porcelain_bg"
+            android:clickable="false"
+            android:focusable="false"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rlCancel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_close" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/firefly"
+                    android:textSize="@dimen/size_16" />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/firefly"
+                    android:textSize="@dimen/size_14" />
+
+
+                <Button
+                    android:id="@+id/btnPrimary"
+                    style="@style/NormalTextMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_jasper"
+                    android:clickable="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:stateListAnimator="@null"
+                    android:text="Button"
+                    android:layout_marginTop="20dp"
+                    android:textSize="@dimen/size_14"
+                    android:textColor="@color/porcelain" />
+
+                <Button
+                    android:id="@+id/btnSecondary"
+                    style="@style/NormalTextMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/transparent"
+                    android:text="Secondary"
+                    android:textAllCaps="false"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="@dimen/size_14" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

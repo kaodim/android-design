@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -17,6 +18,7 @@ import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.bottomBars.FullWidthBottomBar;
 import com.kaodim.design.components.bottomBars.PricingBottomBar;
 import com.kaodim.design.components.callbacks.NumericControlListener;
+import com.kaodim.design.components.dialogs.ModalDialog;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     SearchBox searchBox;
     PricingBottomBar pricingBottomBar;
     FullWidthBottomBar fullWidthBottomBar;
-    Button toastSuccess, toastError, preLoader;
+    Button toastSuccess, toastError, preLoader, modalDialog;
     LinearLayout toastMessageBar;
 
 
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         notesError = findViewById(R.id.notesErrorView);
         notesInfo = findViewById(R.id.notesInfoView);
         fullWidthBottomBar = findViewById(R.id.kdl_full_width_bottombar);
+        modalDialog = findViewById(R.id.btnModalDialog);
 
         setupNumericControl();
 
@@ -80,6 +83,13 @@ public class MainActivity extends AppCompatActivity {
         setupNotesInfo();
 
         setupFullWidthBottomBar();
+
+        modalDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setupModalDialog();
+            }
+        });
     }
 
     private void setupInteractivePanel() {
@@ -284,6 +294,27 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(),"You have clicked Full Width Bottom Bar Button",Toast.LENGTH_SHORT).show();
             }
         });
+   }
+
+   private void setupModalDialog(){
+       View view = findViewById(android.R.id.content);
+       ModalDialog modalDialog = new ModalDialog(this,view);
+       modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON_NO_ICON);
+       modalDialog.setTextForDoubleButton("This is title text", "This is an example of a very long description",
+               "Primary","Secondary");
+       modalDialog.setIcon(R.drawable.illus_settings);
+       modalDialog.setButtonOnClickListener(new ModalDialog.ModalDialogListener() {
+           @Override
+           public void onButtonPrimaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+           }
+
+           @Override
+           public void onButtonSecondaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+           }
+       });
+       modalDialog.show();
    }
 
     @Override
