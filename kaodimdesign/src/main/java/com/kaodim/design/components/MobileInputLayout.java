@@ -32,6 +32,7 @@ public class MobileInputLayout extends RelativeLayout {
     EditText etInput;
     ImageView ivFlag;
     PhoneEditText etValidator;
+    ImageView ivDropdown;
 
     CountryCodeRVAdapter adapter;
     ArrayList<CountryCodeRowItem> countryCodes = new ArrayList<>();
@@ -41,10 +42,22 @@ public class MobileInputLayout extends RelativeLayout {
     Context context;
     boolean countrySelectedDisplayed = false;
     String validationCountry = "";
+    private boolean enableSelection = true;
 
     String mobileNumber = "";
 
     private MobileInputEventListener listener;
+
+    public void setEnableSelection(boolean enableSelection) {
+        this.enableSelection = enableSelection;
+
+        if (enableSelection) {
+            ivDropdown.setVisibility(VISIBLE);
+        }
+        else {
+            ivDropdown.setVisibility(GONE);
+        }
+    }
 
     public interface MobileInputEventListener {
         void onCountrySelected(CountryCodeRowItem item);
@@ -94,6 +107,7 @@ public class MobileInputLayout extends RelativeLayout {
         etValidator = findViewById(R.id.etValidator);
         tvCode = findViewById(R.id.tvCode);
         ivFlag = findViewById(R.id.ivFlag);
+        ivDropdown = findViewById(R.id.ivDropdown);
 
         setHintText(hint);
         setHintTitle(hintTitle);
@@ -117,11 +131,29 @@ public class MobileInputLayout extends RelativeLayout {
         setText(mobileNumber);
     }
 
+    public void initialize(Context context, ArrayList<CountryCodeRowItem> countryCodes, String validationCountry, CountryCodeRowItem countryData, String mobileNumber) {
+        this.context = context;
+        this.countryCodes = countryCodes;
+        this.mobileNumber = mobileNumber;
+
+        setValidationCountry(validationCountry, countryData);
+        setupRecyclerView(context);
+        setText(mobileNumber);
+    }
+
     public void setMobileInputEventListener(MobileInputEventListener listener) {
         this.listener = listener;
     }
 
     private void setupRecyclerView(Context context) {
+
+        if (enableSelection) {
+            ivDropdown.setVisibility(VISIBLE);
+        }
+        else {
+            ivDropdown.setVisibility(GONE);
+        }
+
         adapter = new CountryCodeRVAdapter(context, countryCodes, new CountryCodeRVAdapter.CountryCodeSelectionListener() {
             @Override
             public void onSelected(CountryCodeRowItem countryItem) {
@@ -137,7 +169,7 @@ public class MobileInputLayout extends RelativeLayout {
                 ivFlag.setImageResource(countryItem.flagIconResource);
                 countryCode = countryItem.code.replace("(", "").replace(")", "");
 
-                if(listener != null) {
+                if (listener != null) {
                     listener.onMobileValueChanged(countryCode, etInput.getText().toString(), checkValidity());
                     listener.onCountrySelected(countryItem);
                 }
@@ -172,7 +204,7 @@ public class MobileInputLayout extends RelativeLayout {
             @Override
             public void afterTextChanged(Editable s) {
                 etValidator.setPhoneNumber(etInput.getText().toString());
-                if(listener != null) {
+                if (listener != null) {
                     listener.onMobileValueChanged(countryCode, etInput.getText().toString(), checkValidity());
                 }
             }
@@ -181,12 +213,14 @@ public class MobileInputLayout extends RelativeLayout {
         llCountryCodeSelector.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (countrySelectedDisplayed) {
-                    countrySelectedDisplayed = false;
-                    rvCountryCodeSelector.setVisibility(View.GONE);
-                } else {
-                    countrySelectedDisplayed = true;
-                    rvCountryCodeSelector.setVisibility(View.VISIBLE);
+                if (enableSelection) {
+                    if (countrySelectedDisplayed) {
+                        countrySelectedDisplayed = false;
+                        rvCountryCodeSelector.setVisibility(View.GONE);
+                    } else {
+                        countrySelectedDisplayed = true;
+                        rvCountryCodeSelector.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
@@ -209,7 +243,7 @@ public class MobileInputLayout extends RelativeLayout {
     public void setText(String text) {
         etInput.setText(text);
         etValidator.setPhoneNumber(text);
-        if(listener != null) {
+        if (listener != null) {
             listener.onMobileValueChanged(countryCode, text, checkValidity());
         }
     }
@@ -217,6 +251,13 @@ public class MobileInputLayout extends RelativeLayout {
     public void setValidationCountry(String country) {
         this.validationCountry = country;
         etValidator.setDefaultCountry(validationCountry);
+    }
+
+    public void setValidationCountry(String country, CountryCodeRowItem countryData) {
+        this.validationCountry = country;
+        etValidator.setDefaultCountry(validationCountry);
+        ivFlag.setImageResource(countryData.flagIconResource);
+        tvCode.setText(countryData.code);
     }
 
     public boolean checkValidity() {
