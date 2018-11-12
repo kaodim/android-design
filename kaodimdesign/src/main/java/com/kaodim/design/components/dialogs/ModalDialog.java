@@ -112,11 +112,20 @@ public class ModalDialog {
 
 
     /**
-     Invoke this to shoe the pop up
+     Invoke this to show the pop up
      **/
     public void show(){
         setListeners();
         banner.show();
+    }
+
+    /**
+     Invoke this to hide the pop up
+     **/
+    public void hide(){
+        if(banner!=null){
+            banner.dismissBanner();
+        }
     }
 
 
