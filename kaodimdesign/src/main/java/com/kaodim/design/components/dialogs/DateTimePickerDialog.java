@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aigestudio.wheelpicker.WheelPicker;
@@ -179,6 +180,14 @@ public class DateTimePickerDialog extends Dialog {
 
     public void shouldShowPastDates(boolean showPastDates) {
         this.showPastDates = showPastDates;
+    }
+
+    public void setNextSessionText(String formattedDate) {
+        RelativeLayout rlNextSession = (RelativeLayout)findViewById(R.id.rlNextSession);
+        rlNextSession.setVisibility(View.VISIBLE);
+
+        TextView nextSessionTextView = (TextView)findViewById(R.id.tvNextSession);
+        nextSessionTextView.setText(getContext().getResources().getString(R.string.your_next_session, formattedDate));
     }
 
     /**

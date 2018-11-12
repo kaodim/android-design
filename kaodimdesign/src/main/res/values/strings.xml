@@ -7,5 +7,6 @@
 
     <string name="enter_mobile_number">Enter mobile number</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="your_next_session">Your second session will be created for %1$s</string>
 
 </resources>

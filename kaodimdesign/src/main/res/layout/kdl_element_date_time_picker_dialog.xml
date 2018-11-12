@@ -50,10 +50,38 @@
     </android.support.v7.widget.LinearLayoutCompat>
 
     <RelativeLayout
+        android:id="@+id/rlNextSession"
+        android:layout_below="@+id/llWheelLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llWheelLayout"
-        android:layout_marginTop="50dp">
+        android:gravity="center"
+        android:layout_marginTop="70dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/ivInfoCircle"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginRight="6dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_info_circle_solid"/>
+
+        <TextView
+            android:id="@+id/tvNextSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/sky_blue"
+            android:layout_toRightOf="@id/ivInfoCircle"
+            android:text="@string/your_next_session"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlNextSession"
+        android:layout_marginTop="10dp"
+       >
 
         <TextView
             android:id="@+id/tvCancel"
