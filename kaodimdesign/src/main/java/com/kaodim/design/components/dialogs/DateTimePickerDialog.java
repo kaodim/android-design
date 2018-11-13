@@ -184,7 +184,9 @@ public class DateTimePickerDialog extends Dialog {
 
     public void setNextSessionText(String formattedDate) {
         RelativeLayout rlNextSession = (RelativeLayout)findViewById(R.id.rlNextSession);
-        rlNextSession.setVisibility(View.VISIBLE);
+        if(rlNextSession.getVisibility() == View.GONE) {
+            rlNextSession.setVisibility(View.VISIBLE);
+        }
 
         TextView nextSessionTextView = (TextView)findViewById(R.id.tvNextSession);
         nextSessionTextView.setText(getContext().getResources().getString(R.string.your_next_session, formattedDate));
