@@ -37,6 +37,7 @@ public class DateTimePicker extends RelativeLayout {
     private boolean showPastDates = false;
     private boolean allowRemoval = false;
     public String identifier = "";
+    private DateTimePickerDialog globalDialog;
 
     private DateTime rangeStartDate = new DateTime();
     private DateTime rangeEndDate = new DateTime();
@@ -126,6 +127,7 @@ public class DateTimePicker extends RelativeLayout {
                 }
             }, options);
 
+            globalDialog = pickerDialog;
             pickerDialog.setRangeStartTime(rangeStartDate);
             pickerDialog.setRangeEndTime(rangeEndDate);
             pickerDialog.show();
@@ -145,6 +147,10 @@ public class DateTimePicker extends RelativeLayout {
 
     public void setDateTimeChangedListener(DateTimeChangedListener listener) {
         this.listener = listener;
+    }
+
+    public void setNextSessionText(String nextSessionText) {
+        globalDialog.setNextSessionText(nextSessionText);
     }
 
     public void setHint(String hintText) {
