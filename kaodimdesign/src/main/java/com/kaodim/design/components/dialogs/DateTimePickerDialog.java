@@ -144,7 +144,7 @@ public class DateTimePickerDialog extends Dialog {
         if (ifSessionable) {
             RelativeLayout rlNextSession = (RelativeLayout)findViewById(R.id.rlNextSession);
             rlNextSession.setVisibility(View.VISIBLE);
-            TextView nextSessionTextView = (TextView)findViewById(R.id.tvNextSession);
+            final TextView nextSessionTextView = (TextView)findViewById(R.id.tvNextSession);
 
             wpDatePicker.setOnWheelChangeListener(new WheelPicker.OnWheelChangeListener() {
                 @Override
