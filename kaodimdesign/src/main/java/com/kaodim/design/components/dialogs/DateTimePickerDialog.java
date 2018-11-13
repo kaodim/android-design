@@ -21,7 +21,9 @@ import org.joda.time.format.DateTimeFormatter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class DateTimePickerDialog extends Dialog {
@@ -54,13 +56,16 @@ public class DateTimePickerDialog extends Dialog {
     private boolean curvedEffect = false;
     private boolean atmosphericEffect = true;
     private boolean showPastDates = false;
+    private boolean ifSessionable = false;
+
+    private int frequency;
 
     public DateTimePickerDialog(Activity activity, DateTimePickerListener listener) {
         super(activity);
         this.listener = listener;
     }
 
-    public DateTimePickerDialog(Activity activity, DateTimePickerListener listener, DateTimePickerOptions options) {
+    public DateTimePickerDialog(Activity activity, DateTimePickerListener listener, DateTimePickerOptions options, boolean ifSessionable) {
         super(activity);
         this.listener = listener;
         this.displayDate = options.displayDate;
@@ -68,6 +73,7 @@ public class DateTimePickerDialog extends Dialog {
         this.cyclicEffect = options.cyclicEffect;
         this.curvedEffect = options.curvedEffect;
         this.atmosphericEffect = options.atmosphericEffect;
+        this.ifSessionable = ifSessionable;
     }
 
     @Override
@@ -135,6 +141,46 @@ public class DateTimePickerDialog extends Dialog {
             }
         });
 
+        if (ifSessionable) {
+            RelativeLayout rlNextSession = (RelativeLayout)findViewById(R.id.rlNextSession);
+            rlNextSession.setVisibility(View.VISIBLE);
+            TextView nextSessionTextView = (TextView)findViewById(R.id.tvNextSession);
+
+            wpDatePicker.setOnWheelChangeListener(new WheelPicker.OnWheelChangeListener() {
+                @Override
+                public void onWheelScrolled(int offset) {
+
+                }
+
+                @Override
+                public void onWheelSelected(int position) {
+                    nextSessionTextView.setText(getContext().getResources().getString(R.string.your_next_session, getNextSessionString(dateSlots.get(position))));
+                }
+
+                @Override
+                public void onWheelScrollStateChanged(int state) {
+
+                }
+            });
+        }
+
+    }
+
+    private String getNextSessionString(String dateString) {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+        try {
+            date = format.parse(dateString);
+            System.out.println(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar myCal = new GregorianCalendar();
+        myCal.setTime(date);
+        myCal.add(Calendar.DATE, frequency);
+        return format.format(myCal.getTime());
+
     }
 
     /**
@@ -178,18 +224,12 @@ public class DateTimePickerDialog extends Dialog {
         this.rangeEndTime = rangeEndTime;
     }
 
-    public void shouldShowPastDates(boolean showPastDates) {
-        this.showPastDates = showPastDates;
+    public void setSessionFrequency(int daysToNextSession) {
+        this.frequency = daysToNextSession;
     }
 
-    public void setNextSessionText(String formattedDate) {
-        RelativeLayout rlNextSession = (RelativeLayout)findViewById(R.id.rlNextSession);
-        if(rlNextSession.getVisibility() == View.GONE) {
-            rlNextSession.setVisibility(View.VISIBLE);
-        }
-
-        TextView nextSessionTextView = (TextView)findViewById(R.id.tvNextSession);
-        nextSessionTextView.setText(getContext().getResources().getString(R.string.your_next_session, formattedDate));
+    public void shouldShowPastDates(boolean showPastDates) {
+        this.showPastDates = showPastDates;
     }
 
     /**
