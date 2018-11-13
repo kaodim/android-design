@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         setupNumericControl();
 
-        setupDateTimePicker();
+//        setupDateTimePicker();
+
+        setupDateTimePickerWithSessionText();
 
         setupInteractivePanel();
 
@@ -154,6 +156,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void setupDateTimePickerWithSessionText() {
+        dateTimePicker.initialize(this);
+        dateTimePicker.setRangeStartTime("2018-01-1T7:30:30.042+08:00");
+        dateTimePicker.setRangeEndTime("2018-10-20T22:00:30.042+08:00");
+        dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
+            @Override
+            public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
+
+            }
+
+            @Override
+            public void onDateRemoved() {
+
+            }
+        });
+
+        dateTimePicker.setSessionableTimePicker(true);
+        dateTimePicker.setSessionFrequency(7);
+    }
+
 
     private void setupPricingListener(){
         pricingBottomBar.setButtonEnabled(true);
