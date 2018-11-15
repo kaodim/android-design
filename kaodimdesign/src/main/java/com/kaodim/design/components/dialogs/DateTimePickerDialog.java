@@ -179,7 +179,13 @@ public class DateTimePickerDialog extends Dialog {
 
         Calendar myCal = new GregorianCalendar();
         myCal.setTime(date);
-        myCal.add(Calendar.DATE, frequency);
+        
+        if (frequency == 30) {
+            myCal.add(Calendar.MONTH, 1);
+        } else {
+            myCal.add(Calendar.DATE, frequency);
+        }
+
         return format.format(myCal.getTime());
 
     }
