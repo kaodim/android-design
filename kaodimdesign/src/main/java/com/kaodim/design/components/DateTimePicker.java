@@ -37,9 +37,6 @@ public class DateTimePicker extends RelativeLayout {
     private boolean showPastDates = false;
     private boolean allowRemoval = false;
     public String identifier = "";
-    private DateTimePickerDialog globalDialog;
-    private boolean ifSessionable = false;
-    private int frequency;
 
     private DateTime rangeStartDate = new DateTime();
     private DateTime rangeEndDate = new DateTime();
@@ -127,9 +124,8 @@ public class DateTimePicker extends RelativeLayout {
                         listener.onDateTimeSelected(formatedDate, formatedTime, selectedDate);
                     }
                 }
-            }, options, ifSessionable);
+            }, options);
 
-            pickerDialog.setSessionFrequency(frequency);
             pickerDialog.setRangeStartTime(rangeStartDate);
             pickerDialog.setRangeEndTime(rangeEndDate);
             pickerDialog.show();
@@ -142,10 +138,6 @@ public class DateTimePicker extends RelativeLayout {
         this.activity = activity;
     }
 
-    public void setSessionableTimePicker(boolean ifSessionable) {
-        this.ifSessionable = ifSessionable;
-    }
-
     public void initialize(Activity activity, DateTimePickerDialog.DateTimePickerOptions options) {
         this.activity = activity;
         setOptions(options);
@@ -153,10 +145,6 @@ public class DateTimePicker extends RelativeLayout {
 
     public void setDateTimeChangedListener(DateTimeChangedListener listener) {
         this.listener = listener;
-    }
-
-    public void setSessionFrequency(int daysToNextSession) {
-        this.frequency = daysToNextSession;
     }
 
     public void setHint(String hintText) {
