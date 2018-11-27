@@ -18,6 +18,7 @@ public class ModalDialog {
     public static final int TYPE_DOUBLE_BUTTON = 2;
     public static final int TYPE_SINGLE_BUTTON_NO_ICON = 3;
     public static final int TYPE_DOUBLE_BUTTON_NO_ICON = 4;
+    public static final int TYPE_NO_BUTTON_WITH_ICON = 5;
 
     public interface ModalDialogListener {
         void onButtonPrimaryClicked();
@@ -62,6 +63,11 @@ public class ModalDialog {
                 banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.GONE);
             }
+            else if(type == TYPE_NO_BUTTON_WITH_ICON){
+                banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -82,6 +88,24 @@ public class ModalDialog {
             Button btnPrimary = (Button) banner.getBannerView().findViewById(R.id.btnPrimary);
             btnPrimary.setText(btnPrimaryText);
 
+            banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     Set label text for no button
+     **/
+    public void setTextForNoButton(String title,String description){
+        if(banner!=null){
+            banner.getBannerView().findViewById(R.id.tvTitle).setVisibility(View.VISIBLE);
+            TextView tvtitle = (TextView) banner.getBannerView().findViewById(R.id.tvTitle);
+            tvtitle.setText(title);
+
+            banner.getBannerView().findViewById(R.id.tvDescription).setVisibility(View.VISIBLE);
+            TextView tvDescription = (TextView) banner.getBannerView().findViewById(R.id.tvDescription);
+            tvDescription.setText(description);
+
+            banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.GONE);
             banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.GONE);
         }
     }
