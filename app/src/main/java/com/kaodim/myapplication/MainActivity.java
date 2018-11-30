@@ -3,9 +3,11 @@ package com.kaodim.myapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -24,6 +26,9 @@ import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
 import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.toast.ToastBanner;
+import com.kaodim.design.components.tooltip.ViewTooltip;
+import com.tooltip.Tooltip;
+import com.tooltip.TooltipActionView;
 
 import java.util.Date;
 
@@ -38,11 +43,16 @@ public class MainActivity extends AppCompatActivity {
     FullWidthBottomBar fullWidthBottomBar;
     Button toastSuccess, toastError, preLoader, modalDialog;
     LinearLayout toastMessageBar;
+    Button btnShowToolTip, btnHideToolTip;
+    ImageView icBulb;
+    LinearLayout toolTipParentView;
 
 
     NotesStandard notesStandard;
     NotesError notesError;
     NotesInfo notesInfo;
+
+    Tooltip tooltip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +73,16 @@ public class MainActivity extends AppCompatActivity {
         notesInfo = findViewById(R.id.notesInfoView);
         fullWidthBottomBar = findViewById(R.id.kdl_full_width_bottombar);
         modalDialog = findViewById(R.id.btnModalDialog);
+        btnShowToolTip = findViewById(R.id.BtnShowToolTip);
+        btnHideToolTip = findViewById(R.id.BtnHideToolTip);
+        icBulb = findViewById(R.id.ivImage);
+        toolTipParentView = findViewById(R.id.llToolTipParentView);
 
         setupNumericControl();
 
-//        setupDateTimePicker();
+        setupDateTimePicker();
 
-        setupDateTimePickerWithSessionText();
+//        setupDateTimePickerWithSessionText();
 
         setupInteractivePanel();
 
@@ -85,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         setupNotesInfo();
 
         setupFullWidthBottomBar();
+
+        setToolTipContainerListener();
 
         modalDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,25 +158,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupDateTimePicker() {
         dateTimePicker.initialize(this);
-        dateTimePicker.setRangeStartTime("2018-01-1T7:30:30.042+08:00");
-        dateTimePicker.setRangeEndTime("2018-10-20T22:00:30.042+08:00");
+//        dateTimePicker.setRangeStartTime("2018-11-1T8:00:00.000+08:00");
+//        dateTimePicker.setRangeEndTime("2018-11-20T22:00:00.000+08:00");
+        dateTimePicker.setDateRange("2018-11-30T7:00:00.000+08:00","2018-12-30T23:00:00.000+08:00");
+        dateTimePicker.setHint("10 Nov 2018");
+        dateTimePicker.setDatePickerDescriptionText("Chosen time must be below 28th Nov 2019");
         dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
             @Override
             public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
-
+                    String date = formatedDate + " " + formatedTime;
+                    dateTimePicker.setHint(date);
             }
 
             @Override
             public void onDateRemoved() {
-
+                    dateTimePicker.setHint("");
             }
         });
     }
 
     private void setupDateTimePickerWithSessionText() {
         dateTimePicker.initialize(this);
-        dateTimePicker.setRangeStartTime("2018-01-1T7:30:30.042+08:00");
-        dateTimePicker.setRangeEndTime("2018-10-20T22:00:30.042+08:00");
+//        dateTimePicker.setRangeStartTime("2018-01-1T7:30:30.042+08:00");
+//        dateTimePicker.setRangeEndTime("2018-10-20T22:00:30.042+08:00");
         dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
             @Override
             public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
@@ -318,17 +338,19 @@ public class MainActivity extends AppCompatActivity {
 
    private void setupModalDialog(){
        View view = findViewById(android.R.id.content);
-       ModalDialog modalDialog = new ModalDialog(this,view);
-       modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON);
+       final ModalDialog modalDialog = new ModalDialog(this,view);
+       modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON_NO_ICON);
+//       modalDialog.setTextForNoButton("This is title text", "This is an example of a very long description");
        modalDialog.setTextForDoubleButton("This is title text", "This is an example of a very long description",
                "Primary","Secondary");
-//       modalDialog.setTextForSingleButton("This is title text", "This is an example of a very long description",
-//               "Primary");
+////       modalDialog.setTextForSingleButton("This is title text", "This is an example of a very long description",
+////               "Primary");
        modalDialog.setIcon(R.drawable.illus_settings);
        modalDialog.setButtonOnClickListener(new ModalDialog.ModalDialogListener() {
            @Override
            public void onButtonPrimaryClicked() {
                Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+               modalDialog.hide();
            }
 
            @Override
@@ -339,12 +361,39 @@ public class MainActivity extends AppCompatActivity {
        modalDialog.show();
    }
 
+   private void setToolTipContainerListener(){
+        btnShowToolTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tooltip = new Tooltip.Builder(icBulb)
+                        .setArrowEnabled(true)
+                        .setCornerRadius(R.dimen.size_4)
+                        .setGravity(Gravity.BOTTOM)
+                        .setBackgroundColor(getResources().getColor(R.color.sky_blue))
+                        .setTextColor(getResources().getColor(R.color.porcelain))
+                        .setDrawableTop(getDrawable(R.drawable.button_jasper))
+                        .setLineSpacing(R.dimen.size_1,(float) 1.13)
+                        .setPadding(30)
+                        .setTextSize(R.dimen.size_12)
+                        .setCancelable(true)
+                        .setText("This is very very long tooltip message that use to display long message tooltip.")
+                        .show();
+            }
+        });
+
+        btnHideToolTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               tooltip.dismiss();
+            }
+        });
+   }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         hideLoadingAnim();
     }
-
 
     //put this in baseActivity
     public  void showLoadingAnim(){

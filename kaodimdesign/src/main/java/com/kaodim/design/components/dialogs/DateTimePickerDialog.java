@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -42,6 +43,8 @@ public class DateTimePickerDialog extends Dialog {
     private WheelPicker wpTimePicker;
     private TextView tvCancel;
     private TextView tvApply;
+    private TextView tvDescription;
+    private LinearLayout llDateDecriptionText;
 
     private List<String> timeSlots = new ArrayList<>();
     private List<String> dateSlots = new ArrayList<>();
@@ -49,6 +52,8 @@ public class DateTimePickerDialog extends Dialog {
 
     private DateTime rangeStartTime = new DateTime();
     private DateTime rangeEndTime = new DateTime();
+    private DateTime rangeStartDate = new DateTime();
+    private DateTime rangeEndDate= new DateTime();
 
     private boolean displayDate = true;
     private boolean displayTime = true;
@@ -56,6 +61,11 @@ public class DateTimePickerDialog extends Dialog {
     private boolean curvedEffect = false;
     private boolean atmosphericEffect = true;
     private boolean showPastDates = false;
+    private boolean shouldShowPastTime = false;
+    private int delayTime;
+    private int defaultStartHour = 7;
+    private int defaultEndHour = 23;
+    public String textDescription;
 
     public DateTimePickerDialog(Activity activity, DateTimePickerListener listener) {
         super(activity);
@@ -84,8 +94,11 @@ public class DateTimePickerDialog extends Dialog {
     private void initComponents() {
         wpDatePicker = findViewById(R.id.wpDatePicker);
         wpTimePicker = findViewById(R.id.wpTimePicker);
+
         tvCancel = findViewById(R.id.tvCancel);
         tvApply = findViewById(R.id.tvApply);
+        tvDescription = findViewById(R.id.tvDateDescriptionText);
+        llDateDecriptionText = findViewById(R.id.llDateValidation);
 
         //region Respond to options
 
@@ -98,7 +111,6 @@ public class DateTimePickerDialog extends Dialog {
         } else {
             findViewById(R.id.wpTimePicker).setVisibility(View.VISIBLE);
         }
-
         //toggle cyclic effect
         wpDatePicker.setCyclic(cyclicEffect);
         wpTimePicker.setCyclic(cyclicEffect);
@@ -114,6 +126,8 @@ public class DateTimePickerDialog extends Dialog {
         //endregion
 
         seedData();
+
+        checkTextDescription();
 
         setEvents();
     }
@@ -136,7 +150,18 @@ public class DateTimePickerDialog extends Dialog {
                 dismiss();
             }
         });
+    }
 
+    public void setDesriptionText(String text){
+        this.textDescription = text;
+
+    }
+
+    private void checkTextDescription(){
+        if(textDescription!=null && !textDescription.isEmpty()){
+            llDateDecriptionText.setVisibility(View.VISIBLE);
+            tvDescription.setText(textDescription);
+        }
     }
 
     /**
@@ -180,8 +205,35 @@ public class DateTimePickerDialog extends Dialog {
         this.rangeEndTime = rangeEndTime;
     }
 
+    public void setRangeStartDate(DateTime rangeStartTime) {
+        this.rangeStartDate = rangeStartTime;
+    }
+
+    public void setRangeEndDate(DateTime rangeEndTime) {
+        this.rangeEndDate = rangeEndTime;
+    }
+
     public void shouldShowPastDates(boolean showPastDates) {
         this.showPastDates = showPastDates;
+    }
+
+    public void shouldShowTimeToday(boolean shouldShowPastTime) {
+        this.shouldShowPastTime = shouldShowPastTime;
+    }
+
+    public void setDefaultEndHour(int defaultEndHour) {
+        this.defaultEndHour = defaultEndHour;
+    }
+
+    public void setDefaultStartHour(int defaultStartHour) {
+        this.defaultStartHour = defaultStartHour;
+    }
+
+    /**
+     * Delay Time WheelPicker in hours, this is to show next available hours
+     */
+    public void setDelayTime(int delayTime) {
+        this.delayTime = delayTime;
     }
 
     /**
@@ -190,26 +242,28 @@ public class DateTimePickerDialog extends Dialog {
     private void seedData() {
 
         //TODO optional: for future functionality, check if shouldShowPastDates is toggled and display or hide past dates
-        datesBetween = getDateRange(new DateTime(), new DateTime().plusYears(1));
+
+        datesBetween = getDateRange(rangeStartDate, rangeEndDate);
+
+        if(datesBetween.size() == 0){
+            datesBetween = getDateRange(new DateTime(), new DateTime().plusYears(1));
+        }
+
         for (DateTime date : datesBetween) {
             dateSlots.add(DateTimeFormat.forPattern("EEE").print(date) + ", " + date.dayOfMonth().getAsString() + " " + date.toString("MMMM") + " " + date.year().getAsString());
         }
 
-        Log.d("TIMEPICKERTEST", "Seeding for rangeStartTime: " + rangeStartTime);
-        Log.d("TIMEPICKERTEST", "Seeding for rangeEndTime: " + rangeEndTime);
-
-        List<String> timesBetween = getTimeRange(rangeStartTime, rangeEndTime);
-
-        if (timeSlots.size() == 0) {
-            timesBetween = getTimeRange(setStartTime("2018-06-14T7:00:00.249+08:00"), setEndTime("2018-06-14T23:00:00.249+08:00"));
-        }
+        List<String> timesBetween = getTimeRange(7,23);
 
         timeSlots.addAll(timesBetween);
 
         Log.d("TIMEPICKERTEST", "Seeded: " + timeSlots.size());
 
+        setDateWheelPickerListener();
         wpDatePicker.setData(dateSlots);
         wpTimePicker.setData(timeSlots);
+
+        compareCurrentDateWithList(0);
     }
 
     public DateTime setStartTime(String rangeStartDateString) {
@@ -245,17 +299,117 @@ public class DateTimePickerDialog extends Dialog {
         return dates;
     }
 
-    private List<String> getTimeRange(DateTime start, DateTime end) {
+    /**
+     * Get time range between start and endtime as long as hour between 7-23
+     */
+    private List<String> getTimeRange(int start, int end) {
         List<String> times = new ArrayList<>();
-        int startTime = Integer.valueOf(start.hourOfDay().getAsString());
-        int endTime = Integer.valueOf(end.hourOfDay().getAsString());
-        for (int i = startTime; i <= endTime; i++) {
-            times.add(convert24Clockto12Clock(i) + ":00" + (i < 12 ? "AM" : "PM"));
-            //add up to 11:30PM
-            if (i != 23)
-                times.add(convert24Clockto12Clock(i) + ":30" + (i < 12 ? "AM" : "PM"));
+        for (int i = start; i <= end; i++) {
+            if(i >= defaultStartHour && i != defaultEndHour) {
+                times.add(convert24Clockto12Clock(i) + ":00" + (i < 12 ? "AM" : "PM"));
+
+                if ((i != end))
+                    times.add(convert24Clockto12Clock(i) + ":30" + (i < 12 ? "AM" : "PM"));
+            }
         }
         return times;
+    }
+
+
+    /**
+     * Get time range for currentDate
+     * If the current Date min <= 30, skip to next hour.
+     * E.g Current Time 10:21 AM, will set the first hour step as 11:00 AM
+     * If the current Date min > 30, skip to next 30
+     * E.g Current Time 10:41 AM, will set the first hour step as 11:30 AM
+     */
+    private List<String> getTimeRangeForCurrentDate(DateTime start, DateTime end) {
+        List<String> times = new ArrayList<>();
+        int startTime = Integer.valueOf(start.hourOfDay().getAsString());
+        int startTimeMin = Integer.valueOf(start.minuteOfHour().getAsString());
+        int endTime = Integer.valueOf(end.hourOfDay().getAsString());
+        boolean shouldSkipNext00 = false;
+
+        int j = startTime +delayTime;
+
+        for (int i = startTime; i <= endTime; i++) {
+            if(i >= j && (i != defaultEndHour && i >= defaultStartHour)) {
+
+                    if(i==j && startTimeMin <=30){
+                       continue;
+                    }else if (i==j && startTimeMin > 30){
+                        shouldSkipNext00 = true;
+                        continue;
+                    }
+
+                        if(!shouldSkipNext00){
+                            times.add(convert24Clockto12Clock(i) + ":00" + (i < 12 ? "AM" : "PM"));
+                        }
+
+                        shouldSkipNext00 = false;
+
+
+                        if (i != endTime){
+                            times.add(convert24Clockto12Clock(i) + ":30" + (i < 12 ? "AM" : "PM"));
+                        }
+                }
+        }
+        return times;
+    }
+
+    /**
+     * Set listener when a date is scrolled
+     */
+    private void setDateWheelPickerListener(){
+        wpDatePicker.setOnItemSelectedListener(new WheelPicker.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(WheelPicker picker, Object data, int position) {
+               compareCurrentDateWithList(position);
+            }
+        });
+    }
+
+
+    /**
+     * Compare the selected date and current date to limit the hour
+     */
+    private void compareCurrentDateWithList(int position){
+        DateTime currentDateTime = new DateTime();
+        checkSelectedDate(datesBetween.get(position),currentDateTime);
+    }
+
+
+    /**
+     * Method to limit if the selected date is current date
+     */
+    private void checkSelectedDate(DateTime selectedDate, DateTime currentDate){
+        if((selectedDate.getYear() == currentDate.getYear())
+                && (selectedDate.getMonthOfYear() == currentDate.getMonthOfYear())
+                && (selectedDate.getDayOfMonth() == currentDate.getDayOfMonth())){
+            setTimeWheelPickerForToday(currentDate,setEndTime("2018-06-14T23:00:00.249+08:00"));
+        }else{
+            setTimeWheelPicker();
+        }
+    }
+
+    private void setTimeWheelPickerForToday(DateTime start, DateTime end){
+        List<String> timesBetween = getTimeRangeForCurrentDate(start, end);
+
+        if (timesBetween.size() == 0) {
+            timesBetween = getTimeRange(7,23);
+        }
+
+        timeSlots.clear();
+        timeSlots.addAll(timesBetween);
+        wpTimePicker.setData(timeSlots);
+    }
+
+    private void setTimeWheelPicker(){
+        List<String> timesBetween = getTimeRange(7,23);
+
+        timeSlots.clear();
+        timeSlots.addAll(timesBetween);
+        wpTimePicker.setData(timeSlots);
     }
 
     private int convert24Clockto12Clock(int hourNumber) {

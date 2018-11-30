@@ -191,6 +191,44 @@ public class ViewTooltip {
         return tooltip_view;
     }
 
+
+    public TooltipView show(View parentView) {
+        final Context activityContext = tooltip_view.getContext();
+        if (activityContext != null && activityContext instanceof Activity) {
+            final ViewGroup decorView = rootView != null ?
+                    (ViewGroup) rootView :
+                    (ViewGroup) ((Activity) activityContext).getWindow().getDecorView();
+
+            view.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    final Rect rect = new Rect();
+                    view.getGlobalVisibleRect(rect);
+
+                    int[] location = new int[2];
+                    view.getLocationOnScreen(location);
+                    rect.left = location[0];
+                    //rect.left = location[0];
+
+                    decorView.addView(tooltip_view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                    tooltip_view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                        @Override
+                        public boolean onPreDraw() {
+
+                            tooltip_view.setup(rect, decorView.getWidth()-40);
+
+                            tooltip_view.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                            return false;
+                        }
+                    });
+                }
+            }, 100);
+        }
+        return tooltip_view;
+    }
+
     public void close(){
         tooltip_view.close();
     }

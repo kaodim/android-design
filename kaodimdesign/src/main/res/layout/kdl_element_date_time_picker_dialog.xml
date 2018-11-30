@@ -9,10 +9,35 @@
     android:paddingBottom="20dp"
     android:paddingTop="10dp">
 
+    <LinearLayout
+        android:id="@+id/llDateValidation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:id="@+id/tvDateDescriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/size_14"
+            android:lineSpacingMultiplier="1.23"
+            android:gravity="center"
+            android:textColor="@color/kdl_grey_dark"/>
+    </LinearLayout>
+
+
     <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/llWheelLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/llDateValidation"
         android:layout_centerInParent="true">
 
         <com.aigestudio.wheelpicker.WheelPicker

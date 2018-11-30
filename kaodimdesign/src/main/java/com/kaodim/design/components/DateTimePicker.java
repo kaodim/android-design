@@ -35,11 +35,16 @@ public class DateTimePicker extends RelativeLayout {
     private RelativeLayout rlDateSelection, rlRemoveDate;
     private TextView tvDate;
     private boolean showPastDates = false;
+    private boolean showPastTimesToday = false;
     private boolean allowRemoval = false;
+    private int delayTime;
     public String identifier = "";
+    private String datePickerDescriptionText;
 
     private DateTime rangeStartDate = new DateTime();
     private DateTime rangeEndDate = new DateTime();
+    private DateTime rangeStartTime = new DateTime();
+    private DateTime rangeEndTime = new DateTime();
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     private DateTimePickerDialog.DateTimePickerOptions options;
@@ -111,7 +116,20 @@ public class DateTimePicker extends RelativeLayout {
                 }
             }
         });
+    }
 
+    public void setDisable(boolean disable){
+        if(disable){
+            rlDateSelection.setFocusable(false);
+            rlDateSelection.setBackground(getResources().getDrawable(R.drawable.background_disabled));
+            rlDateSelection.setEnabled(false);
+            tvDate.setTextColor(getResources().getColor(R.color.kdl_grey_dark));
+        }else{
+            rlDateSelection.setFocusable(true);
+            rlDateSelection.setBackground(getResources().getDrawable(R.drawable.kdl_rect_grey_curved));
+            rlDateSelection.setEnabled(true);
+            tvDate.setTextColor(getResources().getColor(R.color.blackpearl));
+        }
     }
 
     private void dateSelectionClicked() {
@@ -126,8 +144,17 @@ public class DateTimePicker extends RelativeLayout {
                 }
             }, options);
 
-            pickerDialog.setRangeStartTime(rangeStartDate);
-            pickerDialog.setRangeEndTime(rangeEndDate);
+            pickerDialog.setRangeStartTime(rangeStartTime);
+            pickerDialog.setRangeEndTime(rangeEndTime);
+
+            pickerDialog.setRangeStartDate(rangeStartDate);
+            pickerDialog.setRangeEndDate(rangeEndDate);
+            pickerDialog.setDelayTime(delayTime);
+
+            if(datePickerDescriptionText!=null && !datePickerDescriptionText.isEmpty()){
+                pickerDialog.setDesriptionText(datePickerDescriptionText);
+            }
+
             pickerDialog.show();
             Window window = pickerDialog.getWindow();
             window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -152,26 +179,64 @@ public class DateTimePicker extends RelativeLayout {
         tvDate.setText(hint);
     }
 
+    /**
+     * Delay start time if current date
+     **/
+    public void setDelayTime(int delayTime) {
+        this.delayTime = delayTime;
+    }
+
+    public void setDatePickerDescriptionText(String datePickerDescriptionText) {
+        this.datePickerDescriptionText = datePickerDescriptionText;
+    }
+
+    public String getDatePickerDescriptionText() {
+        return datePickerDescriptionText;
+    }
+
     public void shouldShowPastDates(boolean showPastDates) {
         this.showPastDates = showPastDates;
     }
+
+    public void shouldShowPastTimesForToday(boolean shouldShowPastTime) {
+        this.showPastTimesToday = shouldShowPastTime;
+    }
+
 
     public void setAllowRemoval(boolean allowRemoval) {
         this.allowRemoval = allowRemoval;
         rlRemoveDate.setVisibility((allowRemoval) ? VISIBLE : GONE);
     }
 
-    public void setRangeStartTime(String rangeStartDateString) {
+    private void setRangeStartDate(String rangeStartDateString) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         DateTime dateTime = formatter.parseDateTime(rangeStartDateString);
         this.rangeStartDate = dateTime;
     }
 
-    public void setRangeEndTime(String rangeEndDateString) {
+    private void setRangeEndDate(String rangeEndDateString) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         DateTime dateTime = formatter.parseDateTime(rangeEndDateString);
         this.rangeEndDate = dateTime;
     }
+
+    public void setDateRange(String rangeStartDateString, String rangeEndDateString){
+       setRangeStartDate(rangeStartDateString);
+       setRangeEndDate(rangeEndDateString);
+    }
+
+
+//    public void setRangeStartTime(String rangeStartDateString) {
+//        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+//        DateTime dateTime = formatter.parseDateTime(rangeStartDateString);
+//        this.rangeStartTime = dateTime;
+//    }
+//
+//    public void setRangeEndTime(String rangeEndDateString) {
+//        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+//        DateTime dateTime = formatter.parseDateTime(rangeEndDateString);
+//        this.rangeEndTime = dateTime;
+//    }
 
     public boolean hasHint() {
         return hint.length() > 0;

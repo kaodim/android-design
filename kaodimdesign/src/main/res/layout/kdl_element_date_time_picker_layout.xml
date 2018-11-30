@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/kdl_rect_grey_curved"
-    android:padding="20dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvDate"
@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:hint="Pick a date"
+        android:textSize="@dimen/size_16"
         android:textColorHint="@color/blackpearl" />
 
     <RelativeLayout
