@@ -172,9 +172,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        dateTimePicker.setSessionableTimePicker(true);
-        dateTimePicker.setSessionFrequency(7);
     }
 
 
