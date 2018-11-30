@@ -225,5 +225,11 @@ public class ModalDialog {
         banner.getBannerView().findViewById(R.id.rlOverlay).setClickable(true);
         banner.getBannerView().findViewById(R.id.rlOverlay).setFocusable(true);
         banner.getBannerView().findViewById(R.id.rlOverlay).setEnabled(true);
+        banner.getBannerView().findViewById(R.id.rlOverlay).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    banner.dismissBanner();
+                }
+            });
     }
 }
