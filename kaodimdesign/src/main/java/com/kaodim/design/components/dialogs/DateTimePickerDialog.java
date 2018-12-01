@@ -50,8 +50,6 @@ public class DateTimePickerDialog extends Dialog {
     private List<String> dateSlots = new ArrayList<>();
     List<DateTime> datesBetween = new ArrayList<>();
 
-    private DateTime rangeStartTime = new DateTime();
-    private DateTime rangeEndTime = new DateTime();
     private DateTime rangeStartDate = new DateTime();
     private DateTime rangeEndDate= new DateTime();
 
@@ -65,6 +63,8 @@ public class DateTimePickerDialog extends Dialog {
     private int delayTime;
     private int defaultStartHour = 7;
     private int defaultEndHour = 23;
+    private boolean hasStartHalfHour;
+    private boolean hasEndHalfHour;
     public String textDescription;
 
     public DateTimePickerDialog(Activity activity, DateTimePickerListener listener) {
@@ -197,13 +197,6 @@ public class DateTimePickerDialog extends Dialog {
         listener.onDateTimeSelected(formattedDate, formattedTime, selectedDate);
     }
 
-    public void setRangeStartTime(DateTime rangeStartTime) {
-        this.rangeStartTime = rangeStartTime;
-    }
-
-    public void setRangeEndTime(DateTime rangeEndTime) {
-        this.rangeEndTime = rangeEndTime;
-    }
 
     public void setRangeStartDate(DateTime rangeStartTime) {
         this.rangeStartDate = rangeStartTime;
@@ -227,6 +220,14 @@ public class DateTimePickerDialog extends Dialog {
 
     public void setDefaultStartHour(int defaultStartHour) {
         this.defaultStartHour = defaultStartHour;
+    }
+
+    public void setHasEndHalfHour(boolean hasEndHalfHour) {
+        this.hasEndHalfHour = hasEndHalfHour;
+    }
+
+    public void setHasStartHalfHour(boolean hasStartHalfHour) {
+        this.hasStartHalfHour = hasStartHalfHour;
     }
 
     /**
@@ -253,7 +254,8 @@ public class DateTimePickerDialog extends Dialog {
             dateSlots.add(DateTimeFormat.forPattern("EEE").print(date) + ", " + date.dayOfMonth().getAsString() + " " + date.toString("MMMM") + " " + date.year().getAsString());
         }
 
-        List<String> timesBetween = getTimeRange(7,23);
+        List<String> timesBetween = getTimeRange(defaultStartHour,defaultEndHour);
+
 
         timeSlots.addAll(timesBetween);
 
@@ -277,6 +279,7 @@ public class DateTimePickerDialog extends Dialog {
         DateTime dateTime = formatter.parseDateTime(rangeEndDateString);
         return dateTime;
     }
+
 
     /**
      * Optional attributes to alter the picker behavior
@@ -304,12 +307,25 @@ public class DateTimePickerDialog extends Dialog {
      */
     private List<String> getTimeRange(int start, int end) {
         List<String> times = new ArrayList<>();
-        for (int i = start; i <= end; i++) {
-            if(i >= defaultStartHour && i != defaultEndHour) {
-                times.add(convert24Clockto12Clock(i) + ":00" + (i < 12 ? "AM" : "PM"));
+        boolean isStartHalfHour = hasStartHalfHour;
+        Log.d("TIMEPICKERTEST", "HalfStartHalf: " + hasStartHalfHour);
+        Log.d("TIMEPICKERTEST", "DefaultEndHout: " + defaultEndHour);
+        Log.d("TIMEPICKERTEST", "HalfEndHout: " + hasEndHalfHour);
 
-                if ((i != end))
+        for (int i = start; i <= end; i++) {
+            if(i >= defaultStartHour && i <= defaultEndHour) {
+                if(!isStartHalfHour)
+                    times.add(convert24Clockto12Clock(i) + ":00" + (i < 12 ? "AM" : "PM"));
+
+                if (!(i == end)){
                     times.add(convert24Clockto12Clock(i) + ":30" + (i < 12 ? "AM" : "PM"));
+                }
+
+                if (i == defaultEndHour && hasEndHalfHour){
+                    times.add(convert24Clockto12Clock(i) + ":30" + (i < 12 ? "AM" : "PM"));
+                }
+
+                isStartHalfHour = false;
             }
         }
         return times;
@@ -331,27 +347,37 @@ public class DateTimePickerDialog extends Dialog {
         boolean shouldSkipNext00 = false;
 
         int j = startTime +delayTime;
+        boolean isStartHalfHour = hasStartHalfHour;
 
         for (int i = startTime; i <= endTime; i++) {
-            if(i >= j && (i != defaultEndHour && i >= defaultStartHour)) {
+            if(i >= j && (i <= defaultEndHour && i >= defaultStartHour)) {
 
                     if(i==j && startTimeMin <=30){
+                        isStartHalfHour = false;
                        continue;
                     }else if (i==j && startTimeMin > 30){
+                        isStartHalfHour = false;
                         shouldSkipNext00 = true;
                         continue;
                     }
 
                         if(!shouldSkipNext00){
-                            times.add(convert24Clockto12Clock(i) + ":00" + (i < 12 ? "AM" : "PM"));
+                            if(!isStartHalfHour)
+                                times.add(convert24Clockto12Clock(i) + ":00" + (i < 12 ? "AM" : "PM"));
                         }
 
                         shouldSkipNext00 = false;
 
 
-                        if (i != endTime){
+                        if (!(i == endTime)){
                             times.add(convert24Clockto12Clock(i) + ":30" + (i < 12 ? "AM" : "PM"));
                         }
+
+                        if (i == endTime && hasEndHalfHour){
+                            times.add(convert24Clockto12Clock(i) + ":30" + (i < 12 ? "AM" : "PM"));
+                        }
+
+                        isStartHalfHour = false;
                 }
         }
         return times;
@@ -386,7 +412,7 @@ public class DateTimePickerDialog extends Dialog {
         if((selectedDate.getYear() == currentDate.getYear())
                 && (selectedDate.getMonthOfYear() == currentDate.getMonthOfYear())
                 && (selectedDate.getDayOfMonth() == currentDate.getDayOfMonth())){
-            setTimeWheelPickerForToday(currentDate,setEndTime("2018-06-14T23:00:00.249+08:00"));
+            setTimeWheelPickerForToday(currentDate,new DateTime().withHourOfDay(defaultEndHour));
         }else{
             setTimeWheelPicker();
         }
@@ -396,7 +422,7 @@ public class DateTimePickerDialog extends Dialog {
         List<String> timesBetween = getTimeRangeForCurrentDate(start, end);
 
         if (timesBetween.size() == 0) {
-            timesBetween = getTimeRange(7,23);
+            timesBetween = getTimeRange(defaultStartHour,defaultEndHour);
         }
 
         timeSlots.clear();
@@ -405,7 +431,7 @@ public class DateTimePickerDialog extends Dialog {
     }
 
     private void setTimeWheelPicker(){
-        List<String> timesBetween = getTimeRange(7,23);
+        List<String> timesBetween = getTimeRange(defaultStartHour,defaultEndHour);
 
         timeSlots.clear();
         timeSlots.addAll(timesBetween);

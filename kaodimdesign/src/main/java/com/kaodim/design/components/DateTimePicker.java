@@ -43,8 +43,10 @@ public class DateTimePicker extends RelativeLayout {
 
     private DateTime rangeStartDate = new DateTime();
     private DateTime rangeEndDate = new DateTime();
-    private DateTime rangeStartTime = new DateTime();
-    private DateTime rangeEndTime = new DateTime();
+    private int rangeStartTime = 7;
+    private int rangeEndTime = 23;
+    private boolean startHalfHour;
+    private  boolean endHalfHour;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     private DateTimePickerDialog.DateTimePickerOptions options;
@@ -144,12 +146,14 @@ public class DateTimePicker extends RelativeLayout {
                 }
             }, options);
 
-            pickerDialog.setRangeStartTime(rangeStartTime);
-            pickerDialog.setRangeEndTime(rangeEndTime);
 
             pickerDialog.setRangeStartDate(rangeStartDate);
             pickerDialog.setRangeEndDate(rangeEndDate);
             pickerDialog.setDelayTime(delayTime);
+            pickerDialog.setDefaultEndHour(rangeEndTime);
+            pickerDialog.setDefaultStartHour(rangeStartTime);
+            pickerDialog.setHasEndHalfHour(endHalfHour);
+            pickerDialog.setHasStartHalfHour(startHalfHour);
 
             if(datePickerDescriptionText!=null && !datePickerDescriptionText.isEmpty()){
                 pickerDialog.setDesriptionText(datePickerDescriptionText);
@@ -226,17 +230,33 @@ public class DateTimePicker extends RelativeLayout {
     }
 
 
-//    public void setRangeStartTime(String rangeStartDateString) {
-//        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-//        DateTime dateTime = formatter.parseDateTime(rangeStartDateString);
-//        this.rangeStartTime = dateTime;
-//    }
-//
-//    public void setRangeEndTime(String rangeEndDateString) {
-//        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-//        DateTime dateTime = formatter.parseDateTime(rangeEndDateString);
-//        this.rangeEndTime = dateTime;
-//    }
+    public void setRangeStartTime(float startTime) {
+        int mTime;
+
+        if(startTime%1==0.5){
+            startHalfHour = true;
+            mTime = (int) (startTime - 0.5);
+        }
+        else{
+            mTime = (int) startTime;
+        }
+
+        this.rangeStartTime = mTime;
+    }
+
+    public void setRangeEndTime(float endTime) {
+        int mTime;
+
+        if(endTime%1==0.5){
+            endHalfHour = true;
+            mTime = (int) (endTime - 0.5);
+        }
+        else{
+            mTime = (int) endTime;
+        }
+
+        this.rangeEndTime = mTime;
+    }
 
     public boolean hasHint() {
         return hint.length() > 0;

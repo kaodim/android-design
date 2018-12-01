@@ -2,6 +2,7 @@ package com.kaodim.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -162,12 +163,15 @@ public class MainActivity extends AppCompatActivity {
 //        dateTimePicker.setRangeEndTime("2018-11-20T22:00:00.000+08:00");
         dateTimePicker.setDateRange("2018-11-30T7:00:00.000+08:00","2018-12-30T23:00:00.000+08:00");
         dateTimePicker.setHint("10 Nov 2018");
+        dateTimePicker.setRangeStartTime((float) 7);
+        dateTimePicker.setRangeEndTime((float) 23);
         dateTimePicker.setDatePickerDescriptionText("Chosen time must be below 28th Nov 2019");
         dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
             @Override
             public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
                     String date = formatedDate + " " + formatedTime;
                     dateTimePicker.setHint(date);
+                    Log.d("Date", selectedDate.toString());
             }
 
             @Override
