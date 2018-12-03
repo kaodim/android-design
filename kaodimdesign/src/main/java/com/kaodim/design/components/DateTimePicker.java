@@ -26,7 +26,7 @@ import java.util.Date;
 public class DateTimePicker extends RelativeLayout {
 
     public interface DateTimeChangedListener {
-        void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate);
+        void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate, String selectedTimeStamp);
         void onDateRemoved();
     }
 
@@ -47,6 +47,7 @@ public class DateTimePicker extends RelativeLayout {
     private int rangeEndTime = 23;
     private boolean startHalfHour;
     private  boolean endHalfHour;
+    private String defaultSelectedDate;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     private DateTimePickerDialog.DateTimePickerOptions options;
@@ -139,9 +140,9 @@ public class DateTimePicker extends RelativeLayout {
 
             DateTimePickerDialog pickerDialog = new DateTimePickerDialog(activity, new DateTimePickerDialog.DateTimePickerListener() {
                 @Override
-                public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
+                public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate, String selectedTimeStamp) {
                     if (listener != null) {
-                        listener.onDateTimeSelected(formatedDate, formatedTime, selectedDate);
+                        listener.onDateTimeSelected(formatedDate, formatedTime, selectedDate,selectedTimeStamp);
                     }
                 }
             }, options);
@@ -154,6 +155,7 @@ public class DateTimePicker extends RelativeLayout {
             pickerDialog.setDefaultStartHour(rangeStartTime);
             pickerDialog.setHasEndHalfHour(endHalfHour);
             pickerDialog.setHasStartHalfHour(startHalfHour);
+            pickerDialog.setDefaultSelectedDate(defaultSelectedDate);
 
             if(datePickerDescriptionText!=null && !datePickerDescriptionText.isEmpty()){
                 pickerDialog.setDesriptionText(datePickerDescriptionText);
@@ -206,19 +208,22 @@ public class DateTimePicker extends RelativeLayout {
         this.showPastTimesToday = shouldShowPastTime;
     }
 
+    public void setDefaultSelectedDate(String defaultSelectedDate) {
+        this.defaultSelectedDate = defaultSelectedDate;
+    }
 
     public void setAllowRemoval(boolean allowRemoval) {
         this.allowRemoval = allowRemoval;
         rlRemoveDate.setVisibility((allowRemoval) ? VISIBLE : GONE);
     }
 
-    private void setRangeStartDate(String rangeStartDateString) {
+    public void setRangeStartDate(String rangeStartDateString) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         DateTime dateTime = formatter.parseDateTime(rangeStartDateString);
         this.rangeStartDate = dateTime;
     }
 
-    private void setRangeEndDate(String rangeEndDateString) {
+    public void setRangeEndDate(String rangeEndDateString) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         DateTime dateTime = formatter.parseDateTime(rangeEndDateString);
         this.rangeEndDate = dateTime;
@@ -257,6 +262,34 @@ public class DateTimePicker extends RelativeLayout {
 
         this.rangeEndTime = mTime;
     }
+
+
+//    public void setRangeStartTimeWithTimeStamp(String timeStamp) {
+//        int mTime;
+//        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+//        DateTime dateTime = formatter.parseDateTime(timeStamp);
+//
+//        if(dateTime.getMinuteOfHour() == 30){
+//            startHalfHour = true;
+//        }
+//
+//        mTime = (int) (dateTime.getHourOfDay());
+//        this.rangeStartTime = mTime;
+//    }
+//
+//    public void setRangeEndTimeWithTimeStamp(String timeStamp) {
+//        int mTime;
+//
+//        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+//        DateTime dateTime = formatter.parseDateTime(timeStamp);
+//
+//        if(dateTime.getMinuteOfHour() == 30){
+//            endHalfHour = true;
+//        }
+//
+//        mTime = (int) (dateTime.getHourOfDay());
+//        this.rangeEndTime = mTime;
+//    }
 
     public boolean hasHint() {
         return hint.length() > 0;

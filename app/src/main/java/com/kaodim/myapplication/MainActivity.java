@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.github.xizzhu.simpletooltip.ToolTip;
+import com.github.xizzhu.simpletooltip.ToolTipView;
 import com.kaodim.design.components.DateTimePicker;
 import com.kaodim.design.components.InteractivePanel;
 import com.kaodim.design.components.NumericControl;
@@ -21,6 +23,7 @@ import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.bottomBars.FullWidthBottomBar;
 import com.kaodim.design.components.bottomBars.PricingBottomBar;
 import com.kaodim.design.components.callbacks.NumericControlListener;
+import com.kaodim.design.components.dialogs.DateTimePickerDialog;
 import com.kaodim.design.components.dialogs.ModalDialog;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
@@ -103,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         setToolTipContainerListener();
 
+        dateTimePicker.initialize(this);
+
         modalDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,19 +163,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDateTimePicker() {
-        dateTimePicker.initialize(this);
-//        dateTimePicker.setRangeStartTime("2018-11-1T8:00:00.000+08:00");
-//        dateTimePicker.setRangeEndTime("2018-11-20T22:00:00.000+08:00");
+        DateTimePickerDialog.DateTimePickerOptions options = new DateTimePickerDialog.DateTimePickerOptions();
+        options.displayTime = false;
+        dateTimePicker.initialize(this,options);
         dateTimePicker.setDateRange("2018-11-30T7:00:00.000+08:00","2018-12-30T23:00:00.000+08:00");
-        dateTimePicker.setHint("10 Nov 2018");
         dateTimePicker.setRangeStartTime((float) 7);
         dateTimePicker.setRangeEndTime((float) 23);
-        dateTimePicker.setDatePickerDescriptionText("Chosen time must be below 28th Nov 2019");
         dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
             @Override
-            public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
+            public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate,String selectedTimeStamp) {
                     String date = formatedDate + " " + formatedTime;
                     dateTimePicker.setHint(date);
+                    dateTimePicker.setDefaultSelectedDate(selectedTimeStamp);
                     Log.d("Date", selectedDate.toString());
             }
 
@@ -187,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 //        dateTimePicker.setRangeEndTime("2018-10-20T22:00:30.042+08:00");
         dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
             @Override
-            public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate) {
+            public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate,String selectedTimeStamp) {
 
             }
 
@@ -370,19 +374,7 @@ public class MainActivity extends AppCompatActivity {
         btnShowToolTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tooltip = new Tooltip.Builder(icBulb)
-                        .setArrowEnabled(true)
-                        .setCornerRadius(R.dimen.size_4)
-                        .setGravity(Gravity.BOTTOM)
-                        .setBackgroundColor(getResources().getColor(R.color.sky_blue))
-                        .setTextColor(getResources().getColor(R.color.porcelain))
-                        .setDrawableTop(getDrawable(R.drawable.button_jasper))
-                        .setLineSpacing(R.dimen.size_1,(float) 1.13)
-                        .setPadding(30)
-                        .setTextSize(R.dimen.size_12)
-                        .setCancelable(true)
-                        .setText("This is very very long tooltip message that use to display long message tooltip.")
-                        .show();
+               showtooltip(icBulb);
             }
         });
 
@@ -392,6 +384,39 @@ public class MainActivity extends AppCompatActivity {
                tooltip.dismiss();
             }
         });
+   }
+
+   private void showtooltip(View view){
+       ToolTip toolTip = new ToolTip.Builder()
+               .withText("This is very very long tooltip message that use to display long message tooltip.")
+               .withTextColor(getResources().getColor(R.color.porcelain))
+               .withCornerRadius(4)
+               .withBackgroundColor(getResources().getColor(R.color.sky_blue))
+               .withTextSize(38)
+               .withPadding(20,20,20,20)
+               .build();
+       ToolTipView toolTipView = new ToolTipView.Builder(this)
+               .withAnchor(view)
+               .withToolTip(toolTip)
+               .withGravity(Gravity.BOTTOM)
+               .build();
+       toolTipView.show();
+   }
+
+   private void ToolTip2(){
+       tooltip = new Tooltip.Builder(icBulb)
+               .setArrowEnabled(true)
+               .setCornerRadius(R.dimen.size_4)
+               .setGravity(Gravity.BOTTOM)
+               .setBackgroundColor(getResources().getColor(R.color.sky_blue))
+               .setTextColor(getResources().getColor(R.color.porcelain))
+               .setDrawableTop(getDrawable(R.drawable.button_jasper))
+               .setLineSpacing(R.dimen.size_1,(float) 1.13)
+               .setPadding(30)
+               .setTextSize(R.dimen.size_12)
+               .setCancelable(true)
+               .setText("This is very very long tooltip message that use to display long message tooltip.")
+               .show();
    }
 
     @Override

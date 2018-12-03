@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.aigestudio.wheelpicker.WheelPicker;
 import com.kaodim.design.R;
+import com.kaodim.design.components.DateTimePicker;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 
 public class DateTimePickerDialog extends Dialog {
@@ -34,7 +36,7 @@ public class DateTimePickerDialog extends Dialog {
      * */
 
     public interface DateTimePickerListener {
-        void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate);
+        void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate, String selectedTimeStamp);
     }
 
     private DateTimePickerListener listener;
@@ -66,6 +68,7 @@ public class DateTimePickerDialog extends Dialog {
     private boolean hasStartHalfHour;
     private boolean hasEndHalfHour;
     public String textDescription;
+    private String defaultSelectedDate;
 
     public DateTimePickerDialog(Activity activity, DateTimePickerListener listener) {
         super(activity);
@@ -178,7 +181,7 @@ public class DateTimePickerDialog extends Dialog {
 
         String selectedDateString = datesBetween.get(wpDatePicker.getCurrentItemPosition()).toString();
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         Date selectedDate = new Date();
         try {
             //parse date
@@ -194,7 +197,7 @@ public class DateTimePickerDialog extends Dialog {
             e.printStackTrace();
         }
 
-        listener.onDateTimeSelected(formattedDate, formattedTime, selectedDate);
+        listener.onDateTimeSelected(formattedDate, formattedTime, selectedDate,format.format(selectedDate));
     }
 
 
@@ -247,7 +250,7 @@ public class DateTimePickerDialog extends Dialog {
         datesBetween = getDateRange(rangeStartDate, rangeEndDate);
 
         if(datesBetween.size() == 0){
-            datesBetween = getDateRange(new DateTime(), new DateTime().plusYears(1));
+            datesBetween = getDateRange(new DateTime().minusYears(1), new DateTime().plusYears(1));
         }
 
         for (DateTime date : datesBetween) {
@@ -264,8 +267,8 @@ public class DateTimePickerDialog extends Dialog {
         setDateWheelPickerListener();
         wpDatePicker.setData(dateSlots);
         wpTimePicker.setData(timeSlots);
-
         compareCurrentDateWithList(0);
+        setDefaulSelectedDate();
     }
 
     public DateTime setStartTime(String rangeStartDateString) {
@@ -280,6 +283,72 @@ public class DateTimePickerDialog extends Dialog {
         return dateTime;
     }
 
+    private void setDefaulSelectedDate(){
+        if(defaultSelectedDate!=null && !defaultSelectedDate.isEmpty()){
+            if(displayDate){
+                wpDatePicker.setSelectedItemPosition(getPositionForSelectedDate());
+            }
+
+           if(displayTime){
+               wpTimePicker.setSelectedItemPosition(getPositionForSelectedDateTime());
+           }
+        }
+    }
+
+
+    /**
+     * This method used calculated the position of the default selected date in date wheel picker
+    **/
+    private int getPositionForSelectedDate() {
+       int position = 0;
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        DateTime selectedDate = formatter.parseDateTime(defaultSelectedDate)
+                .withHourOfDay(7).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
+
+        Log.d("TIMEPICKERTEST", "SelectedDate: " + selectedDate);
+
+        for (int i = 0; i < datesBetween.size(); i++) {
+            Log.d("TIMEPICKERTEST", "DatesBetween: " + datesBetween.get(i));
+            if(selectedDate.toString().equals(datesBetween.get(i).toString())){
+                Log.d("TIMEPICKERTEST", "DatesSame");
+                return i;
+            }
+        }
+        return position;
+    }
+
+
+    /**
+     * This method used calculated the position of the default selected time
+     **/
+    private int getPositionForSelectedDateTime() {
+        int position = 0;
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        DateTime selectedDate = formatter.parseDateTime(defaultSelectedDate);
+        String timeSlot;
+        int time =  selectedDate.getHourOfDay();
+
+        if(selectedDate.getMinuteOfHour()==30){
+            timeSlot = convert24Clockto12Clock(time) + ":30" + (time < 12 ? "AM" : "PM").trim();
+        }else{
+            timeSlot = convert24Clockto12Clock(time) + ":00" + (time < 12 ? "AM" : "PM").trim();
+        }
+
+        Log.d("TIMEPICKERTEST", "SelectedTime: " + timeSlots);
+
+        for (int i = 0; i < timeSlots.size(); i++) {
+            Log.d("TIMEPICKERTEST", "SelectedTime: " + timeSlots.get(i));
+            if(timeSlot.equals(timeSlots.get(i).trim())){
+                Log.d("TIMEPICKERTEST", "SelectedTime: " + "Same");
+                return i;
+            }
+        }
+        return position;
+    }
+
+    public void setDefaultSelectedDate(String defaultSelectedDate) {
+        this.defaultSelectedDate = defaultSelectedDate;
+    }
 
     /**
      * Optional attributes to alter the picker behavior

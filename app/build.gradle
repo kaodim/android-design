@@ -27,6 +27,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.googlecode.android-query:android-query:0.25.9'
     implementation 'com.github.vihtarb:tooltip:0.2.0'
+    implementation 'com.github.xizzhu:simple-tool-tip:0.6.1'
+
 //    implementation 'it.sephiroth.android.library.targettooltip:target-tooltip-library:2.0.1'
 
     implementation project(path: ':kaodimdesign')
