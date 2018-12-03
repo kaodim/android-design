@@ -156,6 +156,7 @@ public class DateTimePicker extends RelativeLayout {
             pickerDialog.setHasEndHalfHour(endHalfHour);
             pickerDialog.setHasStartHalfHour(startHalfHour);
             pickerDialog.setDefaultSelectedDate(defaultSelectedDate);
+            pickerDialog.shouldPastTimeToday(showPastTimesToday);
 
             if(datePickerDescriptionText!=null && !datePickerDescriptionText.isEmpty()){
                 pickerDialog.setDesriptionText(datePickerDescriptionText);
@@ -222,6 +223,8 @@ public class DateTimePicker extends RelativeLayout {
         DateTime dateTime = formatter.parseDateTime(rangeStartDateString);
         this.rangeStartDate = dateTime;
     }
+
+
 
     public void setRangeEndDate(String rangeEndDateString) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");

@@ -213,7 +213,7 @@ public class DateTimePickerDialog extends Dialog {
         this.showPastDates = showPastDates;
     }
 
-    public void shouldShowTimeToday(boolean shouldShowPastTime) {
+    public void shouldPastTimeToday(boolean shouldShowPastTime) {
         this.shouldShowPastTime = shouldShowPastTime;
     }
 
@@ -286,12 +286,25 @@ public class DateTimePickerDialog extends Dialog {
     private void setDefaulSelectedDate(){
         if(defaultSelectedDate!=null && !defaultSelectedDate.isEmpty()){
             if(displayDate){
-                wpDatePicker.setSelectedItemPosition(getPositionForSelectedDate());
+                wpDatePicker.setSelectedItemPosition(getPositionForSelectedDate(defaultSelectedDate));
             }
 
            if(displayTime){
-               wpTimePicker.setSelectedItemPosition(getPositionForSelectedDateTime());
+               wpTimePicker.setSelectedItemPosition(getPositionForSelectedDateTime(defaultSelectedDate));
            }
+        }else{
+            DateTime currentTime = new DateTime();
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+            DateTime currentDate = formatter.parseDateTime(currentTime.toString())
+                    .withHourOfDay(7).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
+            Log.d("TIMEPICKERTEST", "DefaultDate: " + currentDate.toString());
+            defaultSelectedDate = currentDate.toString();
+            if(displayDate){
+                wpDatePicker.setSelectedItemPosition(getPositionForSelectedDate(defaultSelectedDate));
+                if(!shouldShowPastTime){
+                    compareCurrentDateWithList(getPositionForSelectedDate(defaultSelectedDate));
+                }
+            }
         }
     }
 
@@ -299,10 +312,10 @@ public class DateTimePickerDialog extends Dialog {
     /**
      * This method used calculated the position of the default selected date in date wheel picker
     **/
-    private int getPositionForSelectedDate() {
+    private int getPositionForSelectedDate(String date) {
        int position = 0;
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-        DateTime selectedDate = formatter.parseDateTime(defaultSelectedDate)
+        DateTime selectedDate = formatter.parseDateTime(date)
                 .withHourOfDay(7).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
 
         Log.d("TIMEPICKERTEST", "SelectedDate: " + selectedDate);
@@ -321,7 +334,7 @@ public class DateTimePickerDialog extends Dialog {
     /**
      * This method used calculated the position of the default selected time
      **/
-    private int getPositionForSelectedDateTime() {
+    private int getPositionForSelectedDateTime(String defaultSelectedDate) {
         int position = 0;
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         DateTime selectedDate = formatter.parseDateTime(defaultSelectedDate);
@@ -365,7 +378,8 @@ public class DateTimePickerDialog extends Dialog {
         List<DateTime> dates = new ArrayList<>();
         int days = Days.daysBetween(start, end).getDays() + 1;
         for (int i = 0; i < days; i++) {
-            DateTime d = start.withFieldAdded(DurationFieldType.days(), i);
+            DateTime d = start.withFieldAdded(DurationFieldType.days(), i)
+                    .withHourOfDay(7).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
             dates.add(d);
         }
         return dates;

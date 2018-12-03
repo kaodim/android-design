@@ -164,23 +164,26 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupDateTimePicker() {
         DateTimePickerDialog.DateTimePickerOptions options = new DateTimePickerDialog.DateTimePickerOptions();
-        options.displayTime = false;
+        options.displayTime = true;
         dateTimePicker.initialize(this,options);
-        dateTimePicker.setDateRange("2018-11-30T7:00:00.000+08:00","2018-12-30T23:00:00.000+08:00");
+        dateTimePicker.setDateRange("2018-12-03T14:44:00.000+08:00","2018-12-30T23:00:00.000+08:00");
         dateTimePicker.setRangeStartTime((float) 7);
         dateTimePicker.setRangeEndTime((float) 23);
+        dateTimePicker.shouldShowPastTimesForToday(false);
         dateTimePicker.setDateTimeChangedListener(new DateTimePicker.DateTimeChangedListener() {
             @Override
             public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate,String selectedTimeStamp) {
                     String date = formatedDate + " " + formatedTime;
                     dateTimePicker.setHint(date);
                     dateTimePicker.setDefaultSelectedDate(selectedTimeStamp);
+                Log.d("DateTimeStamp", selectedTimeStamp);
                     Log.d("Date", selectedDate.toString());
             }
 
             @Override
             public void onDateRemoved() {
-                    dateTimePicker.setHint("");
+                dateTimePicker.setHint("");
+                dateTimePicker.setDefaultSelectedDate(null);
             }
         });
     }
