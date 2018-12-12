@@ -1,6 +1,7 @@
 package com.kaodim.design.components.dialogs;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -163,6 +164,16 @@ public class ModalDialog {
 
         }
     }
+
+    /**
+     This sets margin to top of illustration asset
+     **/
+    public void setTopMarginToIcon(int marginInPx) {
+        RelativeLayout.LayoutParams parameter = (RelativeLayout.LayoutParams) banner.getBannerView().findViewById(R.id.ivImage).getLayoutParams();
+        parameter.setMargins(marginInPx, parameter.topMargin, parameter.rightMargin, parameter.bottomMargin); // left, top, right, bottom
+        banner.getBannerView().findViewById(R.id.ivImage).setLayoutParams(parameter);
+    }
+
 
 
     private void setListeners(){
