@@ -170,7 +170,7 @@ public class ModalDialog {
      **/
     public void setTopMarginToIcon(int marginInPx) {
         RelativeLayout.LayoutParams parameter = (RelativeLayout.LayoutParams) banner.getBannerView().findViewById(R.id.ivImage).getLayoutParams();
-        parameter.setMargins(marginInPx, parameter.topMargin, parameter.rightMargin, parameter.bottomMargin); // left, top, right, bottom
+        parameter.setMargins(parameter.leftMargin, marginInPx, parameter.rightMargin, parameter.bottomMargin); // left, top, right, bottom
         banner.getBannerView().findViewById(R.id.ivImage).setLayoutParams(parameter);
     }
 
