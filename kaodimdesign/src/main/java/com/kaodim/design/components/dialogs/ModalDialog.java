@@ -1,15 +1,25 @@
 package com.kaodim.design.components.dialogs;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.kaodim.design.R;
 import com.shasin.notificationbanner.Banner;
 
@@ -135,6 +145,14 @@ public class ModalDialog {
         }
     }
 
+    public void setTitleVisibility(int visibility){
+        banner.getBannerView().findViewById(R.id.tvTitle).setVisibility(visibility);
+    }
+
+    public void setDescriptionVisibility(int visibility){
+        banner.getBannerView().findViewById(R.id.tvDescription).setVisibility(visibility);
+    }
+
 
     /**
      Invoke this to show the pop up
@@ -154,6 +172,7 @@ public class ModalDialog {
     }
 
 
+
     /**
      This will set the icon, mas dimension is 150x150
      **/
@@ -166,6 +185,83 @@ public class ModalDialog {
     }
 
     /**
+     This will set the icon, mas dimension is 150x150
+     **/
+    public void setIcon(Context context,String URL, float cornerRadius){
+        if(banner!=null){
+            ImageView imageView =  banner.getBannerView().findViewById(R.id.ivImage);
+            Glide.with(context).asBitmap().load(URL).into(getRoundedImageTarget(context,imageView,cornerRadius));
+        }
+    }
+
+    public static BitmapImageViewTarget getRoundedImageTarget(@NonNull final Context context, @NonNull final ImageView imageView,
+                                                              final float radius) {
+        return new BitmapImageViewTarget(imageView) {
+            @Override
+            protected void setResource(final Bitmap resource) {
+                RoundedBitmapDrawable circularBitmapDrawable =
+                        RoundedBitmapDrawableFactory.create(context.getResources(), resource);
+                circularBitmapDrawable.setCornerRadius(radius);
+                imageView.setImageDrawable(circularBitmapDrawable);
+            }
+        };
+    }
+
+    public void setIconHeight(int height, Context context){
+        if(banner!=null){
+            ImageView imageView =  banner.getBannerView().findViewById(R.id.ivImage);
+            int height_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, context.getResources().getDisplayMetrics());
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,height_dp);
+            layoutParams.setMargins(0,0,0,0);
+            imageView.setLayoutParams(layoutParams);
+            imageView.setScaleType(ImageView.ScaleType.CENTER);
+        }
+    }
+
+    public void setIconScaleType(ImageView.ScaleType scaleType){
+        if(banner!=null){
+            ImageView imageView =  banner.getBannerView().findViewById(R.id.ivImage);
+            imageView.setScaleType(scaleType);
+        }
+    }
+
+    public void setIconMargin(int left, int top,int right, int bottom){
+        if(banner!=null){
+            ImageView imageView =  banner.getBannerView().findViewById(R.id.ivImage);
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)imageView.getLayoutParams();
+            layoutParams.setMargins(left,top,right,bottom);
+            imageView.setLayoutParams(layoutParams);
+        }
+    }
+
+    /**
+     This will set the icon, mas dimension is 150x150
+     **/
+    public void setIcon(Drawable drawable){
+        if(banner!=null){
+            ImageView imageView =  banner.getBannerView().findViewById(R.id.ivImage);
+            imageView.setImageDrawable(drawable);
+        }
+    }
+
+    /**
+     This will set the icon, mas dimension is 150x150
+     **/
+    public ImageView getIconView(){
+        if(banner!=null){
+           return banner.getBannerView().findViewById(R.id.ivImage);
+        }
+        return null;
+    }
+
+    public void setCancelIconVisibility(int visibility){
+        if(banner!=null){
+            banner.getBannerView().findViewById(R.id.rlCancel).setVisibility(visibility);
+        }
+    }
+
+
+    /**
      This sets margin to top of illustration asset
      **/
     public void setTopMarginToIcon(int marginInPx) {
@@ -173,9 +269,6 @@ public class ModalDialog {
         parameter.setMargins(parameter.leftMargin, marginInPx, parameter.rightMargin, parameter.bottomMargin); // left, top, right, bottom
         banner.getBannerView().findViewById(R.id.ivImage).setLayoutParams(parameter);
     }
-
-
-
     private void setListeners(){
         if(banner!=null){
             banner.getBannerView().findViewById(R.id.btnPrimary).setOnClickListener(new View.OnClickListener() {

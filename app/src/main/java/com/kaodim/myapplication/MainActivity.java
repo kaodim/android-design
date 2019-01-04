@@ -1,6 +1,8 @@
 package com.kaodim.myapplication;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
@@ -14,6 +16,11 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.github.xizzhu.simpletooltip.ToolTip;
 import com.github.xizzhu.simpletooltip.ToolTipView;
 import com.kaodim.design.components.DateTimePicker;
@@ -350,14 +357,21 @@ public class MainActivity extends AppCompatActivity {
    private void setupModalDialog(){
        View view = findViewById(android.R.id.content);
        final ModalDialog modalDialog = new ModalDialog(this,view);
-       modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON);
-//       modalDialog.setTextForNoButton("This is title text", "This is an example of a very long description");
-       modalDialog.setTextForDoubleButton("This is title text", "This is an example of a very long description",
-               "Primary","Secondary");
-////       modalDialog.setTextForSingleButton("This is title text", "This is an example of a very long description",
-////               "Primary");
-       modalDialog.setIcon(R.drawable.illus_settings);
+       modalDialog.setType(ModalDialog.TYPE_SINGLE_BUTTON);
        modalDialog.setDissmissable(true);
+//       modalDialog.setTextForNoButton("This is title text", "This is an example of a very long description");
+//       modalDialog.setTextForDoubleButton("This is title text", "This is an example of a very long description",
+//               "Primary","Secondary");
+       modalDialog.setTextForSingleButton("This is title text", "This is an example of a very long description",
+               "Primary");
+
+//       modalDialog.setIcon(this,"https://www.highburyconsulting.com/wp-content/uploads/2017/08/water-1330252_1920.jpg",5f);
+//       modalDialog.setIconHeight(206,this);
+//       modalDialog.setIconMargin(60,60,60,0);
+//       modalDialog.setIconScaleType(ImageView.ScaleType.CENTER);
+       modalDialog.setIcon(R.drawable.illus_settings);
+//       modalDialog.setTitleVisibility(View.GONE);
+//       modalDialog.setCancelIconVisibility(View.GONE);
        modalDialog.setButtonOnClickListener(new ModalDialog.ModalDialogListener() {
            @Override
            public void onButtonPrimaryClicked() {
@@ -371,6 +385,7 @@ public class MainActivity extends AppCompatActivity {
            }
        });
        modalDialog.show();
+
    }
 
    private void setToolTipContainerListener(){
