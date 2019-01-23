@@ -179,7 +179,14 @@ public class DateTimePickerDialog extends Dialog {
         if (timeSlots.size() > wpTimePicker.getCurrentItemPosition())
             formattedTime = timeSlots.get(wpTimePicker.getCurrentItemPosition());
 
+        Log.d("CHECKPICKER", "GET CURRENT ITEM POSITION : " + wpDatePicker.getCurrentItemPosition());
+        Log.d("CHECKPICKER", "FORMATTED TIME: " + formattedTime);
+
+
         String selectedDateString = datesBetween.get(wpDatePicker.getCurrentItemPosition()).toString();
+
+
+        Log.d("CHECKPICKER", "SELECTED DATE STRING : " + selectedDateString);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         Date selectedDate = new Date();
@@ -196,6 +203,8 @@ public class DateTimePickerDialog extends Dialog {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        Log.d("CHECKPICKER", "SELECTED DATE : " + selectedDate);
 
         listener.onDateTimeSelected(formattedDate, formattedTime, selectedDate,format.format(selectedDate));
     }
@@ -558,7 +567,7 @@ public class DateTimePickerDialog extends Dialog {
                 hour = 11;
                 break;
             case 24:
-                hour = 12;
+                hour = 24;
                 break;
         }
 
@@ -602,7 +611,7 @@ public class DateTimePickerDialog extends Dialog {
                 hour = 23;
                 break;
             case 12:
-                hour = 24;
+                hour = 12;
                 break;
         }
 
@@ -619,6 +628,8 @@ public class DateTimePickerDialog extends Dialog {
         Date date = new Date();
         boolean needs24HourConversion = timeString.contains("PM");
 
+        Log.d("CHECKPICKER", "needs24HourConversion : " + needs24HourConversion);
+
         if (needs24HourConversion) {
             date.setHours(convert12Clockto24Clock(Integer.parseInt(timeString.split(":")[0])));
             date.setMinutes(Integer.parseInt(timeString.substring(timeString.indexOf(":") + 1, timeString.indexOf("PM"))));
@@ -626,6 +637,8 @@ public class DateTimePickerDialog extends Dialog {
             date.setHours(Integer.parseInt(timeString.split(":")[0]));
             date.setMinutes(Integer.parseInt(timeString.substring(timeString.indexOf(":") + 1, timeString.indexOf("AM"))));
         }
+
+        Log.d("CHECKPICKER", "needs24HourConversion DATE : " + date);
 
         return date;
     }
