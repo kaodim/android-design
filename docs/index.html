@@ -777,8 +777,74 @@ modalDialog.setButtonOnClickListener(new ModalDialog.ModalDialogListener() {
 <img src="assets/images/dialog_double_no_icon.png" class="screenshot small" />
 <img src="assets/images/dialog_single_no_icon.png" class="screenshot small" />
 
+<hr>
+<h3>Pop-up Tooltip</h3>
+<p>
+The  <code>ViewTooltip</code> is a <code>View</code> object that can be instantiated multiple times if desired. It is placed in relative to another <code>View</code> object, 
+such as <code>EditText</code>
+</p>
 
+<img src="https://raw.githubusercontent.com/florent37/ViewTooltip/master/medias/autoHide.gif">
 
+<hr>
+<p class="heading">Code level</p>
+{% highlight java %}
+ViewTooltip
+        .on(this, editText)
+        
+        .autoHide(true / false, 1000)
+        .clickToHide(true / false)
+        
+        .align(START / CENTER)
+        
+        .position(TOP / LEFT / RIGHT / BOTTOM)
+        
+        .text("The text")
+        
+        .textColor(Color.WHITE)
+        .color(Color.BLACK)
+        
+        .corner(10)
+
+        .arrowWidth(15)
+        .arrowHeight(15)
+
+        .distanceWithView(0)
+        
+        //change the opening animation
+        .animation(new ViewTooltip.TooltipAnimation(){...})
+        
+        //listeners
+        .onDisplay(new ViewTooltip.ListenerDisplay() {
+            @Override
+            public void onDisplay(View view) {
+                
+            }
+        })
+        .onHide(new ViewTooltip.ListenerHide() {
+            @Override
+            public void onHide(View view) {
+                
+            }
+        })
+        .show();
+
+        //hide all other tooltips (useful when you want only one tooltip at one time on the screen)
+        ViewTooltip.hideAllVisibleToolTips();
+{% endhighlight %}
+<hr>
+<p class="heading">In-app use case</p>
+
+{% highlight java %}
+tooltip = ViewTooltip
+        .on(view)
+        .autoHide(true, 1500)
+        .corner(30)
+        .position(ViewTooltip.Position.TOP)
+        .text(context.getResources().getString(R.string.all_available_time_for_this_job))
+        .color(context.getResources().getColor(R.color.sky_blue))
+        .show();
+{% endhighlight %}
 
 <section class="bs-docs-section">
   <h1 id="resources" class="page-header">Common Resources</h1>
