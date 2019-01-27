@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        interactivePanel.setBorderType(InteractivePanel.BORDER_TYPES.LINE);
+//        interactivePanel.setBorderType(InteractivePanel.BORDER_TYPES.LINE);
     }
 
     private void setupNumericControl() {

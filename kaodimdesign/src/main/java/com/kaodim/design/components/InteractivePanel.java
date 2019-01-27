@@ -3,6 +3,7 @@ package com.kaodim.design.components;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -78,8 +79,8 @@ public class InteractivePanel extends RelativeLayout {
     }
 
     public void setBorderType(String borderType) {
-        this.borderType = borderType;
-        if(this.borderType.equalsIgnoreCase("dotted")) {
+        Log.d("BORDERTYPE", "TYPE : " + borderType);
+        if(borderType.equalsIgnoreCase("1")) {
             rlParent.setBackgroundResource(R.drawable.kdl_rect_dotted);
         }
         else {
