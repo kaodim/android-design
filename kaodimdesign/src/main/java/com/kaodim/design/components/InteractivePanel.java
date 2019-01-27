@@ -53,6 +53,7 @@ public class InteractivePanel extends RelativeLayout {
         hint = typedArray.getString(R.styleable.InteractivePanel_panelHint);
         borderType = typedArray.getString(R.styleable.InteractivePanel_borderType);
 
+
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -65,6 +66,7 @@ public class InteractivePanel extends RelativeLayout {
         rlParent = findViewById(R.id.rlParent);
         tvHint = findViewById(R.id.tvHint);
 
+//        rlParent.setBackgroundResource(R.drawable.kdl_rect_dotted);
         setHint(hint);
         setBorderType(borderType);
         setEvents();
@@ -77,7 +79,7 @@ public class InteractivePanel extends RelativeLayout {
 
     public void setBorderType(String borderType) {
         this.borderType = borderType;
-        if(this.borderType.equals("dotted")) {
+        if(this.borderType.equalsIgnoreCase("dotted")) {
             rlParent.setBackgroundResource(R.drawable.kdl_rect_dotted);
         }
         else {
