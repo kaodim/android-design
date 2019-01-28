@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.text.Spanned;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -126,6 +127,29 @@ public class ModalDialog {
      Set label text for type double button
      **/
     public void setTextForDoubleButton(String title,String description, String btnPrimaryText, String btnSecondaryText ){
+        if(banner!=null){
+            banner.getBannerView().findViewById(R.id.tvTitle).setVisibility(View.VISIBLE);
+            TextView tvtitle = (TextView) banner.getBannerView().findViewById(R.id.tvTitle);
+            tvtitle.setText(title);
+
+            banner.getBannerView().findViewById(R.id.tvDescription).setVisibility(View.VISIBLE);
+            TextView tvDescription = (TextView) banner.getBannerView().findViewById(R.id.tvDescription);
+            tvDescription.setText(description);
+
+            banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.VISIBLE);
+            Button btnPrimary = (Button) banner.getBannerView().findViewById(R.id.btnPrimary);
+            btnPrimary.setText(btnPrimaryText);
+
+            banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.VISIBLE);
+            Button btnSecondary = (Button) banner.getBannerView().findViewById(R.id.btnSecondary);
+            btnSecondary.setText(btnSecondaryText);
+        }
+    }
+
+    /**
+     Set label text for type double button with html-enabled spanned in description
+     **/
+    public void setTextForDoubleButtonSpanned(String title, Spanned description, String btnPrimaryText, String btnSecondaryText ){
         if(banner!=null){
             banner.getBannerView().findViewById(R.id.tvTitle).setVisibility(View.VISIBLE);
             TextView tvtitle = (TextView) banner.getBannerView().findViewById(R.id.tvTitle);
