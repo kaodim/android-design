@@ -132,7 +132,7 @@ public class ModalDialog {
                 banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.GONE);
                 banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.GONE);
-                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.GONE);
                 setTypeNonDismissable();
             }
