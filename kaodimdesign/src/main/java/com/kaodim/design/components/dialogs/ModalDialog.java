@@ -31,6 +31,12 @@ public class ModalDialog {
     public static final int TYPE_SINGLE_BUTTON_NO_ICON = 3;
     public static final int TYPE_DOUBLE_BUTTON_NO_ICON = 4;
     public static final int TYPE_NO_BUTTON_WITH_ICON = 5;
+    public static final int TYPE_SINGLE_BUTTON_NON_DISMISS = 6;
+    public static final int TYPE_DOUBLE_BUTTON_NON_DISMISS = 7;
+    public static final int TYPE_SINGLE_BUTTON_NO_ICON_NON_DISMISS = 8;
+    public static final int TYPE_DOUBLE_BUTTON_NO_ICON_NON_DISMISS = 9;
+    public static final int TYPE_NO_BUTTON_WITH_ICON_NON_DISMISS = 10;
+
 
     public interface ModalDialogListener {
         void onButtonPrimaryClicked();
@@ -59,26 +65,76 @@ public class ModalDialog {
                 banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.GONE);
                 banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.GONE);
             }
             else if(type == TYPE_DOUBLE_BUTTON){
                 banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.GONE);
             }
             else if(type == TYPE_SINGLE_BUTTON_NO_ICON){
                 banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.GONE);
                 banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.GONE);
             }
             else if(type == TYPE_DOUBLE_BUTTON_NO_ICON){
                 banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.VISIBLE);
                 banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.GONE);
             }
             else if(type == TYPE_NO_BUTTON_WITH_ICON){
                 banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.GONE);
                 banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.GONE);
                 banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.GONE);
+            }
+            else if(type == TYPE_SINGLE_BUTTON_NON_DISMISS){
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.VISIBLE);
+                setTypeNonDismissable();
+            }
+            else if(type == TYPE_DOUBLE_BUTTON_NON_DISMISS){
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.VISIBLE);
+                setTypeNonDismissable();
+            }
+            else if(type == TYPE_SINGLE_BUTTON_NO_ICON_NON_DISMISS){
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.VISIBLE);
+                setTypeNonDismissable();
+            }
+            else if(type == TYPE_DOUBLE_BUTTON_NO_ICON_NON_DISMISS){
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.VISIBLE);
+                setTypeNonDismissable();
+            }
+            else if(type == TYPE_NO_BUTTON_WITH_ICON_NON_DISMISS){
+                banner.getBannerView().findViewById(R.id.llContainerVerticalButton).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.llContainerHorizontalButton).setVisibility(View.VISIBLE);
+                banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.ivImage).setVisibility(View.GONE);
+                banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.GONE);
+                setTypeNonDismissable();
             }
         }
     }
@@ -101,6 +157,69 @@ public class ModalDialog {
             btnPrimary.setText(btnPrimaryText);
 
             banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     Set label text for type single button for horizontal row
+     **/
+    public void setTextForSingleButtonRow(String title,String description, String btnPrimaryText){
+        if(banner!=null){
+
+            if(title!=null && !title.isEmpty()){
+                banner.getBannerView().findViewById(R.id.tvTitleHorz).setVisibility(View.VISIBLE);
+                TextView tvtitle = (TextView) banner.getBannerView().findViewById(R.id.tvTitleHorz);
+                tvtitle.setText(title);
+            }else{
+                banner.getBannerView().findViewById(R.id.tvTitleHorz).setVisibility(View.GONE);
+            }
+
+            if(description!=null && !description.isEmpty()){
+                banner.getBannerView().findViewById(R.id.tvDescriptionHorz).setVisibility(View.VISIBLE);
+                TextView tvDescription = (TextView) banner.getBannerView().findViewById(R.id.tvDescriptionHorz);
+                tvDescription.setText(description);
+            }else{
+                banner.getBannerView().findViewById(R.id.tvDescriptionHorz).setVisibility(View.GONE);
+            }
+
+            banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.VISIBLE);
+            Button btnPrimary = (Button) banner.getBannerView().findViewById(R.id.btnPrimaryHorz);
+            btnPrimary.setText(btnPrimaryText);
+
+            banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     Set label text for type single button for horizontal row
+     **/
+    public void setTextForDoubleButtonRow(String title,String description, String btnPrimaryText,String btnSecondaryText){
+        if(banner!=null){
+
+            if(title!=null && !title.isEmpty()){
+                banner.getBannerView().findViewById(R.id.tvTitleHorz).setVisibility(View.VISIBLE);
+                TextView tvtitle = (TextView) banner.getBannerView().findViewById(R.id.tvTitleHorz);
+                tvtitle.setText(title);
+            }else{
+                banner.getBannerView().findViewById(R.id.tvTitleHorz).setVisibility(View.GONE);
+            }
+
+            if(description!=null && !description.isEmpty()){
+                banner.getBannerView().findViewById(R.id.tvDescriptionHorz).setVisibility(View.VISIBLE);
+                TextView tvDescription = (TextView) banner.getBannerView().findViewById(R.id.tvDescriptionHorz);
+                tvDescription.setText(description);
+            }else{
+                banner.getBannerView().findViewById(R.id.tvDescriptionHorz).setVisibility(View.GONE);
+            }
+
+            banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setVisibility(View.VISIBLE);
+            Button btnPrimary = (Button) banner.getBannerView().findViewById(R.id.btnPrimaryHorz);
+            btnPrimary.setText(btnPrimaryText);
+
+            banner.getBannerView().findViewById(R.id.btnDismissHorz).setVisibility(View.VISIBLE);
+            Button btnSecondary = (Button) banner.getBannerView().findViewById(R.id.btnDismissHorz);
+            btnSecondary.setText(btnSecondaryText);
+
         }
     }
 
@@ -258,6 +377,19 @@ public class ModalDialog {
         }
     }
 
+    public void setIconMarginWithDP(int left, int top,int right, int bottom,Context context){
+        if(banner!=null){
+            int left_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, left, context.getResources().getDisplayMetrics());
+            int right_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, right, context.getResources().getDisplayMetrics());
+            int top_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, top, context.getResources().getDisplayMetrics());
+            int bottom_dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, bottom, context.getResources().getDisplayMetrics());
+            ImageView imageView =  banner.getBannerView().findViewById(R.id.ivImage);
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)imageView.getLayoutParams();
+            layoutParams.setMargins(left_dp,top_dp,right_dp,bottom_dp);
+            imageView.setLayoutParams(layoutParams);
+        }
+    }
+
     /**
      This will set the icon, mas dimension is 150x150
      **/
@@ -306,6 +438,20 @@ public class ModalDialog {
                 @Override
                 public void onClick(View v) {
                     listener.onButtonSecondaryClicked();
+                }
+            });
+
+            banner.getBannerView().findViewById(R.id.btnPrimaryHorz).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onButtonPrimaryClicked();
+                }
+            });
+
+            banner.getBannerView().findViewById(R.id.btnDismissHorz).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    banner.dismissBanner();
                 }
             });
 

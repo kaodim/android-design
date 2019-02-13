@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
             android:background="@drawable/kdl_porcelain_bg"
             android:clickable="false"
             android:focusable="false"
@@ -62,13 +62,15 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/llContainerVerticalButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="20dp">
+                android:paddingBottom="20dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tvTitle"
@@ -103,6 +105,7 @@
                     style="@style/NormalTextMedium"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/button_jasper"
                     android:clickable="true"
                     android:enabled="true"
@@ -110,9 +113,8 @@
                     android:gravity="center"
                     android:stateListAnimator="@null"
                     android:text="Button"
-                    android:layout_marginTop="20dp"
-                    android:textSize="@dimen/size_14"
-                    android:textColor="@color/porcelain" />
+                    android:textColor="@color/porcelain"
+                    android:textSize="@dimen/size_14" />
 
                 <Button
                     android:id="@+id/btnSecondary"
@@ -125,8 +127,90 @@
                     android:textAllCaps="false"
                     android:textColor="@color/sky_blue"
                     android:textSize="@dimen/size_14" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="12dp"
+                android:gravity="center"
+                android:id="@+id/llContainerHorizontalButton">
 
+                <TextView
+                    android:id="@+id/tvTitleHorz"
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:visibility="gone"
+                    android:textColor="@color/firefly"
+                    android:textSize="@dimen/size_16" />
+
+                <TextView
+                    android:id="@+id/tvDescriptionHorz"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!"
+                    android:lineSpacingMultiplier="1.1"
+                    android:textColor="@color/greyish_brown"
+                    android:textSize="@dimen/size_15" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/llButtonHorzContainer"
+                    android:visibility="visible"
+                    android:layout_marginTop="12dp"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/btnDismissHorz"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@drawable/button_gray"
+                        android:shadowColor="@color/porcelain"
+                        android:text="Secondary"
+                        android:layout_weight="1.1"
+                        android:textAllCaps="false"
+                        android:visibility="visible"
+                        android:layout_marginRight="10dp"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:textColor="@color/greyish_brown"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnPrimaryHorz"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@drawable/button_jasper"
+                        android:clickable="true"
+                        android:enabled="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:layout_weight="0.9"
+                        android:textAllCaps="false"
+                        android:visibility="visible"
+                        android:text="Button"
+                        android:textSize="16sp"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:textColor="@color/porcelain" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
