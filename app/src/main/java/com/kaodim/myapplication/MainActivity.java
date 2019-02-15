@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     SearchBox searchBox;
     PricingBottomBar pricingBottomBar;
     FullWidthBottomBar fullWidthBottomBar;
-    Button toastSuccess, toastError, preLoader, modalDialog;
+    Button toastSuccess, toastError, preLoader, modalDialog, newModalDialog;
     LinearLayout toastMessageBar;
     Button btnShowToolTip, btnHideToolTip;
     ImageView icBulb;
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         notesInfo = findViewById(R.id.notesInfoView);
         fullWidthBottomBar = findViewById(R.id.kdl_full_width_bottombar);
         modalDialog = findViewById(R.id.btnModalDialog);
+        newModalDialog = findViewById(R.id.btnNewModalDialog );
         btnShowToolTip = findViewById(R.id.BtnShowToolTip);
         btnHideToolTip = findViewById(R.id.BtnHideToolTip);
         icBulb = findViewById(R.id.ivImage);
@@ -119,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setupModalDialog();
+            }
+        });
+
+        newModalDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setupNewModalDialog();
             }
         });
     }
@@ -387,6 +395,40 @@ public class MainActivity extends AppCompatActivity {
        modalDialog.show();
 
    }
+
+    private void setupNewModalDialog(){
+        View view = findViewById(android.R.id.content);
+        final ModalDialog modalDialog = new ModalDialog(this,view);
+        modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON_NO_ICON_NON_DISMISS);
+//        modalDialog.setTextForSingleButtonRow("", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
+//                "Primary");
+        modalDialog.setTextForDoubleButtonRow("", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
+                "Primary","Cancel");
+        modalDialog.setIcon(R.drawable.illustration_update_customer);
+       modalDialog.setIconHeight(217,this);
+       modalDialog.setIconMarginWithDP(24,24,24,0,this);
+       modalDialog.setIconScaleType(ImageView.ScaleType.FIT_CENTER);
+       modalDialog.setButtonOnClickListener(new ModalDialog.NewModalDialogListener() {
+           @Override
+           public void onButtonPrimaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+               modalDialog.hide();
+           }
+
+           @Override
+           public void onButtonSecondaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+               modalDialog.hide();
+           }
+
+           @Override
+           public void onButtonDismissedClicked() {
+
+           }
+       },true);
+        modalDialog.show();
+
+    }
 
    private void setToolTipContainerListener(){
         btnShowToolTip.setOnClickListener(new View.OnClickListener() {

@@ -19,6 +19,11 @@
     <color name="raven">#9FA4A6</color>
     <color name="flint">#707070</color>
     <color name="blackpearl">#12232E</color>
+    <color name="greyish_brown">#4a4a4a</color>
+
+    <color name="white_three">#eeeeee</color>
+    <color name="white_three_dark">#dddddd</color>
+
 
     <color name="kdl_grey">#E6E7E8</color>
     <color name="kdl_grey_dark">#5A5A5A</color>
@@ -28,6 +33,7 @@
     <color name="kdl_grey_lighter_2">#F4F4F4</color>
 
     <color name="black_light">#0F0F0F</color>
+    <color name="black">#262626</color>
     <color name="facebook">#3867B7</color>
     <color name="facebook_darker">#31599E</color>
 

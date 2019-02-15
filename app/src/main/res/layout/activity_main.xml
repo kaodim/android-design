@@ -348,6 +348,16 @@
                     android:text="Show Dialog"
                     android:textColor="@color/porcelain"/>
 
+                <Button
+                    android:id="@+id/btnNewModalDialog"
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@color/lima"
+                    android:text="Show New Dialog"
+                    android:textColor="@color/porcelain"/>
+
+
             </LinearLayout>
 
             <TextView

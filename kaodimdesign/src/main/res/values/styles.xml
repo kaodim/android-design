@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--<style name="topAnimation" parent="android:Animation">-->
+        <!--<item name="android:windowEnterAnimation">@anim/top_enter</item>-->
+        <!--<item name="android:windowExitAnimation">@anim/top_exit</item>-->
+    <!--</style>-->
+    <style name="bottomAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_bottom_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_bottom_exit</item>
+    </style>
+
+    <style name="ModalDialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_fade_out</item>
+    </style>
+
     <style name="HeaderText" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">@color/blackpearl</item>
@@ -16,21 +30,18 @@
     </style>
 
     <style name="NormalText" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/blackpearl</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="NormalTextMedium" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/porcelain</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="NormalTextBolded" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">@color/porcelain</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
