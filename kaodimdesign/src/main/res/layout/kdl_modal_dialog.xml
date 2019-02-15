@@ -26,11 +26,13 @@
             android:background="@drawable/kdl_porcelain_bg"
             android:clickable="false"
             android:focusable="false"
+            android:elevation="4dp"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/ivImage"
@@ -47,6 +49,7 @@
                     android:layout_height="22dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="5dp"
+                    android:visibility="visible"
                     android:layout_marginEnd="20dp">
 
                     <ImageView
@@ -134,41 +137,45 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingBottom="12dp"
                 android:gravity="center"
                 android:id="@+id/llContainerHorizontalButton">
 
-                <TextView
-                    android:id="@+id/tvTitleHorz"
-                    style="@style/NormalTextBolded"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:visibility="gone"
-                    android:textColor="@color/firefly"
-                    android:textSize="@dimen/size_16" />
+                    android:orientation="vertical"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="24dp"
+                    android:id="@+id/llContentContainer">
 
-                <TextView
-                    android:id="@+id/tvDescriptionHorz"
-                    style="@style/NormalText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center"
-                    android:text="A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!"
-                    android:lineSpacingMultiplier="1.1"
-                    android:textColor="@color/greyish_brown"
-                    android:textSize="@dimen/size_15" />
+                    <TextView
+                        android:id="@+id/tvTitleHorz"
+                        style="@style/font_roboto_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left"
+                        android:text="This is example of title"
+                        android:visibility="visible"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvDescriptionHorz"
+                        style="@style/font_roboto_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left"
+                        android:text="A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!"
+                        android:lineSpacingMultiplier="1.1"
+                        android:textColor="@color/greyish_brown"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -176,13 +183,15 @@
                     android:orientation="horizontal"
                     android:id="@+id/llButtonHorzContainer"
                     android:visibility="visible"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginRight="12dp"
                     android:weightSum="2">
 
                     <Button
                         android:id="@+id/btnDismissHorz"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="45dp"
                         android:background="@drawable/button_gray"
                         android:shadowColor="@color/porcelain"
                         android:text="Secondary"
@@ -197,7 +206,7 @@
                     <Button
                         android:id="@+id/btnPrimaryHorz"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="45dp"
                         android:background="@drawable/button_jasper"
                         android:clickable="true"
                         android:enabled="true"

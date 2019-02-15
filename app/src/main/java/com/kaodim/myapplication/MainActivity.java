@@ -399,25 +399,33 @@ public class MainActivity extends AppCompatActivity {
     private void setupNewModalDialog(){
         View view = findViewById(android.R.id.content);
         final ModalDialog modalDialog = new ModalDialog(this,view);
-        modalDialog.setType(ModalDialog.TYPE_SINGLE_BUTTON_NON_DISMISS);
-        modalDialog.setTextForSingleButtonRow("", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
-                "Primary");
+        modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON_NO_ICON_NON_DISMISS);
+//        modalDialog.setTextForSingleButtonRow("", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
+//                "Primary");
+        modalDialog.setTextForDoubleButtonRow("", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
+                "Primary","Cancel");
         modalDialog.setIcon(R.drawable.illustration_update_customer);
        modalDialog.setIconHeight(217,this);
-       modalDialog.setIconMarginWithDP(24,24,24,24,this);
+       modalDialog.setIconMarginWithDP(24,24,24,0,this);
        modalDialog.setIconScaleType(ImageView.ScaleType.FIT_CENTER);
-       modalDialog.setButtonOnClickListener(new ModalDialog.ModalDialogListener() {
-            @Override
-            public void onButtonPrimaryClicked() {
-                Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
-            }
+       modalDialog.setButtonOnClickListener(new ModalDialog.NewModalDialogListener() {
+           @Override
+           public void onButtonPrimaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+               modalDialog.hide();
+           }
 
-            @Override
-            public void onButtonSecondaryClicked() {
-                Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
-                modalDialog.hide();
-            }
-        });
+           @Override
+           public void onButtonSecondaryClicked() {
+               Toast.makeText(getBaseContext(),"You have clicked Modal Dialog Single Button",Toast.LENGTH_SHORT).show();
+               modalDialog.hide();
+           }
+
+           @Override
+           public void onButtonDismissedClicked() {
+
+           }
+       },true);
         modalDialog.show();
 
     }
