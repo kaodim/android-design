@@ -47,5 +47,7 @@
 
     <!--UTILITY PALETTE-->
     <color name="transparent_black">#66000000</color>
+    <color name="kaodim_red_40">#f4a3b0</color>
+
 
 </resources>
