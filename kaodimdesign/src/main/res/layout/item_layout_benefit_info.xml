@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:visibility="gone"
+    app:cardElevation="20dp"
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="@color/kaodim_orange_20"
+    android:id="@+id/llInfoStatus">
+
+    <br.tiagohm.markdownview.MarkdownView
+        android:layout_margin="16dp"
+
+        android:id="@+id/MDQuotePaymentInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
+        android:clickable="false"
+        android:focusable="false"
+        android:layout_centerVertical="true"
+        style="@style/font_roboto_regular"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/llMarkdownContainer"
+        android:layout_gravity="center"
+        >
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+
+
+
