@@ -49,5 +49,10 @@
     <color name="transparent_black">#66000000</color>
     <color name="kaodim_red_40">#f4a3b0</color>
 
+    <color name="text_black">#000000</color>
+    <color name="text_darkgrey">#262626</color>
+    <color name="text_midgrey">#4a4a4a</color>
+    <color name="text_lightgrey">#9b9b9b</color>
+    <color name="bg_lightgrey">#f2f2f2</color>
 
 </resources>

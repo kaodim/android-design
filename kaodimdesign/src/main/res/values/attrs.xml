@@ -115,4 +115,21 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="KaodimEditTextLayout">
+        <attr name="android:hint"/>
+        <attr name="errorText"/>
+        <attr name="android:text"/>
+        <attr name="secured" format="boolean"/>
+        <attr name="inputType" format="enum">
+            <enum name="text" value="0"/>
+            <enum name="number" value="1"/>
+        </attr>
+        <attr name="android:enabled"/>
+    </declare-styleable>
+
+    <declare-styleable name="KaodimViewTextLayout">
+        <attr name="android:hint"/>
+        <attr name="android:enabled"/>
+    </declare-styleable>
+
 </resources>

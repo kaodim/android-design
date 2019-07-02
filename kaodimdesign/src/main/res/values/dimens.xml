@@ -41,6 +41,12 @@
     <dimen name="fab_margin">8dp</dimen>
 
     <dimen name="avatar_size">120dp</dimen>
+
+
+    <dimen name="size_8_dp">8dp</dimen>
+    <dimen name="size_10_dp">10dp</dimen>
+    <dimen name="size_20_dp">20dp</dimen>
+    <dimen name="size_30_dp">30dp</dimen>
 </resources>
 <!--<resources>-->
     <!--&lt;!&ndash; Default screen margins, per the Android Design guidelines. &ndash;&gt;-->
