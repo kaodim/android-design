@@ -32,12 +32,14 @@ import com.kaodim.design.components.bottomBars.PricingBottomBar;
 import com.kaodim.design.components.callbacks.NumericControlListener;
 import com.kaodim.design.components.dialogs.DateTimePickerDialog;
 import com.kaodim.design.components.dialogs.ModalDialog;
+import com.kaodim.design.components.editText.KaodimEditText;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
 import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.toast.ToastBanner;
 import com.kaodim.design.components.tooltip.ViewTooltip;
+import com.kaodim.design.components.viewText.KaodimViewText;
 import com.tooltip.Tooltip;
 import com.tooltip.TooltipActionView;
 
@@ -54,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
     FullWidthBottomBar fullWidthBottomBar;
     Button toastSuccess, toastError, preLoader, modalDialog, newModalDialog;
     LinearLayout toastMessageBar;
-    Button btnShowToolTip, btnHideToolTip;
+    Button btnShowToolTip, btnHideToolTip, btnShowViewText, btnHideViewText;
     ImageView icBulb;
     LinearLayout toolTipParentView;
-
+    KaodimEditText ketEditText;
+    KaodimViewText kvtViewText;
 
     NotesStandard notesStandard;
     NotesError notesError;
@@ -89,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
         btnHideToolTip = findViewById(R.id.BtnHideToolTip);
         icBulb = findViewById(R.id.ivImage);
         toolTipParentView = findViewById(R.id.llToolTipParentView);
+        ketEditText = findViewById(R.id.ketEditText);
+        kvtViewText = findViewById(R.id.kvtViewText);
+        btnShowViewText = findViewById(R.id.BtnShowViewText);
+        btnHideViewText = findViewById(R.id.BtnHideViewText);
 
         setupNumericControl();
 
@@ -113,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
         setupFullWidthBottomBar();
 
         setToolTipContainerListener();
+
+        setViewTextListener();
 
         dateTimePicker.initialize(this);
 
@@ -445,6 +454,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
    }
+
+    private void setViewTextListener(){
+        btnShowViewText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kvtViewText.setText("Show Text");
+            }
+        });
+
+        btnHideViewText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kvtViewText.setText("");
+            }
+        });
+    }
 
    private void showtooltip(View view){
        ToolTip toolTip = new ToolTip.Builder()
