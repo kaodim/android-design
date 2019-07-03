@@ -54,5 +54,14 @@
     <color name="text_midgrey">#4a4a4a</color>
     <color name="text_lightgrey">#9b9b9b</color>
     <color name="bg_lightgrey">#f2f2f2</color>
+    <color name="white">#ffffff</color>
+
+    <!--Kaodim Blue -->
+    <color name="kaodim_blue">#2692ee</color>
+    <color name="kaodim_blue_60">#7dbef5</color>
+    <color name="kaodim_blue_40">#a8d3f8</color>
+    <color name="kaodim_blue_20">#d4e9fc</color>
+    <color name="kaodim_blue_10">#e9f4fd</color>
+
 
 </resources>

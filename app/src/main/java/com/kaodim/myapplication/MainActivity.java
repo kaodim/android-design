@@ -1,26 +1,18 @@
 package com.kaodim.myapplication;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.github.xizzhu.simpletooltip.ToolTip;
 import com.github.xizzhu.simpletooltip.ToolTipView;
 import com.kaodim.design.components.DateTimePicker;
@@ -37,11 +29,10 @@ import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
 import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
+import com.kaodim.design.components.searchEditText.SearchEditText;
 import com.kaodim.design.components.toast.ToastBanner;
-import com.kaodim.design.components.tooltip.ViewTooltip;
 import com.kaodim.design.components.viewText.KaodimViewText;
 import com.tooltip.Tooltip;
-import com.tooltip.TooltipActionView;
 
 import java.util.Date;
 
@@ -61,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout toolTipParentView;
     KaodimEditText ketEditText;
     KaodimViewText kvtViewText;
+    SearchEditText setSearchText;
+    TextView tvSearchTextDelay, tvSearchTextInstantenous;
 
     NotesStandard notesStandard;
     NotesError notesError;
@@ -96,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
         kvtViewText = findViewById(R.id.kvtViewText);
         btnShowViewText = findViewById(R.id.BtnShowViewText);
         btnHideViewText = findViewById(R.id.BtnHideViewText);
+        setSearchText = findViewById(R.id.setSearchTextSearch);
+        tvSearchTextDelay = findViewById(R.id.tvSearchTextDelay);
+        tvSearchTextInstantenous = findViewById(R.id.tvSearchTextInstantenous);
 
         setupNumericControl();
 
@@ -122,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
         setToolTipContainerListener();
 
         setViewTextListener();
+
+        setSearchTextListener();
 
         dateTimePicker.initialize(this);
 
@@ -467,6 +465,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 kvtViewText.setText("");
+            }
+        });
+    }
+
+    private void setSearchTextListener(){
+        setSearchText.addTextChangedListener(new SearchEditText.SearchEditTextChangeListener() {
+            @Override
+            public void onTextChanged(String res) {
+                tvSearchTextInstantenous.setText(res);
+            }
+        });
+
+        setSearchText.addTextChangedListenerWithDelay(this, new SearchEditText.SearchEditTextChangeListener() {
+            @Override
+            public void onTextChanged(String res) {
+                tvSearchTextDelay.setText(res);
             }
         });
     }

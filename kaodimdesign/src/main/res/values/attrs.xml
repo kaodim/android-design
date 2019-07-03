@@ -132,4 +132,9 @@
         <attr name="android:enabled"/>
     </declare-styleable>
 
+    <declare-styleable name="SearchEditText">
+        <attr name="android:hint"/>
+        <attr name="cancelText" format="string"/>
+        <attr name="showCancelText" format="boolean"/>
+    </declare-styleable>
 </resources>

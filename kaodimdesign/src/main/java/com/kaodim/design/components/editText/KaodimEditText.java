@@ -105,12 +105,16 @@ public class KaodimEditText extends LinearLayout {
 
         etCustomInput.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View view, boolean hasFocus) {
+            public void onFocusChange(View view, final boolean hasFocus) {
                 post(new Runnable() {
                     @Override
                     public void run() {
                         InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        inputMethodManager.showSoftInput(etCustomInput, InputMethodManager.SHOW_IMPLICIT);
+                        if (hasFocus) {
+                            inputMethodManager.showSoftInput(etCustomInput, InputMethodManager.SHOW_IMPLICIT);
+                        } else {
+                            inputMethodManager.hideSoftInputFromWindow(etCustomInput.getWindowToken(), 0);
+                        }
                     }
                 });
                 etCustomInput.setInputType(getInputType(inputType, isSecured, hasFocus ));
