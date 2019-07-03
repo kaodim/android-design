@@ -489,6 +489,44 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/llSearchTextParentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <com.kaodim.design.components.searchEditText.SearchEditText
+                    android:id ="@+id/setSearchTextSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Search for building or address"
+                    app:showCancelText = "false"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id = "@+id/tvSearchTextInstantenous"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Instantenous Change"/>
+
+                    <TextView
+                        android:id = "@+id/tvSearchTextDelay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Change with Delay"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </ScrollView>
