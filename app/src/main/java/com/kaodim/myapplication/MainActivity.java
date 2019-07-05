@@ -32,6 +32,7 @@ import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.searchEditText.SearchEditText;
 import com.kaodim.design.components.toast.ToastBanner;
 import com.kaodim.design.components.viewText.KaodimViewText;
+import com.kaodim.myapplication.fragement.CalendarViewDialogFragment;
 import com.tooltip.Tooltip;
 
 import java.util.Date;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     FullWidthBottomBar fullWidthBottomBar;
     Button toastSuccess, toastError, preLoader, modalDialog, newModalDialog;
     LinearLayout toastMessageBar;
-    Button btnShowToolTip, btnHideToolTip, btnShowViewText, btnHideViewText;
+    Button btnShowToolTip, btnHideToolTip, btnShowViewText, btnHideViewText,btnShowCalendarDialog;
     ImageView icBulb;
     LinearLayout toolTipParentView;
     KaodimEditText ketEditText;
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         setSearchText = findViewById(R.id.setSearchTextSearch);
         tvSearchTextDelay = findViewById(R.id.tvSearchTextDelay);
         tvSearchTextInstantenous = findViewById(R.id.tvSearchTextInstantenous);
+        btnShowCalendarDialog = findViewById(R.id.BtnShowCalendarDialog);
 
         setupNumericControl();
 
@@ -120,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
         setViewTextListener();
 
         setSearchTextListener();
+
+        setBtnShowCalendarDialogListener();
 
         dateTimePicker.initialize(this);
 
@@ -481,6 +485,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(String res) {
                 tvSearchTextDelay.setText(res);
+            }
+        });
+    }
+
+    private void setBtnShowCalendarDialogListener(){
+        btnShowCalendarDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CalendarViewDialogFragment calendarViewDialogFragment = new CalendarViewDialogFragment();
+                calendarViewDialogFragment.show(getSupportFragmentManager(),"Calendar");
             }
         });
     }
