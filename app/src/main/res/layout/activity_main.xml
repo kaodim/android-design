@@ -211,6 +211,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:text="Date Range Picker"
+                android:textColor="@color/firefly" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/BtnShowCalendarDialog"
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@color/lima"
+                    android:text="Shoe Calendar"
+                    android:textColor="@color/porcelain"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/NormalTextBolded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Interactive Panel"
                 android:textColor="@color/firefly" />
 
@@ -268,6 +293,8 @@
                 android:layout_height="wrap_content"
                 app:btnFullWidthText="Proceed">
             </com.kaodim.design.components.bottomBars.FullWidthBottomBar>
+
+
 
             <TextView
                 style="@style/NormalTextBolded"
