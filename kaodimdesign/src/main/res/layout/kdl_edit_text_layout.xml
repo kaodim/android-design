@@ -34,14 +34,17 @@
 
         <TextView
             android:id="@+id/tvKdlTextInputHint"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft = "10dp"
             android:paddingRight = "10dp"
             android:textSize="@dimen/size_16"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="@color/text_midgrey"
             app:layout_constraintBottom_toBottomOf="@+id/etKdlTextInputInput"
             app:layout_constraintLeft_toLeftOf="@+id/etKdlTextInputInput"
+            app:layout_constraintRight_toLeftOf="@id/ivKdlTextInputClear"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Hint" />
 
