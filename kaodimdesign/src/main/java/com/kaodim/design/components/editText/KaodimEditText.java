@@ -262,6 +262,15 @@ public class KaodimEditText extends LinearLayout {
         return this.etCustomInput.getText().toString();
     }
 
+    public void setSecured(boolean secured) {
+        this.isSecured = secured;
+        etCustomInput.setInputType(getInputType(inputType, isSecured, etCustomInput.isFocused() ));
+    }
+
+    public boolean getSecured() {
+        return this.isSecured;
+    }
+
     public void setEnabled(boolean enabled) {
         recursiveSetEnabled(this, enabled);
         super.setEnabled(enabled);
