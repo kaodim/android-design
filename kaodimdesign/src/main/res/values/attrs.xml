@@ -120,6 +120,7 @@
         <attr name="errorText"/>
         <attr name="android:text"/>
         <attr name="secured" format="boolean"/>
+        <attr name="capitalize" format="boolean"/>
         <attr name="inputType" format="enum">
             <enum name="text" value="0"/>
             <enum name="number" value="1"/>

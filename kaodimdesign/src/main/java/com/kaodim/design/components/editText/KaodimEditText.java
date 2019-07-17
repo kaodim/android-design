@@ -36,6 +36,7 @@ public class KaodimEditText extends LinearLayout {
 
     private int inputType;
     private boolean isSecured;
+    private boolean isFirstLetterCapitalize;
     private EditText etCustomInput;
     private TextView tvCustomHint;
     private TextView tvCustomError;
@@ -70,6 +71,7 @@ public class KaodimEditText extends LinearLayout {
         boolean enabled = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_android_enabled, true);
         inputType = typedArray.getInt(R.styleable.KaodimEditTextLayout_inputType, 0);
         isSecured = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_secured, false);
+        isFirstLetterCapitalize = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_capitalize, false);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -117,7 +119,7 @@ public class KaodimEditText extends LinearLayout {
                         }
                     }
                 });
-                etCustomInput.setInputType(getInputType(inputType, isSecured, hasFocus ));
+                etCustomInput.setInputType(getInputType(inputType, isSecured, hasFocus, isFirstLetterCapitalize ));
                 etCustomInput.setSelection(etCustomInput.getText().length());
                 // Update background
                 Drawable drawable = getContext().getDrawable(getErrorText().isEmpty() ? (etCustomInput.isFocused() ? R.drawable.bg_edittext_focused: R.drawable.bg_edittext_default):R.drawable.bg_edittext_error);
@@ -192,7 +194,7 @@ public class KaodimEditText extends LinearLayout {
         this.setText(inputText);
         this.setEnabled(enabled);
         etCustomInput.setShowSoftInputOnFocus(true);
-        etCustomInput.setInputType(getInputType(inputType, isSecured, etCustomInput.isFocused()));
+        etCustomInput.setInputType(getInputType(inputType, isSecured, etCustomInput.isFocused(),isFirstLetterCapitalize));
     }
 
     private void animateColorHint(boolean hasFocus) {
@@ -264,7 +266,7 @@ public class KaodimEditText extends LinearLayout {
 
     public void setSecured(boolean secured) {
         this.isSecured = secured;
-        etCustomInput.setInputType(getInputType(inputType, isSecured, etCustomInput.isFocused() ));
+        etCustomInput.setInputType(getInputType(inputType, isSecured, etCustomInput.isFocused(), isFirstLetterCapitalize ));
     }
 
     public boolean getSecured() {
@@ -280,18 +282,23 @@ public class KaodimEditText extends LinearLayout {
         etCustomInput.addTextChangedListener(textWatcher);
     }
 
-    private int getInputType(int customInputType, boolean isSecured, boolean isFocused) {
-        if (customInputType == INPUT_TYPE_TEXT && isSecured && !isFocused) {
-            return InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD;
-        } else if (customInputType == INPUT_TYPE_NUMBER && isSecured && !isFocused) {
-            return InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD;
-        } else if (customInputType == INPUT_TYPE_NUMBER && !isSecured ) {
-            return InputType.TYPE_CLASS_NUMBER;
-        } else if (customInputType == INPUT_TYPE_NUMBER && isSecured && isFocused) {
-            return InputType.TYPE_CLASS_NUMBER;
+    private int getInputType(int customInputType, boolean isSecured, boolean isFocused, boolean isCapitalized) {
+        int inputType = InputType.TYPE_CLASS_TEXT;
+        if (customInputType == INPUT_TYPE_NUMBER) {
+            inputType = InputType.TYPE_CLASS_NUMBER;
+            if (isSecured && !isFocused) {
+                inputType = inputType | InputType.TYPE_NUMBER_VARIATION_PASSWORD;
+            }
         } else {
-            return InputType.TYPE_CLASS_TEXT;
+            if (isCapitalized) {
+                inputType = inputType | InputType.TYPE_TEXT_FLAG_CAP_WORDS;
+            }
+            if (isSecured && !isFocused) {
+                inputType = inputType | InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            }
         }
+
+        return inputType;
     }
 
     private static void recursiveSetEnabled(ViewGroup vg, boolean enabled) {
