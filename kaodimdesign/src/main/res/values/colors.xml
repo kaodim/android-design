@@ -47,14 +47,38 @@
 
     <!--UTILITY PALETTE-->
     <color name="transparent_black">#66000000</color>
-    <color name="kaodim_red_40">#f4a3b0</color>
 
+
+    <!---New Codes!-->
+
+    <!--White-->
+    <color name="white">#ffffff</color>
+
+    <!--Black !-->
     <color name="text_black">#000000</color>
     <color name="text_darkgrey">#262626</color>
     <color name="text_midgrey">#4a4a4a</color>
     <color name="text_lightgrey">#9b9b9b</color>
     <color name="bg_lightgrey">#f2f2f2</color>
-    <color name="white">#ffffff</color>
+    <color name="text_lightgrey_6a">#6a6a6a</color>
+    <color name="submit_review_divider">#e1e1e1</color>
+
+
+
+    <!--Kaodim Red -->
+    <color name="kaodim_red">#e3193a</color>
+    <color name="kaodim_red_60">#ee7589</color>
+    <color name="kaodim_red_40">#f4a3b0</color>
+    <color name="kaodim_red_20">#f9d1d8</color>
+    <color name="kaodim_red_10">#fde8eb</color>
+
+
+    <!--Kaodim Green -->
+    <color name="kaodim_green">#11b958</color>
+    <color name="kaodim_green_60">#70d59b</color>
+    <color name="kaodim_green_40">#a0e3bc</color>
+    <color name="kaodim_green_20">#cff1de</color>
+    <color name="kaodim_green_10">#e7f8ee</color>
 
     <!--Kaodim Blue -->
     <color name="kaodim_blue">#2692ee</color>
@@ -62,6 +86,28 @@
     <color name="kaodim_blue_40">#a8d3f8</color>
     <color name="kaodim_blue_20">#d4e9fc</color>
     <color name="kaodim_blue_10">#e9f4fd</color>
+
+
+    <!--Kaodim Orange -->
+    <color name="kaodim_orange">#f5a623</color>
+    <color name="kaodim_orange_60">#f9ca7b</color>
+    <color name="kaodim_orange_40">#fbdba7</color>
+    <color name="kaodim_orange_20">#fdedd3</color>
+    <color name="kaodim_orange_10">#fef6e9</color>
+
+    <color name="error_red">#d0021b</color>
+    <color name="text_red">#E3193A</color>
+
+    <!--ReviewBar colors-->
+    <color name="five_stars">#6dc7a1</color>
+    <color name="four_stars">#aed786</color>
+    <color name="three_stars">#fbd859</color>
+    <color name="two_stars">#f6b152</color>
+    <color name="one_stars">#f2884d</color>
+    <color name="rating_bar_background">#eaeaea</color>
+    <color name="reply_bar_grey">#d8d8d8</color>
+    <color name="edittext_hint">#cecfd2</color>
+
 
 
 </resources>

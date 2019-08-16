@@ -233,10 +233,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setupPricingListener(){
+        pricingBottomBar.setPriceContainer(true,false);
+        pricingBottomBar.setNonSessionLabels("Estimate"," \u2022 " + "Lump Sum");
+        pricingBottomBar.setNonSessionPrice("RM150");
+        pricingBottomBar.setSessionLabels("Estimate","Lump Sum","Upcoming","FirstSession");
+        pricingBottomBar.setSessionPricingDetails("RM120","RM80");
         pricingBottomBar.setButtonEnabled(true);
-        pricingBottomBar.setPriceString("RM 100");
-        pricingBottomBar.setButtonText("Pay Now");
-        pricingBottomBar.setPriceTitle("Amount to pay");
         pricingBottomBar.setButtonOnClickListener(new PricingBottomBar.PricingBottomBarButtonListener() {
             @Override
             public void onButtonClicked() {

@@ -1,101 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/llPricingBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/porcelain"
+        android:background="@color/white"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/kdl_grey" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="13dp"
-            android:paddingLeft="14dp"
-            android:paddingRight="14dp"
-            android:paddingTop="13dp">
-
-            <LinearLayout
-                android:id="@+id/llDynamicPricing"
+        <LinearLayout
+                android:id="@+id/llDynamicSessionPricing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/btnProceed"
-                android:background="@color/porcelain"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="visible"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="3dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/porcelain"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tvTotalTitle"
-                        style="@style/SubtitleGreyText"
+                        android:layout_alignParentStart="true"
+                        android:id="@+id/tvTitleSession"
+                        style="@style/font_roboto_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/size_12"
-                        android:text="Value" />
+                        android:textSize="15sp"
+                        android:textColor="@color/text_darkgrey"
+                        tools:text="Estimate"/>
 
                     <TextView
-                        android:id="@+id/tvTotalAmount"
-                        style="@style/ImportantText"
+                        android:layout_below="@+id/tvTitleSession"
+                        android:id="@+id/tvPriceTypeSession"
+                        style="@style/font_roboto_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="@dimen/size_18"
-                        android:visibility="visible" />
+                        android:textSize="14sp"
+                        android:textColor="#6a6a6a"
+                        tools:text="Per Session"/>
 
-                    <ProgressBar
-                        android:id="@+id/pbProgress"
-                        style="@style/Widget.AppCompat.ProgressBar"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="5dp"
-                        android:visibility="gone" />
+                    <TextView
+                        android:layout_alignParentEnd="true"
+                        android:id="@+id/tvUpcomingSession"
+                        style="@style/font_roboto_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:visibility="visible"
+                        android:textColor="@color/kaodim_green"
+                        tools:text="RM100"/>
 
-                </LinearLayout>
+                    <TextView
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@+id/tvUpcomingSession"
+                        android:id="@+id/tvUpcomingLable"
+                        style="@style/font_roboto_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#6a6a6a"
+                        tools:text="Upcoming"/>
 
+                    <View
+                        android:layout_toStartOf="@id/tvUpcomingSession"
+                        android:id="@+id/viewline"
+                        android:layout_width="1dp"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@color/bg_lightgrey"
+                        android:layout_height="31dp">
+                    </View>
+
+
+                    <TextView
+                        android:layout_toStartOf="@id/viewline"
+                        android:id="@+id/tvFirstSession"
+                        style="@style/font_roboto_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:visibility="visible"
+                        android:textColor="@color/kaodim_green"
+                        tools:text="RM120"/>
+
+
+                    <TextView
+                        android:layout_toStartOf="@id/viewline"
+                        android:layout_below="@+id/tvFirstSession"
+                        android:id="@+id/tvFirstSessionLable"
+                        style="@style/font_roboto_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#6a6a6a"
+                        tools:text="First Session"/>
+                </RelativeLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnProceed"
-                style="@style/NormalTextMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:minWidth="115dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/button_jasper"
-                android:clickable="true"
-                android:enabled="false"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:stateListAnimator="@null"
-                android:text="Next"
-                android:textSize="@dimen/size_14"
-                android:textColor="#fff" />
+        <LinearLayout
+            android:id="@+id/llDynamicPricing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="3dp">
 
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/tvTitle"
+                    style="@style/font_roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_darkgrey"
+                    tools:text="Estimate"/>
+
+                <TextView
+                    android:layout_toEndOf="@+id/tvTitle"
+                    android:id="@+id/tvPriceType"
+                    style="@style/font_roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#6a6a6a"
+                    tools:text="\u2022 Per Sum"/>
+
+                <TextView
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/tvAmount"
+                    style="@style/font_roboto_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:visibility="visible"
+                    android:textColor="@color/kaodim_green"
+                    tools:text="RM100"/>
+
+                <ProgressBar
+                    android:id="@+id/pbProgress"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_margin="8dp"
+            android:id="@+id/btnProceed"
+            style="@style/NormalTextMedium"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/button_jasper"
+            android:clickable="true"
+            android:enabled="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:stateListAnimator="@null"
+            android:text="Next"
+            android:textSize="@dimen/size_14"
+            android:textColor="#fff" />
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/kdl_grey" />
-
 </LinearLayout>
