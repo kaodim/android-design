@@ -95,10 +95,10 @@ public class NewPricingBottomBar extends LinearLayout {
 //        tvPrice.setText(priceType);
 //    }
 //
-//    public void setButtonText(String btnText) {
-//        this.btnText = btnText;
-//        btnNext.setText(btnText);
-//    }
+    public void setButtonText(String btnText) {
+        this.btnText = btnText;
+        btnNext.setText(btnText);
+    }
 
     public void setNonSessionLabels(String title, String priceType){
         tvTitle.setText(title);
