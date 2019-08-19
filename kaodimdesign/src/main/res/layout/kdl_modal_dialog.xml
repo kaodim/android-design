@@ -87,12 +87,12 @@
                     android:gravity="center"
                     android:text=""
                     tools:text="This is a title so that all lines must be this long"
-                    android:textColor="@color/firefly"
+                    android:textColor="@color/text_darkgrey"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvDescription"
-                    style="@style/NormalText"
+                    style="@style/font_roboto_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -107,7 +107,8 @@
 
                 <Button
                     android:id="@+id/btnPrimary"
-                    style="@style/NormalTextMedium"
+                    style="@style/font_roboto_medium"
+                    android:textAllCaps="false"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="20dp"
@@ -124,7 +125,7 @@
 
                 <Button
                     android:id="@+id/btnSecondary"
-                    style="@style/NormalTextMedium"
+                    style="@style/font_roboto_medium"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="10dp"
