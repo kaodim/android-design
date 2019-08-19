@@ -269,7 +269,11 @@ public class ModalDialog {
 
             banner.getBannerView().findViewById(R.id.tvDescription).setVisibility(View.VISIBLE);
             TextView tvDescription = (TextView) banner.getBannerView().findViewById(R.id.tvDescription);
-            tvDescription.setText(description);
+            if (description.isEmpty()) {
+                tvDescription.setVisibility(View.GONE);
+            } else {
+                tvDescription.setText(description);
+            }
 
             banner.getBannerView().findViewById(R.id.btnPrimary).setVisibility(View.VISIBLE);
             Button btnPrimary = (Button) banner.getBannerView().findViewById(R.id.btnPrimary);
@@ -278,6 +282,7 @@ public class ModalDialog {
             banner.getBannerView().findViewById(R.id.btnSecondary).setVisibility(View.VISIBLE);
             Button btnSecondary = (Button) banner.getBannerView().findViewById(R.id.btnSecondary);
             btnSecondary.setText(btnSecondaryText);
+
         }
     }
 

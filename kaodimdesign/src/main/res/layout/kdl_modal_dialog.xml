@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:id="@+id/rlOverlay"
@@ -58,7 +58,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_close" />
+                        android:src="@drawable/kdl_ic_close_black" />
 
                 </RelativeLayout>
             </RelativeLayout>
@@ -73,7 +73,8 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="gone">
 
                 <TextView
                     android:id="@+id/tvTitle"
@@ -85,8 +86,9 @@
                     android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:text=""
+                    tools:text="This is a title so that all lines must be this long"
                     android:textColor="@color/firefly"
-                    android:textSize="@dimen/size_16" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvDescription"
@@ -116,6 +118,7 @@
                     android:gravity="center"
                     android:stateListAnimator="@null"
                     android:text="Button"
+                    tools:text="Primary Button"
                     android:textColor="@color/porcelain"
                     android:textSize="@dimen/size_14" />
 
@@ -125,10 +128,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginTop="10dp"
-                    android:background="@android:color/transparent"
+                    android:background="@color/bg_lightgrey"
                     android:text="Secondary"
+                    tools:text="Secondary Button"
                     android:textAllCaps="false"
-                    android:textColor="@color/sky_blue"
+                    android:textColor="@color/text_midgrey"
                     android:textSize="@dimen/size_14" />
             </LinearLayout>
 
@@ -183,6 +187,7 @@
                     android:orientation="horizontal"
                     android:id="@+id/llButtonHorzContainer"
                     android:visibility="visible"
+                    tools:visibility="visible"
                     android:layout_marginLeft="12dp"
                     android:layout_marginBottom="12dp"
                     android:layout_marginRight="12dp"
