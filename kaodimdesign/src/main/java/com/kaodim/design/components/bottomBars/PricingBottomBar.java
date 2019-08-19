@@ -13,14 +13,9 @@ import com.kaodim.design.R;
 
 public class PricingBottomBar extends LinearLayout {
 
-    String title,price,btnText,priceType, priceTypeSession, priceUpcomingSession, priceFirstSession;
-    TextView tvTitle,tvPrice,tvPriceType, tvPriceTypeSession,
-            tvFirstSessionPrice,tvUpcomingSessionPrice,
-            tvLabelPriceTypeSession, tvLableFirstSessionPrice,tvLabelUpcomingSessionPrice
-            ,tvTitleSession;
+    String title,price,btnText;
+    TextView tvTitle,tvPrice;
     Button btnNext;
-    LinearLayout dynamicPrice;
-    LinearLayout dynamicPriceSession;
 
     public interface PricingBottomBarButtonListener {
         void onButtonClicked();
@@ -59,19 +54,9 @@ public class PricingBottomBar extends LinearLayout {
     }
 
     private void initComponents() {
-        tvPrice = findViewById(R.id.tvAmount);
-        tvPriceType = findViewById(R.id.tvPriceType);
-        tvTitle = findViewById(R.id.tvTitle);
+        tvPrice = findViewById(R.id.tvTotalAmount);
+        tvTitle = findViewById(R.id.tvTotalTitle);
         btnNext = findViewById(R.id.btnProceed);
-        dynamicPrice = findViewById(R.id.llDynamicPricing);
-        dynamicPriceSession = findViewById(R.id.llDynamicSessionPricing);
-        tvFirstSessionPrice = findViewById(R.id.tvFirstSession);
-        tvUpcomingSessionPrice = findViewById(R.id.tvUpcomingSession);
-        tvLableFirstSessionPrice = findViewById(R.id.tvFirstSessionLable);
-        tvUpcomingSessionPrice = findViewById(R.id.tvUpcomingSession);
-        tvLabelUpcomingSessionPrice = findViewById(R.id.tvUpcomingLable);
-        tvPriceTypeSession = findViewById(R.id.tvPriceTypeSession);
-        tvTitleSession = findViewById(R.id.tvTitleSession);
 
         tvPrice.setText(price);
         tvTitle.setText(title);
@@ -80,61 +65,20 @@ public class PricingBottomBar extends LinearLayout {
         setEvents();
     }
 
-//    public void setPriceTitle(String title) {
-//        this.title = title;
-//        tvTitle.setText(title);
-//    }
-//
-//    public void setPriceString(String priceString) {
-//        this.price = priceString;
-//        tvPrice.setText(priceString);
-//    }
-//
-//    public void setPriceTypeString(String priceType) {
-//        this.priceType = priceType;
-//        tvPrice.setText(priceType);
-//    }
-//
-//    public void setButtonText(String btnText) {
-//        this.btnText = btnText;
-//        btnNext.setText(btnText);
-//    }
-
-    public void setNonSessionLabels(String title, String priceType){
+    public void setPriceTitle(String title) {
+        this.title = title;
         tvTitle.setText(title);
-        tvPriceType.setText(priceType);
     }
 
-    public void setNonSessionPrice(String price){
-        tvPrice.setText(price);
+    public void setPriceString(String priceString) {
+        this.price = priceString;
+        tvPrice.setText(priceString);
     }
 
-
-    public void setPriceContainer(boolean priceAvailable,boolean hasSession) {
-        if(priceAvailable && hasSession){
-            dynamicPriceSession.setVisibility(View.VISIBLE);
-            dynamicPrice.setVisibility(View.GONE);
-        }else if (priceAvailable && !hasSession) {
-            dynamicPrice.setVisibility(View.VISIBLE);
-            dynamicPriceSession.setVisibility(View.GONE);
-        }else{
-            dynamicPrice.setVisibility(View.GONE);
-            dynamicPriceSession.setVisibility(View.GONE);
-        }
+    public void setButtonText(String btnText) {
+        this.btnText = btnText;
+        btnNext.setText(btnText);
     }
-
-    public void setSessionPricingDetails(String priceUpcomingSession,String priceFirstSession){
-        tvFirstSessionPrice.setText(priceFirstSession);
-        tvUpcomingSessionPrice.setText(priceUpcomingSession);
-    }
-
-    public void setSessionLabels(String title, String priceType, String upComingLable, String firstSessionLable){
-        tvTitleSession.setText(title);
-        tvPriceTypeSession.setText(priceType);
-        tvLabelUpcomingSessionPrice.setText(upComingLable);
-        tvLableFirstSessionPrice.setText(firstSessionLable);
-    }
-
 
     public void setButtonEnabled(boolean enabled) {
         btnNext.setEnabled(enabled);
@@ -154,4 +98,5 @@ public class PricingBottomBar extends LinearLayout {
             }
         });
     }
+
 }
