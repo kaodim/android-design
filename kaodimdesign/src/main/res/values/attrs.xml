@@ -211,4 +211,8 @@
             <enum name="paged" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="BlueInfoBar">
+        <attr name="primaryText" format="string" />
+    </declare-styleable>
 </resources>

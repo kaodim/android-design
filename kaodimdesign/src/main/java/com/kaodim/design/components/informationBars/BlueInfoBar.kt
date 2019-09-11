@@ -27,11 +27,23 @@ class BlueInfoBar: LinearLayout {
     }
 
     private lateinit var primaryText: TextView
+    private var primaryString: String? = null
 
     private fun init(context: Context, atts: AttributeSet?) {
+        val typedArray = context.obtainStyledAttributes(atts, R.styleable.BlueInfoBar)
+        primaryString = typedArray.getString(R.styleable.BlueInfoBar_primaryText)
+        typedArray.recycle()
+
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.kdl_blue_info_bar, this)
         primaryText = findViewById(R.id.tvPrimaryText)
+        initComponent()
+    }
+
+    private fun initComponent() {
+        primaryString?.let {
+            setPrimaryText(primaryString!!)
+        }
     }
 
     fun setPrimaryText(primaryText: String) {
