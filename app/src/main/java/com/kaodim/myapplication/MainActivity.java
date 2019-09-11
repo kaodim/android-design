@@ -25,6 +25,7 @@ import com.kaodim.design.components.callbacks.NumericControlListener;
 import com.kaodim.design.components.dialogs.DateTimePickerDialog;
 import com.kaodim.design.components.dialogs.ModalDialog;
 import com.kaodim.design.components.editText.KaodimEditText;
+import com.kaodim.design.components.informationBars.BlueInfoBar;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
     KaodimViewText kvtViewText;
     SearchEditText setSearchText;
     TextView tvSearchTextDelay, tvSearchTextInstantenous;
+
+    BlueInfoBar blueInfoBar;
 
     NotesStandard notesStandard;
     NotesError notesError;
@@ -94,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         tvSearchTextDelay = findViewById(R.id.tvSearchTextDelay);
         tvSearchTextInstantenous = findViewById(R.id.tvSearchTextInstantenous);
         btnShowCalendarDialog = findViewById(R.id.BtnShowCalendarDialog);
+        blueInfoBar = findViewById(R.id.blueInfoBar);
 
         setupNumericControl();
 
@@ -140,6 +144,12 @@ public class MainActivity extends AppCompatActivity {
                 setupNewModalDialog();
             }
         });
+
+        setBlueInfoBar();
+    }
+
+    private void setBlueInfoBar() {
+        blueInfoBar.setPrimaryText("Your bank details are approved. If you need to change them please reach out to customer support.");
     }
 
     private void setupInteractivePanel() {

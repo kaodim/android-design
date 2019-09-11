@@ -266,7 +266,7 @@ class CalendarViewDialogFragment : BottomSheetDialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        val closeIndicator = requireContext().getDrawableCompat(R.drawable.ic_close)?.apply {
+        val closeIndicator = requireContext().getDrawableCompat(R.drawable.kdl_ic_close)?.apply {
             setColorFilter(requireContext().getColorCompat(R.color.kdl_grey), PorterDuff.Mode.SRC_ATOP)
         }
         (activity as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(closeIndicator)

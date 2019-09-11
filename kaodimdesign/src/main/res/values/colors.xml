@@ -86,7 +86,7 @@
     <color name="kaodim_blue_40">#a8d3f8</color>
     <color name="kaodim_blue_20">#d4e9fc</color>
     <color name="kaodim_blue_10">#e9f4fd</color>
-
+    <color name="kaodim_blue_helptext">#07468e</color>
 
     <!--Kaodim Orange -->
     <color name="kaodim_orange">#f5a623</color>
