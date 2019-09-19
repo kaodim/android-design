@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rlParent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/kdl_rect_dotted"
-    android:padding="20dp">
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/tvHint"
-        style="@style/large"
+        style="@style/font_roboto_regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:textSize="@dimen/size_16"
-        android:hint=""
-        android:textColorHint="@color/blackpearl" />
+        android:textSize="16sp"
+        android:textColorHint="@color/text_midgrey"
+        android:textColor="@color/text_darkgrey"
+        tools:text="Date"/>
 
 </RelativeLayout>

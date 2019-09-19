@@ -4,18 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/kdl_rect_grey_curved"
-    android:padding="16dp">
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/tvDate"
-        style="@style/large"
+        style="@style/font_roboto_regular"
         android:layout_toLeftOf="@+id/rlRemoveDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:hint="Pick a date"
-        android:textSize="@dimen/size_16"
-        android:textColorHint="@color/blackpearl" />
+        android:textSize="16sp"
+        android:textColorHint="@color/text_midgrey"
+        android:textColor="@color/text_darkgrey"
+        />
 
     <RelativeLayout
         android:id="@+id/rlRemoveDate"
