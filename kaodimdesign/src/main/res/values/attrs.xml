@@ -212,7 +212,10 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="BlueInfoBar">
+    <declare-styleable name="InfoBar">
         <attr name="primaryText" format="string" />
+        <attr name="barColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="textColor" format="color"/>
     </declare-styleable>
 </resources>
