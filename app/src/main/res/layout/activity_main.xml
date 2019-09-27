@@ -561,12 +561,35 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:orientation="vertical" />
+                android:orientation="vertical" >
 
-            <com.kaodim.design.components.informationBars.BlueInfoBar
-                android:id="@+id/blueInfoBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <com.kaodim.design.components.informationBars.InfoBar
+                    android:id="@+id/blueInfoBar"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.kaodim.design.components.informationBars.InfoBar
+                    android:id="@+id/greenInfoBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:backgroundColor="@color/kaodim_green_10"
+                    app:barColor="@color/kaodim_green"
+                    app:textColor="@color/text_green"
+                    app:primaryText="Your insurance benefit for this request has been activated"/>
+
+                <com.kaodim.design.components.informationBars.InfoBar
+                    android:id="@+id/orangeInfoBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:backgroundColor="@color/kaodim_orange_10"
+                    app:barColor="@color/kaodim_orange"
+                    app:textColor="@color/text_orange"
+                    app:primaryText="Important: Make sure to tap on the “Book” button to hire a vendor directly on Kaodim's app to be eligible for these benefits."/>
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
