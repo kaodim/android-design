@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDateTimeSelected(String formatedDate, String formatedTime, Date selectedDate,String selectedTimeStamp) {
                     String date = formatedDate + " " + formatedTime;
                     dateTimePicker.setHint(date);
+                    dateTimePicker.setLabel("Start date");
                     dateTimePicker.setDefaultSelectedDate(selectedTimeStamp);
                 Log.d("DateTimeStamp", selectedTimeStamp);
                     Log.d("Date", selectedDate.toString());
