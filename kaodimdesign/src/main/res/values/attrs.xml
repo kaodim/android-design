@@ -121,9 +121,11 @@
         <attr name="android:text"/>
         <attr name="secured" format="boolean"/>
         <attr name="capitalize" format="boolean"/>
+        <attr name="iconDrawable" format="integer"/>
         <attr name="inputType" format="enum">
             <enum name="text" value="0"/>
             <enum name="number" value="1"/>
+            <enum name="multiline" value="2"/>
         </attr>
         <attr name="android:enabled"/>
     </declare-styleable>

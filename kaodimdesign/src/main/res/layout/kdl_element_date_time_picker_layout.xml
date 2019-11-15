@@ -1,23 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rlDateSelection"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/kdl_rect_grey_curved"
-    android:padding="15dp">
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingStart="9dp"
+    android:paddingEnd="9dp"
+    android:background="@drawable/bg_edittext_default">
 
-    <TextView
-        android:id="@+id/tvDate"
-        style="@style/font_roboto_regular"
-        android:layout_toLeftOf="@+id/rlRemoveDate"
+    <RelativeLayout
+        android:id="@+id/rlIcon"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="12dp"
+        android:padding="3dp">
+
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:src="@drawable/ic_minical"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:hint="Pick a date"
-        android:textSize="16sp"
-        android:textColorHint="@color/text_midgrey"
-        android:textColor="@color/text_darkgrey"
-        />
+        android:layout_toStartOf="@+id/rlRemoveDate"
+        android:layout_toEndOf="@id/rlIcon"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="@color/text_midgrey"
+            android:layout_marginBottom="5dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tvDate"
+            style="@style/font_roboto_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pick a date"
+            android:textSize="16sp"
+            android:textColorHint="@color/text_midgrey"
+            android:textColor="@color/text_darkgrey"
+            />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/rlRemoveDate"

@@ -59,9 +59,8 @@ class InfoBar: RelativeLayout {
                               @ColorInt barColor: Int,
                               @ColorInt backgroundColor: Int,
                               @ColorInt textColor: Int  ) {
-        primaryString?.let {
-            setPrimaryText(primaryString)
-        }
+
+        primaryString?.let { setPrimaryText(it) }
 
         this.setBarColor(barColor)
         this.setPrimaryTextViewBackgroundColor(backgroundColor)
