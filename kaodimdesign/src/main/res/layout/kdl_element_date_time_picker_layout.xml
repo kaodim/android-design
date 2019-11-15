@@ -8,7 +8,7 @@
     android:paddingBottom="15dp"
     android:paddingStart="9dp"
     android:paddingEnd="9dp"
-    android:background="@drawable/bg_edittext_default">
+    android:background="@drawable/kdl_rect_grey_curved">
 
     <RelativeLayout
         android:id="@+id/rlIcon"
@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginEnd="12dp"
+        android:visibility="gone"
         android:padding="3dp">
 
         <ImageView
