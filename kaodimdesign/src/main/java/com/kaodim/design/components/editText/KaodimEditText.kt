@@ -2,6 +2,7 @@ package com.kaodim.design.components.editText
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
@@ -17,11 +18,7 @@ import android.text.TextWatcher
 import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
 import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewTreeObserver
+import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 
@@ -113,6 +110,7 @@ class KaodimEditText : LinearLayout {
         this.setupView(hintText, errorText, inputText, enabled)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setEvents() {
         this.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -150,7 +148,7 @@ class KaodimEditText : LinearLayout {
             val drawable = context.getDrawable(if (errorText!!.isEmpty()) if (inputEditText!!.isFocused) R.drawable.bg_edittext_focused else R.drawable.bg_edittext_default else R.drawable.bg_edittext_error)
             clKdlTextInputInput?.background = drawable
             ivKdlTextInputError?.visibility = if (!hasFocus && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
-            ivKdlTextInputClear?.visibility = if (hasFocus && text!!.isNotEmpty()) View.VISIBLE else View.GONE
+            ivKdlTextInputClear?.visibility = if (hasFocus && text!!.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
             setPadding(hasFocus || !TextUtils.isEmpty(inputEditText!!.text))
             setHasTextConstraint(hasFocus || !TextUtils.isEmpty(inputEditText!!.text))
             animateColorHint(hasFocus || TextUtils.isEmpty(inputEditText!!.text))
@@ -165,10 +163,23 @@ class KaodimEditText : LinearLayout {
             override fun afterTextChanged(s: Editable) {
                 val text = s.toString()
                 ivKdlTextInputError?.visibility = if (!inputEditText!!.isFocused && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
-                ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty()) View.VISIBLE else View.GONE
+                ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
             }
         })
 
+
+        inputEditText?.setOnTouchListener(object : OnTouchListener{
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                if (inputEditText!!.hasFocus()){
+                    v?.parent?.requestDisallowInterceptTouchEvent(true)
+                    when(event!!.action and MotionEvent.ACTION_MASK){
+                        MotionEvent.ACTION_SCROLL -> { v?.parent?.requestDisallowInterceptTouchEvent(false); return true }
+                    }
+                }
+                return false
+            }
+
+        })
 
         tvCustomError?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -186,7 +197,7 @@ class KaodimEditText : LinearLayout {
                 tvCustomError!!.visibility = if (text.isEmpty()) View.GONE else View.VISIBLE
 
                 ivKdlTextInputError!!.visibility = if (!inputEditText!!.isFocused && !text.isEmpty()) View.VISIBLE else View.GONE
-                ivKdlTextInputClear!!.visibility = if (inputEditText!!.isFocused && !text.isEmpty()) View.VISIBLE else View.GONE
+                ivKdlTextInputClear!!.visibility = if (inputEditText!!.isFocused && !text.isEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
             }
         })
 
