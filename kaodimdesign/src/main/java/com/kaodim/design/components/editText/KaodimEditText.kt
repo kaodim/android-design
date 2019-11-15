@@ -2,7 +2,6 @@ package com.kaodim.design.components.editText
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
@@ -110,7 +109,6 @@ class KaodimEditText : LinearLayout {
         this.setupView(hintText, errorText, inputText, enabled)
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private fun setEvents() {
         this.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -166,7 +164,6 @@ class KaodimEditText : LinearLayout {
                 ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
             }
         })
-
 
         inputEditText?.setOnTouchListener(object : OnTouchListener{
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
