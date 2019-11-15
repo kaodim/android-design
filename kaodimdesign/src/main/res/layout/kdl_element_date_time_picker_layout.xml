@@ -18,11 +18,12 @@
         android:layout_alignParentStart="true"
         android:layout_marginEnd="12dp"
         android:visibility="gone"
+        tools:visibility="visible"
         android:padding="3dp">
 
         <ImageView
-            android:layout_width="27dp"
-            android:layout_height="27dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/ic_minical"/>
 
     </RelativeLayout>
@@ -33,6 +34,7 @@
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/rlRemoveDate"
         android:layout_toEndOf="@id/rlIcon"
+        android:paddingEnd="20dp"
         android:orientation="vertical">
 
         <TextView
