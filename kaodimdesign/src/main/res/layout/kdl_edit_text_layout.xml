@@ -13,6 +13,18 @@
         android:layout_height="wrap_content"
         android:background = "@drawable/bg_edittext_default">
 
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="19dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
         <EditText
             android:id="@+id/etKdlTextInputInput"
             android:layout_width="0dp"
@@ -26,15 +38,18 @@
             android:clickable="true"
             android:focusable="true"
             android:background="@null"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
             android:textColor="@color/text_black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/ivKdlTextInputClear"
+            app:layout_constraintStart_toEndOf="@id/ivIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivKdlTextInputClear"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvKdlTextInputHint"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft = "10dp"
             android:paddingRight = "10dp"
@@ -43,8 +58,7 @@
             android:ellipsize="end"
             android:textColor="@color/text_midgrey"
             app:layout_constraintBottom_toBottomOf="@+id/etKdlTextInputInput"
-            app:layout_constraintLeft_toLeftOf="@+id/etKdlTextInputInput"
-            app:layout_constraintRight_toLeftOf="@id/ivKdlTextInputClear"
+            app:layout_constraintStart_toEndOf="@+id/ivIcon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Hint" />
 

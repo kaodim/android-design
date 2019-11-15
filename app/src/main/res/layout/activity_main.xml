@@ -447,7 +447,7 @@
                 android:text="Edit Text"
                 android:textColor="@color/firefly" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/llEditTextParentView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -459,12 +459,11 @@
                     android:id ="@+id/ketEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Input your number"
-                    app:errorText="An error has occured."
-                    app:secured="true"
-                    app:inputType="number" />
+                    android:hint="Notes"
+                    app:iconDrawable="@drawable/ic_mini_notes"
+                    app:inputType="text"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 style="@style/NormalTextBolded"

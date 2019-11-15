@@ -3,6 +3,7 @@ package com.kaodim.design.components;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class DateTimePicker extends RelativeLayout {
 
     private RelativeLayout rlDateSelection, rlRemoveDate;
     private TextView tvDate;
+    private TextView tvLabel;
     private boolean showPastDates = false;
     private boolean showPastTimesToday = false;
     private boolean allowRemoval = false;
@@ -99,7 +101,7 @@ public class DateTimePicker extends RelativeLayout {
         rlDateSelection = findViewById(R.id.rlDateSelection);
         rlRemoveDate = findViewById(R.id.rlRemoveDate);
         tvDate = findViewById(R.id.tvDate);
-
+        tvLabel = findViewById(R.id.tvLabel);
         setEvents();
     }
 
@@ -184,6 +186,11 @@ public class DateTimePicker extends RelativeLayout {
     public void setHint(String hintText) {
         this.hint = hintText;
         tvDate.setText(hint);
+    }
+
+    public void setLabel(String labelText){
+        tvLabel.setText(labelText);
+        tvLabel.setVisibility(View.VISIBLE);
     }
 
     /**

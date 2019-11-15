@@ -42,7 +42,8 @@
 
     <dimen name="avatar_size">120dp</dimen>
 
-
+    <dimen name="size_0_dp">0dp</dimen>
+    <dimen name="size_5_dp">5dp</dimen>
     <dimen name="size_8_dp">8dp</dimen>
     <dimen name="size_10_dp">10dp</dimen>
     <dimen name="size_20_dp">20dp</dimen>
