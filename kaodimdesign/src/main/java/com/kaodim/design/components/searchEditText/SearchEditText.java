@@ -3,6 +3,8 @@ package com.kaodim.design.components.searchEditText;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -28,6 +30,9 @@ public class SearchEditText extends LinearLayout {
     private EditText etSearch;
     private ImageView ivTextClear;
     private TextView tvSearchCancel;
+    private ImageView ivMiniSearch;
+    private int iconDrawableId;
+
 
     private SearchEditTextDefaultListener listener;
 
@@ -65,6 +70,7 @@ public class SearchEditText extends LinearLayout {
         String hintText = typedArray.getString(R.styleable.SearchEditText_android_hint);
         String cancelText = typedArray.getString(R.styleable.SearchEditText_cancelText);
         showCancelText = typedArray.getBoolean(R.styleable.SearchEditText_showCancelText, true);
+        iconDrawableId = typedArray.getResourceId(R.styleable.SearchEditText_leftIconDrawable, R.drawable.icon_mini_search);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -79,6 +85,7 @@ public class SearchEditText extends LinearLayout {
         etSearch = findViewById(R.id.etSearch);
         ivTextClear = findViewById(R.id.ivTextClear);
         tvSearchCancel = findViewById(R.id.tvSearchCancel);
+        ivMiniSearch = findViewById(R.id.ivMiniSearch);
     }
 
     private void setupView(String hintText, String cancelText) {
@@ -86,6 +93,7 @@ public class SearchEditText extends LinearLayout {
         if (!TextUtils.isEmpty(cancelText))
             this.setCancelText(cancelText);
         etSearch.setShowSoftInputOnFocus(true);
+        this.setIconDrawable(ContextCompat.getDrawable(getContext(), iconDrawableId));
     }
 
     private void setEvents() {
@@ -228,5 +236,13 @@ public class SearchEditText extends LinearLayout {
 
     public void setListener(SearchEditTextDefaultListener listener) {
         this.listener = listener;
+    }
+
+    public void setIconDrawable(Drawable drawable) {
+        ivMiniSearch.setImageDrawable(drawable);
+    }
+
+    public Drawable getIconDrawable() {
+        return ivMiniSearch.getDrawable();
     }
 }

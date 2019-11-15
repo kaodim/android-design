@@ -527,6 +527,7 @@
                     android:id ="@+id/setSearchTextSearch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:leftIconDrawable="@drawable/ic_mini_notes"
                     android:hint="Search for building or address"
                     app:showCancelText = "false"/>
 
