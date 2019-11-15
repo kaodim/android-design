@@ -3,12 +3,14 @@ package com.kaodim.design.components;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,7 +35,7 @@ public class DateTimePicker extends RelativeLayout {
 
     private DateTimeChangedListener listener;
 
-    private RelativeLayout rlDateSelection, rlRemoveDate;
+    private RelativeLayout rlDateSelection, rlRemoveDate, rlIcon;
     private TextView tvDate;
     private TextView tvLabel;
     private boolean showPastDates = false;
@@ -50,6 +52,8 @@ public class DateTimePicker extends RelativeLayout {
     private boolean startHalfHour;
     private  boolean endHalfHour;
     private String defaultSelectedDate;
+    private int backgroundDrawableId;
+    private boolean showIcon;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     private DateTimePickerDialog.DateTimePickerOptions options;
@@ -102,6 +106,7 @@ public class DateTimePicker extends RelativeLayout {
         rlRemoveDate = findViewById(R.id.rlRemoveDate);
         tvDate = findViewById(R.id.tvDate);
         tvLabel = findViewById(R.id.tvLabel);
+        rlIcon = findViewById(R.id.rlIcon);
         setEvents();
     }
 
@@ -191,6 +196,16 @@ public class DateTimePicker extends RelativeLayout {
     public void setLabel(String labelText){
         tvLabel.setText(labelText);
         tvLabel.setVisibility(View.VISIBLE);
+    }
+
+    public void setBackground(int drawableId){
+        Log.d("inside background", String.valueOf(drawableId));
+        Drawable drawable = getResources().getDrawable(drawableId);
+        rlDateSelection.setBackground(drawable);
+    }
+
+    public void setIconVisibility(boolean isShow) {
+        rlIcon.setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
     /**
