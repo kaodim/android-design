@@ -44,8 +44,7 @@
             android:visibility="gone"
             android:textColor="@color/text_midgrey"
             android:textSize="12sp"
-            android:layout_marginBottom="5dp"
-            />
+            android:layout_marginBottom="5dp"/>
 
 
         <TextView
