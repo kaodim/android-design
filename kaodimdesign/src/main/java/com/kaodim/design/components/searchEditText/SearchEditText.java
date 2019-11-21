@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -67,6 +68,7 @@ public class SearchEditText extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         //Retrieve the custom attributes from XML
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SearchEditText);
+        int inputType = typedArray.getInt(R.styleable.SearchEditText_android_inputType, EditorInfo.TYPE_NULL);
         String hintText = typedArray.getString(R.styleable.SearchEditText_android_hint);
         String cancelText = typedArray.getString(R.styleable.SearchEditText_cancelText);
         showCancelText = typedArray.getBoolean(R.styleable.SearchEditText_showCancelText, true);
@@ -77,7 +79,7 @@ public class SearchEditText extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.kdl_item_search_box, this);
         initComponents();
-        this.setupView(hintText, cancelText);
+        this.setupView(hintText, cancelText, inputType);
         this.setEvents();
     }
 
@@ -88,12 +90,19 @@ public class SearchEditText extends LinearLayout {
         ivMiniSearch = findViewById(R.id.ivMiniSearch);
     }
 
-    private void setupView(String hintText, String cancelText) {
+    private void setupView(String hintText, String cancelText, int inputType) {
         this.setHint(hintText);
         if (!TextUtils.isEmpty(cancelText))
             this.setCancelText(cancelText);
         etSearch.setShowSoftInputOnFocus(true);
+        this.setInputType(inputType);
         this.setIconDrawable(ContextCompat.getDrawable(getContext(), iconDrawableId));
+    }
+
+    public void setInputType(int inputType) {
+        if (etSearch != null) {
+            etSearch.setInputType(inputType);
+        }
     }
 
     private void setEvents() {

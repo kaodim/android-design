@@ -140,6 +140,7 @@
         <attr name="cancelText" format="string"/>
         <attr name="showCancelText" format="boolean"/>
         <attr name="leftIconDrawable" format="integer"/>
+        <attr name="android:inputType"/>
     </declare-styleable>
 
 
