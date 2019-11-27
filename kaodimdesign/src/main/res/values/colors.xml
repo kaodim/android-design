@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="kaodim_brand">#ed193a</color>
+
+    <!-- Kaodim Blue -->
+    <color name="kaodim_blue">#2692ee</color>
+    <color name="kaodim_blue_60">#7dbef5</color>
+    <color name="kaodim_blue_40">#a8d3f8</color>
+    <color name="kaodim_blue_20">#d4e9fc</color>
+    <color name="kaodim_blue_10">#e9f4fd</color>
+    <color name="kaodim_blue_text">#0852a6</color>
+
+    <!-- Kaodim Green -->
+    <color name="kaodim_green">#11b958</color>
+    <color name="kaodim_green_60">#70d59b</color>
+    <color name="kaodim_green_40">#a0e3bc</color>
+    <color name="kaodim_green_20">#cff1de</color>
+    <color name="kaodim_green_10">#e7f8ee</color>
+    <color name="kaodim_green_text">#1e730b</color>
+
+    <!--Kaodim Orange -->
+    <color name="kaodim_orange">#f5a623</color>
+    <color name="kaodim_orange_60">#f9ca7b</color>
+    <color name="kaodim_orange_40">#fbdba7</color>
+    <color name="kaodim_orange_20">#fdedd3</color>
+    <color name="kaodim_orange_10">#fef6e9</color>
+    <color name="kaodim_orange_text">#8d5c0b</color>
+
+    <!--Kaodim Red -->
+    <color name="kaodim_red">#ff2970</color>
+    <color name="kaodim_red_60">#ff7fa9</color>
+    <color name="kaodim_red_40">#ffa9c6</color>
+    <color name="kaodim_red_20">#ffd4e2</color>
+    <color name="kaodim_red_10">#ffe9f0</color>
+    <color name="kaodim_red_text">#cc1616</color>
+
+    <!--Black -->
+    <color name="text_black">#000000</color>
+    <color name="text_darkgrey">#262626</color>
+    <color name="text_midgrey">#4a4a4a</color>
+    <color name="text_lightgrey">#6a6a6a</color>
+    <color name="text_white">#ffffff</color>
+    <color name="bg_lightgrey">#f2f2f2</color>
+    <color name="system_icon">#99a2a9</color>
+
+    <!-- Deprecated -->
     <!--PRIMARY PALETTE-->
     <color name="porcelain">#FFFFFF</color>
     <color name="jasper">#E3193A</color>
@@ -12,7 +56,6 @@
     <color name="lima">#2ECC71</color>
     <color name="narvik">#EBFFF3</color>
     <color name="sunglow">#FDB813</color>
-
     <color name="mystic">#F5F6F8</color>
     <color name="heather">#DEE1E5</color>
     <color name="submarine">#A5B5BD</color>
@@ -23,7 +66,6 @@
 
     <color name="white_three">#eeeeee</color>
     <color name="white_three_dark">#dddddd</color>
-
 
     <color name="kdl_grey">#E6E7E8</color>
     <color name="kdl_grey_dark">#5A5A5A</color>
@@ -53,50 +95,11 @@
 
     <!--White-->
     <color name="white">#ffffff</color>
-
-    <!--Black !-->
-    <color name="text_black">#000000</color>
-    <color name="text_darkgrey">#262626</color>
-    <color name="text_midgrey">#4a4a4a</color>
-    <color name="text_lightgrey">#9b9b9b</color>
-    <color name="bg_lightgrey">#f2f2f2</color>
+    <color name="text_green">#1e730b</color>
+    <color name="kaodim_blue_helptext">#07468e</color>
+    <color name="text_orange">#8d5c0b</color>
     <color name="text_lightgrey_6a">#6a6a6a</color>
     <color name="submit_review_divider">#e1e1e1</color>
-
-
-
-    <!--Kaodim Red -->
-    <color name="kaodim_red">#e3193a</color>
-    <color name="kaodim_red_60">#ee7589</color>
-    <color name="kaodim_red_40">#f4a3b0</color>
-    <color name="kaodim_red_20">#f9d1d8</color>
-    <color name="kaodim_red_10">#fde8eb</color>
-
-
-    <!--Kaodim Green -->
-    <color name="kaodim_green">#11b958</color>
-    <color name="kaodim_green_60">#70d59b</color>
-    <color name="kaodim_green_40">#a0e3bc</color>
-    <color name="kaodim_green_20">#cff1de</color>
-    <color name="kaodim_green_10">#e7f8ee</color>
-    <color name="text_green">#1e730b</color>
-
-
-    <!--Kaodim Blue -->
-    <color name="kaodim_blue">#2692ee</color>
-    <color name="kaodim_blue_60">#7dbef5</color>
-    <color name="kaodim_blue_40">#a8d3f8</color>
-    <color name="kaodim_blue_20">#d4e9fc</color>
-    <color name="kaodim_blue_10">#e9f4fd</color>
-    <color name="kaodim_blue_helptext">#07468e</color>
-
-    <!--Kaodim Orange -->
-    <color name="kaodim_orange">#f5a623</color>
-    <color name="kaodim_orange_60">#f9ca7b</color>
-    <color name="kaodim_orange_40">#fbdba7</color>
-    <color name="kaodim_orange_20">#fdedd3</color>
-    <color name="kaodim_orange_10">#fef6e9</color>
-    <color name="text_orange">#8d5c0b</color>
 
     <color name="error_red">#d0021b</color>
     <color name="text_red">#E3193A</color>
@@ -110,6 +113,9 @@
     <color name="rating_bar_background">#eaeaea</color>
     <color name="reply_bar_grey">#d8d8d8</color>
     <color name="edittext_hint">#cecfd2</color>
+
+
+
 
 
 
