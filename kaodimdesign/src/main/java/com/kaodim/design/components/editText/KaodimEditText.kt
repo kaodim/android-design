@@ -4,10 +4,6 @@ import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.TypedArray
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
-import android.support.annotation.IntDef
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.support.v4.content.ContextCompat
@@ -15,18 +11,15 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
-import android.util.Log
 import android.view.*
+import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
-
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.kaodim.design.R
-import com.kaodim.design.components.calendarView.model.ScrollMode
-import kotlinx.android.synthetic.main.kdl_edit_text_layout.view.*
-
-import org.w3c.dom.Text
 
 class KaodimEditText : LinearLayout {
 
@@ -164,6 +157,7 @@ class KaodimEditText : LinearLayout {
                 val text = s.toString()
                 ivKdlTextInputError?.visibility = if (!inputEditText!!.isFocused && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
                 ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
+                setHasTextConstraint(!text.isNullOrEmpty())
             }
         })
 
