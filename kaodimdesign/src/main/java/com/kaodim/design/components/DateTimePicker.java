@@ -4,13 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,11 +16,9 @@ import com.kaodim.design.R;
 import com.kaodim.design.components.dialogs.DateTimePickerDialog;
 
 import org.joda.time.DateTime;
-import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -52,8 +48,6 @@ public class DateTimePicker extends RelativeLayout {
     private boolean startHalfHour;
     private  boolean endHalfHour;
     private String defaultSelectedDate;
-    private int backgroundDrawableId;
-    private boolean showIcon;
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     private DateTimePickerDialog.DateTimePickerOptions options;
@@ -86,6 +80,7 @@ public class DateTimePicker extends RelativeLayout {
         options.atmosphericEffect = typedArray.getBoolean(R.styleable.DateTimePicker_atmosphericEffect, true);
         options.displayTime = typedArray.getBoolean(R.styleable.DateTimePicker_displayTime, true);
         options.displayDate = typedArray.getBoolean(R.styleable.DateTimePicker_displayDate, true);
+        hint = typedArray.getString(R.styleable.DateTimePicker_pickerHint);
         hint = typedArray.getString(R.styleable.DateTimePicker_pickerHint);
         setOptions(options);
 
@@ -131,14 +126,14 @@ public class DateTimePicker extends RelativeLayout {
     public void setDisable(boolean disable){
         if(disable){
             rlDateSelection.setFocusable(false);
-            rlDateSelection.setBackground(getResources().getDrawable(R.drawable.background_disabled));
             rlDateSelection.setEnabled(false);
-            tvDate.setTextColor(getResources().getColor(R.color.kdl_grey_dark));
+            tvDate.setTextColor(getResources().getColor(R.color.text_lightgrey));
+            tvLabel.setTextColor(getResources().getColor(tvLabel.getText() == "" ? R.color.text_midgrey : R.color.text_lightgrey));
         }else{
             rlDateSelection.setFocusable(true);
-            rlDateSelection.setBackground(getResources().getDrawable(R.drawable.kdl_rect_grey_curved));
             rlDateSelection.setEnabled(true);
             tvDate.setTextColor(getResources().getColor(R.color.blackpearl));
+            tvLabel.setTextColor(getResources().getColor(R.color.blackpearl));
         }
     }
 
