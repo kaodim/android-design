@@ -157,7 +157,6 @@ class KaodimEditText : LinearLayout {
                 val text = s.toString()
                 ivKdlTextInputError?.visibility = if (!inputEditText!!.isFocused && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
                 ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
-                setHasTextConstraint(!text.isNullOrEmpty())
             }
         })
 
@@ -216,6 +215,10 @@ class KaodimEditText : LinearLayout {
         this.isEnabled = enabled
         inputEditText?.showSoftInputOnFocus = true
         inputEditText?.inputType = getInputType(inputType, isSecured, inputEditText!!.isFocused, isFirstLetterCapitalize)
+        if(!inputText.isNullOrEmpty()){
+            setHasTextConstraint(true)
+            setPadding(true)
+        }
     }
 
     private fun setIcon() {
