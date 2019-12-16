@@ -221,5 +221,6 @@
         <attr name="barColor" format="color"/>
         <attr name="backgroundColor" format="color"/>
         <attr name="textColor" format="color"/>
+        <attr name="android:src"/>
     </declare-styleable>
 </resources>
