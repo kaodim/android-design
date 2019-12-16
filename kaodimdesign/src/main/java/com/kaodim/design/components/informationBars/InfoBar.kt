@@ -1,10 +1,12 @@
 package com.kaodim.design.components.informationBars
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -36,11 +38,13 @@ class InfoBar: RelativeLayout {
         val barColor = typedArray.getColor(R.styleable.InfoBar_barColor, ContextCompat.getColor(context, R.color.kaodim_blue))
         val backgroundColor = typedArray.getColor(R.styleable.InfoBar_backgroundColor, ContextCompat.getColor(context, R.color.kaodim_blue_10))
         val textColor = typedArray.getColor(R.styleable.InfoBar_textColor, ContextCompat.getColor(context, R.color.kaodim_blue_text))
+        val src = typedArray.getDrawable(R.styleable.InfoBar_android_src)
+
         typedArray.recycle()
 
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.kdl_info_bar, this)
-        initComponent(primaryString, barColor, backgroundColor, textColor)
+        initComponent(primaryString, barColor, backgroundColor, textColor,src)
         this.setEvents()
     }
 
@@ -58,14 +62,25 @@ class InfoBar: RelativeLayout {
     private fun initComponent(primaryString: String?,
                               @ColorInt barColor: Int,
                               @ColorInt backgroundColor: Int,
-                              @ColorInt textColor: Int  ) {
+                              @ColorInt textColor: Int,
+                              src: Drawable?) {
 
         primaryString?.let { setPrimaryText(it) }
 
         this.setBarColor(barColor)
         this.setPrimaryTextViewBackgroundColor(backgroundColor)
         this.setPrimaryTextColor(textColor)
+        this.setIcon(src)
 
+    }
+
+    fun setIcon(drawable: Drawable?) {
+        if (drawable != null) {
+            ivInfoBarIcon.visibility = View.VISIBLE
+            ivInfoBarIcon.setImageDrawable(drawable)
+        } else {
+            ivInfoBarIcon.visibility = View.GONE
+        }
     }
 
     fun setPrimaryText(primaryText: String) {
@@ -85,6 +100,6 @@ class InfoBar: RelativeLayout {
     }
 
     fun setPrimaryTextViewBackgroundColor(@ColorInt color: Int) {
-        tvPrimaryText.setBackgroundColor(color)
+        llInfoBarBase.setBackgroundColor(color)
     }
 }

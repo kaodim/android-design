@@ -578,6 +578,7 @@
                     app:backgroundColor="@color/kaodim_green_10"
                     app:barColor="@color/kaodim_green"
                     app:textColor="@color/kaodim_green_text"
+                    android:src="@drawable/surcharge_icon"
                     app:primaryText="Your insurance benefit for this request has been activated"/>
 
                 <com.kaodim.design.components.informationBars.InfoBar
