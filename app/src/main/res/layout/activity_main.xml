@@ -247,6 +247,15 @@
                 app:borderType="dotted"
                 app:panelHint="Custom Button" />
 
+            <com.kaodim.design.components.InteractivePanel
+                android:id="@+id/interactivePanel2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:src="@drawable/surcharge_icon"
+                app:borderType="dotted"
+                app:panelHint="Custom Button" />
+
             <TextView
                 style="@style/NormalTextBolded"
                 android:layout_width="wrap_content"

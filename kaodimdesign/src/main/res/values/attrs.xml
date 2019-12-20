@@ -22,6 +22,7 @@
 
     <declare-styleable name="InteractivePanel">
         <attr name="panelHint" format="string" />
+        <attr name="src" format="reference"/>
         <attr name="borderType" format="enum">
             <enum name="dotted" value="1" />
             <enum name="line" value="2" />

@@ -7,9 +7,16 @@
     android:background="@drawable/kdl_rect_dotted"
     android:padding="15dp">
 
+    <ImageView
+        android:id="@+id/ivPanelImage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp" />
+
     <TextView
         android:id="@+id/tvHint"
         style="@style/font_roboto_regular"
+        android:layout_toEndOf="@+id/ivPanelImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
