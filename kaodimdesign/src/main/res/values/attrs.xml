@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="leftIconDrawable" format="integer" />
+    <attr name="rightIconDrawable" format="integer" />
+
     <declare-styleable name="SearchBox">
         <attr name="hint" format="string" />
         <attr name="nextButton" format="boolean" />
@@ -134,13 +137,31 @@
     <declare-styleable name="KaodimViewTextLayout">
         <attr name="android:hint"/>
         <attr name="android:enabled"/>
+        <attr name="leftIconVisibility">
+            <!-- Visible on screen; the default value. -->
+            <enum name="visible" value="0" />
+            <!-- Not displayed, but taken into account during layout (space is left for it). -->
+            <enum name="invisible" value="1" />
+            <!-- Completely hidden, as if the view had not been added. -->
+            <enum name="gone" value="2" />
+        </attr>
+        <attr name="rightIconVisibility">
+            <!-- Visible on screen; the default value. -->
+            <enum name="visible" value="0" />
+            <!-- Not displayed, but taken into account during layout (space is left for it). -->
+            <enum name="invisible" value="1" />
+            <!-- Completely hidden, as if the view had not been added. -->
+            <enum name="gone" value="2" />
+        </attr>
+        <attr name="leftIconDrawable"/>
+        <attr name="rightIconDrawable"/>
     </declare-styleable>
 
     <declare-styleable name="SearchEditText">
         <attr name="android:hint"/>
         <attr name="cancelText" format="string"/>
         <attr name="showCancelText" format="boolean"/>
-        <attr name="leftIconDrawable" format="integer"/>
+        <attr name="leftIconDrawable"/>
         <attr name="android:inputType"/>
     </declare-styleable>
 
