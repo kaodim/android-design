@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kaodim.design.R;
@@ -30,6 +30,8 @@ public class KaodimViewText extends ConstraintLayout {
     private TextView tvKdlTextSelectionSelect;
     private TextView tvCustomHint;
     private ConstraintLayout clKdlTextSelectionRoot;
+    private ImageView ivLeftIcon;
+    private ImageView ivRightIcon;
 //    private ArrayAdapter adapter;
 
     private boolean initialUpdateFinished = false;
@@ -56,6 +58,11 @@ public class KaodimViewText extends ConstraintLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.KaodimViewTextLayout);
         String hintText = typedArray.getString(R.styleable.KaodimViewTextLayout_android_hint);
         boolean enabled = typedArray.getBoolean(R.styleable.KaodimViewTextLayout_android_enabled, true);
+        int leftIconVisibility = typedArray.getInt(R.styleable.KaodimViewTextLayout_leftIconVisibility, GONE);
+        int rightIconVisibility = typedArray.getInt(R.styleable.KaodimViewTextLayout_rightIconVisibility, GONE);
+        int leftIconDrawable = typedArray.getResourceId(R.styleable.KaodimViewTextLayout_leftIconDrawable, R.drawable.ic_minical);
+        int rightIconDrawable = typedArray.getResourceId(R.styleable.KaodimViewTextLayout_rightIconDrawable, R.drawable.icon_chevron_down);
+
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
@@ -63,7 +70,7 @@ public class KaodimViewText extends ConstraintLayout {
         inflater.inflate(R.layout.kdl_view_text_layout, this);
         initComponents();
         this.setEvents();
-        this.setupView(hintText, enabled);
+        this.setupView(hintText, enabled, leftIconVisibility, rightIconVisibility, leftIconDrawable, rightIconDrawable);
     }
 
     private void setEvents() {
@@ -167,11 +174,17 @@ public class KaodimViewText extends ConstraintLayout {
         tvKdlTextSelectionSelect = findViewById(R.id.tvKdlTextSelectionSelect);
         tvCustomHint = findViewById(R.id.tvKdlTextSelectionHint);
         clKdlTextSelectionRoot= findViewById(R.id.clKdlTextSelectionRoot);
+        ivLeftIcon = findViewById(R.id.ivIconLeft);
+        ivRightIcon = findViewById(R.id.ivIconRight);
     }
 
-    private void setupView(String hintText, boolean enabled) {
+    private void setupView(String hintText, boolean enabled, int leftIconVisibility, int rightIconVisibility, int leftIconDrawable, int rightIconDrawable) {
         this.setHint(hintText);
         this.setEnabled(enabled);
+        this.setLeftIconDrawable(leftIconDrawable);
+        this.setLeftIconVisibility(leftIconVisibility);
+        this.setRightIconDrawable(rightIconDrawable);
+        this.setRightIconVisibility(rightIconVisibility);
     }
 
     private void animateScaleHint(boolean grow) {
@@ -242,9 +255,27 @@ public class KaodimViewText extends ConstraintLayout {
         super.setEnabled(enabled);
     }
 
+    public void setLeftIconVisibility(int visibility) {
+        ivLeftIcon.setVisibility(visibility);
+    }
+
+    public void setRightIconVisibility(int visibility) {
+        ivRightIcon.setVisibility(visibility);
+    }
+
+    public void setLeftIconDrawable(int drawable) {
+        ivLeftIcon.setImageDrawable(ContextCompat.getDrawable(this.getContext(), drawable));
+    }
+
+    public void setRightIconDrawable(int drawable) {
+        ivRightIcon.setImageDrawable(ContextCompat.getDrawable(this.getContext(), drawable));
+    }
+
+
     public interface CustomTextListener {
         void onClickListener();
     }
+
 
     private static void recursiveSetEnabled(ViewGroup vg, boolean enabled) {
         int i = 0;

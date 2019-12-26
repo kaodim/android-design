@@ -494,6 +494,8 @@
                     android:id ="@+id/kvtViewText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:leftIconVisibility="visible"
+                    app:rightIconVisibility="visible"
                     android:hint="Input" />
 
                 <LinearLayout

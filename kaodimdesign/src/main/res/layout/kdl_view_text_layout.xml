@@ -6,8 +6,21 @@
     android:id = "@+id/clKdlTextSelectionRoot"
     android:clickable="true"
     android:focusable="true"
+    android:background = "@drawable/bg_selectiontext_default"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivIconLeft"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="19dp"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:src="@drawable/ic_minical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvKdlTextSelectionSelect"
@@ -19,16 +32,15 @@
         android:paddingLeft = "10dp"
         android:paddingRight = "10dp"
         android:singleLine="true"
-        android:background = "@drawable/bg_selectiontext_default"
         android:textColor="@color/text_black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivIconLeft"
+        app:layout_constraintEnd_toStartOf="@id/ivIconRight"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvKdlTextSelectionHint"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft = "10dp"
         android:paddingRight = "10dp"
@@ -37,8 +49,21 @@
         android:singleLine="true"
         android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="@+id/tvKdlTextSelectionSelect"
-        app:layout_constraintLeft_toLeftOf="@+id/tvKdlTextSelectionSelect"
+        app:layout_constraintStart_toEndOf="@+id/ivIconLeft"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Hint" />
+
+
+    <ImageView
+        android:id="@+id/ivIconRight"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="19dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:src="@drawable/ic_minical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
