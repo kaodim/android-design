@@ -33,7 +33,7 @@
                 android:layout_width="0px"
                 android:layout_height="0px"/>
 
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
                 android:layout_toStartOf="@+id/ivTextClear"
                 android:layout_toEndOf="@+id/ivMiniSearch"
                 android:id="@+id/etSearch"
@@ -47,6 +47,8 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:imeOptions="actionSearch"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
                 android:ellipsize="end"/>
 
             <ImageView
