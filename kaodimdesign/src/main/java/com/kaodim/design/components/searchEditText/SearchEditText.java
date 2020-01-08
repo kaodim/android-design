@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -13,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,7 +28,7 @@ public class SearchEditText extends LinearLayout {
     private final long delay = 800; // milliseconds
     private boolean showCancelText =  true;
 
-    private EditText etSearch;
+    private AppCompatEditText etSearch;
     private ImageView ivTextClear;
     private TextView tvSearchCancel;
     private ImageView ivMiniSearch;
