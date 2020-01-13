@@ -1,10 +1,12 @@
 package com.kaodim.myapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,8 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.xizzhu.simpletooltip.ToolTip;
-import com.github.xizzhu.simpletooltip.ToolTipView;
 import com.kaodim.design.components.DateTimePicker;
 import com.kaodim.design.components.InteractivePanel;
 import com.kaodim.design.components.NumericControl;
@@ -32,9 +32,9 @@ import com.kaodim.design.components.notes.NotesStandard;
 import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.searchEditText.SearchEditText;
 import com.kaodim.design.components.toast.ToastBanner;
+import com.kaodim.design.components.tooltip.ViewTooltip;
 import com.kaodim.design.components.viewText.KaodimViewText;
 import com.kaodim.myapplication.fragement.CalendarViewDialogFragment;
-import com.tooltip.Tooltip;
 
 import java.util.Date;
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     NotesError notesError;
     NotesInfo notesInfo;
 
-    Tooltip tooltip;
+    ViewTooltip tooltip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -423,9 +423,10 @@ public class MainActivity extends AppCompatActivity {
         View view = findViewById(android.R.id.content);
         final ModalDialog modalDialog = new ModalDialog(this,view);
         modalDialog.setType(ModalDialog.TYPE_DOUBLE_BUTTON_NO_ICON_NON_DISMISS);
+
 //        modalDialog.setTextForSingleButtonRow("", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
 //                "Primary");
-        modalDialog.setTextForDoubleButtonRow("", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
+        modalDialog.setTextForDoubleButtonRow("Test", "A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!",
                 "Primary","Cancel");
         modalDialog.setIcon(R.drawable.illustration_update_customer);
        modalDialog.setIconHeight(217,this);
@@ -464,7 +465,7 @@ public class MainActivity extends AppCompatActivity {
         btnHideToolTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               tooltip.dismiss();
+                ViewTooltip.hideAllVisibleToolTips();
             }
         });
    }
@@ -512,37 +513,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
    private void showtooltip(View view){
-       ToolTip toolTip = new ToolTip.Builder()
-               .withText("This is very very long tooltip message that use to display long message tooltip.")
-               .withTextColor(getResources().getColor(R.color.porcelain))
-               .withCornerRadius(4)
-               .withBackgroundColor(getResources().getColor(R.color.sky_blue))
-               .withTextSize(38)
-               .withPadding(20,20,20,20)
-               .build();
-       ToolTipView toolTipView = new ToolTipView.Builder(this)
-               .withAnchor(view)
-               .withToolTip(toolTip)
-               .withGravity(Gravity.BOTTOM)
-               .build();
-       toolTipView.show();
-   }
+       View tooltipView = LayoutInflater.from(this).inflate(R.layout.example_tool_tip_view, null);
 
-   private void ToolTip2(){
-       tooltip = new Tooltip.Builder(icBulb)
-               .setArrowEnabled(true)
-               .setCornerRadius(R.dimen.size_4)
-               .setGravity(Gravity.BOTTOM)
-               .setBackgroundColor(getResources().getColor(R.color.sky_blue))
-               .setTextColor(getResources().getColor(R.color.porcelain))
-               .setDrawableTop(getDrawable(R.drawable.button_jasper))
-               .setLineSpacing(R.dimen.size_1,(float) 1.13)
-               .setPadding(30)
-               .setTextSize(R.dimen.size_12)
-               .setCancelable(true)
-               .setText("This is very very long tooltip message that use to display long message tooltip.")
+       DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+       int px = Math.round(16 * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+
+       ViewTooltip.TooltipView toolTip = ViewTooltip.on(view)
+               .clickToHide(true)
+               .autoHide(false, 0)
+               .align(ViewTooltip.ALIGN.CENTER)
+               .withMargin(px)
+               .position(ViewTooltip.Position.TOP)
+               .customView(tooltipView)
+               .arrowHeight(30)
+               .arrowWidth(40)
+               .color(Color.WHITE)
+               .withShadow(true)
+               .distanceWithView(20)
                .show();
    }
+
 
     @Override
     public void onBackPressed() {

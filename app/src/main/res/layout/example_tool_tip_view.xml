@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:id="@+id/tooltip"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:padding="15dp"
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/tvSurchargeTooltipDescription"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="15sp"
+		android:textColor="@color/text_midgrey"
+		android:lineSpacingExtra="5sp"
+		android:text="Surcharge is insured due to high demand but is only applicable if the service is performed on that date." />
+
+</LinearLayout>

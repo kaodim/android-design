@@ -78,7 +78,7 @@
 
                 <TextView
                     android:id="@+id/tvTitle"
-                    style="@style/NormalTextBolded"
+                    style="@style/font_roboto_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -157,7 +157,7 @@
 
                     <TextView
                         android:id="@+id/tvTitleHorz"
-                        style="@style/font_roboto_medium"
+                        android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"

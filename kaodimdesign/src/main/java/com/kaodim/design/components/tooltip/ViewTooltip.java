@@ -114,6 +114,11 @@ public class ViewTooltip {
         return this;
     }
 
+    public ViewTooltip withMargin(int margin){
+        this.tooltip_view.setTooltipMargin(margin);
+        return this;
+    }
+
     public ViewTooltip withShadow(boolean withShadow) {
         this.tooltip_view.setWithShadow(withShadow);
         return this;
@@ -383,6 +388,7 @@ public class ViewTooltip {
         private int arrowWidth = 15;
         private int arrowSourceMargin = 0;
         private int arrowTargetMargin = 0;
+        private int tooltipMargin = 0;
         protected View childView;
         private int color = Color.parseColor("#1F7C82");
         private Path bubblePath;
@@ -524,6 +530,15 @@ public class ViewTooltip {
         public void setArrowTargetMargin(int arrowTargetMargin) {
             this.arrowTargetMargin = arrowTargetMargin;
             postInvalidate();
+        }
+
+        public void setTooltipMargin (int tooltipMargin) {
+            this.tooltipMargin = tooltipMargin;
+            postInvalidate();
+        }
+
+        public int getTooltipMargin() {
+            return this.tooltipMargin;
         }
 
         public void setTextTypeFace(Typeface textTypeFace) {
@@ -772,6 +787,7 @@ public class ViewTooltip {
 
             boolean changed = false;
             final ViewGroup.LayoutParams layoutParams = getLayoutParams();
+
             if (position == Position.LEFT && getWidth() > rect.left) {
                 layoutParams.width = rect.left - MARGIN_SCREEN_BORDER_TOOLTIP - distanceWithView;
                 changed = true;
@@ -779,11 +795,15 @@ public class ViewTooltip {
                 layoutParams.width = screenWidth - rect.right - MARGIN_SCREEN_BORDER_TOOLTIP - distanceWithView;
                 changed = true;
             } else if (position == Position.TOP || position == Position.BOTTOM) {
+                if (layoutParams instanceof FrameLayout.LayoutParams) {
+                    ((LayoutParams) layoutParams).setMargins(tooltipMargin, 0 , tooltipMargin, 0);
+                }
+
                 int adjustedLeft = rect.left;
                 int adjustedRight = rect.right;
 
                 if((rect.centerX() + getWidth() / 2f) > screenWidth){
-                    float diff = (rect.centerX() + getWidth() / 2f) - screenWidth;
+                    float diff = (rect.centerX() + getWidth() / 2f) - (screenWidth - tooltipMargin);
 
                     adjustedLeft -=  diff;
                     adjustedRight -=  diff;
@@ -804,9 +824,12 @@ public class ViewTooltip {
                     adjustedLeft = 0;
                 }
 
-                if(adjustedRight > screenWidth){
+                if(adjustedRight > screenWidth ){
                     adjustedRight = screenWidth;
                 }
+
+//                adjustedLeft +=  * tooltipMargin;
+//                adjustedRight -= tooltipMargin;
 
                 rect.left = adjustedLeft;
                 rect.right = adjustedRight;

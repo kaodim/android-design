@@ -2,15 +2,14 @@ package com.kaodim.design.components.dialogs;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Spanned;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +25,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.kaodim.design.R;
 import com.shasin.notificationbanner.Banner;
-
-import java.util.logging.LogRecord;
 
 public class ModalDialog {
 
@@ -70,7 +67,6 @@ public class ModalDialog {
         banner.setLayout(R.layout.kdl_modal_dialog);
         this.activity = activity;
     }
-
 
     /**
      Set type for the model dialog
