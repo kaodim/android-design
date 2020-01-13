@@ -221,7 +221,7 @@ public class ViewTooltip {
                         @Override
                         public boolean onPreDraw() {
 
-                            tooltip_view.setup(rect, decorView.getWidth()-40);
+                            tooltip_view.setup(rect, decorView.getWidth());
 
                             tooltip_view.getViewTreeObserver().removeOnPreDrawListener(this);
 
@@ -781,10 +781,6 @@ public class ViewTooltip {
         }
 
         public boolean adjustSize(Rect rect, int screenWidth) {
-
-            final Rect r = new Rect();
-            getGlobalVisibleRect(r);
-
             boolean changed = false;
             final ViewGroup.LayoutParams layoutParams = getLayoutParams();
 
@@ -795,15 +791,13 @@ public class ViewTooltip {
                 layoutParams.width = screenWidth - rect.right - MARGIN_SCREEN_BORDER_TOOLTIP - distanceWithView;
                 changed = true;
             } else if (position == Position.TOP || position == Position.BOTTOM) {
-                if (layoutParams instanceof FrameLayout.LayoutParams) {
-                    ((LayoutParams) layoutParams).setMargins(tooltipMargin, 0 , tooltipMargin, 0);
-                }
+                layoutParams.width = screenWidth - (2 * tooltipMargin);
 
                 int adjustedLeft = rect.left;
                 int adjustedRight = rect.right;
 
                 if((rect.centerX() + getWidth() / 2f) > screenWidth){
-                    float diff = (rect.centerX() + getWidth() / 2f) - (screenWidth - tooltipMargin);
+                    float diff = (rect.centerX() + getWidth() / 2f) - screenWidth;
 
                     adjustedLeft -=  diff;
                     adjustedRight -=  diff;
@@ -828,13 +822,9 @@ public class ViewTooltip {
                     adjustedRight = screenWidth;
                 }
 
-//                adjustedLeft +=  * tooltipMargin;
-//                adjustedRight -= tooltipMargin;
-
                 rect.left = adjustedLeft;
                 rect.right = adjustedRight;
             }
-
             setLayoutParams(layoutParams);
             postInvalidate();
             return changed;

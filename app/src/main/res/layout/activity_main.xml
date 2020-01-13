@@ -416,8 +416,8 @@
                     android:id="@+id/ivImage"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_gravity="end"
-                    android:layout_marginRight="50dp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="50dp"
                     android:src="@drawable/ic_bulb"/>
 
                 <LinearLayout
