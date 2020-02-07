@@ -144,7 +144,7 @@ class KaodimEditText : LinearLayout {
             val drawable = context.getDrawable(if (errorText!!.isEmpty()) if (inputEditText!!.isFocused) R.drawable.bg_edittext_focused else R.drawable.bg_edittext_default else R.drawable.bg_edittext_error)
             clKdlTextInputInput?.background = drawable
             ivKdlTextInputError?.visibility = if (!hasFocus && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
-            ivKdlTextInputClear?.visibility = if (hasFocus && text!!.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
+            ivKdlTextInputClear?.visibility = if (hasFocus && text!!.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD) View.VISIBLE else View.GONE
             setPadding(hasFocus || !TextUtils.isEmpty(inputEditText!!.text))
             setHasTextConstraint(hasFocus || !TextUtils.isEmpty(inputEditText!!.text))
             animateColorHint(hasFocus || TextUtils.isEmpty(inputEditText!!.text))
@@ -159,7 +159,7 @@ class KaodimEditText : LinearLayout {
             override fun afterTextChanged(s: Editable) {
                 val text = s.toString()
                 ivKdlTextInputError?.visibility = if (!inputEditText!!.isFocused && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
-                ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
+                ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD) View.VISIBLE else View.GONE
             }
         })
 
@@ -193,7 +193,7 @@ class KaodimEditText : LinearLayout {
                 tvCustomError!!.visibility = if (text.isEmpty()) View.GONE else View.VISIBLE
 
                 ivKdlTextInputError!!.visibility = if (!inputEditText!!.isFocused && !text.isEmpty()) View.VISIBLE else View.GONE
-                ivKdlTextInputClear!!.visibility = if (inputEditText!!.isFocused && !text.isEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT) View.VISIBLE else View.GONE
+                ivKdlTextInputClear!!.visibility = if (inputEditText!!.isFocused && !text.isEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD) View.VISIBLE else View.GONE
             }
         })
 
@@ -338,20 +338,29 @@ class KaodimEditText : LinearLayout {
     }
 
     private fun setShowHidePassword() {
-
+        val selectionStart: Int
+        val selectionEnd: Int
 
         if(inputEditText?.transformationMethod?.equals(PasswordTransformationMethod.getInstance())!!){
+            selectionStart = inputEditText?.selectionStart!!
+            selectionEnd = inputEditText?.selectionEnd!!
+
             ivKdlTextInputShowPassword?.setImageResource(R.drawable.icon_mini_hidepassword);
 
             //Show Password
             inputEditText?.transformationMethod = HideReturnsTransformationMethod.getInstance();
+            inputEditText?.setSelection(selectionStart, selectionEnd)
         }
         else{
+            selectionStart = inputEditText?.selectionStart!!
+            selectionEnd = inputEditText?.selectionEnd!!
+
+
             ivKdlTextInputShowPassword?.setImageResource(R.drawable.icon_mini_showpassword);
 
             //Hide Password
             inputEditText?.transformationMethod = PasswordTransformationMethod.getInstance();
-
+            inputEditText?.setSelection(selectionStart, selectionEnd)
         }
     }
 
