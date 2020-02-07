@@ -23,6 +23,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.kaodim.design.components.editText.KaodimPhoneNumberEditText
+                android:id ="@+id/phoneEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:country="Malaysia"
+                app:errorText="Phone number is invalid"/>
+
             <TextView
                 style="@style/HeaderText"
                 android:layout_width="wrap_content"

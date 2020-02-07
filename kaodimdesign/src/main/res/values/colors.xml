@@ -73,6 +73,8 @@
     <color name="kdl_grey_medium">#969696</color>
     <color name="kdl_grey_lighter">#FAFAFA</color>
     <color name="kdl_grey_lighter_2">#F4F4F4</color>
+    <color name="kdl_grey_vertical_divider">#48979797</color>
+
 
     <color name="black_light">#0F0F0F</color>
     <color name="black">#262626</color>

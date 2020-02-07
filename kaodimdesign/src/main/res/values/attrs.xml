@@ -134,6 +134,13 @@
         <attr name="android:enabled"/>
     </declare-styleable>
 
+    <declare-styleable name="KaodimPhoneNumberEditTextLayout">
+        <attr name="errorText"/>
+        <attr name="android:text"/>
+        <attr name="android:enabled"/>
+        <attr name="country"/>
+    </declare-styleable>
+
     <declare-styleable name="KaodimViewTextLayout">
         <attr name="android:hint"/>
         <attr name="android:enabled"/>

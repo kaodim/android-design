@@ -14,5 +14,9 @@
     <string name="end_date">End Date</string>
 
     <string name="cancel">Cancel</string>
+    <string name="malaysia_country_code">+60</string>
+    <string name="singapore_country_code">+65</string>
+    <string name="philippines_country_code">+63</string>
+    <string name="indonesia_country_code">+62</string>
 
 </resources>
