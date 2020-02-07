@@ -130,6 +130,7 @@
             <enum name="text" value="0"/>
             <enum name="number" value="1"/>
             <enum name="multiline" value="2"/>
+            <enum name="password" value="3"/>
         </attr>
         <attr name="android:enabled"/>
     </declare-styleable>

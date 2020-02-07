@@ -318,6 +318,8 @@ class KaodimEditText : LinearLayout {
             inputEditText?.gravity = Gravity.TOP or Gravity.START
             inputEditText?.setSingleLine(false)
             inputEditText?.maxLines = 4
+        } else if (isSecured && customInputType == INPUT_TYPE_PASSWORD) {
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         } else {
             if (isCapitalized) {
                 inputType = inputType or InputType.TYPE_TEXT_FLAG_CAP_WORDS
@@ -338,6 +340,7 @@ class KaodimEditText : LinearLayout {
         private const val INPUT_TYPE_TEXT = 0
         private const val INPUT_TYPE_NUMBER = 1
         private const val INPUT_TYPE_MULTI_LINE_TEXT = 2
+        private const val INPUT_TYPE_PASSWORD = 3
 
         private fun recursiveSetEnabled(vg: ViewGroup, enabled: Boolean) {
             var i = 0
