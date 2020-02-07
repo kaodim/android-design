@@ -11,6 +11,8 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.*
 import android.view.View.OnFocusChangeListener
@@ -33,6 +35,7 @@ class KaodimEditText : LinearLayout {
     private var ivIcon: ImageView? = null
     private var ivKdlTextInputError: ImageView? = null
     private var ivKdlTextInputClear: ImageView? = null
+    private var ivKdlTextInputShowPassword: ImageView? = null
     private var clKdlTextInputInput: ConstraintLayout? = null
 
     private val hintLateralTranslation: Float
@@ -205,6 +208,7 @@ class KaodimEditText : LinearLayout {
         ivKdlTextInputClear = findViewById(R.id.ivKdlTextInputClear)
         ivKdlTextInputError = findViewById(R.id.ivKdlTextInputError)
         clKdlTextInputInput = findViewById(R.id.clKdlTextInputInput)
+        ivKdlTextInputShowPassword = findViewById(R.id.ivKdlTextInputShowPassword)
     }
 
     private fun setupView(hintText: String?, errorText: String?, inputText: String?, enabled: Boolean) {
@@ -320,6 +324,8 @@ class KaodimEditText : LinearLayout {
             inputEditText?.maxLines = 4
         } else if (isSecured && customInputType == INPUT_TYPE_PASSWORD) {
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            ivKdlTextInputShowPassword?.visibility = View.VISIBLE
+            ivKdlTextInputShowPassword?.setOnClickListener { setShowHidePassword() }
         } else {
             if (isCapitalized) {
                 inputType = inputType or InputType.TYPE_TEXT_FLAG_CAP_WORDS
@@ -329,6 +335,24 @@ class KaodimEditText : LinearLayout {
             }
         }
         return inputType
+    }
+
+    private fun setShowHidePassword() {
+
+
+        if(inputEditText?.transformationMethod?.equals(PasswordTransformationMethod.getInstance())!!){
+            ivKdlTextInputShowPassword?.setImageResource(R.drawable.icon_mini_hidepassword);
+
+            //Show Password
+            inputEditText?.transformationMethod = HideReturnsTransformationMethod.getInstance();
+        }
+        else{
+            ivKdlTextInputShowPassword?.setImageResource(R.drawable.icon_mini_showpassword);
+
+            //Hide Password
+            inputEditText?.transformationMethod = PasswordTransformationMethod.getInstance();
+
+        }
     }
 
     companion object {

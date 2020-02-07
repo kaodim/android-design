@@ -82,8 +82,25 @@
             android:focusable="false"
             android:focusableInTouchMode = "false"
             app:layout_constraintBottom_toBottomOf="@+id/etKdlTextInputInput"
+            app:layout_constraintRight_toLeftOf="@+id/ivKdlTextInputShowPassword"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivKdlTextInputShowPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/icon_mini_showpassword"
+            android:focusable="false"
+            android:focusableInTouchMode = "false"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/etKdlTextInputInput"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+
 
     </android.support.constraint.ConstraintLayout>
 
