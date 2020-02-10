@@ -19,6 +19,7 @@ class KaodimPhoneNumberEditText : LinearLayout {
     private var ivIcon: ImageView? = null
     private var tvCountryPhoneCode: TextView? = null
     private var userCountry: String? = null
+    private var mContext: Context? = null
 
     val MALAYSIA = "Malaysia"
     val SINGAPORE = "Singapore"
@@ -41,6 +42,7 @@ class KaodimPhoneNumberEditText : LinearLayout {
 
     private fun setFlag(text: String?) {
         userCountry = text
+        mContext?.let { setIconAndCountryCode(it) }
     }
 
     constructor(context: Context) : super(context) {
@@ -56,6 +58,7 @@ class KaodimPhoneNumberEditText : LinearLayout {
     }
 
     private fun init(context: Context, attrs: AttributeSet) {
+        mContext = context
         //Retrieve the custom attributes from XML
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.KaodimPhoneNumberEditTextLayout)
         val errorText = typedArray.getString(R.styleable.KaodimPhoneNumberEditTextLayout_errorText)
