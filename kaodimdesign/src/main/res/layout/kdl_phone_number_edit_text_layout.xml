@@ -43,7 +43,8 @@
 
         <EditText
             android:id="@+id/etKdlTextInputInput"
-            android:layout_width="wrap_content"
+            android:minWidth="40dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:paddingTop="20dp"
