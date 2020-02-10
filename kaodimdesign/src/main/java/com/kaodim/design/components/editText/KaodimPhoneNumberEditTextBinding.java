@@ -9,11 +9,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 
 @InverseBindingMethods({
-        @InverseBindingMethod(type = KaodimEditText.class, attribute = "android:text"),
+        @InverseBindingMethod(type = KaodimPhoneNumberEditTextBinding.class, attribute = "android:text"),
 })
 public class KaodimPhoneNumberEditTextBinding {
     @BindingAdapter(value = "android:textAttrChanged")
-    public static void setListener(KaodimEditText layout, final InverseBindingListener textAttrChanged) {
+    public static void setListener(KaodimPhoneNumberEditText layout, final InverseBindingListener textAttrChanged) {
         if (textAttrChanged != null) {
             layout.getInputEditText().addTextChangedListener(new TextWatcher() {
                 @Override
@@ -35,13 +35,13 @@ public class KaodimPhoneNumberEditTextBinding {
     }
 
     @BindingAdapter("android:text")
-    public static void setText(KaodimEditText view, String value) {
+    public static void setText(KaodimPhoneNumberEditText view, String value) {
         if (value != null && !value.equals(view.getText()))
             view.setText(value);
     }
 
     @InverseBindingAdapter(attribute = "android:text")
-    public static String getText(KaodimEditText view) {
+    public static String getText(KaodimPhoneNumberEditText view) {
         return view.getText();
     }
 }
