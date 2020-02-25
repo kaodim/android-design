@@ -37,6 +37,7 @@ class KaodimEditText : LinearLayout {
     private var ivKdlTextInputError: ImageView? = null
     private var ivKdlTextInputClear: ImageView? = null
     private var ivKdlTextInputShowPassword: ImageView? = null
+
     var clKdlTextInputInput: ConstraintLayout? = null
 
     private val hintLateralTranslation: Float
@@ -228,7 +229,7 @@ class KaodimEditText : LinearLayout {
 
         if (isDropdown) {
             inputEditText?.isFocusable = false
-            inputEditText?.isEnabled = false
+            inputEditText?.isEnabled = true
             inputEditText?.isLongClickable = false
             setDropdownIcon()
         }

@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupGenderEditText() {
-        gender.setOnClickListener(new View.OnClickListener() {
+        gender.getInputEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Gender on Click",Toast.LENGTH_SHORT).show();
