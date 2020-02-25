@@ -218,18 +218,12 @@ class KaodimEditText : LinearLayout {
         this.setHint(hintText)
         this.errorText = errorText
         this.text = inputText
-        this.isEnabled = enabled
+        this.isEnabled = enabled && !isDropdown
         inputEditText?.showSoftInputOnFocus = true
         inputEditText?.inputType = getInputType(inputType, isSecured, inputEditText!!.isFocused, isFirstLetterCapitalize)
         if(!inputText.isNullOrEmpty()){
             setHasTextConstraint(true)
             setPadding(true)
-        }
-
-        if (isDropdown) {
-            inputEditText?.isClickable = false
-            inputEditText?.showSoftInputOnFocus = false
-            inputEditText?.isEnabled = false
         }
     }
 
