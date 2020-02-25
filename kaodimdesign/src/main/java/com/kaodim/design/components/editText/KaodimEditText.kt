@@ -375,6 +375,7 @@ class KaodimEditText : LinearLayout {
     }
 
     private fun setDropdownIcon() {
+        ivKdlTextInputShowPassword?.visibility = View.VISIBLE
         ivKdlTextInputShowPassword?.setImageResource(R.drawable.icon_chevron_down);
     }
 
