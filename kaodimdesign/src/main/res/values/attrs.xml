@@ -133,6 +133,7 @@
             <enum name="password" value="3"/>
         </attr>
         <attr name="android:enabled"/>
+        <attr name="dropdown" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="KaodimPhoneNumberEditTextLayout">

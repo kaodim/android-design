@@ -24,6 +24,21 @@
             android:orientation="vertical">
 
             <com.kaodim.design.components.editText.KaodimEditText
+                android:id="@+id/gender"
+                android:gravity="top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:hint="Gender"
+                android:text=""
+                app:inputType="password"
+                app:secured="true"
+                app:iconDrawable="@drawable/ic_mini_notes"
+                android:layout_marginTop="16dp"
+                android:maxLength="200"
+                app:dropdown="true"/>
+
+            <com.kaodim.design.components.editText.KaodimEditText
                 android:id="@+id/note2"
                 android:gravity="top"
                 android:layout_width="match_parent"

@@ -30,6 +30,7 @@ class KaodimEditText : LinearLayout {
     private var iconDrawableId: Int = 0
     private var isSecured: Boolean = false
     private var isFirstLetterCapitalize: Boolean = false
+    private var isDropdown: Boolean = false
     private var tvCustomHint: TextView? = null
     private var tvCustomError: TextView? = null
     private var ivIcon: ImageView? = null
@@ -96,6 +97,7 @@ class KaodimEditText : LinearLayout {
         isSecured = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_secured, false)
         iconDrawableId = typedArray.getResourceId(R.styleable.KaodimEditTextLayout_iconDrawable, 0)
         isFirstLetterCapitalize = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_capitalize, false)
+        isDropdown= typedArray.getBoolean(R.styleable.KaodimEditTextLayout_dropdown, false)
         //Recycle the TypedArray (saves memory)
         typedArray.recycle()
 
@@ -103,7 +105,7 @@ class KaodimEditText : LinearLayout {
         inflater.inflate(R.layout.kdl_edit_text_layout, this)
         initComponents()
         this.setEvents()
-        this.setupView(hintText, errorText, inputText, enabled)
+        this.setupView(hintText, errorText, inputText, enabled, isDropdown)
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -211,7 +213,7 @@ class KaodimEditText : LinearLayout {
         ivKdlTextInputShowPassword = findViewById(R.id.ivKdlTextInputShowPassword)
     }
 
-    private fun setupView(hintText: String?, errorText: String?, inputText: String?, enabled: Boolean) {
+    private fun setupView(hintText: String?, errorText: String?, inputText: String?, enabled: Boolean, isDropdown: Boolean) {
         setIcon()
         this.setHint(hintText)
         this.errorText = errorText
@@ -222,6 +224,12 @@ class KaodimEditText : LinearLayout {
         if(!inputText.isNullOrEmpty()){
             setHasTextConstraint(true)
             setPadding(true)
+        }
+
+        if (isDropdown) {
+            inputEditText?.isClickable = false
+            inputEditText?.showSoftInputOnFocus = false
+            inputEditText?.isEnabled = false
         }
     }
 
