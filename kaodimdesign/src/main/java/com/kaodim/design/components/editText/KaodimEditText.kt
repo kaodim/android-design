@@ -37,7 +37,7 @@ class KaodimEditText : LinearLayout {
     private var ivKdlTextInputError: ImageView? = null
     private var ivKdlTextInputClear: ImageView? = null
     private var ivKdlTextInputShowPassword: ImageView? = null
-    private var clKdlTextInputInput: ConstraintLayout? = null
+    var clKdlTextInputInput: ConstraintLayout? = null
 
     private val hintLateralTranslation: Float
         get() {
@@ -75,7 +75,7 @@ class KaodimEditText : LinearLayout {
 
     constructor(context: Context) : super(context) {
         this.initComponents()
-        this.setEvents()
+        this.setEvents(isDropdown)
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -104,12 +104,12 @@ class KaodimEditText : LinearLayout {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.kdl_edit_text_layout, this)
         initComponents()
-        this.setEvents()
+        this.setEvents(isDropdown)
         this.setupView(hintText, errorText, inputText, enabled, isDropdown)
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setEvents() {
+    private fun setEvents(isDropdown: Boolean) {
         this.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 if (height > 0) {
@@ -118,7 +118,7 @@ class KaodimEditText : LinearLayout {
                     tvCustomHint?.scaleY = if (!TextUtils.isEmpty(inputEditText!!.text) || inputEditText!!.isFocused) HINT_SHRINK_SCALE else 1f
                     tvCustomHint?.translationX = if (!TextUtils.isEmpty(inputEditText!!.text) || inputEditText!!.isFocused) hintLateralTranslation else 0f
                     tvCustomHint?.translationY = if (!TextUtils.isEmpty(inputEditText!!.text) || inputEditText!!.isFocused) hintLongitudinalTranslation else 0f
-                    if (!isEnabled) {
+                    if (!isEnabled && !isDropdown) {
                         inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_lightgrey))
                         tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text)) R.color.text_midgrey else R.color.text_lightgrey))
                     } else {
@@ -218,12 +218,19 @@ class KaodimEditText : LinearLayout {
         this.setHint(hintText)
         this.errorText = errorText
         this.text = inputText
-        this.isEnabled = enabled && !isDropdown
+        this.isEnabled = enabled
         inputEditText?.showSoftInputOnFocus = true
         inputEditText?.inputType = getInputType(inputType, isSecured, inputEditText!!.isFocused, isFirstLetterCapitalize)
         if(!inputText.isNullOrEmpty()){
             setHasTextConstraint(true)
             setPadding(true)
+        }
+
+        if (isDropdown) {
+            inputEditText?.isFocusable = false
+            inputEditText?.isEnabled = false
+            inputEditText?.isLongClickable = false
+            setDropdownIcon()
         }
     }
 
@@ -364,6 +371,10 @@ class KaodimEditText : LinearLayout {
             inputEditText?.transformationMethod = PasswordTransformationMethod.getInstance();
             inputEditText?.setSelection(selectionStart, selectionEnd)
         }
+    }
+
+    private fun setDropdownIcon() {
+        ivKdlTextInputShowPassword?.setImageResource(R.drawable.icon_chevron_down);
     }
 
     companion object {

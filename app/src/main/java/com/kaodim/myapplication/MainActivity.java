@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnShowToolTip, btnHideToolTip, btnShowViewText, btnHideViewText,btnShowCalendarDialog;
     ImageView icBulb;
     LinearLayout toolTipParentView;
-    KaodimEditText ketEditText;
+    KaodimEditText ketEditText, gender;
     KaodimViewText kvtViewText;
     SearchEditText setSearchText;
     TextView tvSearchTextDelay, tvSearchTextInstantenous;
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        gender = findViewById(R.id.gender);
         numericControl = findViewById(R.id.numericControl);
         dateTimePicker = findViewById(R.id.dateTimePicker);
         interactivePanel = findViewById(R.id.interactivePanel);
@@ -148,6 +149,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupInfoBars();
+
+        setupGenderEditText();
+    }
+
+    private void setupGenderEditText() {
+        gender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(),"Gender on Click",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setupInfoBars() {
