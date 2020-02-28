@@ -42,8 +42,8 @@ class KaodimPhoneNumberEditText : LinearLayout {
         get()  =  userCountry
         set(text) = setFlag(text)
 
-    var textButtonOnClick: View.OnClickListener
-        get() = View.OnClickListener {  }
+    var textButtonOnClick: Unit
+        get() = Unit
         set(listener) = tvTextButton!!.setOnClickListener { listener }
 
     private fun setFlag(text: String?) {
