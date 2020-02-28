@@ -25,6 +25,7 @@ import com.kaodim.design.components.callbacks.NumericControlListener;
 import com.kaodim.design.components.dialogs.DateTimePickerDialog;
 import com.kaodim.design.components.dialogs.ModalDialog;
 import com.kaodim.design.components.editText.KaodimEditText;
+import com.kaodim.design.components.editText.KaodimPhoneNumberEditText;
 import com.kaodim.design.components.informationBars.InfoBar;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     KaodimViewText kvtViewText;
     SearchEditText setSearchText;
     TextView tvSearchTextDelay, tvSearchTextInstantenous;
+    KaodimPhoneNumberEditText phoneEditText;
 
     InfoBar blueInfoBar, greenInfoBar, orangeInfoBar;
 
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         blueInfoBar = findViewById(R.id.blueInfoBar);
         greenInfoBar = findViewById(R.id.greenInfoBar);
         orangeInfoBar = findViewById(R.id.orangeInfoBar);
+        phoneEditText = findViewById(R.id.phoneEditText);
 
         setupNumericControl();
 
@@ -151,6 +154,24 @@ public class MainActivity extends AppCompatActivity {
         setupInfoBars();
 
         setupGenderEditText();
+
+        setupPhoneNumberEditText();
+    }
+
+    private void setupPhoneNumberEditText() {
+        phoneEditText.getTvTextButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "Text button on click", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        phoneEditText.setTextButtonOnClick(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getBaseContext(), "Text button on click", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private void setupGenderEditText() {

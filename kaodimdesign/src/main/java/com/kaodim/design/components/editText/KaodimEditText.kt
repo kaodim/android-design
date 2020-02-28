@@ -37,6 +37,8 @@ class KaodimEditText : LinearLayout {
     private var ivKdlTextInputError: ImageView? = null
     private var ivKdlTextInputClear: ImageView? = null
     private var ivKdlTextInputShowPassword: ImageView? = null
+    private var tvTextButton: TextView? = null
+    private var textButtonText: String? = null
 
     var clKdlTextInputInput: ConstraintLayout? = null
 
@@ -99,6 +101,7 @@ class KaodimEditText : LinearLayout {
         iconDrawableId = typedArray.getResourceId(R.styleable.KaodimEditTextLayout_iconDrawable, 0)
         isFirstLetterCapitalize = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_capitalize, false)
         isDropdown= typedArray.getBoolean(R.styleable.KaodimEditTextLayout_dropdown, false)
+        textButtonText = typedArray.getString(R.styleable.KaodimEditTextLayout_textButtonText)
         //Recycle the TypedArray (saves memory)
         typedArray.recycle()
 
@@ -212,6 +215,7 @@ class KaodimEditText : LinearLayout {
         ivKdlTextInputError = findViewById(R.id.ivKdlTextInputError)
         clKdlTextInputInput = findViewById(R.id.clKdlTextInputInput)
         ivKdlTextInputShowPassword = findViewById(R.id.ivKdlTextInputShowPassword)
+        tvTextButton = findViewById(R.id.tvTextButton)
     }
 
     private fun setupView(hintText: String?, errorText: String?, inputText: String?, enabled: Boolean, isDropdown: Boolean) {
@@ -232,6 +236,14 @@ class KaodimEditText : LinearLayout {
             inputEditText?.isEnabled = true
             inputEditText?.isLongClickable = false
             setDropdownIcon()
+        }
+
+        if (textButtonText.isNullOrEmpty().not()) {
+            tvTextButton?.visibility = View.VISIBLE
+            tvTextButton?.text = textButtonText
+            ivKdlTextInputShowPassword?.visibility = View.GONE
+            ivKdlTextInputError?.visibility = View.GONE
+            ivKdlTextInputClear?.visibility = View.GONE
         }
     }
 
@@ -334,8 +346,10 @@ class KaodimEditText : LinearLayout {
             inputEditText?.maxLines = 4
         } else if (isSecured && customInputType == INPUT_TYPE_PASSWORD) {
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            ivKdlTextInputShowPassword?.visibility = View.VISIBLE
-            ivKdlTextInputShowPassword?.setOnClickListener { setShowHidePassword() }
+            if (textButtonText.isNullOrEmpty()) {
+                ivKdlTextInputShowPassword?.visibility = View.VISIBLE
+                ivKdlTextInputShowPassword?.setOnClickListener { setShowHidePassword() }
+            }
         } else {
             if (isCapitalized) {
                 inputType = inputType or InputType.TYPE_TEXT_FLAG_CAP_WORDS

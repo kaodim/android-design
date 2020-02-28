@@ -100,6 +100,20 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+        <TextView
+            android:id="@+id/tvTextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:text="Change"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:textColor="@color/text_lightgrey"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/etKdlTextInputInput"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
     </android.support.constraint.ConstraintLayout>

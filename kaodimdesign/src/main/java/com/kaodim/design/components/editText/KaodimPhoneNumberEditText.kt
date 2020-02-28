@@ -18,7 +18,9 @@ class KaodimPhoneNumberEditText : LinearLayout {
     private var tvCustomError: TextView? = null
     private var ivIcon: ImageView? = null
     private var tvCountryPhoneCode: TextView? = null
+    var tvTextButton: TextView? = null
     private var userCountry: String? = null
+    private var textButtonText: String? = null
     private var mContext: Context? = null
 
     val MALAYSIA = "Malaysia"
@@ -39,6 +41,10 @@ class KaodimPhoneNumberEditText : LinearLayout {
     var country: String?
         get()  =  userCountry
         set(text) = setFlag(text)
+
+    var textButtonOnClick: View.OnClickListener
+        get() = View.OnClickListener {  }
+        set(listener) = tvTextButton!!.setOnClickListener { listener }
 
     private fun setFlag(text: String?) {
         userCountry = text
@@ -65,6 +71,7 @@ class KaodimPhoneNumberEditText : LinearLayout {
         val inputText = typedArray.getString(R.styleable.KaodimPhoneNumberEditTextLayout_android_text)
         val enabled = typedArray.getBoolean(R.styleable.KaodimPhoneNumberEditTextLayout_android_enabled, true)
         userCountry = typedArray.getString(R.styleable.KaodimPhoneNumberEditTextLayout_country)
+        textButtonText = typedArray.getString(R.styleable.KaodimPhoneNumberEditTextLayout_textButtonText)
         //Recycle the TypedArray (saves memory)
         typedArray.recycle()
 
@@ -80,6 +87,7 @@ class KaodimPhoneNumberEditText : LinearLayout {
         tvCustomError = findViewById(R.id.tvKdlTextInputError)
         ivIcon = findViewById(R.id.ivIcon)
         tvCountryPhoneCode = findViewById(R.id.tvCountryPhoneCode)
+        tvTextButton = findViewById(R.id.tvTextButton)
     }
 
     private fun setupView(errorText: String?, inputText: String?, enabled: Boolean) {
@@ -87,6 +95,11 @@ class KaodimPhoneNumberEditText : LinearLayout {
         this.text = inputText
         this.isEnabled = enabled
         inputEditText?.showSoftInputOnFocus = true
+
+        if (textButtonText.isNullOrEmpty().not()) {
+            tvTextButton?.visibility = View.VISIBLE
+            tvTextButton?.text = textButtonText
+        }
 
     }
 

@@ -39,7 +39,7 @@
                 app:dropdown="true"/>
 
             <com.kaodim.design.components.editText.KaodimEditText
-                android:id="@+id/note2"
+                android:id="@+id/password"
                 android:gravity="top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,6 +47,7 @@
                 android:hint="password"
                 android:text=""
                 app:inputType="password"
+                app:textButtonText="Change"
                 app:secured="true"
                 app:iconDrawable="@drawable/ic_mini_notes"
                 android:layout_marginTop="16dp"
@@ -57,7 +58,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:country="Malaysia"
-                app:errorText="Phone number is invalid"/>
+                app:errorText="Phone number is invalid"
+                app:textButtonText="Change" />
 
             <TextView
                 style="@style/HeaderText"

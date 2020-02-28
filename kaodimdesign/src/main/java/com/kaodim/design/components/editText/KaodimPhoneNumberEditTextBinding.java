@@ -7,6 +7,7 @@ import android.databinding.InverseBindingMethod;
 import android.databinding.InverseBindingMethods;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 
 @InverseBindingMethods({
         @InverseBindingMethod(type = KaodimPhoneNumberEditTextBinding.class, attribute = "android:text"),
@@ -38,6 +39,11 @@ public class KaodimPhoneNumberEditTextBinding {
     public static void setText(KaodimPhoneNumberEditText view, String value) {
         if (value != null && !value.equals(view.getText()))
             view.setText(value);
+    }
+
+    @BindingAdapter(value = "app:textButtonOnClick")
+    public static void setTextButtonOnClick(KaodimPhoneNumberEditText view, View.OnClickListener onClick) {
+            view.setTextButtonOnClick(onClick);
     }
 
     @InverseBindingAdapter(attribute = "android:text")
