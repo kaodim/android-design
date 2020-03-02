@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnShowToolTip, btnHideToolTip, btnShowViewText, btnHideViewText,btnShowCalendarDialog;
     ImageView icBulb;
     LinearLayout toolTipParentView;
-    KaodimEditText ketEditText, gender;
+    KaodimEditText ketEditText, gender, password;
     KaodimViewText kvtViewText;
     SearchEditText setSearchText;
     TextView tvSearchTextDelay, tvSearchTextInstantenous;
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         greenInfoBar = findViewById(R.id.greenInfoBar);
         orangeInfoBar = findViewById(R.id.orangeInfoBar);
         phoneEditText = findViewById(R.id.phoneEditText);
+        password = findViewById(R.id.password);
 
         setupNumericControl();
 
@@ -159,10 +160,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupPhoneNumberEditText() {
-        phoneEditText.getTvTextButton().setOnClickListener(new View.OnClickListener() {
+        password.setText("password");
+        password.setEnabled(false);
+        password.setTextButtonListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getBaseContext(), "Text button on click", Toast.LENGTH_SHORT).show();
+                password.setEnabled(true);
             }
         });
 

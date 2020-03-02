@@ -17,11 +17,9 @@ import android.util.AttributeSet
 import android.view.*
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.kaodim.design.R
+import org.w3c.dom.Text
 
 class KaodimEditText : LinearLayout {
 
@@ -253,7 +251,12 @@ class KaodimEditText : LinearLayout {
             ivKdlTextInputShowPassword?.visibility = View.GONE
             ivKdlTextInputError?.visibility = View.GONE
             ivKdlTextInputClear?.visibility = View.GONE
+
         }
+    }
+
+    fun setTextButtonListener(listener: OnClickListener) {
+        tvTextButton?.setOnClickListener(listener)
     }
 
     private fun setIcon() {
@@ -334,6 +337,7 @@ class KaodimEditText : LinearLayout {
     override fun setEnabled(enabled: Boolean) {
         recursiveSetEnabled(this, enabled)
         super.setEnabled(enabled)
+        tvTextButton?.isEnabled = true
     }
 
     fun addTextChangedListener(textWatcher: TextWatcher) {
@@ -413,7 +417,7 @@ class KaodimEditText : LinearLayout {
         private const val INPUT_TYPE_MULTI_LINE_TEXT = 2
         private const val INPUT_TYPE_PASSWORD = 3
 
-        private fun recursiveSetEnabled(vg: ViewGroup, enabled: Boolean) {
+        private fun  recursiveSetEnabled(vg: ViewGroup, enabled: Boolean) {
             var i = 0
 
             val count = vg.childCount
