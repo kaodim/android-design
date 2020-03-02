@@ -37,8 +37,10 @@ class KaodimEditText : LinearLayout {
     private var ivKdlTextInputError: ImageView? = null
     private var ivKdlTextInputClear: ImageView? = null
     private var ivKdlTextInputShowPassword: ImageView? = null
-    private var tvTextButton: TextView? = null
+    var tvTextButton: TextView? = null
     private var textButtonText: String? = null
+
+    private var hasTextButton = false
 
     var clKdlTextInputInput: ConstraintLayout? = null
 
@@ -102,6 +104,7 @@ class KaodimEditText : LinearLayout {
         isFirstLetterCapitalize = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_capitalize, false)
         isDropdown= typedArray.getBoolean(R.styleable.KaodimEditTextLayout_dropdown, false)
         textButtonText = typedArray.getString(R.styleable.KaodimEditTextLayout_textButtonText)
+        setHasTextButtonText()
         //Recycle the TypedArray (saves memory)
         typedArray.recycle()
 
@@ -110,6 +113,12 @@ class KaodimEditText : LinearLayout {
         initComponents()
         this.setEvents(isDropdown)
         this.setupView(hintText, errorText, inputText, enabled, isDropdown)
+    }
+
+    private fun setHasTextButtonText() {
+        if (textButtonText.isNullOrEmpty().not()) {
+            hasTextButton = true
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -150,7 +159,7 @@ class KaodimEditText : LinearLayout {
             val drawable = context.getDrawable(if (errorText!!.isEmpty()) if (inputEditText!!.isFocused) R.drawable.bg_edittext_focused else R.drawable.bg_edittext_default else R.drawable.bg_edittext_error)
             clKdlTextInputInput?.background = drawable
             ivKdlTextInputError?.visibility = if (!hasFocus && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
-            ivKdlTextInputClear?.visibility = if (hasFocus && text!!.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD) View.VISIBLE else View.GONE
+            ivKdlTextInputClear?.visibility = if (hasFocus && text!!.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD && !hasTextButton) View.VISIBLE else View.GONE
             setPadding(hasFocus || !TextUtils.isEmpty(inputEditText!!.text))
             setHasTextConstraint(hasFocus || !TextUtils.isEmpty(inputEditText!!.text))
             animateColorHint(hasFocus || TextUtils.isEmpty(inputEditText!!.text))
@@ -165,7 +174,7 @@ class KaodimEditText : LinearLayout {
             override fun afterTextChanged(s: Editable) {
                 val text = s.toString()
                 ivKdlTextInputError?.visibility = if (!inputEditText!!.isFocused && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
-                ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD) View.VISIBLE else View.GONE
+                ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD && !hasTextButton) View.VISIBLE else View.GONE
             }
         })
 
@@ -199,7 +208,7 @@ class KaodimEditText : LinearLayout {
                 tvCustomError!!.visibility = if (text.isEmpty()) View.GONE else View.VISIBLE
 
                 ivKdlTextInputError!!.visibility = if (!inputEditText!!.isFocused && !text.isEmpty()) View.VISIBLE else View.GONE
-                ivKdlTextInputClear!!.visibility = if (inputEditText!!.isFocused && !text.isEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD) View.VISIBLE else View.GONE
+                ivKdlTextInputClear!!.visibility = if (inputEditText!!.isFocused && !text.isEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD && !hasTextButton) View.VISIBLE else View.GONE
             }
         })
 
