@@ -24,6 +24,14 @@
             android:orientation="vertical">
 
             <com.kaodim.design.components.editText.KaodimEditText
+                android:id ="@+id/etNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Notes"
+                app:iconDrawable="@drawable/ic_mini_notes"
+                app:inputType="text"/>
+
+            <com.kaodim.design.components.editText.KaodimEditText
                 android:id="@+id/gender"
                 android:gravity="top"
                 android:layout_width="match_parent"

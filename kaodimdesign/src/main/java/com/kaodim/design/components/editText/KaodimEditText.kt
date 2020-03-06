@@ -164,6 +164,11 @@ class KaodimEditText : LinearLayout {
             animateScaleHint(!hasFocus && TextUtils.isEmpty(inputEditText!!.text))
         }
 
+        if (inputEditText!!.text.isNotEmpty()) {
+            animateColorHint(true)
+            animateScaleHint(false)
+        }
+
         inputEditText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 

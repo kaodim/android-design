@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnShowToolTip, btnHideToolTip, btnShowViewText, btnHideViewText,btnShowCalendarDialog;
     ImageView icBulb;
     LinearLayout toolTipParentView;
-    KaodimEditText ketEditText, gender, password;
+    KaodimEditText ketEditText, gender, password, etNotes;
     KaodimViewText kvtViewText;
     SearchEditText setSearchText;
     TextView tvSearchTextDelay, tvSearchTextInstantenous;
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         orangeInfoBar = findViewById(R.id.orangeInfoBar);
         phoneEditText = findViewById(R.id.phoneEditText);
         password = findViewById(R.id.password);
+        etNotes = findViewById(R.id.etNotes);
 
         setupNumericControl();
 
@@ -157,6 +158,12 @@ public class MainActivity extends AppCompatActivity {
         setupGenderEditText();
 
         setupPhoneNumberEditText();
+
+        setupNotesEditText();
+    }
+
+    private void setupNotesEditText() {
+        etNotes.setText("Here's a note");
     }
 
     private void setupPhoneNumberEditText() {
