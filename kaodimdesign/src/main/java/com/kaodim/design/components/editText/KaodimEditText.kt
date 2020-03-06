@@ -67,7 +67,7 @@ class KaodimEditText : LinearLayout {
 
     var text: String?
         get() = this.inputEditText!!.text.toString()
-        set(text) = inputEditText!!.setText(text)
+        set(text) = setTextOnFocusAnimation(text)
 
     var secured: Boolean
         get() = this.isSecured
@@ -87,6 +87,11 @@ class KaodimEditText : LinearLayout {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         init(context, attrs)
+    }
+
+    private fun setTextOnFocusAnimation(text: String?) {
+        inputEditText!!.setText(text)
+        animateOnFocus()
     }
 
     private fun init(context: Context, attrs: AttributeSet) {
@@ -164,10 +169,7 @@ class KaodimEditText : LinearLayout {
             animateScaleHint(!hasFocus && TextUtils.isEmpty(inputEditText!!.text))
         }
 
-        if (inputEditText!!.text.isNotEmpty()) {
-            animateColorHint(true)
-            animateScaleHint(false)
-        }
+        animateOnFocus()
 
         inputEditText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -216,6 +218,13 @@ class KaodimEditText : LinearLayout {
         })
 
         ivKdlTextInputClear?.setOnClickListener { text = "" }
+    }
+
+    private fun animateOnFocus() {
+        if (inputEditText!!.text.isNotEmpty()) {
+            animateColorHint(true)
+            animateScaleHint(false)
+        }
     }
 
     private fun initComponents() {
