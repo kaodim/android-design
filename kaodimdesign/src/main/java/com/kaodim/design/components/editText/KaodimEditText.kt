@@ -221,10 +221,8 @@ class KaodimEditText : LinearLayout {
     }
 
     private fun animateOnFocus() {
-        if (inputEditText!!.text.isNotEmpty()) {
-            animateColorHint(true)
-            animateScaleHint(false)
-        }
+        animateColorHint(true)
+        animateScaleHint(false)
     }
 
     private fun initComponents() {
