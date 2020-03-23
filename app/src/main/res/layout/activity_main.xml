@@ -1,661 +1,676 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="10dp"
-    android:orientation="vertical"
-    android:background="@color/bg_lightgrey">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.arch.lifecycle.MutableLiveData" />
+        <variable
+            name="test"
+            type="MutableLiveData&lt;String>" />
+
+    </data>
 
     <LinearLayout
-        android:id="@+id/lvTopMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="0.5dp"
-        android:orientation="vertical">
-    </LinearLayout>
-
-    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:orientation="vertical"
+        android:id="@+id/llRoot"
+        android:focusableInTouchMode="true"
+        android:background="@color/bg_lightgrey">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/lvTopMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
             android:orientation="vertical">
+        </LinearLayout>
 
-            <com.kaodim.design.components.editText.KaodimEditText
-                android:id ="@+id/etNotes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Notes"
-                app:iconDrawable="@drawable/ic_mini_notes"
-                app:inputType="text"/>
-
-            <com.kaodim.design.components.editText.KaodimEditText
-                android:id="@+id/gender"
-                android:gravity="top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:hint="Gender"
-                android:text=""
-                app:inputType="password"
-                app:secured="true"
-                app:iconDrawable="@drawable/ic_mini_notes"
-                android:layout_marginTop="16dp"
-                android:maxLength="200"
-                app:dropdown="true"/>
-
-            <com.kaodim.design.components.editText.KaodimEditText
-                android:id="@+id/password"
-                android:gravity="top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:hint="password"
-                android:text=""
-                app:inputType="password"
-                app:textButtonText="Change"
-                app:secured="true"
-                app:iconDrawable="@drawable/ic_mini_notes"
-                android:layout_marginTop="16dp"
-                android:maxLength="200"/>
-
-            <com.kaodim.design.components.editText.KaodimPhoneNumberEditText
-                android:id ="@+id/phoneEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:country="Malaysia"
-                app:errorText="Phone number is invalid"
-                app:textButtonText="Change" />
-
-            <TextView
-                style="@style/HeaderText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Header Text"
-                android:textColor="@color/firefly" />
-
-            <TextView
-                style="@style/NormalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Normal Text"
-                android:textColor="@color/firefly" />
-
-            <TextView
-                style="@style/SubtitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Subtitle Text"
-                android:textColor="@color/firefly" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.2dp"
-                android:layout_margin="10dp"
-                android:background="@color/kdl_grey_dark" />
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Buttons"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <include
-                    layout="@layout/kdl_cta_jasper_button"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
-
-                <include
-                    layout="@layout/kdl_cta_firefly_button"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.2dp"
-                android:layout_margin="10dp"
-                android:background="@color/kdl_grey_dark" />
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Notes Info"
-                android:textColor="@color/firefly" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-               <com.kaodim.design.components.notes.NotesInfo
-                   android:id="@+id/notesInfoView"
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   app:notesInfoType="with_icon_and_title"
-                   app:notesInfoTitle="This is an example of title"
-                   app:notesInfoText="This is very long multi line description for notes info description"
-                   app:notesInfoIconHeight="18dp"
-                   app:notesInfoIconWidth="13dp">
-
-               </com.kaodim.design.components.notes.NotesInfo>
-            </LinearLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Notes Standard"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-               <com.kaodim.design.components.notes.NotesStandard
-                   android:id="@+id/notesStandardView"
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   app:notesText="This is text view"
-                   app:notesType="double_button"
-                   app:notesIconHeight="17dp"
-                   app:notesIconWidth="23dp"
-                   app:showNotesSecondary="true"
-                   app:btnSingleText="Button"
-                   app:btnDoublePrimaryText="Primary"
-                   app:btnDoubleSecondaryText="Secondary"
-                   android:layout_margin="15dp">
-
-               </com.kaodim.design.components.notes.NotesStandard>
-            </LinearLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Notes Error"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.kaodim.design.components.notes.NotesError
-                    android:id="@+id/notesErrorView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:notesErrorText="This is text view"
-                    app:notesErrorType="double_button"
-                    app:notesErrorIconHeight="20dp"
-                    app:notesErrorIconWidth="20dp"
-                    app:notesErrorIconDrawable="@drawable/ic_notes_error"
-                    app:showNotesSecondary="true"
-                    app:btnErrorSingleText="Button"
-                    app:btnErrorDoublePrimaryText="Primary"
-                    app:btnErrorDoubleSecondaryText="Secondary"
-                    android:layout_margin="15dp">
-
-                </com.kaodim.design.components.notes.NotesError>
-            </LinearLayout>
-
-
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Numeric Control"
-                android:textColor="@color/firefly" />
-
-            <com.kaodim.design.components.NumericControl
-                android:id="@+id/numericControl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:max="15"
-                app:min="0"
-                app:value="2" />
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Date/Time Picker"
-                android:textColor="@color/firefly" />
-
-            <com.kaodim.design.components.DateTimePicker
-                android:id="@+id/dateTimePicker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:pickerHint="Pick a date &amp; time" />
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Date Range Picker"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/BtnShowCalendarDialog"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/lima"
-                    android:text="Shoe Calendar"
-                    android:textColor="@color/porcelain"/>
-
-
-            </LinearLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Interactive Panel"
-                android:textColor="@color/firefly" />
-
-            <com.kaodim.design.components.InteractivePanel
-                android:id="@+id/interactivePanel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:borderType="dotted"
-                app:panelHint="Custom Button" />
-
-            <com.kaodim.design.components.InteractivePanel
-                android:id="@+id/interactivePanel2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:src="@drawable/surcharge_icon"
-                app:borderType="dotted"
-                app:panelHint="Custom Button" />
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Search box"
-                android:textColor="@color/firefly" />
-
-            <com.kaodim.design.components.SearchBox
-                android:id="@+id/searchBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:nextButton="true"
-                android:layout_margin="10dp" />
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Pricing BottomBar"
-                android:textColor="@color/firefly" />
-
-            <com.kaodim.design.components.bottomBars.PricingBottomBar
-                android:id="@+id/kdl_pricingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:title="Total Amount"
-                app:btnText="Pay Now"
-                app:pricing="RM 100">
-            </com.kaodim.design.components.bottomBars.PricingBottomBar>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Full Width BottomBar"
-                android:textColor="@color/firefly" />
-
-            <com.kaodim.design.components.bottomBars.FullWidthBottomBar
-                android:id="@+id/kdl_full_width_bottombar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:btnFullWidthText="Proceed">
-            </com.kaodim.design.components.bottomBars.FullWidthBottomBar>
-
-
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Sucesss Toast"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/BtnToastSuccess"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/lima"
-                    android:text="Success"
-                    android:textColor="@color/porcelain"/>
-
-                <Button
-                    android:id="@+id/BtnToastError"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/jasper"
-                    android:text="Error"
-                    android:textColor="@color/porcelain"/>
-
-            </LinearLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="PreLoader Animation"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/BtnPreLoader"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/lima"
-                    android:text="LoadAnim"
-                    android:textColor="@color/porcelain"/>
-
-            </LinearLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Modal Dialog"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnModalDialog"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/lima"
-                    android:text="Show Dialog"
-                    android:textColor="@color/porcelain"/>
-
-                <Button
-                    android:id="@+id/btnNewModalDialog"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/lima"
-                    android:text="Show New Dialog"
-                    android:textColor="@color/porcelain"/>
-
-
-            </LinearLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="ToolTip"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:id="@+id/llToolTipParentView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/ivImage"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="50dp"
-                    android:src="@drawable/ic_bulb"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="50dp">
-
-                    <Button
-                        android:id="@+id/BtnShowToolTip"
-                        android:layout_margin="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:background="@color/lima"
-                        android:text="Show"
-                        android:textColor="@color/porcelain"/>
-
-                    <Button
-                        android:id="@+id/BtnHideToolTip"
-                        android:layout_margin="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:background="@color/jasper"
-                        android:text="Hide"
-                        android:textColor="@color/porcelain"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Edit Text"
-                android:textColor="@color/firefly" />
-
-            <RelativeLayout
-                android:id="@+id/llEditTextParentView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <com.kaodim.design.components.editText.KaodimEditText
-                    android:id ="@+id/ketEditText"
+                    android:id ="@+id/etNotes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Notes"
                     app:iconDrawable="@drawable/ic_mini_notes"
-                    app:inputType="text"/>
+                    app:inputType="multiline"
+                    />
 
-            </RelativeLayout>
-
-            <TextView
-                style="@style/NormalTextBolded"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="View Text"
-                android:textColor="@color/firefly" />
-
-            <LinearLayout
-                android:id="@+id/llViewTextParentView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-
-                <com.kaodim.design.components.viewText.KaodimViewText
-                    android:id ="@+id/kvtViewText"
+                <com.kaodim.design.components.editText.KaodimEditText
+                    android:id="@+id/gender"
+                    android:gravity="top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:leftIconVisibility="visible"
-                    app:rightIconVisibility="visible"
-                    android:hint="Input" />
+                    android:visibility="visible"
+                    android:hint="Gender"
+                    android:text=""
+                    app:inputType="password"
+                    app:secured="true"
+                    app:iconDrawable="@drawable/ic_mini_notes"
+                    android:layout_marginTop="16dp"
+                    android:maxLength="200"
+                    app:dropdown="true"/>
+
+                <com.kaodim.design.components.editText.KaodimEditText
+                    android:id="@+id/password"
+                    android:gravity="top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:hint="password"
+                    android:text=""
+                    app:inputType="password"
+                    app:textButtonText="Change"
+                    app:secured="true"
+                    app:iconDrawable="@drawable/ic_mini_notes"
+                    android:layout_marginTop="16dp"
+                    android:maxLength="200"/>
+
+                <com.kaodim.design.components.editText.KaodimPhoneNumberEditText
+                    android:id ="@+id/phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:country="Malaysia"
+                    app:errorText="Phone number is invalid"
+                    app:textButtonText="Change" />
+
+                <TextView
+                    style="@style/HeaderText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Header Text"
+                    android:textColor="@color/firefly" />
+
+                <TextView
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Normal Text"
+                    android:textColor="@color/firefly" />
+
+                <TextView
+                    style="@style/SubtitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Subtitle Text"
+                    android:textColor="@color/firefly" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/kdl_grey_dark" />
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Buttons"
+                    android:textColor="@color/firefly" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <include
+                        layout="@layout/kdl_cta_jasper_button"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp" />
+
+                    <include
+                        layout="@layout/kdl_cta_firefly_button"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/kdl_grey_dark" />
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Notes Info"
+                    android:textColor="@color/firefly" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:orientation="vertical">
+
+                    <com.kaodim.design.components.notes.NotesInfo
+                        android:id="@+id/notesInfoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:notesInfoType="with_icon_and_title"
+                        app:notesInfoTitle="This is an example of title"
+                        app:notesInfoText="This is very long multi line description for notes info description"
+                        app:notesInfoIconHeight="18dp"
+                        app:notesInfoIconWidth="13dp">
+
+                    </com.kaodim.design.components.notes.NotesInfo>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Notes Standard"
+                    android:textColor="@color/firefly" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.kaodim.design.components.notes.NotesStandard
+                        android:id="@+id/notesStandardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:notesText="This is text view"
+                        app:notesType="double_button"
+                        app:notesIconHeight="17dp"
+                        app:notesIconWidth="23dp"
+                        app:showNotesSecondary="true"
+                        app:btnSingleText="Button"
+                        app:btnDoublePrimaryText="Primary"
+                        app:btnDoubleSecondaryText="Secondary"
+                        android:layout_margin="15dp">
+
+                    </com.kaodim.design.components.notes.NotesStandard>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Notes Error"
+                    android:textColor="@color/firefly" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.kaodim.design.components.notes.NotesError
+                        android:id="@+id/notesErrorView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:notesErrorText="This is text view"
+                        app:notesErrorType="double_button"
+                        app:notesErrorIconHeight="20dp"
+                        app:notesErrorIconWidth="20dp"
+                        app:notesErrorIconDrawable="@drawable/ic_notes_error"
+                        app:showNotesSecondary="true"
+                        app:btnErrorSingleText="Button"
+                        app:btnErrorDoublePrimaryText="Primary"
+                        app:btnErrorDoubleSecondaryText="Secondary"
+                        android:layout_margin="15dp">
+
+                    </com.kaodim.design.components.notes.NotesError>
+                </LinearLayout>
+
+
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Numeric Control"
+                    android:textColor="@color/firefly" />
+
+                <com.kaodim.design.components.NumericControl
+                    android:id="@+id/numericControl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:max="15"
+                    app:min="0"
+                    app:value="2" />
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Date/Time Picker"
+                    android:textColor="@color/firefly" />
+
+                <com.kaodim.design.components.DateTimePicker
+                    android:id="@+id/dateTimePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:pickerHint="Pick a date &amp; time" />
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Date Range Picker"
+                    android:textColor="@color/firefly" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/BtnShowViewText"
+                        android:id="@+id/BtnShowCalendarDialog"
                         android:layout_margin="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@color/lima"
-                        android:text="Show"
+                        android:text="Shoe Calendar"
+                        android:textColor="@color/porcelain"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Interactive Panel"
+                    android:textColor="@color/firefly" />
+
+                <com.kaodim.design.components.InteractivePanel
+                    android:id="@+id/interactivePanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:borderType="dotted"
+                    app:panelHint="Custom Button" />
+
+                <com.kaodim.design.components.InteractivePanel
+                    android:id="@+id/interactivePanel2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:src="@drawable/surcharge_icon"
+                    app:borderType="dotted"
+                    app:panelHint="Custom Button" />
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Search box"
+                    android:textColor="@color/firefly" />
+
+                <com.kaodim.design.components.SearchBox
+                    android:id="@+id/searchBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nextButton="true"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Pricing BottomBar"
+                    android:textColor="@color/firefly" />
+
+                <com.kaodim.design.components.bottomBars.PricingBottomBar
+                    android:id="@+id/kdl_pricingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:title="Total Amount"
+                    app:btnText="Pay Now"
+                    app:pricing="RM 100">
+                </com.kaodim.design.components.bottomBars.PricingBottomBar>
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Full Width BottomBar"
+                    android:textColor="@color/firefly" />
+
+                <com.kaodim.design.components.bottomBars.FullWidthBottomBar
+                    android:id="@+id/kdl_full_width_bottombar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:btnFullWidthText="Proceed">
+                </com.kaodim.design.components.bottomBars.FullWidthBottomBar>
+
+
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Sucesss Toast"
+                    android:textColor="@color/firefly" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/BtnToastSuccess"
+                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@color/lima"
+                        android:text="Success"
                         android:textColor="@color/porcelain"/>
 
                     <Button
-                        android:id="@+id/BtnHideViewText"
+                        android:id="@+id/BtnToastError"
                         android:layout_margin="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@color/jasper"
-                        android:text="Hide"
+                        android:text="Error"
                         android:textColor="@color/porcelain"/>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llSearchTextParentView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-
-                <com.kaodim.design.components.searchEditText.SearchEditText
-                    android:id ="@+id/setSearchTextSearch"
-                    android:layout_width="match_parent"
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:leftIconDrawable="@drawable/ic_mini_notes"
-                    android:inputType="textNoSuggestions"
-                    android:hint="Search for building or address"
-                    app:showCancelText = "false"/>
+                    android:layout_margin="10dp"
+                    android:text="PreLoader Animation"
+                    android:textColor="@color/firefly" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="8dp">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id = "@+id/tvSearchTextInstantenous"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Instantenous Change"/>
+                    <Button
+                        android:id="@+id/BtnPreLoader"
+                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@color/lima"
+                        android:text="LoadAnim"
+                        android:textColor="@color/porcelain"/>
 
-                    <TextView
-                        android:id = "@+id/tvSearchTextDelay"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Change with Delay"/>
+                </LinearLayout>
 
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Modal Dialog"
+                    android:textColor="@color/firefly" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnModalDialog"
+                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@color/lima"
+                        android:text="Show Dialog"
+                        android:textColor="@color/porcelain"/>
+
+                    <Button
+                        android:id="@+id/btnNewModalDialog"
+                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:background="@color/lima"
+                        android:text="Show New Dialog"
+                        android:textColor="@color/porcelain"/>
 
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical" >
-
-                <com.kaodim.design.components.informationBars.InfoBar
-                    android:id="@+id/blueInfoBar"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <com.kaodim.design.components.informationBars.InfoBar
-                    android:id="@+id/greenInfoBar"
+                <TextView
+                    style="@style/NormalTextBolded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    app:backgroundColor="@color/kaodim_green_10"
-                    app:barColor="@color/kaodim_green"
-                    app:textColor="@color/kaodim_green_text"
-                    android:src="@drawable/surcharge_icon"
-                    app:primaryText="Your insurance benefit for this request has been activated"/>
+                    android:layout_margin="10dp"
+                    android:text="ToolTip"
+                    android:textColor="@color/firefly" />
 
-                <com.kaodim.design.components.informationBars.InfoBar
-                    android:id="@+id/orangeInfoBar"
+                <LinearLayout
+                    android:id="@+id/llToolTipParentView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivImage"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="50dp"
+                        android:src="@drawable/ic_bulb"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="50dp">
+
+                        <Button
+                            android:id="@+id/BtnShowToolTip"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:background="@color/lima"
+                            android:text="Show"
+                            android:textColor="@color/porcelain"/>
+
+                        <Button
+                            android:id="@+id/BtnHideToolTip"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:background="@color/jasper"
+                            android:text="Hide"
+                            android:textColor="@color/porcelain"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/NormalTextBolded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:backgroundColor="@color/kaodim_orange_10"
-                    app:barColor="@color/kaodim_orange"
-                    app:textColor="@color/kaodim_orange_text"
-                    app:primaryText="Important: Make sure to tap on the “Book” button to hire a vendor directly on Kaodim's app to be eligible for these benefits."/>
+                    android:layout_margin="10dp"
+                    android:text="Edit Text"
+                    android:textColor="@color/firefly" />
+
+                <RelativeLayout
+                    android:id="@+id/llEditTextParentView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <com.kaodim.design.components.editText.KaodimEditText
+                        android:id ="@+id/ketEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Notes"
+                        app:iconDrawable="@drawable/ic_mini_notes"
+                        app:inputType="text"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    style="@style/NormalTextBolded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="View Text"
+                    android:textColor="@color/firefly" />
+
+                <LinearLayout
+                    android:id="@+id/llViewTextParentView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <com.kaodim.design.components.viewText.KaodimViewText
+                        android:id ="@+id/kvtViewText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:leftIconVisibility="visible"
+                        app:rightIconVisibility="visible"
+                        android:hint="Input" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <Button
+                            android:id="@+id/BtnShowViewText"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:background="@color/lima"
+                            android:text="Show"
+                            android:textColor="@color/porcelain"/>
+
+                        <Button
+                            android:id="@+id/BtnHideViewText"
+                            android:layout_margin="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:background="@color/jasper"
+                            android:text="Hide"
+                            android:textColor="@color/porcelain"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSearchTextParentView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <com.kaodim.design.components.searchEditText.SearchEditText
+                        android:id ="@+id/setSearchTextSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:leftIconDrawable="@drawable/ic_mini_notes"
+                        android:inputType="textNoSuggestions"
+                        android:hint="Search for building or address"
+                        app:showCancelText = "false"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id = "@+id/tvSearchTextInstantenous"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Instantenous Change"/>
+
+                        <TextView
+                            android:id = "@+id/tvSearchTextDelay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Change with Delay"/>
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" >
+
+                    <com.kaodim.design.components.informationBars.InfoBar
+                        android:id="@+id/blueInfoBar"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <com.kaodim.design.components.informationBars.InfoBar
+                        android:id="@+id/greenInfoBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        app:backgroundColor="@color/kaodim_green_10"
+                        app:barColor="@color/kaodim_green"
+                        app:textColor="@color/kaodim_green_text"
+                        android:src="@drawable/surcharge_icon"
+                        app:primaryText="Your insurance benefit for this request has been activated"/>
+
+                    <com.kaodim.design.components.informationBars.InfoBar
+                        android:id="@+id/orangeInfoBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:backgroundColor="@color/kaodim_orange_10"
+                        app:barColor="@color/kaodim_orange"
+                        app:textColor="@color/kaodim_orange_text"
+                        app:primaryText="Important: Make sure to tap on the “Book” button to hire a vendor directly on Kaodim's app to be eligible for these benefits."/>
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
 
-
-        </LinearLayout>
-
-    </ScrollView>
+        </ScrollView>
 
 
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>

@@ -91,6 +91,11 @@ class KaodimEditText : LinearLayout {
 
     private fun setTextOnFocusAnimation(text: String?) {
         inputEditText!!.setText(text)
+
+        if(!text.isNullOrEmpty()){
+            setHasTextConstraint(true)
+        }
+
     }
 
     private fun init(context: Context, attrs: AttributeSet) {
@@ -237,6 +242,8 @@ class KaodimEditText : LinearLayout {
         this.isEnabled = enabled
         inputEditText?.showSoftInputOnFocus = true
         inputEditText?.inputType = getInputType(inputType, isSecured, inputEditText!!.isFocused, isFirstLetterCapitalize)
+
+
         if(!inputText.isNullOrEmpty()){
             setHasTextConstraint(true)
             setPadding(true)

@@ -1,5 +1,7 @@
 package com.kaodim.myapplication;
 
+import android.arch.lifecycle.MutableLiveData;
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +37,7 @@ import com.kaodim.design.components.searchEditText.SearchEditText;
 import com.kaodim.design.components.toast.ToastBanner;
 import com.kaodim.design.components.tooltip.ViewTooltip;
 import com.kaodim.design.components.viewText.KaodimViewText;
+import com.kaodim.myapplication.databinding.ActivityMainBinding;
 import com.kaodim.myapplication.fragement.CalendarViewDialogFragment;
 
 import java.util.Date;
@@ -67,10 +70,12 @@ public class MainActivity extends AppCompatActivity {
 
     ViewTooltip tooltip;
 
+    MutableLiveData<String> test = new MutableLiveData();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         gender = findViewById(R.id.gender);
         numericControl = findViewById(R.id.numericControl);
@@ -106,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
         phoneEditText = findViewById(R.id.phoneEditText);
         password = findViewById(R.id.password);
         etNotes = findViewById(R.id.etNotes);
+
+        etNotes.setText("BIG NOTES");
+        LinearLayout layout = findViewById(R.id.llRoot);
+        test.setValue("No notes");
+        mainBinding.setTest(test);
 
         setupNumericControl();
 
@@ -163,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupNotesEditText() {
-        etNotes.setText("Here's a note");
+//        etNotes.setText("Here's a note");
     }
 
     private void setupPhoneNumberEditText() {
