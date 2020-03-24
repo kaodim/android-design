@@ -144,7 +144,6 @@ class KaodimEditText : LinearLayout {
                     } else {
                         inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_midgrey))
                         tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text) && !inputEditText!!.isFocused) R.color.text_lightgrey else R.color.text_midgrey))
-
                     }
                     viewTreeObserver.removeOnGlobalLayoutListener(this)
                 }
@@ -346,6 +345,15 @@ class KaodimEditText : LinearLayout {
     }
 
     override fun setEnabled(enabled: Boolean) {
+
+        if (!enabled && !isDropdown) {
+            inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_lightgrey))
+            tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text)) R.color.text_midgrey else R.color.text_lightgrey))
+        } else {
+            inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_midgrey))
+            tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text) && !inputEditText!!.isFocused) R.color.text_lightgrey else R.color.text_midgrey))
+        }
+
         recursiveSetEnabled(this, enabled)
         super.setEnabled(enabled)
         tvTextButton?.isEnabled = true

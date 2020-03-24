@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         etNotes = findViewById(R.id.etNotes);
 
         etNotes.setText("BIG NOTES");
+        etNotes.setEnabled(false);
         LinearLayout layout = findViewById(R.id.llRoot);
         test.setValue("No notes");
         mainBinding.setTest(test);
