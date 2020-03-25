@@ -138,7 +138,7 @@ class KaodimEditText : LinearLayout {
                     tvCustomHint?.scaleY = if (!TextUtils.isEmpty(inputEditText!!.text) || inputEditText!!.isFocused) HINT_SHRINK_SCALE else 1f
                     tvCustomHint?.translationX = if (!TextUtils.isEmpty(inputEditText!!.text) || inputEditText!!.isFocused) hintLateralTranslation else 0f
                     tvCustomHint?.translationY = if (!TextUtils.isEmpty(inputEditText!!.text) || inputEditText!!.isFocused) hintLongitudinalTranslation else 0f
-                    if (!isEnabled && !isDropdown) {
+                    if (!isEnabled) {
                         inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_lightgrey))
                         tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text)) R.color.text_midgrey else R.color.text_lightgrey))
                     } else {
@@ -346,7 +346,7 @@ class KaodimEditText : LinearLayout {
 
     override fun setEnabled(enabled: Boolean) {
 
-        if (!enabled && !isDropdown) {
+        if (!enabled) {
             inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_lightgrey))
             tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text)) R.color.text_midgrey else R.color.text_lightgrey))
         } else {

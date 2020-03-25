@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnShowToolTip, btnHideToolTip, btnShowViewText, btnHideViewText,btnShowCalendarDialog;
     ImageView icBulb;
     LinearLayout toolTipParentView;
-    KaodimEditText ketEditText, gender, password, etNotes;
+    KaodimEditText ketEditText, gender, password, etNotes, etGender;
     KaodimViewText kvtViewText;
     SearchEditText setSearchText;
     TextView tvSearchTextDelay, tvSearchTextInstantenous;
@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        gender = findViewById(R.id.gender);
+//        gender = findViewById(R.id.gender);
+        etGender = findViewById(R.id.etGender);
         numericControl = findViewById(R.id.numericControl);
         dateTimePicker = findViewById(R.id.dateTimePicker);
         interactivePanel = findViewById(R.id.interactivePanel);
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         btnHideToolTip = findViewById(R.id.BtnHideToolTip);
         icBulb = findViewById(R.id.ivImage);
         toolTipParentView = findViewById(R.id.llToolTipParentView);
-        ketEditText = findViewById(R.id.ketEditText);
+//        ketEditText = findViewById(R.id.ketEditText);
         kvtViewText = findViewById(R.id.kvtViewText);
         btnShowViewText = findViewById(R.id.BtnShowViewText);
         btnHideViewText = findViewById(R.id.BtnHideViewText);
@@ -108,12 +109,15 @@ public class MainActivity extends AppCompatActivity {
         blueInfoBar = findViewById(R.id.blueInfoBar);
         greenInfoBar = findViewById(R.id.greenInfoBar);
         orangeInfoBar = findViewById(R.id.orangeInfoBar);
-        phoneEditText = findViewById(R.id.phoneEditText);
-        password = findViewById(R.id.password);
-        etNotes = findViewById(R.id.etNotes);
+//        phoneEditText = findViewById(R.id.phoneEditText);
+//        password = findViewById(R.id.password);
+//        etNotes = findViewById(R.id.etNotes);
+//
+//        etNotes.setText("BIG NOTES");
+//        etNotes.setEnabled(false);
 
-        etNotes.setText("BIG NOTES");
-        etNotes.setEnabled(false);
+        etGender.setEnabled(false);
+
         LinearLayout layout = findViewById(R.id.llRoot);
         test.setValue("No notes");
         mainBinding.setTest(test);
@@ -178,15 +182,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupPhoneNumberEditText() {
-        password.setText("password");
-        password.setEnabled(false);
-        password.setTextButtonListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Text button on click", Toast.LENGTH_SHORT).show();
-                password.setEnabled(true);
-            }
-        });
+//        password.setText("password");
+//        password.setEnabled(false);
+//        password.setTextButtonListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getBaseContext(), "Text button on click", Toast.LENGTH_SHORT).show();
+//                password.setEnabled(true);
+//            }
+//        });
 
 //        phoneEditText.setTextButtonOnClick(new View.OnClickListener() {
 //            @Override
@@ -197,12 +201,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupGenderEditText() {
-        gender.getInputEditText().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getBaseContext(),"Gender on Click",Toast.LENGTH_SHORT).show();
-            }
-        });
+//        gender.getInputEditText().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getBaseContext(),"Gender on Click",Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private void setupInfoBars() {
@@ -221,22 +225,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupNumericControl() {
-        numericControl.setListener(new NumericControlListener() {
-            @Override
-            public void onNumericAdded(int value) {
-
-            }
-
-            @Override
-            public void onNumericRemoved(int value) {
-
-            }
-
-            @Override
-            public void onNumericValueChanged(int value) {
-
-            }
-        });
+//        numericControl.setListener(new NumericControlListener() {
+//            @Override
+//            public void onNumericAdded(int value) {
+//
+//            }
+//
+//            @Override
+//            public void onNumericRemoved(int value) {
+//
+//            }
+//
+//            @Override
+//            public void onNumericValueChanged(int value) {
+//
+//            }
+//        });
     }
 
     private void setupSearchBox() {

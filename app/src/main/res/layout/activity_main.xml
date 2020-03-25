@@ -37,51 +37,65 @@
                 >
 
                 <com.kaodim.design.components.editText.KaodimEditText
-                    android:id ="@+id/etNotes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Notes"
-                    app:iconDrawable="@drawable/ic_mini_notes"
-                    app:inputType="multiline"
-                    />
-
-                <com.kaodim.design.components.editText.KaodimEditText
-                    android:id="@+id/gender"
+                    android:id="@+id/etGender"
                     android:gravity="top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="visible"
+                    android:layout_marginTop="12dp"
+                    app:inputType="text"
+                    android:text="Male"
                     android:hint="Gender"
-                    android:text=""
-                    app:inputType="password"
-                    app:secured="true"
-                    app:iconDrawable="@drawable/ic_mini_notes"
-                    android:layout_marginTop="16dp"
+                    android:paddingTop="16dp"
                     android:maxLength="200"
                     app:dropdown="true"/>
 
-                <com.kaodim.design.components.editText.KaodimEditText
-                    android:id="@+id/password"
-                    android:gravity="top"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="visible"
-                    android:hint="password"
-                    android:text=""
-                    app:inputType="password"
-                    app:textButtonText="Change"
-                    app:secured="true"
-                    app:iconDrawable="@drawable/ic_mini_notes"
-                    android:layout_marginTop="16dp"
-                    android:maxLength="200"/>
+<!--                <com.kaodim.design.components.editText.KaodimEditText-->
+<!--                    android:id ="@+id/etNotes"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Notes"-->
+<!--                    app:iconDrawable="@drawable/ic_mini_notes"-->
+<!--                    app:inputType="multiline"-->
+<!--                    />-->
 
-                <com.kaodim.design.components.editText.KaodimPhoneNumberEditText
-                    android:id ="@+id/phoneEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:country="Malaysia"
-                    app:errorText="Phone number is invalid"
-                    app:textButtonText="Change" />
+<!--                <com.kaodim.design.components.editText.KaodimEditText-->
+<!--                    android:id="@+id/gender"-->
+<!--                    android:gravity="top"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:visibility="visible"-->
+<!--                    android:hint="Gender"-->
+<!--                    android:text=""-->
+<!--                    app:inputType="password"-->
+<!--                    app:secured="true"-->
+<!--                    app:iconDrawable="@drawable/ic_mini_notes"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:maxLength="200"-->
+<!--                    app:dropdown="true"/>-->
+
+<!--                <com.kaodim.design.components.editText.KaodimEditText-->
+<!--                    android:id="@+id/password"-->
+<!--                    android:gravity="top"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:visibility="visible"-->
+<!--                    android:hint="password"-->
+<!--                    android:text=""-->
+<!--                    app:inputType="password"-->
+<!--                    app:textButtonText="Change"-->
+<!--                    app:secured="true"-->
+<!--                    app:iconDrawable="@drawable/ic_mini_notes"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:maxLength="200"/>-->
+
+<!--                <com.kaodim.design.components.editText.KaodimPhoneNumberEditText-->
+<!--                    android:id ="@+id/phoneEditText"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:country="Malaysia"-->
+<!--                    app:errorText="Phone number is invalid"-->
+<!--                    app:textButtonText="Change" />-->
 
                 <TextView
                     style="@style/HeaderText"
@@ -524,13 +538,13 @@
                     android:layout_marginRight="10dp"
                     android:orientation="vertical">
 
-                    <com.kaodim.design.components.editText.KaodimEditText
-                        android:id ="@+id/ketEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Notes"
-                        app:iconDrawable="@drawable/ic_mini_notes"
-                        app:inputType="text"/>
+<!--                    <com.kaodim.design.components.editText.KaodimEditText-->
+<!--                        android:id ="@+id/ketEditText"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="Notes"-->
+<!--                        app:iconDrawable="@drawable/ic_mini_notes"-->
+<!--                        app:inputType="text"/>-->
 
                 </RelativeLayout>
 
