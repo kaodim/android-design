@@ -59,6 +59,7 @@
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
             android:textColor="@color/text_black"
+            android:inputType="number"
             tools:text="0127026648"
             android:layout_weight="1"
             android:maxLines="1"/>
