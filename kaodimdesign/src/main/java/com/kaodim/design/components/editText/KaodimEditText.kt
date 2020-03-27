@@ -181,6 +181,14 @@ class KaodimEditText : LinearLayout {
                 val text = s.toString()
                 ivKdlTextInputError?.visibility = if (!inputEditText!!.isFocused && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
                 ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD && !hasTextButton) View.VISIBLE else View.GONE
+
+                if (inputType == INPUT_TYPE_PASSWORD) {
+                    if (s.toString().isNotEmpty()) {
+                        ivKdlTextInputShowPassword?.visibility = View.VISIBLE
+                    } else {
+                        ivKdlTextInputShowPassword?.visibility = View.GONE
+                    }
+                }
             }
         })
 
