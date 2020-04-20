@@ -254,4 +254,6 @@ public class SearchEditText extends LinearLayout {
     public Drawable getIconDrawable() {
         return ivMiniSearch.getDrawable();
     }
+
+    public AppCompatEditText getEditText() { return etSearch; }
 }
