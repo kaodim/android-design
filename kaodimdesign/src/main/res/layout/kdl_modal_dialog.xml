@@ -66,7 +66,7 @@
 
             <LinearLayout
                 android:id="@+id/llContainerVerticalButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical"
@@ -74,7 +74,7 @@
                 android:layout_marginBottom="12dp"
                 android:layout_marginRight="12dp"
                 android:visibility="gone"
-                tools:visibility="gone">
+                tools:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,12 +88,11 @@
                         android:id="@+id/tvTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="left"
+                        android:textAlignment="textStart"
                         android:text="This is example of title"
                         android:visibility="visible"
                         android:layout_marginBottom="12dp"
-                        android:textColor="@color/text_darkgrey"
+                        android:textColor="@color/text_black"
                         style="@style/font_roboto_bold"
                         android:textSize="20sp" />
 
@@ -102,9 +101,8 @@
                         style="@style/font_roboto_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="left"
-                        android:text="A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!"
+                        android:textAlignment="textStart"
+                        android:text="A brand new update for shiny new stuff!"
                         android:lineSpacingMultiplier="1.1"
                         android:textColor="@color/text_midgrey"
                         android:textSize="16sp" />
@@ -127,7 +125,7 @@
                     android:text="Button"
                     tools:text="Primary Button"
                     android:textColor="@color/porcelain"
-                    android:textSize="@dimen/size_14" />
+                    android:textSize="15sp" />
 
                 <Button
                     android:id="@+id/btnSecondary"
@@ -165,12 +163,11 @@
                         android:id="@+id/tvTitleHorz"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="left"
+                        android:textAlignment="textStart"
                         android:text="This is example of title"
                         android:visibility="visible"
                         android:layout_marginBottom="12dp"
-                        android:textColor="@color/text_darkgrey"
+                        android:textColor="@color/text_black"
                         style="@style/font_roboto_bold"
                         android:textSize="20sp" />
 
@@ -179,8 +176,7 @@
                         style="@style/font_roboto_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="left"
+                        android:textAlignment="textStart"
                         android:text="A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!"
                         android:lineSpacingMultiplier="1.1"
                         android:textColor="@color/text_midgrey"
