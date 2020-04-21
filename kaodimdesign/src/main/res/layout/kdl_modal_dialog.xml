@@ -70,47 +70,53 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="12dp"
                 android:visibility="gone"
                 tools:visibility="gone">
 
-                <TextView
-                    android:id="@+id/tvTitle"
-                    style="@style/font_roboto_medium"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:text=""
-                    tools:text="This is a title so that all lines must be this long"
-                    android:textColor="@color/text_darkgrey"
-                    android:textSize="20sp" />
+                    android:orientation="vertical"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp">
 
-                <TextView
-                    android:id="@+id/tvDescription"
-                    style="@style/font_roboto_medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/firefly"
-                    android:textSize="@dimen/size_14" />
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left"
+                        android:text="This is example of title"
+                        android:visibility="visible"
+                        android:layout_marginBottom="12dp"
+                        android:textColor="@color/text_darkgrey"
+                        style="@style/font_roboto_bold"
+                        android:textSize="20sp" />
 
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        style="@style/font_roboto_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="left"
+                        android:text="A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!"
+                        android:lineSpacingMultiplier="1.1"
+                        android:textColor="@color/text_midgrey"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/btnPrimary"
                     style="@style/font_roboto_medium"
                     android:textAllCaps="false"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="45dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_jasper"
                     android:clickable="true"
@@ -127,7 +133,7 @@
                     android:id="@+id/btnSecondary"
                     style="@style/font_roboto_medium"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@color/bg_lightgrey"
                     android:text="Secondary"
@@ -157,7 +163,6 @@
 
                     <TextView
                         android:id="@+id/tvTitleHorz"
-                        android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -165,7 +170,8 @@
                         android:text="This is example of title"
                         android:visibility="visible"
                         android:layout_marginBottom="12dp"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_darkgrey"
+                        style="@style/font_roboto_bold"
                         android:textSize="20sp" />
 
                     <TextView
@@ -177,7 +183,7 @@
                         android:gravity="left"
                         android:text="A brand new update for the app is available in the app store. Update now to get all the shiny new stuff!"
                         android:lineSpacingMultiplier="1.1"
-                        android:textColor="@color/greyish_brown"
+                        android:textColor="@color/text_midgrey"
                         android:textSize="16sp" />
 
                 </LinearLayout>
