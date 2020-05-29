@@ -134,11 +134,11 @@
         </attr>
         <attr name="android:enabled"/>
         <attr name="dropdown" format="boolean"/>
-        <attr name="textButtonText" format="string"/>
+        <attr name="etTextButtonText" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="KaodimPhoneNumberEditTextLayout">
-        <attr name="errorText"/>
+        <attr name="errorText"  format="string"/>
         <attr name="android:text"/>
         <attr name="android:enabled"/>
         <attr name="country" format="string"/>
