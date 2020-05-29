@@ -110,7 +110,7 @@ class KaodimEditText : LinearLayout {
         iconDrawableId = typedArray.getResourceId(R.styleable.KaodimEditTextLayout_iconDrawable, 0)
         isFirstLetterCapitalize = typedArray.getBoolean(R.styleable.KaodimEditTextLayout_capitalize, false)
         isDropdown= typedArray.getBoolean(R.styleable.KaodimEditTextLayout_dropdown, false)
-        textButtonText = typedArray.getString(R.styleable.KaodimEditTextLayout_textButtonText)
+        textButtonText = typedArray.getString(R.styleable.KaodimEditTextLayout_etTextButtonText)
         setHasTextButtonText()
         //Recycle the TypedArray (saves memory)
         typedArray.recycle()
