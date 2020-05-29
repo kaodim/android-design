@@ -134,15 +134,15 @@
         </attr>
         <attr name="android:enabled"/>
         <attr name="dropdown" format="boolean"/>
-        <attr name="textButtonText"/>
+        <attr name="textButtonText" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="KaodimPhoneNumberEditTextLayout">
         <attr name="errorText"/>
         <attr name="android:text"/>
         <attr name="android:enabled"/>
-        <attr name="country"/>
-        <attr name="textButtonText"/>
+        <attr name="country" format="string"/>
+        <attr name="textButtonText" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="KaodimViewTextLayout">
