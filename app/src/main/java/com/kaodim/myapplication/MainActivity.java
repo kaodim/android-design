@@ -23,7 +23,6 @@ import com.kaodim.design.components.NumericControl;
 import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.bottomBars.FullWidthBottomBar;
 import com.kaodim.design.components.bottomBars.PricingBottomBar;
-import com.kaodim.design.components.callbacks.NumericControlListener;
 import com.kaodim.design.components.dialogs.DateTimePickerDialog;
 import com.kaodim.design.components.dialogs.ModalDialog;
 import com.kaodim.design.components.editText.KaodimEditText;
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     NotesError notesError;
     NotesInfo notesInfo;
 
-    ViewTooltip tooltip;
+    ViewTooltip.TooltipView tooltip;
 
     MutableLiveData<String> test = new MutableLiveData();
 
@@ -526,7 +525,7 @@ public class MainActivity extends AppCompatActivity {
         btnHideToolTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewTooltip.hideAllVisibleToolTips();
+                tooltip.close();
             }
         });
    }
@@ -579,11 +578,11 @@ public class MainActivity extends AppCompatActivity {
        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
        int px = Math.round(16 * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
 
-       ViewTooltip.TooltipView toolTip = ViewTooltip.on(view)
+       tooltip = ViewTooltip.on(view)
                .clickToHide(true)
                .autoHide(false, 0)
                .align(ViewTooltip.ALIGN.CENTER)
-               .withMargin(px)
+               .margin(px, px, px, px)
                .position(ViewTooltip.Position.TOP)
                .customView(tooltipView)
                .arrowHeight(30)
