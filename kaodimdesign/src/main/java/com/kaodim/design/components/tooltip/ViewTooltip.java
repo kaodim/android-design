@@ -9,9 +9,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.support.annotation.ColorInt;
+import android.support.annotation.StringRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
@@ -23,15 +26,15 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class ViewTooltip {
 
     private View rootView;
     private final View view;
     private final TooltipView tooltip_view;
-    private static ArrayList<TooltipView> allToolTips = new ArrayList<>();
+
 
     private ViewTooltip(MyContext myContext, View view) {
         this.view = view;
@@ -92,11 +95,11 @@ public class ViewTooltip {
         }
     }
 
-    public static void hideAllVisibleToolTips() {
-        for (TooltipView tip: allToolTips) {
-            tip.removeNow();
-        }
-    }
+
+
+
+
+
 
     private static Activity getActivityContext(Context context) {
         while (context instanceof ContextWrapper) {
@@ -110,17 +113,17 @@ public class ViewTooltip {
 
     public ViewTooltip position(Position position) {
         this.tooltip_view.setPosition(position);
-        allToolTips.add(this.tooltip_view);
-        return this;
-    }
 
-    public ViewTooltip withMargin(int margin){
-        this.tooltip_view.setTooltipMargin(margin);
         return this;
     }
 
     public ViewTooltip withShadow(boolean withShadow) {
         this.tooltip_view.setWithShadow(withShadow);
+        return this;
+    }
+
+    public ViewTooltip shadowColor(@ColorInt int shadowColor) {
+        this.tooltip_view.setShadowColor(shadowColor);
         return this;
     }
 
@@ -172,48 +175,20 @@ public class ViewTooltip {
                     final Rect rect = new Rect();
                     view.getGlobalVisibleRect(rect);
 
-                    int[] location = new int[2];
-                    view.getLocationOnScreen(location);
-                    rect.left = location[0];
-                    //rect.left = location[0];
-
-                    decorView.addView(tooltip_view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                    tooltip_view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-                        @Override
-                        public boolean onPreDraw() {
-
-                            tooltip_view.setup(rect, decorView.getWidth());
-
-                            tooltip_view.getViewTreeObserver().removeOnPreDrawListener(this);
-
-                            return false;
-                        }
-                    });
-                }
-            }, 100);
-        }
-        return tooltip_view;
-    }
-
-
-    public TooltipView show(View parentView) {
-        final Context activityContext = tooltip_view.getContext();
-        if (activityContext != null && activityContext instanceof Activity) {
-            final ViewGroup decorView = rootView != null ?
-                    (ViewGroup) rootView :
-                    (ViewGroup) ((Activity) activityContext).getWindow().getDecorView();
-
-            view.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    final Rect rect = new Rect();
-                    view.getGlobalVisibleRect(rect);
+                    final Rect rootGlobalRect = new Rect();
+                    final Point rootGlobalOffset = new Point();
+                    decorView.getGlobalVisibleRect(rootGlobalRect, rootGlobalOffset);
 
                     int[] location = new int[2];
                     view.getLocationOnScreen(location);
                     rect.left = location[0];
-                    //rect.left = location[0];
+
+                    if (rootGlobalOffset != null) {
+                        rect.top -= rootGlobalOffset.y;
+                        rect.bottom -= rootGlobalOffset.y;
+                        rect.left -= rootGlobalOffset.x;
+                        rect.right -= rootGlobalOffset.x;
+                    }
 
                     decorView.addView(tooltip_view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -281,6 +256,11 @@ public class ViewTooltip {
         return this;
     }
 
+    public ViewTooltip text(@StringRes int text) {
+        this.tooltip_view.setText(text);
+        return this;
+    }
+
     public ViewTooltip corner(int corner) {
         this.tooltip_view.setCorner(corner);
         return this;
@@ -298,6 +278,11 @@ public class ViewTooltip {
 
     public ViewTooltip textSize(int unit, float textSize) {
         this.tooltip_view.setTextSize(unit, textSize);
+        return this;
+    }
+
+    public ViewTooltip margin(int left, int top, int right, int bottom) {
+        this.tooltip_view.setMargin(left, top, right, bottom);
         return this;
     }
 
@@ -388,7 +373,6 @@ public class ViewTooltip {
         private int arrowWidth = 15;
         private int arrowSourceMargin = 0;
         private int arrowTargetMargin = 0;
-        private int tooltipMargin = 0;
         protected View childView;
         private int color = Color.parseColor("#1F7C82");
         private Path bubblePath;
@@ -413,11 +397,17 @@ public class ViewTooltip {
         private int paddingRight = 30;
         private int paddingLeft = 30;
 
+        private int marginTop = 0;
+        private int marginBottom = 0;
+        private int marginRight = 0;
+        private int marginLeft = 0;
+
         int shadowPadding = 4;
         int shadowWidth = 8;
 
         private Rect viewRect;
         private int distanceWithView = 0;
+        private int shadowColor = Color.parseColor("#aaaaaa");
 
         public TooltipView(Context context) {
             super(context);
@@ -437,7 +427,7 @@ public class ViewTooltip {
             setLayerType(LAYER_TYPE_SOFTWARE, bubblePaint);
 
             setWithShadow(true);
-
+            this.setClipToPadding(false);
         }
 
         public void setCustomView(View customView) {
@@ -449,6 +439,21 @@ public class ViewTooltip {
         public void setColor(int color) {
             this.color = color;
             bubblePaint.setColor(color);
+            postInvalidate();
+        }
+
+        public void setShadowColor(int color) {
+            this.shadowColor = color;
+            postInvalidate();
+        }
+
+        public void setMargin(int left, int top, int right, int bottom) {
+            this.marginLeft = left;
+            this.marginTop = top;
+            this.marginRight = right;
+            this.marginBottom = top;
+
+            childView.setPadding(childView.getPaddingLeft() + left, childView.getPaddingTop() + top, childView.getPaddingRight() + right, childView.getPaddingBottom() + bottom);
             postInvalidate();
         }
 
@@ -485,6 +490,13 @@ public class ViewTooltip {
         public void setText(String text) {
             if (childView instanceof TextView) {
                 ((TextView) this.childView).setText(Html.fromHtml(text));
+            }
+            postInvalidate();
+        }
+
+        public void setText(int text) {
+            if (childView instanceof TextView) {
+                ((TextView) this.childView).setText(text);
             }
             postInvalidate();
         }
@@ -530,15 +542,6 @@ public class ViewTooltip {
         public void setArrowTargetMargin(int arrowTargetMargin) {
             this.arrowTargetMargin = arrowTargetMargin;
             postInvalidate();
-        }
-
-        public void setTooltipMargin (int tooltipMargin) {
-            this.tooltipMargin = tooltipMargin;
-            postInvalidate();
-        }
-
-        public int getTooltipMargin() {
-            return this.tooltipMargin;
         }
 
         public void setTextTypeFace(Typeface textTypeFace) {
@@ -709,10 +712,10 @@ public class ViewTooltip {
             bottomLeftDiameter = bottomLeftDiameter < 0 ? 0 : bottomLeftDiameter;
             bottomRightDiameter = bottomRightDiameter < 0 ? 0 : bottomRightDiameter;
 
-            final float spacingLeft = this.position == Position.RIGHT ? arrowHeight : 0;
-            final float spacingTop = this.position == Position.BOTTOM ? arrowHeight : 0;
-            final float spacingRight = this.position == Position.LEFT ? arrowHeight : 0;
-            final float spacingBottom = this.position == Position.TOP ? arrowHeight : 0;
+            final float spacingLeft = this.position == Position.RIGHT ? arrowHeight : marginLeft;
+            final float spacingTop = this.position == Position.BOTTOM ? arrowHeight : marginTop;
+            final float spacingRight = this.position == Position.LEFT ? arrowHeight : marginRight;
+            final float spacingBottom = this.position == Position.TOP ? arrowHeight : marginBottom;
 
             final float left = spacingLeft + myRect.left;
             final float top = spacingTop + myRect.top;
@@ -781,9 +784,12 @@ public class ViewTooltip {
         }
 
         public boolean adjustSize(Rect rect, int screenWidth) {
+
+            final Rect r = new Rect();
+            getGlobalVisibleRect(r);
+
             boolean changed = false;
             final ViewGroup.LayoutParams layoutParams = getLayoutParams();
-
             if (position == Position.LEFT && getWidth() > rect.left) {
                 layoutParams.width = rect.left - MARGIN_SCREEN_BORDER_TOOLTIP - distanceWithView;
                 changed = true;
@@ -791,8 +797,6 @@ public class ViewTooltip {
                 layoutParams.width = screenWidth - rect.right - MARGIN_SCREEN_BORDER_TOOLTIP - distanceWithView;
                 changed = true;
             } else if (position == Position.TOP || position == Position.BOTTOM) {
-                layoutParams.width = screenWidth - (2 * tooltipMargin);
-
                 int adjustedLeft = rect.left;
                 int adjustedRight = rect.right;
 
@@ -818,13 +822,14 @@ public class ViewTooltip {
                     adjustedLeft = 0;
                 }
 
-                if(adjustedRight > screenWidth ){
+                if(adjustedRight > screenWidth){
                     adjustedRight = screenWidth;
                 }
 
                 rect.left = adjustedLeft;
                 rect.right = adjustedRight;
             }
+
             setLayoutParams(layoutParams);
             postInvalidate();
             return changed;
@@ -875,7 +880,7 @@ public class ViewTooltip {
 
         public void setWithShadow(boolean withShadow) {
             if(withShadow){
-                bubblePaint.setShadowLayer(shadowWidth, 0, 0, Color.parseColor("#aaaaaa"));
+                bubblePaint.setShadowLayer(shadowWidth, 0, 0, shadowColor);
             } else {
                 bubblePaint.setShadowLayer(0, 0, 0, Color.TRANSPARENT);
             }
