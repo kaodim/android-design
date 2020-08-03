@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.v4.content.ContextCompat
+import android.text.SpannableString
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -84,6 +85,10 @@ class InfoBar: RelativeLayout {
     }
 
     fun setPrimaryText(primaryText: String) {
+        tvPrimaryText.text = primaryText
+    }
+
+    fun setPrimaryText(primaryText: SpannableString) {
         tvPrimaryText.text = primaryText
     }
 
