@@ -251,6 +251,8 @@
 
     <declare-styleable name="InfoBar">
         <attr name="primaryText" format="string" />
+        <attr name="navigationText" format="string"/>
+        <attr name="navigationColor" format="color"/>
         <attr name="barColor" format="color"/>
         <attr name="backgroundColor" format="color"/>
         <attr name="textColor" format="color"/>

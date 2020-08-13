@@ -1,6 +1,7 @@
 package com.kaodim.design.components.informationBars
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.v4.content.ContextCompat
@@ -36,39 +37,46 @@ class InfoBar: RelativeLayout {
     private fun init(context: Context, attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.InfoBar)
         val primaryString = typedArray.getString(R.styleable.InfoBar_primaryText)
+        val navigationString = typedArray.getString(R.styleable.InfoBar_navigationText)
+
         val barColor = typedArray.getColor(R.styleable.InfoBar_barColor, ContextCompat.getColor(context, R.color.kaodim_blue))
         val backgroundColor = typedArray.getColor(R.styleable.InfoBar_backgroundColor, ContextCompat.getColor(context, R.color.kaodim_blue_10))
         val textColor = typedArray.getColor(R.styleable.InfoBar_textColor, ContextCompat.getColor(context, R.color.kaodim_blue_text))
+        val navigationTextColor = typedArray.getColor(R.styleable.InfoBar_navigationColor, ContextCompat.getColor(context, R.color.kaodim_blue))
+
         val src = typedArray.getDrawable(R.styleable.InfoBar_android_src)
 
         typedArray.recycle()
 
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.kdl_info_bar, this)
-        initComponent(primaryString, barColor, backgroundColor, textColor,src)
+        initComponent(primaryString, navigationString, barColor, backgroundColor, textColor, navigationTextColor, src)
         this.setEvents()
     }
 
     private fun setEvents() {
-        this.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                if (height > 0) {
-
-                    viewTreeObserver.removeOnGlobalLayoutListener(this)
-                }
-            }
-        })
+//        this.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+//            override fun onGlobalLayout() {
+//                if (height > 0) {
+//
+//                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+//                }
+//            }
+//        })
     }
 
     private fun initComponent(primaryString: String?,
+                              navigationString: String?,
                               @ColorInt barColor: Int,
                               @ColorInt backgroundColor: Int,
                               @ColorInt textColor: Int,
+                              @ColorInt navigationColor: Int,
                               src: Drawable?) {
 
         primaryString?.let { setPrimaryText(it) }
-
+        this.setNavigationText(navigationString)
         this.setBarColor(barColor)
+        this.setNavigationColor(navigationColor)
         this.setPrimaryTextViewBackgroundColor(backgroundColor)
         this.setPrimaryTextColor(textColor)
         this.setIcon(src)
@@ -83,6 +91,17 @@ class InfoBar: RelativeLayout {
             ivInfoBarIcon.visibility = View.GONE
         }
     }
+
+    fun setNavigationText(navigationText: String?) {
+        tvInfoNavigation.text = navigationText
+        llInfoNavigation.visibility = if (navigationText.isNullOrEmpty()) View.GONE else View.VISIBLE
+    }
+
+    fun setNavigationColor(@ColorInt color: Int) {
+        tvInfoNavigation.setTextColor(color)
+        ivInfoNavigation.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+    }
+
 
     fun setPrimaryText(primaryText: String) {
         tvPrimaryText.text = primaryText
