@@ -673,6 +673,8 @@
                         app:backgroundColor="@color/kaodim_orange_10"
                         app:barColor="@color/kaodim_orange"
                         app:textColor="@color/kaodim_orange_text"
+                        app:navigationColor="@color/kaodim_orange"
+                        app:navigationText="Navigate to Invoice"
                         app:primaryText="Important: Make sure to tap on the “Book” button to hire a vendor directly on Kaodim's app to be eligible for these benefits."/>
 
 

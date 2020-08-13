@@ -19,31 +19,68 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/llInfoBarBase">
-            
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:id="@+id/ivInfoBarIcon"
-                android:src="@drawable/surcharge_icon"
-                android:visibility="gone"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="-6dp"
-                android:layout_gravity="center_vertical"/>
+            android:id="@+id/llInfoBarBase"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/tvPrimaryText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/kaodim_blue_text"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:id="@+id/ivInfoBarIcon"
+                    android:src="@drawable/surcharge_icon"
+                    android:visibility="gone"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="-6dp"
+                    android:layout_gravity="center_vertical"/>
+
+
+                <TextView
+                    android:id="@+id/tvPrimaryText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/kaodim_blue_text"
+                    android:paddingStart="19dp"
+                    android:paddingEnd="16dp"
+                    tools:text="Pay the upfront amount now to get RM20 off your final amount" />
+
+
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/llInfoNavigation"
+                android:layout_marginTop="4dp"
                 android:paddingStart="19dp"
                 android:paddingEnd="16dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                tools:text="Pay the upfront amount now to get RM20 off your final amount" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/font_roboto_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    tools:text="View new invoice"
+                    android:id="@+id/tvInfoNavigation"
+                    android:textColor="@color/kaodim_blue"/>
+                
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="2dp"
+                    android:id="@+id/ivInfoNavigation"
+                    android:src ="@drawable/ic_chev_blu_right"/>
+
+            </LinearLayout>
 
 
         </LinearLayout>
