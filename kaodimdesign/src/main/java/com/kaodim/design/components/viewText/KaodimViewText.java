@@ -12,12 +12,12 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kaodim.design.R;
+import com.kaodim.design.components.utilities.ViewUtils;
 
 public class KaodimViewText extends ConstraintLayout {
 
@@ -251,7 +251,7 @@ public class KaodimViewText extends ConstraintLayout {
     }
 
     public void setEnabled(boolean enabled) {
-        recursiveSetEnabled(this, enabled);
+        ViewUtils.recursiveSetEnabled(this, enabled);
         super.setEnabled(enabled);
     }
 
@@ -274,19 +274,5 @@ public class KaodimViewText extends ConstraintLayout {
 
     public interface CustomTextListener {
         void onClickListener();
-    }
-
-
-    private static void recursiveSetEnabled(ViewGroup vg, boolean enabled) {
-        int i = 0;
-
-        for(int count = vg.getChildCount(); i < count; ++i) {
-            View child = vg.getChildAt(i);
-            child.setEnabled(enabled);
-            if (child instanceof ViewGroup) {
-                recursiveSetEnabled((ViewGroup)child, enabled);
-            }
-        }
-
     }
 }

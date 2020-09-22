@@ -19,6 +19,7 @@ import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.kaodim.design.R
+import com.kaodim.design.components.utilities.ViewUtils
 import org.w3c.dom.Text
 
 class KaodimEditText : LinearLayout {
@@ -362,7 +363,7 @@ class KaodimEditText : LinearLayout {
             tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text) && !inputEditText!!.isFocused) R.color.text_lightgrey else R.color.text_midgrey))
         }
 
-        recursiveSetEnabled(this, enabled)
+        ViewUtils.recursiveSetEnabled(this, enabled)
         super.setEnabled(enabled)
         tvTextButton?.isEnabled = true
     }
@@ -443,20 +444,5 @@ class KaodimEditText : LinearLayout {
         private const val INPUT_TYPE_NUMBER = 1
         private const val INPUT_TYPE_MULTI_LINE_TEXT = 2
         private const val INPUT_TYPE_PASSWORD = 3
-
-        private fun  recursiveSetEnabled(vg: ViewGroup, enabled: Boolean) {
-            var i = 0
-
-            val count = vg.childCount
-            while (i < count) {
-                val child = vg.getChildAt(i)
-                child.isEnabled = enabled
-                if (child is ViewGroup) {
-                    recursiveSetEnabled(child, enabled)
-                }
-                ++i
-            }
-
-        }
     }
 }

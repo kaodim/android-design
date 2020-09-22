@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.kaodim.design.R;
 import com.kaodim.design.components.callbacks.NumericControlListener;
 import com.kaodim.design.components.helpers.CounterHandler;
+import com.kaodim.design.components.utilities.ViewUtils;
 
 import java.math.BigDecimal;
 
@@ -32,31 +33,33 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
 
     public NumericControl(Context context) {
         super(context);
-        init(context);
+        init(context,null);
     }
 
     public NumericControl(Context context, AttributeSet set) {
         super(context, set);
-        init(context);
+        init(context, set);
     }
 
     public NumericControl(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        init(context, attrs);
     }
 
-    private void init(Context context) {
+    private void init(Context context, AttributeSet attrs) {
         //Retrieve the custom attributes from XML
-        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.SearchBox);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.NumericControl);
         currentValue = typedArray.getInteger(R.styleable.NumericControl_value, 0);
         min = typedArray.getInteger(R.styleable.NumericControl_min, 0);
         max = typedArray.getInteger(R.styleable.NumericControl_max, 10);
+        boolean enabled = typedArray.getBoolean(R.styleable.NumericControl_android_enabled, true);
         //Recycle the TypedArray (saves memory)
         typedArray.recycle();
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.kdl_element_numeric_control_layout, this);
         initComponents();
+        this.setEnabled(enabled);
     }
 
     private void initComponents() {
@@ -212,6 +215,21 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
     private void disableIncrementButton() {
         selectionAdd.setClickable(false);
         selectionAdd.setImageAlpha(102);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        ViewUtils.recursiveSetEnabled(this, enabled);
+
+        if (enabled) {
+            toggleButtons();
+        } else {
+            disableDecrementButton();
+            disableIncrementButton();
+        }
+
+        //if you want to remove below line to remove the function of super class.
+        super.setEnabled(enabled);
     }
 
 }
