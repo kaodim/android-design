@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Notes"
-                    app:inputType="multiline"
+                    android:text="@={test}"
                     app:iconDrawable="@drawable/ic_mini_notes"
                     app:capitalize = "true"
                     />
