@@ -1,6 +1,7 @@
 package com.kaodim.myapplication;
 
 import android.arch.lifecycle.MutableLiveData;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -120,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
 //        etGender.setEnabled(false);
 
         LinearLayout layout = findViewById(R.id.llRoot);
-        test.setValue("No notes");
         mainBinding.setTest(test);
+        mainBinding.setLifecycleOwner(this);
 
         setupNumericControl();
 

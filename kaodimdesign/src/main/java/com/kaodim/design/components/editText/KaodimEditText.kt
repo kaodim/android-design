@@ -176,13 +176,22 @@ class KaodimEditText : LinearLayout {
         inputEditText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (height > 0) {
+                    val hasFocus = inputEditText!!.hasFocus()
+                    val isEmpty = TextUtils.isEmpty(s.toString())
+                    setPadding(hasFocus || !isEmpty)
+                    setHasTextConstraint(hasFocus || !isEmpty)
+                    animateColorHint(hasFocus || isEmpty)
+                    animateScaleHint(!hasFocus && isEmpty)
+                }
+            }
 
             override fun afterTextChanged(s: Editable) {
                 val text = s.toString()
                 ivKdlTextInputError?.visibility = if (!inputEditText!!.isFocused && errorText!!.isNotEmpty()) View.VISIBLE else View.GONE
                 ivKdlTextInputClear?.visibility = if (inputEditText!!.isFocused && text.isNotEmpty() && inputType != INPUT_TYPE_MULTI_LINE_TEXT && inputType != INPUT_TYPE_PASSWORD && !hasTextButton) View.VISIBLE else View.GONE
-
+                
                 if (inputType == INPUT_TYPE_PASSWORD) {
                     if (s.toString().isNotEmpty()) {
                         ivKdlTextInputShowPassword?.visibility = View.VISIBLE
@@ -270,7 +279,6 @@ class KaodimEditText : LinearLayout {
             ivKdlTextInputShowPassword?.visibility = View.GONE
             ivKdlTextInputError?.visibility = View.GONE
             ivKdlTextInputClear?.visibility = View.GONE
-
         }
     }
 
@@ -300,15 +308,13 @@ class KaodimEditText : LinearLayout {
         val translationX = if (grow) 0f else hintLateralTranslation
         val translationY = if (grow) 0f else hintLongitudinalTranslation
 
-        if (TextUtils.isEmpty(inputEditText!!.text)) {
-            tvCustomHint!!.animate()
-                    .scaleX(scale)
-                    .scaleY(scale)
-                    .translationX(translationX)
-                    .translationY(translationY)
-                    .setDuration(HINT_ANIMATION_DURATION)
-                    .start()
-        }
+        tvCustomHint!!.animate()
+                .scaleX(scale)
+                .scaleY(scale)
+                .translationX(translationX)
+                .translationY(translationY)
+                .setDuration(HINT_ANIMATION_DURATION)
+                .start()
     }
 
     private fun setPadding(isFocused: Boolean) {
