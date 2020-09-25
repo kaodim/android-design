@@ -178,12 +178,14 @@ class KaodimEditText : LinearLayout {
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (height > 0) {
-                    val hasFocus = inputEditText!!.hasFocus()
-                    val isEmpty = TextUtils.isEmpty(s.toString())
-                    setPadding(hasFocus || !isEmpty)
-                    setHasTextConstraint(hasFocus || !isEmpty)
-                    animateColorHint(hasFocus || isEmpty)
-                    animateScaleHint(!hasFocus && isEmpty)
+                    if (inputType != INPUT_TYPE_MULTI_LINE_TEXT) {
+                        val hasFocus = inputEditText!!.hasFocus()
+                        val isEmpty = TextUtils.isEmpty(s.toString())
+                        setPadding(hasFocus || !isEmpty)
+                        setHasTextConstraint(hasFocus || !isEmpty)
+                        animateColorHint(hasFocus || isEmpty)
+                        animateScaleHint(!hasFocus && isEmpty)
+                    }
                 }
             }
 
@@ -325,14 +327,14 @@ class KaodimEditText : LinearLayout {
         val hintPadding = resources.getDimensionPixelSize(if (isFocused) R.dimen.size_20_dp else R.dimen.size_0_dp)
 
         if (inputType != INPUT_TYPE_MULTI_LINE_TEXT) {
-            inputEditText?.setPadding(inputEditText!!.paddingLeft, paddingTop, inputEditText!!.paddingRight, paddingBottom)
+            inputEditText?.setPadding(resources.getDimensionPixelSize( R.dimen.size_10_dp) , paddingTop, resources.getDimensionPixelSize( R.dimen.size_10_dp), paddingBottom)
         } else {
             if (isFocused) {
-                inputEditText?.setPadding(inputEditText!!.paddingLeft, -multiLinePaddingTop, inputEditText!!.paddingRight, multiLinePaddingBottom)
+                inputEditText?.setPadding(resources.getDimensionPixelSize( R.dimen.size_10_dp), -multiLinePaddingTop, resources.getDimensionPixelSize( R.dimen.size_10_dp), multiLinePaddingBottom)
             } else {
-                inputEditText?.setPadding(inputEditText!!.paddingLeft, multiLinePaddingTop, inputEditText!!.paddingRight, multiLinePaddingBottom)
+                inputEditText?.setPadding(resources.getDimensionPixelSize( R.dimen.size_10_dp), multiLinePaddingTop, resources.getDimensionPixelSize( R.dimen.size_10_dp), multiLinePaddingBottom)
             }
-            tvCustomHint?.setPadding(tvCustomHint!!.paddingLeft, hintPadding, tvCustomHint!!.paddingRight, 0)
+            tvCustomHint?.setPadding(resources.getDimensionPixelSize( R.dimen.size_10_dp), hintPadding, resources.getDimensionPixelSize( R.dimen.size_10_dp), 0)
         }
     }
 
