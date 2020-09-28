@@ -100,6 +100,10 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
         toggleButtons();
     }
 
+    public int getValue(){
+        return this.currentValue;
+    }
+
     public void setValue(String value) {
         if(checkIfDecimal(value)) {
             this.currentValue = Math.round(Float.parseFloat(value));
