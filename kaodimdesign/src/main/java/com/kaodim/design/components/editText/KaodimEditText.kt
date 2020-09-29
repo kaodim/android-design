@@ -143,7 +143,7 @@ class KaodimEditText : LinearLayout {
                         inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_lightgrey))
                         tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text)) R.color.text_midgrey else R.color.text_lightgrey))
                     } else {
-                        inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_midgrey))
+                        inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_black))
                         tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text) && !inputEditText!!.isFocused) R.color.text_lightgrey else R.color.text_midgrey))
                     }
                     viewTreeObserver.removeOnGlobalLayoutListener(this)
@@ -367,7 +367,7 @@ class KaodimEditText : LinearLayout {
             inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_lightgrey))
             tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text)) R.color.text_midgrey else R.color.text_lightgrey))
         } else {
-            inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_midgrey))
+            inputEditText!!.setTextColor(ContextCompat.getColor(context, R.color.text_black))
             tvCustomHint!!.setTextColor(ContextCompat.getColor(context, if (!TextUtils.isEmpty(inputEditText!!.text) && !inputEditText!!.isFocused) R.color.text_lightgrey else R.color.text_midgrey))
         }
 
