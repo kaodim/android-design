@@ -94,7 +94,7 @@ public class KaodimViewText extends ConstraintLayout {
                         tvKdlTextSelectionSelect.setTextColor(ContextCompat.getColor(getContext(), R.color.text_lightgrey));
                         tvCustomHint.setTextColor(ContextCompat.getColor(getContext(), !TextUtils.isEmpty(tvKdlTextSelectionSelect.getText())? R.color.text_midgrey: R.color.text_lightgrey));
                     } else {
-                        tvKdlTextSelectionSelect.setTextColor(ContextCompat.getColor(getContext(), R.color.text_midgrey));
+                        tvKdlTextSelectionSelect.setTextColor(ContextCompat.getColor(getContext(), R.color.text_black));
                         tvCustomHint.setTextColor(ContextCompat.getColor(getContext(), !TextUtils.isEmpty(tvKdlTextSelectionSelect.getText()) ? R.color.text_lightgrey: R.color.text_midgrey));
 
                     }
