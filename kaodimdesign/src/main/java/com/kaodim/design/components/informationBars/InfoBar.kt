@@ -7,9 +7,12 @@ import android.support.annotation.ColorInt
 import android.support.v4.content.ContextCompat
 import android.text.SpannableString
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewTreeObserver
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.kaodim.design.R
@@ -126,4 +129,15 @@ class InfoBar: RelativeLayout {
     fun setPrimaryTextViewBackgroundColor(@ColorInt color: Int) {
         llInfoBarBase.setBackgroundColor(color)
     }
+
+    fun setLayoutPadding(left: Int, top: Int, right: Int, bottom: Int) {
+            val left_dp = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, left.toFloat(), llInfoBarBase.context.resources.displayMetrics).toInt()
+            val right_dp = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, right.toFloat(), llInfoBarBase.context.resources.displayMetrics).toInt()
+            val top_dp = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, top.toFloat(), llInfoBarBase.context.resources.displayMetrics).toInt()
+            val bottom_dp = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, bottom.toFloat(), llInfoBarBase.context.resources.displayMetrics).toInt()
+            val layoutParams = llInfoBarBase.layoutParams as ViewGroup.LayoutParams
+            llInfoBarBase.setPadding(left_dp, top_dp, right_dp, bottom_dp)
+            llInfoBarBase.layoutParams = layoutParams
+    }
+
 }

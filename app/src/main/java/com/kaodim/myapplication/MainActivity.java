@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         blueInfoBar = findViewById(R.id.blueInfoBar);
         greenInfoBar = findViewById(R.id.greenInfoBar);
         orangeInfoBar = findViewById(R.id.orangeInfoBar);
+        orangeInfoBar.setLayoutPadding(0,0,0,0);
         phoneEditText = findViewById(R.id.phoneEditText);
         password = findViewById(R.id.password);
         etNotes = findViewById(R.id.etNotes);
