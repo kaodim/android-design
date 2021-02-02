@@ -1,10 +1,10 @@
 package com.kaodim.myapplication;
 
 import android.arch.lifecycle.MutableLiveData;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -29,10 +29,10 @@ import com.kaodim.design.components.dialogs.ModalDialog;
 import com.kaodim.design.components.editText.KaodimEditText;
 import com.kaodim.design.components.editText.KaodimPhoneNumberEditText;
 import com.kaodim.design.components.informationBars.InfoBar;
+import com.kaodim.design.components.loader.Loader;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
-import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.searchEditText.SearchEditText;
 import com.kaodim.design.components.toast.ToastBanner;
 import com.kaodim.design.components.tooltip.ViewTooltip;
@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
     ViewTooltip.TooltipView tooltip;
 
     MutableLiveData<String> test = new MutableLiveData();
+
+    AlertDialog loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
         setupPhoneNumberEditText();
 
         setupNotesEditText();
+        loader = Loader.Companion.newInstance(this);
     }
 
     private void setupNotesEditText() {
@@ -595,22 +598,15 @@ public class MainActivity extends AppCompatActivity {
                .show();
    }
 
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        hideLoadingAnim();
-    }
-
     //put this in baseActivity
     public  void showLoadingAnim(){
-//        isLoadingAnim = true;
-        View view = findViewById(android.R.id.content);
-        PreLoaderAnimation.showLoading(view,this);
+        if (!loader.isShowing())
+            loader.show();
     }
 
     public void hideLoadingAnim(){
-//        isLoadingAnim = false;
-        PreLoaderAnimation.hideLoading();
+        if (loader.isShowing()) {
+            loader.dismiss();
+        }
     }
 }
