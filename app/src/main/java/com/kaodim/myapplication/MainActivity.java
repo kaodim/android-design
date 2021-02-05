@@ -33,6 +33,7 @@ import com.kaodim.design.components.loader.Loader;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
+import com.kaodim.design.components.pre_loader.PreLoaderAnimation;
 import com.kaodim.design.components.searchEditText.SearchEditText;
 import com.kaodim.design.components.toast.ToastBanner;
 import com.kaodim.design.components.tooltip.ViewTooltip;
@@ -598,15 +599,19 @@ public class MainActivity extends AppCompatActivity {
                .show();
    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        hideLoadingAnim();
+    }
+
     //put this in baseActivity
-    public  void showLoadingAnim(){
-        if (!loader.isShowing())
-            loader.show();
+    public void showLoadingAnim() {
+        View view = findViewById(android.R.id.content);
+        PreLoaderAnimation.showLoading(view, this);
     }
 
     public void hideLoadingAnim(){
-        if (loader.isShowing()) {
-            loader.dismiss();
-        }
+        PreLoaderAnimation.hideLoading();
     }
 }

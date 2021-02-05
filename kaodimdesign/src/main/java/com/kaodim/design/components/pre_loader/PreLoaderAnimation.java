@@ -4,7 +4,6 @@ package com.kaodim.design.components.pre_loader;
 import android.app.Activity;
 import android.view.View;
 
-import com.kaodim.design.R;
 import com.shasin.notificationbanner.Banner;
 
 import static com.androidquery.util.AQUtility.postDelayed;
@@ -20,7 +19,7 @@ public class PreLoaderAnimation {
 
     static boolean mPostedShow = false;
 
-    static boolean  mDismissed = false;
+    static boolean mDismissed = false;
 
     static Banner banner;
 
@@ -48,6 +47,9 @@ public class PreLoaderAnimation {
 
     private static void show(View view, Activity activity) {
         if (activity != null) {
+            if (banner != null) {
+                banner.dismissBanner();
+            }
             banner = new Banner(view,activity);
             banner.setAsDropDown(false);
             banner.setFillScreen(true);
