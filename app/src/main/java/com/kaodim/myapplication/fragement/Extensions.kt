@@ -2,10 +2,10 @@ package com.kaodim.myapplication.fragement
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
-import android.support.annotation.LayoutRes
-import android.support.v4.content.ContextCompat
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.LayoutRes
+import androidx.core.content.ContextCompat
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View

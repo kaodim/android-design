@@ -1,9 +1,9 @@
 package com.kaodim.design.components.calendarView
 
 import android.content.Context
-import android.support.annotation.Px
-import android.support.v7.widget.PagerSnapHelper
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.Px
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View.MeasureSpec.UNSPECIFIED
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.YearMonth
 
 
-open class CalendarView : RecyclerView {
+open class CalendarView : androidx.recyclerview.widget.RecyclerView {
 
     /**
      * The [DayBinder] instance used for managing day cell views
@@ -561,16 +561,16 @@ open class CalendarView : RecyclerView {
         return calendarAdapter.findLastVisibleDay()
     }
 
-    private val scrollListenerInternal = object : RecyclerView.OnScrollListener() {
-        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {}
-        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+    private val scrollListenerInternal = object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: androidx.recyclerview.widget.RecyclerView, dx: Int, dy: Int) {}
+        override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: Int) {
             if (newState == SCROLL_STATE_IDLE) {
                 calendarAdapter.notifyMonthScrollListenerIfNeeded()
             }
         }
     }
 
-    private val pagerSnapHelper = PagerSnapHelper()
+    private val pagerSnapHelper = androidx.recyclerview.widget.PagerSnapHelper()
 
     /**
      * Setup the CalendarView. You can call this any time to change the

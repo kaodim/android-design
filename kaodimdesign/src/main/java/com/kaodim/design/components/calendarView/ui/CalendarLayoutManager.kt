@@ -2,9 +2,9 @@ package com.kaodim.design.components.calendarView.ui
 
 import android.content.Context
 import android.graphics.Rect
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.LinearSmoothScroller
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.kaodim.design.components.calendarView.CalendarView
@@ -13,8 +13,8 @@ import com.kaodim.design.components.calendarView.model.ScrollMode
 import org.threeten.bp.YearMonth
 
 
-internal class CalendarLayoutManager(private val calView: CalendarView, @RecyclerView.Orientation orientation: Int) :
-    LinearLayoutManager(calView.context, orientation, false) {
+internal class CalendarLayoutManager(private val calView: CalendarView, @androidx.recyclerview.widget.RecyclerView.Orientation orientation: Int) :
+    androidx.recyclerview.widget.LinearLayoutManager(calView.context, orientation, false) {
 
     private val adapter: CalendarAdapter
         get() = calView.adapter as CalendarAdapter
@@ -65,7 +65,7 @@ internal class CalendarLayoutManager(private val calView: CalendarView, @Recycle
     }
 
     private inner class CalendarSmoothScroller(position: Int, val day: CalendarDay?) :
-        LinearSmoothScroller(context) {
+        androidx.recyclerview.widget.LinearSmoothScroller(context) {
 
         init {
             targetPosition = position

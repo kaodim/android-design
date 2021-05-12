@@ -1,6 +1,6 @@
 package com.kaodim.design.components.calendarView.ui
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -13,7 +13,7 @@ internal class MonthViewHolder constructor(
     dayConfig: DayConfig,
     private var monthHeaderBinder: MonthHeaderFooterBinder<ViewContainer>?,
     private var monthFooterBinder: MonthHeaderFooterBinder<ViewContainer>?
-) : RecyclerView.ViewHolder(rootLayout) {
+) : androidx.recyclerview.widget.RecyclerView.ViewHolder(rootLayout) {
 
     private val weekHolders = (1..6).map { WeekHolder(dayConfig) }
 

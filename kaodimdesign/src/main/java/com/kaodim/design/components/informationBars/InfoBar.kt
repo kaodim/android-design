@@ -3,8 +3,8 @@ package com.kaodim.design.components.informationBars
 import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
-import android.support.annotation.ColorInt
-import android.support.v4.content.ContextCompat
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
 import android.text.SpannableString
 import android.util.AttributeSet
 import android.util.TypedValue

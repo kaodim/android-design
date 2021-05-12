@@ -33,7 +33,7 @@
     </LinearLayout>
 
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/llWheelLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             app:wheel_item_text_size="18sp"
             app:wheel_selected_item_text_color="@color/blackpearl" />
 
-    </android.support.v7.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <RelativeLayout
         android:layout_width="match_parent"
