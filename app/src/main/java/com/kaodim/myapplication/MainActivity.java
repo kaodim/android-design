@@ -1,11 +1,7 @@
 package com.kaodim.myapplication;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -18,6 +14,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.MutableLiveData;
+
 import com.kaodim.design.components.DateTimePicker;
 import com.kaodim.design.components.InteractivePanel;
 import com.kaodim.design.components.NumericControl;
@@ -29,7 +30,6 @@ import com.kaodim.design.components.dialogs.ModalDialog;
 import com.kaodim.design.components.editText.KaodimEditText;
 import com.kaodim.design.components.editText.KaodimPhoneNumberEditText;
 import com.kaodim.design.components.informationBars.InfoBar;
-import com.kaodim.design.components.loader.Loader;
 import com.kaodim.design.components.notes.NotesError;
 import com.kaodim.design.components.notes.NotesInfo;
 import com.kaodim.design.components.notes.NotesStandard;
@@ -181,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
         setupPhoneNumberEditText();
 
         setupNotesEditText();
-        loader = Loader.Companion.newInstance(this);
     }
 
     private void setupNotesEditText() {

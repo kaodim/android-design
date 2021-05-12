@@ -1,15 +1,15 @@
 package com.kaodim.myapplication.fragement
 
 
-import android.databinding.adapters.TextViewBindingAdapter.setTextSize
+import androidx.databinding.adapters.TextViewBindingAdapter.setTextSize
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.os.Bundle
-import android.support.design.widget.BottomSheetDialogFragment
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
 import android.util.TypedValue
 import android.view.*
 import android.widget.TextView

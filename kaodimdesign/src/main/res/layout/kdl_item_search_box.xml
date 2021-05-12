@@ -33,7 +33,7 @@
                 android:layout_width="0px"
                 android:layout_height="0px"/>
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_toStartOf="@+id/ivTextClear"
                 android:layout_toEndOf="@+id/ivMiniSearch"
                 android:id="@+id/etSearch"

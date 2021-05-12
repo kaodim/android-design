@@ -1,10 +1,10 @@
 package com.kaodim.design.components.editText;
 
-import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.InverseBindingListener;
-import android.databinding.InverseBindingMethod;
-import android.databinding.InverseBindingMethods;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
+import androidx.databinding.InverseBindingMethod;
+import androidx.databinding.InverseBindingMethods;
 import android.text.Editable;
 import android.text.TextWatcher;
 

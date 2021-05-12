@@ -1,7 +1,7 @@
 package com.kaodim.design.components.calendarView.ui
 
-import android.support.annotation.LayoutRes
-import android.support.annotation.Px
+import androidx.annotation.LayoutRes
+import androidx.annotation.Px
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout

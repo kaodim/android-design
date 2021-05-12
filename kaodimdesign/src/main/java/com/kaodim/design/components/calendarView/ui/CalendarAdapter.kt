@@ -2,11 +2,11 @@ package com.kaodim.design.components.calendarView.ui
 
 import android.content.Context
 import android.graphics.Rect
-import android.support.annotation.LayoutRes
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.RecyclerView
 import com.kaodim.design.components.calendarView.CalendarView
 import com.kaodim.design.components.calendarView.model.*
 import com.kaodim.design.components.calendarView.utils.NO_INDEX
@@ -28,7 +28,7 @@ internal class CalendarAdapter(
     private val calView: CalendarView,
     internal var viewConfig: ViewConfig,
     internal var monthConfig: MonthConfig
-) : RecyclerView.Adapter<MonthViewHolder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<MonthViewHolder>() {
 
     private val months: List<CalendarMonth>
         get() = monthConfig.months
@@ -48,7 +48,7 @@ internal class CalendarAdapter(
     private val isAttached: Boolean
         get() = calView.adapter === this
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+    override fun onAttachedToRecyclerView(recyclerView: androidx.recyclerview.widget.RecyclerView) {
         calView.post { notifyMonthScrollListenerIfNeeded() }
     }
 
@@ -110,7 +110,7 @@ internal class CalendarAdapter(
         }
 
         val userRoot = if (viewConfig.monthViewClass != null) {
-            (Class.forName(viewConfig.monthViewClass)
+            (Class.forName(viewConfig.monthViewClass!!)
                 .getDeclaredConstructor(Context::class.java)
                 .newInstance(context) as ViewGroup).apply {
                 setupRoot(this)
@@ -173,7 +173,7 @@ internal class CalendarAdapter(
             return
         }
         val visibleItemPos = findFirstVisibleMonthPosition()
-        if (visibleItemPos != RecyclerView.NO_POSITION) {
+        if (visibleItemPos != androidx.recyclerview.widget.RecyclerView.NO_POSITION) {
             val visibleMonth = months[visibleItemPos]
 
             if (visibleMonth != this.visibleMonth) {
@@ -257,7 +257,7 @@ internal class CalendarAdapter(
         val visibleItemPos =
             if (isFirst) layoutManager.findFirstVisibleItemPosition() else layoutManager.findLastVisibleItemPosition()
 
-        if (visibleItemPos != RecyclerView.NO_POSITION) {
+        if (visibleItemPos != androidx.recyclerview.widget.RecyclerView.NO_POSITION) {
 
             // We make sure that the view for the returned position is visible to a reasonable degree.
             val visibleItemPx = Rect().let { rect ->
