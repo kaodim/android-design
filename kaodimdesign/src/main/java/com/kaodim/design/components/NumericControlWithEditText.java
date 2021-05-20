@@ -2,10 +2,13 @@ package com.kaodim.design.components;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,10 +20,10 @@ import com.kaodim.design.components.utilities.ViewUtils;
 
 import java.math.BigDecimal;
 
-public class NumericControl extends RelativeLayout implements CounterHandler.CounterListener {
+public class NumericControlWithEditText extends RelativeLayout implements CounterHandler.CounterListener {
 
-    ImageView selectionMinus, selectionAdd;
-    TextView tvNumericDisplay;
+    ImageView selectionMinusWithEditText, selectionAddWithEditText;
+    EditText etNumericDisplayWithEditText;
 
     CounterHandler counterHandler;
     CounterHandler.Builder builder = new CounterHandler.Builder();
@@ -31,17 +34,17 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
     int max = 10;
     int currentValue = 0;
 
-    public NumericControl(Context context) {
+    public NumericControlWithEditText(Context context) {
         super(context);
         init(context,null);
     }
 
-    public NumericControl(Context context, AttributeSet set) {
+    public NumericControlWithEditText(Context context, AttributeSet set) {
         super(context, set);
         init(context, set);
     }
 
-    public NumericControl(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NumericControlWithEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
@@ -57,22 +60,22 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
         typedArray.recycle();
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.kdl_element_numeric_control_layout, this);
+        inflater.inflate(R.layout.kdl_element_numeric_control_with_edit_text_layout, this);
         initComponents();
         this.setEnabled(enabled);
     }
 
     private void initComponents() {
-        selectionMinus = findViewById(R.id.selectionMinus);
-        selectionAdd = findViewById(R.id.selectionAdd);
-        tvNumericDisplay = findViewById(R.id.tvNumericDisplay);
+        selectionMinusWithEditText = findViewById(R.id.selectionMinusWithEditText);
+        selectionAddWithEditText = findViewById(R.id.selectionAddWithEditText);
+        etNumericDisplayWithEditText = findViewById(R.id.etNumericDisplayWithEditText);
 
         updateCounter();
-
         counterHandler = builder
                 .startNumber(currentValue)
-                .incrementalView(selectionAdd)
-                .decrementalView(selectionMinus)
+                .incrementalView(selectionAddWithEditText)
+                .decrementalView(selectionMinusWithEditText)
+                .editTextView(etNumericDisplayWithEditText)
                 .minRange(min) // cant go any less than -50
                 .maxRange(max) // cant go any further than 50
                 .isCycle(false) // 49,50,-50,-49 and so on
@@ -87,8 +90,8 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
     }
 
     private void updateCounter() {
-        if (tvNumericDisplay != null) {
-            tvNumericDisplay.setText(String.valueOf(currentValue));
+        if (etNumericDisplayWithEditText != null) {
+            etNumericDisplayWithEditText.setText(String.valueOf(currentValue));
         } else {
             Log.d("KAODESIGN", "NumericControl.updateCounter().tvNumericDisplay is null. Failed to set value.");
         }
@@ -155,7 +158,7 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
 
     @Override
     public void onIncrement(View view, long number) {
-        currentValue = new BigDecimal(number).intValueExact();
+        currentValue = Integer.parseInt(etNumericDisplayWithEditText.getText().toString())+ 1;
         updateCounter();
 
         //if current value is at maximum already, disable further incrementing. vise versa
@@ -170,7 +173,7 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
 
     @Override
     public void onDecrement(View view, long number) {
-        currentValue = new BigDecimal(number).intValueExact();
+        currentValue = Integer.parseInt(etNumericDisplayWithEditText.getText().toString())- 1;
         updateCounter();
 
         //if current value is at minimum already, disable further decrementing. vise versa
@@ -181,10 +184,27 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
             listener.onNumericRemoved(currentValue);
             listener.onNumericValueChanged(currentValue);
         }
+
     }
 
     @Override
-    public void onEditText(View view, long number) { }
+    public void onEditText(View view, long number) {
+        etNumericDisplayWithEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (listener != null)
+                    listener.onNumericValueChanged(currentValue);
+            }
+        });
+    }
 
     private void toggleButtons() {
         if (currentValue < max) {
@@ -205,23 +225,23 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
     }
 
     private void enableDecrementButton() {
-        selectionMinus.setClickable(true);
-        selectionMinus.setImageAlpha(255);
+        selectionMinusWithEditText.setClickable(true);
+        selectionMinusWithEditText.setImageAlpha(255);
     }
 
     private void disableDecrementButton() {
-        selectionMinus.setClickable(false);
-        selectionMinus.setImageAlpha(102);
+        selectionMinusWithEditText.setClickable(false);
+        selectionMinusWithEditText.setImageAlpha(102);
     }
 
     private void enableIncrementButton() {
-        selectionAdd.setClickable(true);
-        selectionAdd.setImageAlpha(255);
+        selectionAddWithEditText.setClickable(true);
+        selectionAddWithEditText.setImageAlpha(255);
     }
 
     private void disableIncrementButton() {
-        selectionAdd.setClickable(false);
-        selectionAdd.setImageAlpha(102);
+        selectionAddWithEditText.setClickable(false);
+        selectionAddWithEditText.setImageAlpha(102);
     }
 
     @Override

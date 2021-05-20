@@ -9,6 +9,7 @@ public class CounterHandler {
     final Handler handler = new Handler();
     private View incrementalView;
     private View decrementalView;
+    private View editTextView;
     public long minRange = -1;
     public long maxRange = -1;
     private long startNumber = 0;
@@ -37,6 +38,7 @@ public class CounterHandler {
     private CounterHandler(Builder builder) {
         incrementalView = builder.incrementalView;
         decrementalView = builder.decrementalView;
+        editTextView = builder.editTextView;
         minRange = builder.minRange;
         maxRange = builder.maxRange;
         startNumber = builder.startNumber;
@@ -51,6 +53,7 @@ public class CounterHandler {
         if (listener != null) {
             listener.onIncrement(incrementalView, startNumber);
             listener.onDecrement(decrementalView, startNumber);
+            listener.onEditText(editTextView, startNumber);
         }
     }
 
@@ -159,11 +162,13 @@ public class CounterHandler {
 
         void onDecrement(View view, long number);
 
+        void onEditText(View view, long number);
     }
 
     public static final class Builder {
         private View incrementalView;
         private View decrementalView;
+        private View editTextView;
         private long minRange = -1;
         private long maxRange = -1;
         private long startNumber = 0;
@@ -182,6 +187,11 @@ public class CounterHandler {
 
         public Builder decrementalView(View val) {
             decrementalView = val;
+            return this;
+        }
+
+        public Builder editTextView(View val) {
+            editTextView = val;
             return this;
         }
 
