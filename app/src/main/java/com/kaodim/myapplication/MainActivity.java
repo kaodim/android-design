@@ -22,6 +22,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.kaodim.design.components.DateTimePicker;
 import com.kaodim.design.components.InteractivePanel;
 import com.kaodim.design.components.NumericControl;
+import com.kaodim.design.components.NumericControlWithEditText;
 import com.kaodim.design.components.SearchBox;
 import com.kaodim.design.components.bottomBars.FullWidthBottomBar;
 import com.kaodim.design.components.bottomBars.PricingBottomBar;
@@ -46,6 +47,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     NumericControl numericControl;
+    NumericControlWithEditText numericControlWithEditText;
     RelativeLayout rlDateSelection;
     DateTimePicker dateTimePicker;
     InteractivePanel interactivePanel;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 //        gender = findViewById(R.id.gender);
 //        etGender = findViewById(R.id.etGender);
         numericControl = findViewById(R.id.numericControl);
+        numericControlWithEditText = findViewById(R.id.numericControlWithEditText);
         dateTimePicker = findViewById(R.id.dateTimePicker);
         interactivePanel = findViewById(R.id.interactivePanel);
         searchBox = findViewById(R.id.searchBox);

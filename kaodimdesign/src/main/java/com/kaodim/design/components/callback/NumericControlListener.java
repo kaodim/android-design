@@ -1,4 +1,4 @@
-package com.kaodim.design.components.callbacks;
+package com.kaodim.design.components.callback;
 
 public interface NumericControlListener {
     void onNumericAdded(int value);

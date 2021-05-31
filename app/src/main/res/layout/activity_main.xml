@@ -267,6 +267,16 @@
                     app:min="0"
                     app:value="2" />
 
+                <com.kaodim.design.components.NumericControlWithEditText
+                    android:id="@+id/numericControlWithEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:enabled="true"
+                    app:max="15"
+                    app:min="0"
+                    app:value="2" />
+
                 <TextView
                     style="@style/NormalTextBolded"
                     android:layout_width="wrap_content"
