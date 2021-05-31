@@ -11,8 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kaodim.design.R;
-import com.kaodim.design.components.callbacks.NumericControlListener;
-import com.kaodim.design.components.helpers.CounterHandler;
+import com.kaodim.design.components.callback.NumericControlListener;
+import com.kaodim.design.components.handlers.CounterHandler;
 import com.kaodim.design.components.utilities.ViewUtils;
 
 import java.math.BigDecimal;
@@ -184,7 +184,9 @@ public class NumericControl extends RelativeLayout implements CounterHandler.Cou
     }
 
     @Override
-    public void onEditText(View view, long number) { }
+    public void onEditText(View view, long number) {
+
+    }
 
     private void toggleButtons() {
         if (currentValue < max) {

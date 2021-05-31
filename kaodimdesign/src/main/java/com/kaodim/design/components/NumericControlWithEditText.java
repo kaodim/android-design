@@ -14,8 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kaodim.design.R;
-import com.kaodim.design.components.callbacks.NumericControlListener;
-import com.kaodim.design.components.helpers.CounterHandler;
+import com.kaodim.design.components.callback.NumericControlListener;
+import com.kaodim.design.components.handlers.CounterHandler;
 import com.kaodim.design.components.utilities.ViewUtils;
 
 import java.math.BigDecimal;
@@ -200,9 +200,19 @@ public class NumericControlWithEditText extends RelativeLayout implements Counte
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (listener != null)
-                    listener.onNumericValueChanged(currentValue);
-            }
+                if (listener != null){
+                    try {
+                        int editTextValue = Integer.parseInt(s.toString());
+                        if (editTextValue != currentValue){
+                            currentValue = editTextValue;
+                            listener.onNumericValueChanged(currentValue);
+                        }
+                    }
+                    catch(Exception ex) {
+                        System.out.println("Error: Could not parse editable to currentvalue, exiting");
+                    }
+                }
+                }
         });
     }
 

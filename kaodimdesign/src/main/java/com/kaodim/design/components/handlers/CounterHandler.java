@@ -1,4 +1,4 @@
-package com.kaodim.design.components.helpers;
+package com.kaodim.design.components.handlers;
 
 import android.annotation.SuppressLint;
 import android.os.Handler;
@@ -56,6 +56,7 @@ public class CounterHandler {
             listener.onEditText(editTextView, startNumber);
         }
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private void initIncrementalView() {
