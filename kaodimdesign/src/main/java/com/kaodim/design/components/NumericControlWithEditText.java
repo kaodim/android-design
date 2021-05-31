@@ -209,11 +209,10 @@ public class NumericControlWithEditText extends RelativeLayout implements Counte
                         }
                     }
                     catch(Exception ex) {
-                        System.out.println("Error: Could not parse editable to currentvalue, exiting");
+                        ex.printStackTrace();
                     }
-                }
-                }
-        });
+                } 
+            }});
     }
 
     private void toggleButtons() {
