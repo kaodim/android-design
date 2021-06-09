@@ -11,6 +11,7 @@
         android:layout_height="38dp"
         android:clickable="true"
         android:focusable="true"
+        android:layout_marginEnd="4dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:src="@drawable/minus" />
 
@@ -39,6 +40,7 @@
         android:layout_toEndOf="@+id/etNumericDisplayWithEditText"
         android:clickable="true"
         android:focusable="true"
+        android:layout_marginStart="4dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:src="@drawable/add" />
 
