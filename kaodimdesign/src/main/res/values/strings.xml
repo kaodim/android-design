@@ -18,5 +18,6 @@
     <string name="singapore_country_code">+65</string>
     <string name="philippines_country_code">+63</string>
     <string name="indonesia_country_code">+62</string>
+    <string name="mobile_number">Mobile Number</string>
 
 </resources>
