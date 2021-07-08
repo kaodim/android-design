@@ -3,22 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/tvHintTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="10dp"
-        android:text="Mobile Number"
-        android:textColor="@color/kdl_grey_medium"
-        android:textSize="@dimen/size_12" />
+    android:orientation="vertical"
+    android:padding="2dp">
 
     <RelativeLayout
         android:id="@+id/rlParent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_blue_rounded">
 
         <LinearLayout
             android:id="@+id/llCountryCodeSelector"
@@ -30,31 +23,27 @@
 
             <ImageView
                 android:id="@+id/ivFlag"
-                android:layout_width="30dp"
-                android:layout_height="16dp"
+                android:layout_width="40dp"
+                android:layout_height="26dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="2dp"
                 android:src="@drawable/ic_flag_my" />
-
-            <ImageView
-                android:id="@+id/ivDropdown"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="2dp"
-                android:src="@drawable/ic_dropdown" />
 
             <TextView
                 android:id="@+id/tvCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="5dp"
-                android:text="(+60)"
+                android:layout_marginStart="8dp"
+                android:text="+60"
                 android:textColor="@color/blackpearl"
                 android:textSize="@dimen/size_14" />
 
+            <View
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="12dp"
+                android:background="@color/kdl_grey_vertical_divider" />
         </LinearLayout>
 
         <RelativeLayout
@@ -77,6 +66,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft = "10dp"
+                android:paddingRight = "10dp"
                 android:backgroundTint="@android:color/transparent"
                 android:inputType="number"
                 android:textSize="@dimen/size_14" />
@@ -84,14 +77,6 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
-    <View
-        android:id="@+id/viewMargin"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/firefly" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -106,5 +91,20 @@
             android:visibility="gone" />
 
     </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tvHintTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/kaodim_blue"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Mobile Number"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-70dp"
+        android:background="@color/white"
+        android:textSize="@dimen/size_12" />
 
 </LinearLayout>

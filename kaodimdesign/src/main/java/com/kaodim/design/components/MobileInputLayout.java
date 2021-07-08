@@ -31,7 +31,6 @@ public class MobileInputLayout extends RelativeLayout {
     EditText etInput;
     ImageView ivFlag;
     PhoneEditText etValidator;
-    ImageView ivDropdown;
 
     CountryCodeRVAdapter adapter;
     ArrayList<CountryCodeRowItem> countryCodes = new ArrayList<>();
@@ -50,12 +49,6 @@ public class MobileInputLayout extends RelativeLayout {
     public void setEnableSelection(boolean enableSelection) {
         this.enableSelection = enableSelection;
 
-        if (enableSelection) {
-            ivDropdown.setVisibility(VISIBLE);
-        }
-        else {
-            ivDropdown.setVisibility(GONE);
-        }
     }
 
     public interface MobileInputEventListener {
@@ -106,7 +99,6 @@ public class MobileInputLayout extends RelativeLayout {
         etValidator = findViewById(R.id.etValidator);
         tvCode = findViewById(R.id.tvCode);
         ivFlag = findViewById(R.id.ivFlag);
-        ivDropdown = findViewById(R.id.ivDropdown);
 
         setHintText(hint);
         setHintTitle(hintTitle);
@@ -145,13 +137,6 @@ public class MobileInputLayout extends RelativeLayout {
     }
 
     private void setupRecyclerView(Context context) {
-
-        if (enableSelection) {
-            ivDropdown.setVisibility(VISIBLE);
-        }
-        else {
-            ivDropdown.setVisibility(GONE);
-        }
 
         adapter = new CountryCodeRVAdapter(context, countryCodes, new CountryCodeRVAdapter.CountryCodeSelectionListener() {
             @Override
