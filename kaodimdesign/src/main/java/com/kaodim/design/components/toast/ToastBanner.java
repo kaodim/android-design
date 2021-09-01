@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kaodim.design.R;
-import com.shasin.notificationbanner.Banner;
+import com.kaodim.design.components.banner.Banner;
 
 public class ToastBanner {
 

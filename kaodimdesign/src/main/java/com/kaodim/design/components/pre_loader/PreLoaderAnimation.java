@@ -4,7 +4,7 @@ package com.kaodim.design.components.pre_loader;
 import android.app.Activity;
 import android.view.View;
 
-import com.shasin.notificationbanner.Banner;
+import com.kaodim.design.components.banner.Banner;
 
 import static com.androidquery.util.AQUtility.postDelayed;
 
