@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
@@ -63,7 +64,6 @@
                 </RelativeLayout>
             </RelativeLayout>
 
-
             <LinearLayout
                 android:id="@+id/llContainerVerticalButton"
                 android:layout_width="match_parent"
@@ -117,6 +117,7 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_jasper"
+                    app:backgroundTint="@color/button_jasper"
                     android:clickable="true"
                     android:enabled="true"
                     android:focusable="true"
@@ -134,6 +135,7 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@color/bg_lightgrey"
+                    app:backgroundTint="@color/bg_lightgrey"
                     android:text="Secondary"
                     tools:text="Secondary Button"
                     android:textAllCaps="false"
@@ -201,6 +203,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/button_gray"
+                        app:backgroundTint = "@color/button_gray"
                         android:shadowColor="@color/porcelain"
                         android:text="Secondary"
                         android:layout_weight="1.1"
@@ -216,6 +219,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/button_jasper"
+                        app:backgroundTint = "@color/button_jasper"
                         android:clickable="true"
                         android:enabled="true"
                         android:focusable="true"
