@@ -14,7 +14,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
     }
 
     buildTypes {
@@ -48,5 +47,16 @@ dependencies {
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
     implementation('com.github.kaodim:android-phone-field:1.0.0') {
         transitive = true
+    }
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+            }
+        }
     }
 }
