@@ -111,7 +111,7 @@
 
                 <Button
                     android:id="@+id/btnPrimary"
-                    style="@style/font_roboto_medium"
+                    style="?android:attr/borderlessButtonStyle"
                     android:textAllCaps="false"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -130,7 +130,7 @@
 
                 <Button
                     android:id="@+id/btnSecondary"
-                    style="@style/font_roboto_medium"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
